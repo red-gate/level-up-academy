@@ -1,0 +1,80 @@
+{
+  "title": "Lets learn enough Bash to be dangerous",
+  "description": "A simple set of exercises to introduce you to the basics of Bash.",
+  "difficulty": "Beginner",
+  "time": "20 minutes",
+  "details": {
+    "steps": [{
+      "title": "What is Unix?",
+      "text": "what-is-unix.md"
+    },{
+      "title": "Everything is a file",
+      "text": "everything-is-a-file.md"
+    },{
+      "title": "Using the Shell",
+      "text": "using-the-shell.md"
+    },{
+      "title": "File commands",
+      "text": "file-commands.md"
+    },{
+      "title": "Understanding file permissions",
+      "text": "file-permissions.md"
+    },{
+      "title": "File system commands",
+      "text": "filesystem-commands.md"
+    },{
+      "title": "Text commands",
+      "text": "text-commands.md"
+    },{
+      "title": "Text slicing and dicing",
+      "text": "slicing-dicing-text.md"
+    },{
+      "title": "Combining commands",
+      "text": "combining-commands.md"
+    },{
+        "title": "Text exercises",
+        "text": "text-exercises.md"
+    },{
+        "title": "Editing text",
+        "text": "editing-text.md"      
+    },{
+      "title": "Shell scripting",
+      "text": "shell-scripting.md"
+    },{
+      "title": "Process management",
+      "text": "process-management.md"
+    },{
+      "title": "Switching users",
+      "text": "su-and-sudo.md"
+    },{
+      "title": "An assortment of other useful commands",
+      "text": "random-useful-commands.md"
+    }],
+    "intro": {
+      "text": "intro.md",
+      "credits": "",
+      "courseData": "setup.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "client": [
+        {
+          "file": "countries.txt",
+          "target": "~/"
+        },{
+          "file": "chemical-elements.txt",
+          "target": "~/"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\n"
+  },
+  "backend": {
+    "imageid": "bash"
+  }
+}
