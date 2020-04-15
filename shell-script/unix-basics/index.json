@@ -1,4 +1,5 @@
 {
+  "noindex": true,
   "title": "Lets learn enough Bash to be dangerous",
   "description": "A simple set of exercises to introduce you to the basics of Bash.",
   "difficulty": "Beginner",

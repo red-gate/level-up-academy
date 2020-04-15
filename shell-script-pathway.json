@@ -1,0 +1,12 @@
+{
+  "title": "Shell Script Fundamentals",
+  "description": "Learn Unix basics",
+  "icon": "fa-terminal",
+  "courses": [
+    {
+      "course_id": "unix-basics",
+      "title": "Let's learn enough Shell Script to be dangerous",
+      "description": "A simple set of exercises to introduce you to the basics of Shell Script"
+    }
+  ]
+}
