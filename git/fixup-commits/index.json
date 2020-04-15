@@ -1,0 +1,33 @@
+{
+  "noindex": true,
+  "title": "Making Fixup Commits",
+  "description": "Keep your commit history tidy by using fixup commits",
+  "difficulty": "Intermediate",
+  "time": "5 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Making fixup commits when rebasing",
+        "text": "step1.md",
+        "courseData": "messy-history.sh"
+      },
+      {
+        "title": "Marking commits as fixups",
+        "text": "step2.md",
+        "courseData": "shopping-list.sh"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "git"
+  }
+}

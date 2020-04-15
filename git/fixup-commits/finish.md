@@ -1,0 +1,1 @@
+In this lesson we learned how to use `fixup` commits to keep our commit histories clean and readable. This is an important skill to learn when working in a team where code reviews are a key part of the teams' workflow.

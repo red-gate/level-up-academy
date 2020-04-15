@@ -1,0 +1,48 @@
+{
+  "noindex": true,
+  "title": "Git: interactive staging",
+  "description": "Learn how to use 'git add --interactive' to select which changes to stage",
+  "difficulty": "Beginner",
+  "time": "3 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Adding files one by one",
+        "text": "step1.md",
+        "courseData": "modify-all.sh",
+        "answer": "step1-answer.md"
+      },
+      {
+        "title": "Adding whole directories at once",
+        "text": "step2.md",
+        "courseData": "modify-all.sh",
+        "answer": "step2-answer.md"
+      },
+      {
+        "title": "Using git add --interactive",
+        "text": "step3.md",
+        "courseData": "modify-all.sh",
+        "answer": "step3-answer.md"
+      },
+      {
+        "title": "Adding untracked files",
+        "text": "step4.md",
+        "courseData": "add-untracked.sh",
+        "answer": "step4-answer.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "intro.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "git"
+  }
+}
