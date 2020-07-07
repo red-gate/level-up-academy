@@ -1,0 +1,28 @@
+
+{% capture the_collection %}{{page.collection}}{% endcapture %}
+
+{% if page.collection %}
+  {% assign  document = site[the_collection] | sort: 'order' %}
+{% endif %}
+
+{% for links in document  %}
+{% if links.title == page.title %}
+  {% unless forloop.first %}
+    {% assign prevurl = prev.url %}
+    {% assign prevtitle = prev.title %}
+  {% endunless %}
+  {% unless comics.last.url %}
+    {% assign next = document[forloop.index] %}
+    {% assign nexturl = next.url %}
+    {% assign nexttitle = next.title %}
+  {% endunless %}
+{% endif %}
+{% assign prev = links %}
+{% endfor %}
+
+
+First: <a href="{{ document[0].url }}"> {{ document[0].title }}</a> <br />
+
+{% if prevurl %}Previous: <a href="{{ prevurl }}"> {{ prevtitle }}</a> <br />{% endif %}
+
+{% if nexturl %}Next: <a href="{{ nexturl }}">{{ nexttitle }}</a>{% endif %}
