@@ -38,16 +38,16 @@ Approximate round trip times in milli-seconds:
 PS C:\Users\rgadmin>
 ```
 
-On Windows, the `ping` command will send 4 requests out and wait for their replies. For each one it will show you how long the reply took which is indicated by the `time<1ms` bit of the output above.
+On Windows, the `ping` command will send 4 requests out and wait for their replies. For each one, it will show you how long the reply took which is indicated by the `time<1ms` bit of the output above.
 
-At the end there's some summary information showing how many packets were sent, received, lost and then a % lost figure. There's also some statistical information on minimum, maximum and average response times. 
+Lastly, there's some summary information showing how many packets were sent, received, lost and then a % lost figure. There's also some statistical information on minimum, maximum and average response times. 
 
 Trying pinging something on the internet, such as `www.google.com` and see how that output differs?
 
-Note that on Linux, the `ping` command will continue until you stop it with `ctrl+c`. You can achieve something similar on Windows with the `-t` flag, e.g. `ping -t 192.168.30.30`. This can be useful if you want to observe response times over a long period of time. 
+Note that on Linux, the `ping` command will continue until you stop it with `ctrl+c`. You can achieve something similar on Windows with the `-t` flag, e.g. `ping -t 192.168.30.30`. This can be useful if you want to observe response times over a long period. 
 
 
-Second, you shuld find that pings to the second set of IPs fail.
+Second, you should find that pings to the second set of IPs fail.
 
 ```
 PS C:\Users\rgadmin> ping 192.168.10.10

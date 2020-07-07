@@ -18,7 +18,7 @@ Use traceroute (`tracert -d <destinationIP>`). Is it correct? What _should_ it b
 
 After two hops, you begin getting `Request timed out` responses. Eventually, after 30 hops, tracert exits.
 
-This shows the packet effectively getting lost. It has been passed through a few routers and we're no longer getting responses suggesting that the packet is just getting dropped. In some cases you may also get a `No route to host` response.
+This shows the packet effectively getting lost. It has been passed through a few routers and we're no longer getting responses suggesting that the packet is just getting dropped. In some cases, you may also get a `No route to host` response.
 
 #### Fixing it
 This is happening because there is no valid route to the destination network. You can add a new route to the Windows routing table manually using the command line. Open a command prompt (or PowerShell) as Administrator and use the `route` command to examine the current routing table:

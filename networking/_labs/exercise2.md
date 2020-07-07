@@ -25,7 +25,7 @@ What can you learn by running `nslookup web-host.local`?
 
 <summary markdown="span"> Answer </summary>
 
-Performing `nlsookup web-host.local` reveals that the hostname cannot be found:
+Performing `nslookup web-host.local` reveals that the hostname cannot be found:
 
 ```
 PS C:\Users\rgadmin> nslookup web-host.local
@@ -35,11 +35,11 @@ Address:  192.168.30.20
 *** dns-vm.local can't find web-host.local: Non-existent domain
 ```
 
-This messge tells you the DNS server that was used to make the request, and the result of the query.
+This message tells you the DNS server that was used to make the request and the result of the query.
 
 The host can't resolve the hostname to an IP address, because there's a DNS entry missing. 
 
-In this example, we're using [BIND](https://www.isc.org/bind/) to act as our DNS server. There are many others out there, for example Windows Server has a DNS role which is typically used in Active Directory deployments. 
+In this example, we're using [BIND](https://www.isc.org/bind/) to act as our DNS server. There are many others out there, for example, Windows Server has a DNS role which is typically used in Active Directory deployments. 
 
 To fix our example, SSH to `dns-vm.local` and navigate to the BIND config directory containing the zone definitions.
 

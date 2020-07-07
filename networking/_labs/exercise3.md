@@ -24,7 +24,7 @@ How _could_ we solve this problem?
 
 Try browsing http://nat-vm.local:8080 from the Host machine. What happens? 
 
-This uses port forwarding. We use iptables on linux to configure this. Take a look at the rules by ssh-ing to `nat-vm.local` and run `sudo iptables -L -t nat -v -n`
+This uses port forwarding. We use iptables on Linux to configure this. Take a look at the rules by ssh-ing to `nat-vm.local` and run `sudo iptables -L -t nat -v -n`
 
 This is the output you'll see.
 
@@ -47,8 +47,8 @@ Chain POSTROUTING (policy ACCEPT 2 packets, 104 bytes)
 
 For this example, we care about the first `PREROUTING` stage. 
 
-You can see that it's doing Destination NAT (DNAT), on the TCP protocol. We're allowing any source and any destination, and the exact translation we're going to apply is `tcp dpt:8080 to:192.168.10.10:80`. Loosely, that's 'take inbound connections to myself on tcp port 8080, and send them to host 192.168.10.10 on port 80'. 
+You can see that it's doing Destination NAT (DNAT), on the TCP protocol. We're allowing any source and any destination, and the exact translation we're going to apply is `tcp dpt:8080 to:192.168.10.10:80`. Loosely, that's 'take inbound connections to me on TCP port 8080, and send them to host 192.168.10.10 on port 80'. 
 
-In the background, iptables then takes care of forwarding the request it received on port 8080 to port 80 of the _actual_ web server, and then relaying the response back to the original client (the host machine, in this case). Remember, when it forwards the request, it rewrites the source IP header, which means the webserver thinks that `nat-vm` made the request, not the host machine. 
+In the background, iptables then takes care of forwarding the request it received on port 8080 to port 80 of the _actual_ web server and then relaying the response back to the original client (the host machine, in this case). Remember, when it forwards the request, it rewrites the source IP header, which means the web server thinks that `nat-vm` made the request, not the host machine. 
 
 </details>
