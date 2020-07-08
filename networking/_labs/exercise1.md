@@ -42,7 +42,7 @@ On Windows, the `ping` command will send 4 requests out and wait for their repli
 
 Lastly, there's some summary information showing how many packets were sent, received, lost and then a % lost figure. There's also some statistical information on minimum, maximum and average response times. 
 
-Trying pinging something on the internet, such as `www.google.com` and see how that output differs?
+Try pinging something on the internet, such as `www.google.com` and see how that output differs?
 
 Note that on Linux, the `ping` command will continue until you stop it with `ctrl+c`. You can achieve something similar on Windows with the `-t` flag, e.g. `ping -t 192.168.30.30`. This can be useful if you want to observe response times over a long period. 
 
