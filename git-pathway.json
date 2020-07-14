@@ -12,11 +12,6 @@
       "course_id": "fixup-commits",
       "title": "Making Fixup Commits",
       "description": "Keep your commit history tidy by using fixup commits"
-    },
-    {
-      "course_id": "adding-patches",
-      "title": "Adding Patches",
-      "description": "Create focussed commits by staging only parts of files"
     }
   ]
 }
