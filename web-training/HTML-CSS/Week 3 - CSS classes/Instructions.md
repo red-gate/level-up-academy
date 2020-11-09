@@ -9,7 +9,7 @@ c. Why does the text "image of shoezone shop" appear to the right of the image?
 d. Why is "welcome to ..." message orange?  
 
 
-Task 2, can you use CSS to style target.html (no peaking at target.css file!!)?  This includes
+Task 2, can you use CSS and HTML tags to style target.html (no peaking at target.css file!!)?  This includes
 
 a. Making sure the active a tag is styled different to the other links in list at the top of the page.   
 b. When you hover over a link with a mouse, it is obvious to the user (remember, no use for touch screen)  
@@ -29,3 +29,4 @@ h. The address has been styled
 - [Pseudo-classes](https://www.w3schools.com/css/css_pseudo_classes.asp)
 - [Combining classes](https://css-tricks.com/multiple-class-id-selectors/)
 - [CSS specificity](https://css-tricks.com/specifics-on-css-specificity/)
+- https://www.w3schools.com/tags/tag_pre.asp
