@@ -1,0 +1,42 @@
+body {
+	font-family: Verdana, Charcoal, sans-serif;
+	color:#333;
+  }
+
+
+
+  header nav ul {
+	list-style: none;
+	font-size:1.1em;
+  }
+
+  header nav ul li a {
+	text-decoration: none;	
+	color: #6f9e4b;
+	list-style: none;
+}
+
+
+header h1 {
+	text-align: center;
+	color:#a7f6e3;
+	font-size: 3.8em;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+h2{
+	color:#999;
+	text-shadow: 2px 2px 0 #000;
+}
+
+
+	footer{
+		background-color: black;
+		color:white;
+	}
+
+	
+header h1 {
+	color:orange;	
+}
