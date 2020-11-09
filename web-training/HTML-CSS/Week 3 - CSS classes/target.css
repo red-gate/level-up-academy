@@ -1,22 +1,120 @@
-nav ul li a {
-	text-decoration: none;
-	background-color: #dddddd;
-	color: #000000;
+/*This is a comment. 
+
+Hurray
+
+*/
+
+
+
+/* The * symbol is a wildcard character and really rare to ever use!! 
+*  {
+	font-family: Verdana, Charcoal, sans-serif;
+	color:#333;
+  }
+ */ 
+
+
+
+body {
+	font-family: Verdana, Charcoal, sans-serif;
+	color:#333;
+  }
+
+nav ul {
+	list-style: none;
+	font-size:1.1em;
 }
 
-nav ul li {
-	list-style-type: none;
+	nav ul li a {
+		text-decoration: none;	
+		color: #6f9e4b;
+		list-style: none;
+	}
+
+	nav ul li a:hover {
+		color:purple;
+	}
+
+	nav ul li a.active {
+		text-decoration: underline;
+		background-color: lightyellow;
+		color:lightskyblue;
+	}
+
+header {
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url('https://cdn.pixabay.com/photo/2018/03/02/10/03/wildlife-3192772_960_720.jpg'); /*Referencing another domains resouce */
 }
 
 header h1 {
 	text-align: center;
+	color:white;
+	font-size: 5.8em;
 	font-family: Arial, Helvetica, sans-serif;
+	background: rgb(95,87,235);
+	background: linear-gradient(0deg, rgba(95,87,235,1) 0%, rgba(0,91,255,1) 100%); /*https://cssgradient.io/*/
 }
 
-.pink {
-	background-color: #ff8888;
+p {
+	line-height: 25px;	
 }
 
-.pink:hover {
-	background-color: #ffaaaa;
+
+h2{
+	color:#999;
+	text-shadow: 2px 2px 0 #000;
 }
+
+
+
+q, figure figcaption{
+	font-style:italic;
+}
+
+img {
+	max-width: 300px;
+}
+
+
+.wideSpacing{
+	letter-spacing: 5px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.backgroundGrey {
+	background-color: #ccc;
+}
+
+.backgroundLightGreen {
+	background-color: lightgreen;
+}
+
+.largeFont{
+	font-size:1.2em;
+}
+.rows figure:nth-child(odd){
+	background: #ccc;
+}
+
+.rows figure:nth-child(even){
+	background: rgb(220, 241, 255);	
+}
+
+.rows figure:hover{
+	background-color: lightyellow;
+}
+
+
+
+footer{
+	background-color: black;
+	color:#ccc;
+}
+
+	
