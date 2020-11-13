@@ -1,0 +1,16 @@
+.boxes{
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    border: black 5px solid;
+}
+
+.box1{
+    background-color: red;
+    box-sizing: border-box;
+}
+
+.box2{
+    background-color: blue;
+    box-sizing:inherit;
+}
