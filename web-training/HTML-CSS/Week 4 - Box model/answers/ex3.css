@@ -1,0 +1,41 @@
+.target a{
+	text-decoration: none;	
+	width: 100px;
+	padding: 25px 0px;
+	color: black;
+	display: inline-block;
+}
+
+.target li:hover{
+	background-color: pink;
+}
+
+.target {
+	text-align: center;
+}
+
+.target li{
+	list-style: none;
+	display: inline-block;
+	width: 100px;
+	border: 3px solid green;
+}
+
+.target li:first-child{
+	border-radius: 25px 0px 0px 25px;
+	border-right-style: none;
+}
+
+.target li:last-child{
+	border-radius: 0px 25px 25px 0px;
+	border-left-style: none;
+}
+
+.target li:not(:first-child){
+	margin-left:-4px;
+}
+
+.target li:not(:first-child):not(:last-child) {
+	border-right-style: none;
+	border-left-style: none;
+}
