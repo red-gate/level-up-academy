@@ -1,0 +1,23 @@
+.boxes{
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    
+}
+
+.solid {
+	border: black 5px solid;
+}
+.dashed {
+	border-style: dashed;
+}
+
+.longhand{
+	border-style: solid;
+	border-width: 5px;
+	border-color: red;
+}
+
+.shorthand {
+	border: red 5px solid;
+}
