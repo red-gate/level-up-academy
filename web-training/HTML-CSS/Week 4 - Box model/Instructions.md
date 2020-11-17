@@ -49,6 +49,7 @@ Explain that box vs box size (rendered height vs height + padding/margin)
 
 
 # Resources
+* [CSS box model](https://css-tricks.com/the-css-box-model/)
 * [CSS Shorthand Border](https://www.w3schools.com/css/css_border_shorthand.asp)
 * CSS Selectors:
   * [CSS :not selector](https://www.w3schools.com/cssref/sel_not.asp)
