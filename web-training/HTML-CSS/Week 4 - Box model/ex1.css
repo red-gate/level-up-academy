@@ -3,14 +3,13 @@
     width: 200px;
     padding: 10px;
     border: black 5px solid;
+    background-color: green;
 }
 
 .box1{
-    background-color: red;
     box-sizing: border-box;
 }
 
 .box2{
-    background-color: blue;
-    box-sizing:inherit;
+    box-sizing: content-box;
 }
