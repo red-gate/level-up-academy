@@ -1,0 +1,25 @@
+body nav ul li {
+    list-style-type: none;
+}
+
+body nav ul li a {
+    color: #6f9e4b;
+    text-decoration: none;
+}
+
+body nav ul li a.active {
+    color:lightgreen;
+    text-decoration: underline;
+}
+
+body nav ul li a:hover {
+    color: purple;
+    background-color: lightblue;
+}
+
+body header h1 {
+    background-image: url("lizard.jpg");
+    background-color: blue;
+    font-size: 42;
+    height: 400;
+}
