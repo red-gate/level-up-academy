@@ -37,20 +37,10 @@ Specifically create a navigation bar with:
 * Is not specific to the number of links in the nav bar (Same css for 3 and 4 link bars)
 
 
-# Additional
-This week, with a new design, focusing only on 
-
-1 box model, box sizing
-2 borders
-3 display
-4 Please do not use float!     :) 
-
-Explain that box vs box size (rendered height vs height + padding/margin)
-
-
 # Resources
+* [CSS box model](https://css-tricks.com/the-css-box-model/)
 * [CSS Shorthand Border](https://www.w3schools.com/css/css_border_shorthand.asp)
 * CSS Selectors:
-  * [CSS :not selector}(https://www.w3schools.com/cssref/sel_not.asp)
-  * [:first-child}(https://www.w3schools.com/cssref/sel_firstchild.asp)
+  * [CSS :not selector](https://www.w3schools.com/cssref/sel_not.asp)
+  * [:first-child](https://www.w3schools.com/cssref/sel_firstchild.asp)
   * [:last-child](https://www.w3schools.com/cssref/sel_last-child.asp)
