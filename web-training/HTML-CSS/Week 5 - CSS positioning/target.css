@@ -1,0 +1,32 @@
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: white;
+	height: 150px;
+	padding-bottom: 10px;
+}
+
+main {
+	padding-bottom: 160px;
+}
+
+article img {
+	float:left;
+	height: 100px;
+}
+
+article {
+	clear:both;
+	width: 45%;
+	border: 2px black solid;
+	padding: 0 0 0 15px;
+	margin: 10px;
+	overflow: auto;
+}
+
+.articles {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
