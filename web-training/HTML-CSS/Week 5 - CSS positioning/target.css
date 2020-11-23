@@ -35,7 +35,7 @@ article {
 	clear:both;
 	width: 45%;
 	border: 2px black solid;
-	padding: 0 0 0 15px;
+	padding: 0 15px 0 15px;
 	margin: 10px;
 	overflow: auto;
 }
