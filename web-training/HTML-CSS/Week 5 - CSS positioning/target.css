@@ -30,3 +30,35 @@ article {
 	flex-direction: row;
 	flex-wrap: wrap;
 }
+
+.content-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+nav {
+	border-right: 2px solid black;
+	margin-right: 15px;
+	width: 25%;
+	display: block;
+}
+
+nav ul {
+	list-style: none;
+	padding-left:0;
+}
+
+nav ul li {
+	border-bottom: 1px gray solid;
+}
+
+nav ul li a {
+	text-decoration: none;
+	padding: 10px;
+	display: inline-block;
+}
+
+nav ul li a:hover {
+	background-color: gray;
+}
