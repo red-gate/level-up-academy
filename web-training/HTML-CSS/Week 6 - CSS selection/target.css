@@ -1,0 +1,15 @@
+input:invalid {
+	border-color: red;
+}
+
+a[target="self"]::after {
+	content: "😎";
+}
+
+a[target="_blank"]::after {
+	content: "➕📑";
+}
+
+a[href^="http"]::after, a[href^="http"]::before {
+	content: "🌍";
+}
