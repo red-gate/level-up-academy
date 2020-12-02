@@ -1,7 +1,50 @@
 <html>
     <head>
         <link rel="stylesheet" href="ex3.css" type="text/css" />
-        <link rel="stylesheet" href="answers/ex3.css" type="text/css" />
+		<link rel="stylesheet" href="answers/ex3.css" type="text/css" />
+		<style type=text/css>
+			.mine {
+				width: fit-content;
+				margin: 15px auto;
+				text-align: center;
+			}
+
+			.mine ul {
+				border-style: solid;
+				border-color: green;
+				border-width: 3px;
+				border-radius: 25px;
+				display: inline-block;
+				padding: 0%;
+				display: flex;
+			}
+
+			.mine ul li {
+				list-style-type: none;
+				display: inline-block;
+			}
+
+			.mine ul li a {
+				display: inline-block;
+				padding: 25px;
+				text-decoration: none;
+				color: black;
+			}
+
+			.mine li:first-child a{
+				border-bottom-left-radius: 22px;
+				border-top-left-radius: 22px;
+			}
+
+			.mine li:last-child a{
+				border-bottom-right-radius: 22px;
+				border-top-right-radius: 22px;
+			}
+
+			.mine ul li a:hover {
+				background-color: pink;
+			}
+		</style>
     </head>
     <body>
 	<h2>Target</h2>
@@ -21,14 +64,14 @@
 			</ul>
 		</nav>
 		<h2>Yours</h2>
-		<nav>
+		<nav class="mine">
 			<ul>
 				<li><a href="#">First</a></li>
 				<li><a href="#">Second</a></li>
 				<li><a href="#">Third</a></li>
 			</ul>
 		</nav>
-		<nav>
+		<nav class="mine">
 			<ul>
 				<li><a href="#">First</a></li>
 				<li><a href="#">Second</a></li>

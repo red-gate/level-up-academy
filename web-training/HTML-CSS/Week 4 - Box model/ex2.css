@@ -21,3 +21,21 @@
 .shorthand {
 	border: red 5px solid;
 }
+
+.green {
+	border-color: green;
+}
+
+.dotted {
+	border-width: 2px;
+	border-style: dotted;
+}
+
+.solid-bottom {
+	border-bottom-style: solid;
+}
+
+.rounded-top {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
