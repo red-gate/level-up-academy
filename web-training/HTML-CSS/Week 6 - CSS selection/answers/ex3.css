@@ -1,0 +1,11 @@
+div.ex3a > p {
+	color: red;
+}
+
+div.ex3b + p {
+	color: red;
+}
+
+div.ex3c ~ p {
+	color: red;
+}
