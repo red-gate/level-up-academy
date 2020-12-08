@@ -1,0 +1,62 @@
+.page-layout-grid {
+    display: grid;
+    grid-template-columns: [left-start] 10pc [left-end middle-start]auto [middle-end right-start] 10pc [right-end];
+    grid-template-rows: [top-start] 10pc [top-end main-frame-start] auto [main-frame-end bottom-start] 10pc [main-frame-end];
+}
+
+.header {
+    background-color: white;
+    border-bottom: 2px solid black;
+}
+
+.footer {
+    background-color: white;
+    border-top: 2px solid black;
+}
+
+.grid-span {
+    grid-column-start:left-start;
+    grid-column-end: right-end;
+}
+
+.grid-centre {
+    grid-column-start:middle-start;
+    grid-column-end: middle-end;
+}
+
+.span-height {
+    grid-row-start: main-frame-start;
+    grid-row-end: main-frame-end;
+}
+
+.stick-top {
+    grid-row-start: top-start;
+    grid-row-end: top-end;
+    position: sticky;
+    top: 0px;
+}
+
+.stick-bottom {
+    grid-row-start: bottom-start;
+    grid-row-end: bottom-end;
+    position: sticky;
+    bottom: 0px;
+}
+
+.left-sidebar {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-color: black;
+}
+
+.bubble {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 1rem;
+}
