@@ -1,0 +1,12 @@
+.boxes{
+    height: 200px;
+    padding: 10px;
+    border: black 5px solid;
+    background-color: green;
+	flex-grow: 1;
+}
+
+.box-container {
+	display: flex;
+	flex-direction: column;
+}

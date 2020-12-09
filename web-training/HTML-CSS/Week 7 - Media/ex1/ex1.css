@@ -1,0 +1,29 @@
+.boxes{
+    height: 200px;
+    padding: 10px;
+    border: black 5px solid;
+    background-color: green;
+	flex-grow: 1;
+}
+
+.box-container {
+	display: flex;
+	flex-direction: column;
+}
+
+h1::after {
+	content: " < 600px";
+}
+
+@media only screen and (min-width: 600px) {
+	.box-container {
+		flex-direction: row;
+	}
+	.boxes {
+		background-color: red;
+	}
+	
+	h1::after {
+		content: " > 600px";
+	}
+}
