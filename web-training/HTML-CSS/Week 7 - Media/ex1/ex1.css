@@ -27,3 +27,17 @@ h1::after {
 		content: " > 600px";
 	}
 }
+
+@media print {
+	.box-container {
+		flex-direction: row;
+	}
+	
+	h1::after {
+		content: " printed";
+	}
+	
+	* {
+		-webkit-print-color-adjust: exact !important; 	
+	}
+}
