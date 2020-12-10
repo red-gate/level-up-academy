@@ -1,10 +1,12 @@
 # Tasks
 ## Exercise 1
+
+### Part A
 Open ex1.html in a browser and resize it, observing how the three boxes behave and how the page header text changes.
 Editing ex1_yours.html and ex1_yours.css, replicate this behaviour.
 
 
-## Exercise 2
+### Part B
 Take a look at the print preview for ex1_yours.html and ex1.html
 Using media queries - configure the printed page to have the title "Media queries printed" and force
 the boxes to go left to right instead of top to bottom. 
