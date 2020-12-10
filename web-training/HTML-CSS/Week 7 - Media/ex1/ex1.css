@@ -36,8 +36,4 @@ h1::after {
 	h1::after {
 		content: " printed";
 	}
-	
-	* {
-		-webkit-print-color-adjust: exact !important; 	
-	}
 }
