@@ -1,0 +1,80 @@
+header {
+	position: sticky;
+	top: 0;
+	background-color: white;
+	width: 100%;	
+}
+header h1 {
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid black;
+	border-radius: 15px;
+	padding: 15px;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: white;
+	height: 150px;
+	padding-bottom: 10px;
+	border-top: 2px solid black;
+}
+
+article img {
+	height: 200px;
+	object-fit: cover;
+	width: 100%;
+	padding-right: 15px;
+}
+
+article {
+	clear: both;
+	display: block;
+	border: 2px black solid;
+	padding: 0 15px 0 15px;
+	margin: 10px;
+	overflow: auto;
+}
+
+.articles {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	
+	padding-bottom: 160px;
+}
+
+nav {
+	margin-right: 15px auto;
+	display: block;
+}
+
+nav ul {
+	list-style: none;
+	padding-left: 0;
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li a {
+	text-decoration: none;
+	padding: 10px;
+	display: inline-block;
+}
+
+nav ul li:hover {
+	background-color: gray;
+}
