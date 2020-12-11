@@ -115,4 +115,8 @@ nav ul li:hover {
 	header {
 		border-bottom: 2px solid black;
 	}
+	
+	main {
+		margin-left: 15px;
+	}
 }
