@@ -4,6 +4,22 @@
 		<title>Your Week 6</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			a[target="self"]::after{
+				content: "😎";
+			}
+			a[target="_blank"]::after{
+				content: "➕📄";
+			}
+			a[href^="http:"]::before,
+			a[href^="http:"]::after{
+				content: "🔓";
+			}
+			a[href^="https"]::before,
+			a[href^="https"]::after{
+				content: "🌍";
+			}
+		</style>
 	</head>
 	<body>
 		<h1>Before and After</h1>
