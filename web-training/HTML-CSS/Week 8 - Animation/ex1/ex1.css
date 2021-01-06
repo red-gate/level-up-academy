@@ -1,0 +1,17 @@
+.boxes{
+    height: 200px;
+	width: 200px;
+    padding: 10px;
+    border: black 5px solid;
+    background-color: green;
+	transition: height 2s;
+}
+
+.box-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.boxes:hover {
+	height: 250px;
+}

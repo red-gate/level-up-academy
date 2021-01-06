@@ -1,0 +1,28 @@
+<body>
+    <style style="text/css">
+        .marquee {
+        }
+        
+        .marquee p {
+            animation: scroll-left 5s linear infinite;
+			text-align: left;
+        }
+		
+		.marquee p:hover {
+			animation-play-state:paused;
+		}
+        
+        @keyframes scroll-left {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+
+    <div class="marquee">
+        <p> !Marquee Tag </p>
+    </div>
+</body>
