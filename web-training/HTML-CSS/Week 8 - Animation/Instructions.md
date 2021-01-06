@@ -10,7 +10,16 @@
 * Something about hover or element for transition
 
 ## Ex2 - Transforms
-- Josh will do this one
+
+* Open ex2_target.html and observe how the images behave when hovering over.
+
+### Part a
+
+* Use **`transform`** and **`transition`** to implement the hover effects for the first set of images.
+
+### Part b
+
+* Use **`animation`** with **`@keyframes`** to implement the hover effects for the second set of images.
 
 ## Ex3 - Animation (Marquee on steroids)
 - Tweak what we have to stop going off screen and then create starting point

@@ -1,0 +1,28 @@
+html {
+    font-family: system-ui;
+}
+
+h2 {
+    margin: 0 0 .5rem 0;
+}
+
+article {
+    clear: both;
+    border: 2px black solid;
+    padding: 15px;
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.articles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+img {
+    margin-right: 10px;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
