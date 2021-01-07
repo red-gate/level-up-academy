@@ -11,7 +11,8 @@
 
 ## Ex2 - Transforms
 
-* Open ex2_target.html and observe how the images behave when hovering over.
+* Open ex2_target.html in a browser and observe how the images behave when hovering over them.
+* Edit ex2_yours.css to achieve the following:
 
 ### Part a
 
@@ -28,3 +29,7 @@
 - Stretch goal - 
 
 # Resources
+* [CSS Transitions](https://www.w3schools.com/css/css3_transitions.asp)
+* [CSS 2D Transforms](https://www.w3schools.com/css/css3_2dtransforms.asp)
+* [CSS 3D Transforms](https://www.w3schools.com/css/css3_3dtransforms.asp)
+* [CSS Animations](https://www.w3schools.com/css/css3_animations.asp)
