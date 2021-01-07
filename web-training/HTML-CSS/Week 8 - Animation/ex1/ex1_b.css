@@ -1,0 +1,24 @@
+.boxes{
+    height: 200px;
+	width: 200px;
+    padding: 10px;
+    border: black 5px solid;
+    background-color: green;	
+}
+
+.box-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.boxes:hover {
+	height: 250px;
+}
+
+.box1 {
+	transition: height 2s;
+}
+
+.box2:hover {
+	transition: height 2s;
+}

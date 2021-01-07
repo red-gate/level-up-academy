@@ -3,11 +3,12 @@
 ## Ex1 - Transitions
 
 ### Part a
-* Open ex1_target.html and observe how the boxes behave when hovering over.
-* Edit ex1_yours.css and cause the boxes to grow in height smoothly when hovered over.
+* Open ex1_a_target.html and observe how the boxes behave when hovering over.
+* Edit ex1_a_yours.css and cause the boxes to grow in height smoothly when hovered over.
 
 ### Part b
-* Something about hover or element for transition
+* Open ex1_b.html in a browser and observe the bevahiour of the two boxes
+* Looking at the css in ex1_b.css, can you explain why they behave differently?
 
 ## Ex2 - Transforms
 
