@@ -23,11 +23,13 @@
 
 * Use **`animation`** with **`@keyframes`** to implement the hover effects for the second set of images.
 
-## Ex3 - Animation (Marquee on steroids)
-- Tweak what we have to stop going off screen and then create starting point
+## Ex3 - Animation
+- Open ex3_target.html in a browser and observe how some of the words behave. 
+- Look at the HTML in ex3_yours.html and recreate the target behaviour by editing the css in ex3_yours.css only
 
-## Ex4 - Edit the shop!
-- Stretch goal - 
+## Ex4 - Edit the shop! - Optional stretch goal
+- If you get this far - well done!
+- Add tasteful animations or transitions to the shop in shop.html / shop.css
 
 # Resources
 * [CSS Transitions](https://www.w3schools.com/css/css3_transitions.asp)

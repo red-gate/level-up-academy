@@ -1,0 +1,22 @@
+span.bounce {
+	animation: scroll-left 1s linear infinite alternate;
+	text-align: center;
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+		
+span.bounce :hover {
+	animation-play-state:paused;
+}
+
+@keyframes scroll-left {
+	from {
+		transform: translateX(-15px);
+		color: red;
+	}
+	to {
+		transform: translateX(15px);
+		color: blue;
+	}
+}
