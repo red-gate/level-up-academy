@@ -69,7 +69,6 @@ nav ul {
 
 nav ul li {
 	border-bottom: 1px gray solid;
-	transition: background-color 1s;
 }
 
 nav ul li a {
