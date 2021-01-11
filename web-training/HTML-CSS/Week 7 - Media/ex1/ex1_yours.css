@@ -2,11 +2,36 @@
     height: 200px;
     padding: 10px;
     border: black 5px solid;
-    background-color: green;
+    background-color: red;
 	flex-grow: 1;
 }
 
 .box-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+}  
+
+h1::after{
+    content: " > 600";
 }
+
+@media only screen and (max-width: 600px) {
+    .box-container {
+        flex-direction: column;
+    }
+    .boxes {
+      background-color: green;
+    }  
+    
+    h1::after{
+        content: " < 600";
+    }
+  }
+
+  @media only print {
+    h1::after{
+        content: " printed";
+    }
+
+  }
+
