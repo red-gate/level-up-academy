@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <title>Erewhon Shop Shop</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="honeycomb.css" async/>
+</head>
+<body>
+    <header class="site-header band header--primary">
+        <nav>
+            <a href="#" class="header--primary__app-logo-container">
+                <span class="icon--sql-toolbelt"></span>
+            </a>
+            <a href="#" class="header--primary__app-name-container">Erehwon shop shop</a>
+            
+            <div class="flex-grow">
+                <ul>
+                    <li><a href="index.html">Shops</a></li>
+                    <li><a href="#">Policies and FAQ</a></li>
+                </ul>
+    
+                <div class="float-right spaced-right">
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#" class="active">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="padded">
+        <h1>Welcome to the Erehwon shop shop!</h1>
+		<div class="grid">
+            <div class="grid__row">
+				<div class="grid__col grid__col--span-4-of-12 padded">
+					<div class="form__field-container">
+						<label for="text-input">Name</label>
+						<p class="form__help-text">Please tell us your name!</p>
+						<input type="text" name = "text-input" id="text-input" placeholder="Name" required="" class="js-required">
+					</div>
+					<div class="form__field-container">
+						<label for="combo-box">What is the issue?</label>
+						<select name="combo-box" id="combo-box">
+							<option>Make a choice</option>
+							<option>My Shop is broken!</option>
+							<option>How do I get the spongebob 2000!</option>
+							<option>Do you realise your name is odd?</option>
+							<option>How do i convert my friend to pdf?</option>
+						</select>
+					</div>
+					<div class="form__field-container">
+						<input type="checkbox" name="marketing" id="marketing" value="marketing" checked="">
+						<label for="marketing">Do you consent to marketing emails and skywriting?</label>
+					</div>
+					<button>submit</button>
+				</div>
+			</div>
+		</div>
+    </main>
+</body>
+</html>
