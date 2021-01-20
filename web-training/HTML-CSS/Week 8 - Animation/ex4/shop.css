@@ -8,8 +8,8 @@ width: 100%;
 }
 header h1 {
 	width: fit-content;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 100px;
+	margin-right: 100px;
 	border: 2px solid black;
 	border-radius: 15px;
 	padding: 15px;
@@ -79,4 +79,25 @@ nav ul li a {
 
 nav ul li:hover {
 	background-color: gray;
+}
+
+.impact {
+	display: inline-flex;
+	animation: impact 10s;
+	text-align: center;
+}
+
+@keyframes impact {
+	0%{
+		transform: scaleX (3);
+		color: red;
+	}
+	50%	{
+		transform: scaleX (2.5);
+		color: orangered;
+		}
+	80% {
+		transform: scaleX(0.8);
+		color: blue;
+	}
 }

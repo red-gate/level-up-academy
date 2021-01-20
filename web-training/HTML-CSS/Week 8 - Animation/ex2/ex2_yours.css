@@ -25,4 +25,56 @@ img {
     margin-right: 10px;
     width: 250px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    transform: perspective(200px);
+    transition: transform 2s;
+}
+
+.scale:hover{
+    transform: scale(1.2,1.2);
+}
+
+.translate:hover {
+    transform: translate(0px, -10px);
+}
+
+.rotate:hover {
+    transform: rotate(20deg);
+}
+
+.perspective:hover {
+    transform: perspective(200px) rotatey(30deg);
+}
+
+.bounce-up:hover {
+    animation: bounceup 1s;
+}
+
+.bounce-down:hover {
+    animation: bounceup 1s reverse;
+}
+
+@keyframes bounceup {
+    /*0% {transform: translatey(0)}*/
+    25% {transform: translateY(-15px);}
+    50% {transform: translateY(5px);}
+    75% {transform: translateY(-5px);}
+    /*100% {transform: translatey(0)}*/
+}
+
+.flip:hover {
+    transform: perspective(200px);
+    animation: flip-anim 1s;
+}
+
+@keyframes flip-anim {
+    to {transform: perspective(200px) rotatey(360deg)}
+}
+
+.spin:hover {
+    transform: perspective(200px);
+    animation: spin-anim 1s;
+}
+
+@keyframes spin-anim {
+    to {transform: perspective(200px) rotatey(360deg)}
 }

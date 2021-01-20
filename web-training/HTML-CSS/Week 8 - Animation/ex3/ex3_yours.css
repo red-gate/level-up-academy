@@ -1,0 +1,22 @@
+
+
+.bounce {
+    animation: bounce 1s;
+    animation-iteration-count: infinite;
+    display: inline-flex;
+}
+
+@keyframes bounce {
+    0% {        
+        margin-left: 20px;
+    }
+    50% {
+        transform: translateX(-20px);
+        margin-left: 20px;
+        color: red;
+    }
+    100%
+    {        
+        margin-left: 20px;
+    }
+}
