@@ -12,15 +12,15 @@ https://jsfiddle.net/ydm8fh95/3/
 1. Run the code 
 2. Change the calculation of the result to support 4 basic arithmetic operations (passed using the op variable) on a and b.
 
+Questions (for further discussion):
+- Variables in JavaScript can be defined using var, let and const keywords. What would be a good guideline for chosing the keyweord in your opinion?
+- Values in JavaScript can be compared for equlity using == and === operators. What would be a good guideline for choosing an appropriate operator in your opinion?
+
 # Additional
 
 Bonus exercises:
 - Check if a string is a palindrome (Reference for string methods: https://www.w3schools.com/jsref/jsref_obj_string.asp)
 - Calculate n-th number of the Fibonacci sequence
-
-Questions:
-- Variables in JavaScript can be defined using var, let and const keywords. What would be a good guideline for chosing the keyweord in your opinion?
-- Values in JavaScript can be compared for equlity using == and === operators. What would be a good guideline for choosing an appropriate operator in your opinion?
 
 # Resources
 * [A re-introduction to JavaScript (JS tutorial)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
