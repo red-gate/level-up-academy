@@ -1,32 +1,29 @@
 # Task
 
-For these exercises we are goning to use JS Fiddle (https://jsfiddle.net/). A simple web environment for writing JavaScript snippets.
-For now we are going to utilize only the two bottom panes: "JavaScript" and "Result".
+For these exercises we are goning to use JS Fiddle (https://jsfiddle.net/). It's a simple web environment for writing JavaScript snippets.
+For now we are going to utilize only the two bottom panes: **JavaScript** and **Result**.
 
-## Ex1
+## Exercise 1
 
 https://jsfiddle.net/ydm8fh95/
 1. Run the code
-2. The result is written to the console log. To see it click on the Console bar at the bottom of the Result pane.
-3. Introduce a variable with a string value (name) and another variable with a numeric value (n).
-4. Change the code to output "Hello {name}!" n times.
+2. The result is written to the *console log*. To see it, click on the **Console** bar at the bottom of the **Result** pane.
+3. Introduce a variable with a string value (*name*) and another variable with a numeric value (*n*).
+4. Change the code to output "Hello {*name*}!" *n* times.
 
-## Ex2
+## Exercise 2
 
 https://jsfiddle.net/ydm8fh95/3/
 1. Run the code 
-2. Change the calculation of the result to support 4 basic arithmetic operations (passed using the op variable) on a and b.
+2. Change the calculation of the result to support the 4 basic arithmetic operations (passed using the *op* variable) on *a* and *b*.
 
-## Ex3
-Questions (for further discussion):
-- Variables in JavaScript can be defined using var, let and const keywords. What would be a good guideline for chosing the keyweord in your opinion?
-- Values in JavaScript can be compared for equlity using == and === operators. What would be a good guideline for choosing an appropriate operator in your opinion?
+## Exercise 3: Open discussion
+- Variables in JavaScript can be defined using **var**, **let** and **const** keywords. What would be a good guideline for chosing which keyword in your opinion?
+- Values in JavaScript can be compared for equlity using **==** and **===** operators. What would be a good guideline for choosing an appropriate operator in your opinion?
 
-# Additional
-
-Bonus exercises:
-- Check if a string is a palindrome (Reference for string methods: https://www.w3schools.com/jsref/jsref_obj_string.asp)
-- Calculate n-th number of the Fibonacci sequence
+# Bonus exercises (if time permits and/or you really get into it)
+- Check if a string is a [palindrome](https://www.dictionary.com/browse/palindrome). (Reference for string methods: https://www.w3schools.com/jsref/jsref_obj_string.asp)
+- Calculate **n**-th number of the [Fibonacci sequence](https://www.mathsisfun.com/numbers/fibonacci-sequence.html#:~:text=It%20is%20that%20simple!,out%20the%20next%20few%20numbers%3F)
 
 # Resources
 * [A re-introduction to JavaScript (JS tutorial)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
