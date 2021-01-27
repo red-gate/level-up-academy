@@ -15,7 +15,8 @@ https://jsfiddle.net/ydm8fh95/
 
 https://jsfiddle.net/ydm8fh95/3/
 1. Run the code 
-2. Change the calculation of the result to support the 4 basic arithmetic operations (passed using the *op* variable) on *a* and *b*.
+2. Note how the first console output concatenates two *strings* although they are clearly numbers whereas the second output corerces to floating point numbers.
+3. Use control flow operators (**if**, **switch** ... ) so that the calculation supports the 4 basic arithmetic operations (passed using the *op* variable) on *a* and *b*.
 
 ## Exercise 3: Open discussion
 - Variables in JavaScript can be defined using **var**, **let** and **const** keywords. What would be a good guideline for chosing which keyword in your opinion?
