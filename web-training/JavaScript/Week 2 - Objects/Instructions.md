@@ -13,11 +13,11 @@ Feel free to access the learning resources during the exercises!
 
 ## Exercise 1: Define a function
 
-https://jsfiddle.net/ydm8fh95/
-1. Run the code
-2. The result is written to the *console log*. To see it, click on the **Console** bar at the bottom of the **Result** pane.
-3. Introduce a variable with a string value (*name*) and another variable with a numeric value (*n*).
-4. Change the code to output "Hello {*name*}!" *n* times.
+We'll start off with re-using the [effort we made in week 1](https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%201%20-%20Basic%20Syntax/Instructions.md#exercise-1).
+
+1. Grab (and rewrite if needed) the code from the exercise above
+2. Wrap the code it in a function called *greetAndRepeat* that accepts the two parameters *name* and *n*.
+3. Write code to call the function.
 
 
 ## Exercise 2: Make it safe
