@@ -36,19 +36,19 @@ Given function with invalid scoping, generating the wrong result
 
 ## Exercise 4: Objects
 
-Object literals; how to use them
-Hash table notation vs. dot notation
-
-Difference between null and undefined
+https://jsfiddle.net/x08crk6g/
+* Can you think of reasons to use each form of accessing an object (lines 6 + 7)?
+* Create a second object b with its own name and score
+* Create a function that when passed two objects with names and scores, outputs to the console the object name with the highest score
+* Create an undefined variable c
+* Create a null variable d
+* What is the difference between these and how do they compare (*==* and *===*)?
 
 
 ## Exercise 5: Constructors
 
-typeof(constructor function)
-  vs
-typeof(object instance)
-  vs
-typeof(object literal)
+https://jsfiddle.net/tw7ud10r/1/
+* What does this tell you about how objects work in JavaScript?
 
 
 ## Exercise 6: Spread and Object.assign
