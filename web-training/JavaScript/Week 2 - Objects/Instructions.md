@@ -29,10 +29,14 @@ Create a number of failed executions (like a very lightweight unit test); get ri
 
 ## Exercise 3: Repair this
 
-Introduce global scope
+The following example is expected to calculate a [factorial](https://en.wikipedia.org/wiki/Factorial) of n:
+https://jsfiddle.net/msarwt39/3/
 
-Given function with invalid scoping, generating the wrong result
-
+* Run the code with differenct values of n and observe the results
+* Analyze why the result is incorrect
+* Fix the function
+* Analyze and fix the remaining warnings
+* What does it tell you about scoping in JavaScript?
 
 ## Exercise 4: Objects
 
@@ -53,9 +57,17 @@ https://jsfiddle.net/tw7ud10r/1/
 
 ## Exercise 6: Spread and Object.assign
 
+https://jsfiddle.net/msarwt39/4/
+* What does this code do?
+* Rewrite the code using the spread syntax (...)
+* What can be an alternative to Object.assign or spread syntax?
+* In which scenarios Object.assign or spread can be useful?
+
 
 # Bonus exercises (if time permits and/or you really get into it)
 
 # Resources
 - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
