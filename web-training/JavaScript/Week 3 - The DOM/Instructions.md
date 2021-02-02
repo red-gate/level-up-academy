@@ -13,10 +13,12 @@ For these exercises we will implement common CSS selectors in Javascript!
 li {color: "red";}
 ```
 * Please implement the following CSS:
-  *```CSS
+  *
+  ```CSS
   li:nth-child(2n) {color: "green"}
   ```
-  *```CSS
+  *
+  ```CSS
   div.blue p {color: "blue"}
   ```
 
