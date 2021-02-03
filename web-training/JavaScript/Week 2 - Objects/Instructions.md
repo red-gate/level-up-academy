@@ -63,9 +63,6 @@ https://jsfiddle.net/msarwt39/4/
 * What can be an alternative to Object.assign or spread syntax?
 * In which scenarios Object.assign or spread can be useful?
 
-
-# Bonus exercises (if time permits and/or you really get into it)
-
 # Resources
 - https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
