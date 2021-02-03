@@ -38,9 +38,18 @@ li {color: "red";}
 * Open the web page in your browser
 
 
+## Ex5 Make it interactive
+* Add a button to the page
+* Add JavaScript in the page to find the button
+* Add event listeners for `click` (change the button's background color or something)
+### Optionally
+* Add event listeners for `mouseover` to move the button away from the mouse!
+
+
 ## Resources
 * [CSS Selectors](https://www.w3schools.com/cssref/css_selectors.asp)
 * [getElementsByTagName](https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp)
 * [getElementsByClassName](https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp)
+* querySelector
 * [Add CSS Class](https://www.w3schools.com/howto/howto_js_add_class.asp)
 * [getElementById](https://www.w3schools.com/jsref/met_document_getelementbyid.asp)
