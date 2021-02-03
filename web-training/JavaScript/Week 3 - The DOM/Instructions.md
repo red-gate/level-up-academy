@@ -32,6 +32,12 @@ li {color: "red";}
 * Inlining line 7 causes the program to hang - can you explain why?
 * Change the doubling function to instead add the nodes with the item they are duplicating so the resulting list is [Item 1, Item 1, Item 2 ...]
 
+
+## Ex4 Bring it home
+* Extract what you've learned and create a local .html page with the above HTML, CSS and JavaScript
+* Open the web page in your browser
+
+
 ## Resources
 * [CSS Selectors](https://www.w3schools.com/cssref/css_selectors.asp)
 * [getElementsByTagName](https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp)
