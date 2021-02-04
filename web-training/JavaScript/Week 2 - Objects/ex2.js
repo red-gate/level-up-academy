@@ -1,40 +1,65 @@
-const console = {
-	iterations: 0,
-	log: message => {
-  	window.console.log(message);
-    this.iterations++;
-  }
-}
-
-const list = document.getElementsByTagName('ul')[0];
-
 function greetAndRepeat(name, n) {
 	for (i = 0; i < n; i++) {
 		console.log(`Hello ${name}!`);
   }
 }
 
+let iterations = 0;
+const console = {
+	log: message => {
+  	window.console.log(message + iterations);
+    iterations++;
+  }
+}
+
+const list = document.querySelector('div#test-result');
+
 //assertZeroIterations
 //assertEmptyName
 //assertNotANumber
 //assertEqEqEq /// object tostring
-assertRuns3Times()
 
 function assertRuns3Times() {
 	greetAndRepeat("Banana", 3);
-  if (console.iterations !== 3) {
-  	reportError("assertRuns3Times", "Expected exactly 3 iterations; found " + console.iterations)
+  if (iterations !== 3) {
+  	return `Expected exactly 3 iterations; found ${iterations}`
   }
 }
 
-function initTests() {
-	list.clear();
-  console.iterations = 0;
+function test(fn) {
+	iterations = 0;
+	let error = window[fn]();
+  if (error) {
+  	reportError(fn, error);
+  } else {
+  	reportSuccess(fn);
+  }
 }
+
+test('assertRuns3Times')
+
+function assertZeroIterations() {
+	greetAndRepeat("Banana", 0);
+  if (console.iterations !== 0) {
+  	return `Expected 0 iterations; found ${iterations}`;
+  }
+}
+
+test('assertZeroIterations')
+
 
 function reportError(test, error) {
-	const item = document.createElement('li');
-  item.textContent = error;
-  list.appendChild(item);
+	const header = document.createElement('h3');
+  header.textContent = test;
+  list.appendChild(header);
+
+	const content = document.createElement('p');
+  content.textContent = error;
+  list.appendChild(content);
 }
 
+function reportSuccess(test) {
+	const header = document.createElement('h3');
+  header.textContent = test + " ✔";
+  list.appendChild(header);
+}
