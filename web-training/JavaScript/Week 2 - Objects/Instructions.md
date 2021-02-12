@@ -22,9 +22,7 @@ We'll start off with re-using the [effort we made in week 1](https://github.com/
 
 ## Exercise 2: Make it safe
 
-Validate arguments; null values; check that n is numeric
-
-Create a number of failed executions (like a very lightweight unit test); get rid of the console errors
+Let's mix things up with a new code editor! Pop over to [CodePen](https://codepen.io/samilamti/pen/jOVyENg?editors=0011), paste in your function definition and enhance your code so that all the test cases pass!
 
 
 ## Exercise 3: Repair this
