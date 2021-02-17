@@ -55,9 +55,9 @@ https://jsfiddle.net/tw7ud10r/1/
 
 ## Exercise 6: Spread and Object.assign
 
-https://jsfiddle.net/msarwt39/4/
+https://jsfiddle.net/1jw5ax2r/
 * What does this code do?
-* Rewrite the code using the spread syntax (...)
+* Rewrite the code using the spread syntax (`...`)
 * What can be an alternative to Object.assign or spread syntax?
 * In which scenarios Object.assign or spread can be useful?
 
