@@ -3,6 +3,7 @@
 # Task
 
 ## Ex1
+`Alex`
 this
 - Examples where this is not working in an expected way, e.g. in an event subscription
 - "Repair this" exercise; closure with this, using apply ...
@@ -28,7 +29,7 @@ private members: hide functions by not exporting them - https://developer.mozill
 - iife (module style syntax).
 
 ## Ex5
-
+`Alex`
 creating closures in loops
 - broken example to fix
 
