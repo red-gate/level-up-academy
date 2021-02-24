@@ -50,6 +50,6 @@ li {color: "red";}
 * [CSS Selectors](https://www.w3schools.com/cssref/css_selectors.asp)
 * [getElementsByTagName](https://www.w3schools.com/jsref/met_document_getelementsbytagname.asp)
 * [getElementsByClassName](https://www.w3schools.com/jsref/met_document_getelementsbyclassname.asp)
-* querySelector
+* [querySelector](https://www.w3schools.com/jsref/met_document_queryselector.asp)
 * [Add CSS Class](https://www.w3schools.com/howto/howto_js_add_class.asp)
 * [getElementById](https://www.w3schools.com/jsref/met_document_getelementbyid.asp)
