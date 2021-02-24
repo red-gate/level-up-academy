@@ -15,7 +15,7 @@ apply, call ...
 capture variables in scope - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#closure_scope_chai
 
 ## Ex2
-
+`Sami`
 chrome/firefox development support
 - Breakpoints and debugging
 
@@ -25,7 +25,7 @@ more events - event parameters!
 - Functional UIs using closure and event parameters
 
 ## Ex4
-
+`Sami`
 private members: hide functions by not exporting them - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#emulating_private_methods_with_closures
 - iife (module style syntax).
 
