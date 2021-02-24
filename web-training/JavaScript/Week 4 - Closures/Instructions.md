@@ -2,7 +2,8 @@
 
 # Task
 
-## Ex1 `Alex`
+## Ex1 
+`Alex`
 
 this
 - Examples where this is not working in an expected way, e.g. in an event subscription
@@ -28,7 +29,8 @@ more events - event parameters!
 private members: hide functions by not exporting them - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#emulating_private_methods_with_closures
 - iife (module style syntax).
 
-## Ex5 `Alex`
+## Ex5
+`Alex`
 
 creating closures in loops
 - broken example to fix
