@@ -24,6 +24,10 @@ chrome/firefox development support
 more events - event parameters!
 - Functional UIs using closure and event parameters
 
+In Ex3/Ex3.html there are three div elements that overlap.
+* Write a click event that outputs to the console the box id that was clicked
+* Write a double click event that outputs to the console all the box ids that are clicked
+
 ## Ex4
 `Sami`
 private members: hide functions by not exporting them - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#emulating_private_methods_with_closures

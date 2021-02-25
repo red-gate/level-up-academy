@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<style>
+		.box {
+			height: 200px;
+			width: 200px;
+			padding: 10px;
+			border: 1px solid black;
+			position: absolute;
+		}
+		
+		#first {
+			top: 0;
+			left: 0;
+		}
+		
+		#second {
+			height: 150px;
+			width: 150px;
+			top: 25px;
+			left: 25px;
+		}
+		
+		
+		#third {
+			
+			height: 100px;
+			width: 100px;
+			top: 25px;
+			left: 25px;
+		}
+		</style>
+		<script>
+			function singleClick(element, event) {
+				console.log("single click " + element.id);
+			}
+			
+			function doubleClick(element) {
+				console.log("double click " + element.id);
+			}
+		</script>
+	</head>
+	<body>
+	<div class="box" id="first" onClick="singleClick(this)" ondblclick="doubleClick(this)">
+		1
+		<div class="box" id="second" onClick="singleClick()" ondblclick="doubleClick(this)">
+			2
+			<div class="box" id="third" onClick="singleClick(this)" ondblclick="doubleClick(this)">3</div>
+		</div>
+	</div>
+	
+	
+	</body>
+</html>
