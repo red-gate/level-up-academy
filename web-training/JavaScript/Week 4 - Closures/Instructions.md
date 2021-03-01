@@ -9,6 +9,13 @@ this
 - Examples where this is not working in an expected way, e.g. in an event subscription
 - "Repair this" exercise; closure with this, using apply ...
 
+- https://jsfiddle.net/d3o7xhm9/
+- Run the code and analyze it's behaviour
+- Fix the code using different approaches
+  - bind
+  - lamdba expresison
+  - closure
+
 apply, call ... 
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 
@@ -38,6 +45,11 @@ private members: hide functions by not exporting them - https://developer.mozill
 
 creating closures in loops
 - broken example to fix
+
+- https://jsfiddle.net/5ebosx1r/
+- Run the code and analyze it's behaviour
+- Fix the code
+- Go back to the initial version and replace `var i` with `let i`. Try it out.
 
 
 ## Resources
