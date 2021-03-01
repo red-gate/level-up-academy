@@ -12,14 +12,10 @@ this
 - https://jsfiddle.net/d3o7xhm9/
 - Run the code and analyze it's behaviour
 - Fix the code using different approaches
+  - apply
   - bind
   - lamdba expresison
   - closure
-
-apply, call ... 
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
-
-capture variables in scope - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#closure_scope_chai
 
 ## Ex2
 `Sami`
@@ -55,4 +51,5 @@ private members: hide functions by not exporting them - https://developer.mozill
 ## Resources
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
 
