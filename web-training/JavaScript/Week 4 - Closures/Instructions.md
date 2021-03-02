@@ -2,12 +2,7 @@
 
 # Task
 
-## Ex1 
-`Alex`
-
-this
-- *Examples where this is not working in an expected way, e.g. in an event subscription*
-- *"Repair this" exercise; closure with this, using apply ...*
+## Ex1
 
 - https://jsfiddle.net/d3o7xhm9/
 - Run the code and analyze it's behaviour
@@ -37,10 +32,6 @@ private members: hide functions by not exporting them - https://developer.mozill
 - iife (module style syntax).
 
 ## Ex5
-`Alex`
-
-*creating closures in loops*
-- *broken example to fix*
 
 - https://jsfiddle.net/5ebosx1r/
 - Run the code and analyze it's behaviour
