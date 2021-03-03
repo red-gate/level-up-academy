@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Ex1 Yours</title>
+		<script>
+		const x = [
+			{
+				Name: "Alice",
+				Score: 100
+			},
+			{
+				Name: "Bob",
+				Score: 50
+			},
+			{
+				Name: "Charlie",
+				Score: 65
+			},
+			{
+				Name: "Dan",
+				Score: 25
+			},
+			{
+				Name: "Eve",
+				Score: 100
+			}
+		];
+		
+		const classValues = {
+			"all": 0,
+			"2:2": 50,
+			"2:1": 60,
+			"1": 70
+		};
+		
+		</script>
+	</head>
+	<body>
+		<select name="sort" id="sort">
+			<optgroup label="Score">
+				<option value="ascending-score">Ascending</option>
+				<option value="descending-score">Descending</option>
+			</optgroup>
+			<optgroup label="Name">
+				<option value="ascending-name">Ascending</option>
+				<option value="descending-name">Descending</option>
+			</optgroup>
+		</select>
+		<select name="class" id="class">
+			<option value="all">All</option>
+			<option value="2:2">2:2 or above</option>
+			<option value="2:1">2:1 or above</option>
+			<option value="1">1st</option>
+		</select>
+		<table id="student-table">
+			<thead><tr><th>Name</th><th>Score</th></tr></thead>
+			<tbody></tbody>
+		</table>
+	</body>
+</html>

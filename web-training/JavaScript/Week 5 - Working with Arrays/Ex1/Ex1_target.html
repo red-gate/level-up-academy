@@ -1,0 +1,99 @@
+<html>
+	<head>
+	<title>Ex1 Target</title>
+		<script>
+		const x = [
+			{
+				Name: "Alice",
+				Score: 100
+			},
+			{
+				Name: "Bob",
+				Score: 50
+			},
+			{
+				Name: "Charlie",
+				Score: 65
+			},
+			{
+				Name: "Dan",
+				Score: 25
+			},
+			{
+				Name: "Eve",
+				Score: 100
+			}
+		];
+		
+		const classValues = {
+			"all": 0,
+			"2:2": 50,
+			"2:1": 60,
+			"1": 70
+		};
+		
+		window.onload = () => {
+			loadTable();
+		};
+		
+		function loadTable() {
+			const table = document.getElementById("student-table");
+			const tbody = table.getElementsByTagName("tbody")[0];
+			tbody.innerHTML = "";
+			
+			const selectValue = document.getElementById("sort").value;
+			const classValue = document.getElementById("class").value;
+			
+			const elements = x
+			.filter(x => x.Score >= classValues[classValue])
+			.sort((a, b) => sortFunction(a, b, selectValue))
+			.map(person => {
+				const tr = document.createElement("tr");
+				const name = document.createElement("td");
+				name.innerHTML = person.Name;
+				const score = document.createElement("td");
+				score.innerHTML = person.Score;
+				tr.appendChild(name);
+				tr.appendChild(score);
+				return tr;
+			});
+			elements.forEach(x => tbody.appendChild(x));		
+		}
+		
+		function sortFunction(a, b, selectValue){
+			switch(selectValue){
+				case "ascending-score":
+					return a.Score - b.Score;
+				case "descending-score":
+					return b.Score - a.Score;
+				case "ascending-name":
+					return a.Name.localeCompare(b.Name);
+				case "descending-name":
+					return b.Name.localeCompare(a.Name);
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<select name="sort" id="sort" onchange="loadTable()">
+			<optgroup label="Score">
+				<option value="ascending-score">Ascending</option>
+				<option value="descending-score">Descending</option>
+			</optgroup>
+			<optgroup label="Name">
+				<option value="ascending-name">Ascending</option>
+				<option value="descending-name">Descending</option>
+			</optgroup>
+		</select>
+		<select name="class" id="class" onchange="loadTable()">
+			<option value="all">All</option>
+			<option value="2:2">2:2 or above</option>
+			<option value="2:1">2:1 or above</option>
+			<option value="1">1st</option>
+		</select>
+		<table id="student-table">
+			<thead><tr><th>Name</th><th>Score</th></tr></thead>
+			<tbody></tbody>
+		</table>
+	</body>
+</html>
