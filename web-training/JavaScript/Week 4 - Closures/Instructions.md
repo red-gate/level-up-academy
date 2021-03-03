@@ -63,9 +63,10 @@ In Ex3/Ex3.html there are the same three div elements that overlap.
 ## Ex5
 
 - https://jsfiddle.net/5ebosx1r/
-- Run the code and analyze it's behaviour
-- Fix the code
-- Go back to the initial version and replace `var i` with `let i`. Try it out.
+- Run the code and analyze its behaviour
+- Note how the output of clicking the buttons says they're all saying that we `clicked button #4` even though we might've clicked `Second`, `Third`, `First`, expecting `#2`, `#3`, `#1`.
+- Replace `var i` with `let i`. Try it out.
+- Why is the code now behaving the way we expect it to?
 
 
 ## Resources
