@@ -3,7 +3,8 @@
 ## Ex1
 
 * https://jsfiddle.net/d3o7xhm9/
-* Run the code and analyze it's behaviour
+* Run the code and analyze its behaviour
+* Note how the `++` button doesn't seem to increment our value (as evidenced by our `display` button not spitting out anything other than `6`)
 * Fix the code using different approaches
   * apply
   * bind
