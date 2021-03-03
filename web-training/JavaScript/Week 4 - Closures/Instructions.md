@@ -1,30 +1,28 @@
 # Focus
 
-# Task
-
 ## Ex1
 
-- https://jsfiddle.net/d3o7xhm9/
-- Run the code and analyze it's behaviour
-- Fix the code using different approaches
-  - apply
-  - bind
-  - lamdba expresison
-  - closure
+* https://jsfiddle.net/d3o7xhm9/
+* Run the code and analyze it's behaviour
+* Fix the code using different approaches
+  * apply
+  * bind
+  * lamdba expresison
+  * closure
 
 ## Ex2
 `Sami`
 chrome/firefox development support
-- Breakpoints and debugging
+* Breakpoints and debugging
 
 ## Ex3
 
-more events - event parameters!
-- Functional UIs using closure and event parameters
+In Ex3/Ex3Target.html there are three boxes on screen. You can single or double click the boxes and observe the output in the console
+In Ex3/Ex3.html there are the same three div elements that overlap.
 
-In Ex3/Ex3.html there are three div elements that overlap.
-* Write a click event that outputs to the console the box id that was clicked
-* Write a double click event that outputs to the console all the box ids that are clicked
+* Write a double click event handler that outputs to the console all the box ids that are clicked
+* Write a click event handler that outputs to the console only the box id that was clicked
+
 
 ## Ex4
 `Sami`
@@ -43,4 +41,4 @@ private members: hide functions by not exporting them - https://developer.mozill
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
-
+- [stopPropagation](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)

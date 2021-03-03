@@ -33,19 +33,20 @@
 		<script>
 			function singleClick(element, event) {
 				console.log("single click " + element.id);
+				event.stopPropagation();
 			}
 			
-			function doubleClick(element) {
+			function doubleClick(element, event) {
 				console.log("double click " + element.id);
 			}
 		</script>
 	</head>
 	<body>
-	<div class="box" id="first" onClick="singleClick(this)" ondblclick="doubleClick(this)">
+	<div class="box" id="first" onClick="singleClick(this, event)" ondblclick="doubleClick(this, event)">
 		1
-		<div class="box" id="second" onClick="singleClick()" ondblclick="doubleClick(this)">
+		<div class="box" id="second" onClick="singleClick(this, event)" ondblclick="doubleClick(this, event)">
 			2
-			<div class="box" id="third" onClick="singleClick(this)" ondblclick="doubleClick(this)">3</div>
+			<div class="box" id="third" onClick="singleClick(this, event)" ondblclick="doubleClick(this, event)">3</div>
 		</div>
 	</div>
 	
