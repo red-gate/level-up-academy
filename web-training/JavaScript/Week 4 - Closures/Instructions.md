@@ -57,9 +57,8 @@ In Ex3/Ex3.html there are the same three div elements that overlap.
 
 
 ## Ex4
-`Sami`
-private members: hide functions by not exporting them - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#emulating_private_methods_with_closures
-- iife (module style syntax).
+* Replicate the example at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#emulating_private_methods_with_closures
+* Notice how you cannot access the `privateCounter` as it was not "exported" / made public through their exclusion in the returned object.
 
 ## Ex5
 
