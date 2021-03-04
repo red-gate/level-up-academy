@@ -1,6 +1,9 @@
 # brainstorm
 
 Promises, promises
+- Handling success and errors
+- Passing promises around
+- await/async
 
 Pre-req: Backend for fetching data (find something fun!)
 - something they can post to!
