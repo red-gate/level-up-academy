@@ -1,6 +1,4 @@
-# brainstorming
-
-Ex1: 
+# Exercise 1 
 
 Take a look in a browser at [Ex1/](https://github.com/red-gate/level-up-academy/tree/master/web-training/JavaScript/Week%205%20-%20Working%20with%20Arrays/Ex1)Ex1_target.html and observe its behaviour
 Reproduce this behaviour in [Ex1/](https://github.com/red-gate/level-up-academy/tree/master/web-training/JavaScript/Week%205%20-%20Working%20with%20Arrays/Ex1)Ex1.html using JavaScript to:
@@ -11,18 +9,18 @@ Reproduce this behaviour in [Ex1/](https://github.com/red-gate/level-up-academy/
 The data values are already available for you.
 
 
-Ex2:
+# Exercise 2
 'Alex'
 * splice
 * slice
 
-Ex3:
+# Exercise 3
 'Alex'
 * from
 * reduce/reduceRight
 * join - a refresher (you might've encountered this while finding palindromes in week 1!)
 
-Ex4:
+# Exercise 4
 We've already worked with `filter` which returns the matching elements in an array. Find works similarly, but returns the first match or `undefined`.
 * `find` and friends!
 * Pop over to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
