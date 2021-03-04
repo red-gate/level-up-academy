@@ -2,10 +2,11 @@
 
 pre-reading
 **Sami**
-http methods, what they (should) do
-- idempotency
-- status codes
-- cors
+- [HTTP Request Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+- [Idempotency](https://www.restapitutorial.com/lessons/idempotency.html) -- find better
+- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+- [CORS Primer](https://dev.to/pblatteier/a-quick-cors-primer-for-frontend-folks-2lgd)
+- [Or](https://dev.to/pblatteier/a-quick-cors-primer-for-frontend-folks-2lgd)
 - What does a request look like? metadata, like headers, cookies ...
 
 
