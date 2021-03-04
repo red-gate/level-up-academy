@@ -2,8 +2,8 @@
 
 Ex1: 
 
-Take a look in a browser at Ex1/Ex1_target.html and observe its behaviour
-Reproduce this behaviour in Ex1/Ex1.html using JavaScript to:
+Take a look in a browser at [Ex1/](https://github.com/red-gate/level-up-academy/tree/master/web-training/JavaScript/Week%205%20-%20Working%20with%20Arrays/Ex1)Ex1_target.html and observe its behaviour
+Reproduce this behaviour in [Ex1/](https://github.com/red-gate/level-up-academy/tree/master/web-training/JavaScript/Week%205%20-%20Working%20with%20Arrays/Ex1)Ex1.html using JavaScript to:
 * Create elements in the table that are:
 	* Sorted based on the sort select option
 	* filtered based on the class select option
