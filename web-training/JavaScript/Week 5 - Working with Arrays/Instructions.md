@@ -23,7 +23,18 @@ Ex3:
 * join - a refresher (you might've encountered this while finding palindromes in week 1!)
 
 Ex4:
-* find
+We've already worked with `filter` which returns the matching elements in an array. Find works similarly, but returns the first match or `undefined`.
+* `find` and friends!
+* Pop over to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+* Extract the lambda into its own const
+* Beyond `find`, add calls to `findIndex`, `indexOf` and `includes`
+* 
+* Change the lambda on line 3 to ask for an element of value 42. Run and see what happens.
+* Change the lambda on line 3 to ask for an element of value "8", using double-equals.
+* Replace all the numbers in `array1` to literals with all of the given names and favourite colours of the colleagues in your breakout room
+* Change the lambda to find elements with one of the given names.
+* Add a favourite food field to one of the object literals in the array
+* Update the lambda to find that one entry
 * includes = what you know as 'contains'
 
 
