@@ -17,6 +17,7 @@ pre-reading
 - Passing promises around
 - await/async
 
+https://www.learnwithjason.dev/blog/keep-async-await-from-blocking-execution
 
 2. One coherent example 
 
@@ -34,9 +35,9 @@ Pre-req: Backend for fetching data (find something fun!)
 - something they can post to!
 -- There are test web sites that we can use! You can see what you've posted
 
-https://requestbin.com/
+https://bithacker.dev/fetch-weather-openweathermap-api-javascript
+https://www.twilio.com/blog/cool-apis
 
-https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 
 
 **Alex**
