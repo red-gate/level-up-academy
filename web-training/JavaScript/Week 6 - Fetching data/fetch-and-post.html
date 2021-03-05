@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Please note</legend>
+      <p>
+        If you see a <code>ERR_BLOCKED_BY_CLIENT</code> in your console log,
+        temporarilly disable your adblock.
+      </p>
+    </fieldset>
+    <label for="progress">Progress:</label>
+    <meter id="progress" min="0" max="3" low="1" optimum="2" value="0"></meter>
+    <div id="status"></div>
+    <script>
+      const progress = document.getElementById("progress");
+      const status = document.getElementById("status");
+      const inc = (message) => {
+        progress.value++;
+        status.textContent = message;
+      };
+
+      const headers = new Headers();
+      headers.append("Accept", "application/json");
+
+      (async () => {
+        inc("Fetching IP");
+        const response = await fetch("https://ipinfo.io/", { headers });
+        const json = await response.json();
+
+        console.log(json);
+
+        const options = {
+          method: "POST",
+          headers,
+          mode: "cors",
+          body: JSON.stringify(json),
+        };
+
+        inc("Posting IP");
+        const postResponse = await fetch(
+          "https://eno8r4ahvr1xg.x.pipedream.net/",
+          options
+        );
+
+        const postJson = await postResponse.json();
+        console.log(postJson);
+
+        inc("");
+      })();
+    </script>
+  </body>
+</html>
