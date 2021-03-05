@@ -20,6 +20,8 @@ pre-reading
 
 2. One coherent example 
 
+- [Get IP Address and re-post it to request bin](https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%206%20-%20Fetching%20data/fetch-and-post.html)
+
 **Piers**
 fetch ISS
 response.json
