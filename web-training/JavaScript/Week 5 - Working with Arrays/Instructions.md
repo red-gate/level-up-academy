@@ -29,7 +29,7 @@ The data values are already available for you.
 
 # Exercise 5 - `find` and friends!
 We've already worked with `filter` which returns the matching elements in an array. Find works similarly, but returns the first match or `undefined`.
-## Part 1
+
 * Pop over to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
 * Extract the lambda into its own `const`.
 * Underneath `find`, add a call to `findIndex`, passing the lambda to both.
