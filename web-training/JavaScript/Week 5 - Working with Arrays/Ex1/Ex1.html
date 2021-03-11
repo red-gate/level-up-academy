@@ -32,12 +32,15 @@
 			"1": 70
 		};
 
-		function displayList()
+		function displayList($event)
 		{
 			let tableBody = document.querySelector('#student-table > tbody')
+			let sortValue = document.querySelector('#sort').selectedOptions[0].value;
+			let sortFunction = getSortfunction(sortValue);
+			console.log(sortValue)
+			tableBody.innerHTML = '';
 
-			console.log(tableBody);
-			x.forEach(student => {
+			x.sort(sortFunction).forEach(student => {
 				let newRow = document.createElement("tr")
 				let name = document.createElement("td")
 				name.textContent = student.Name
@@ -46,13 +49,28 @@
 				newRow.appendChild(name)
 				newRow.appendChild(score)
 				tableBody.appendChild(newRow)
+				
 			});
 		}
-		
+
+		function getSortfunction(key){
+			 switch (key) {
+				case 'ascending-score':
+					return (a,b)=>a.Score - b.Score;
+				case 'descending-score':
+					return (a,b)=>b.Score-a.Score;
+				case 'descending-name':
+					return (a,b)=>b.Name.localeCompare(a.Name);
+				default:
+					return (a,b)=>a.Name.localeCompare(b.Name);
+					
+			}
+		}
+
 		</script>
 	</head>
 	<body onload="displayList()">
-		<select name="sort" id="sort">
+		<select name="sort" id="sort" onchange="displayList()">
 			<optgroup label="Score">
 				<option value="ascending-score">Ascending</option>
 				<option value="descending-score">Descending</option>
