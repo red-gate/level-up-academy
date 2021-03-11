@@ -1,6 +1,6 @@
 # Exercise 1 
 
-Take a look in a browser at (https://github.com/red-gate/level-up-academy/tree/master/web-training/JavaScript/Week%205%20-%20Working%20with%20Arrays/Ex1)[Ex1_target.html](http://htmlpreview.github.io/?https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%205%20-%20Working%20with%20Arrays/Ex1/Ex1_target.html) and observe its behaviour
+Take a look in a browser at [Ex1_target.html](http://htmlpreview.github.io/?https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%205%20-%20Working%20with%20Arrays/Ex1/Ex1_target.html) and observe its behaviour
 Reproduce this behaviour in [Ex1/](https://github.com/red-gate/level-up-academy/tree/master/web-training/JavaScript/Week%205%20-%20Working%20with%20Arrays/Ex1)Ex1.html using JavaScript to:
 * Create elements in the table that are:
 	* Sorted based on the sort select option
