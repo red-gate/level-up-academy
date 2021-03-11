@@ -36,11 +36,13 @@
 		{
 			let tableBody = document.querySelector('#student-table > tbody')
 			let sortValue = document.querySelector('#sort').selectedOptions[0].value;
+			let filterValue = document.querySelector('#class').selectedOptions[0].value;
+			let filterScore = classValues[filterValue];
+
 			let sortFunction = getSortfunction(sortValue);
-			console.log(sortValue)
 			tableBody.innerHTML = '';
 
-			x.sort(sortFunction).forEach(student => {
+			x.filter(student => student.Score >= filterScore).sort(sortFunction).forEach(student => {
 				let newRow = document.createElement("tr")
 				let name = document.createElement("td")
 				name.textContent = student.Name
@@ -80,7 +82,7 @@
 				<option value="descending-name">Descending</option>
 			</optgroup>
 		</select>
-		<select name="class" id="class">
+		<select name="class" id="class" onchange="displayList()">
 			<option value="all">All</option>
 			<option value="2:2">2:2 or above</option>
 			<option value="2:1">2:1 or above</option>
