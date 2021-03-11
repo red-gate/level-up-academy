@@ -32,6 +32,25 @@
 			"1": 70
 		};
 		
+		window.onload = () => {
+			const tbody = document.getElementById("student-table").getElementsByTagName("tbody")[0];
+			const tableRows = x.map(x => {
+				const nameElement = document.createElement("td");
+				nameElement.innerHTML = x.Name;
+
+				const scoreElement = document.createElement("td");
+				scoreElement.innerHTML = x.Score;
+				
+				const tableRow = document.createElement("tr");
+				tableRow.appendChild(nameElement);
+				tableRow.appendChild(scoreElement);
+
+				return tableRow;
+			})
+
+			tableRows.forEach(x => tbody.appendChild(tableRow));
+		}
+
 		</script>
 	</head>
 	<body>
