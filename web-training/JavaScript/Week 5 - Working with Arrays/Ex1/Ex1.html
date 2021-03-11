@@ -31,10 +31,27 @@
 			"2:1": 60,
 			"1": 70
 		};
+
+		function displayList()
+		{
+			let tableBody = document.querySelector('#student-table > tbody')
+
+			console.log(tableBody);
+			x.forEach(student => {
+				let newRow = document.createElement("tr")
+				let name = document.createElement("td")
+				name.textContent = student.Name
+				let score = document.createElement("td")
+				score.textContent = student.Score
+				newRow.appendChild(name)
+				newRow.appendChild(score)
+				tableBody.appendChild(newRow)
+			});
+		}
 		
 		</script>
 	</head>
-	<body>
+	<body onload="displayList()">
 		<select name="sort" id="sort">
 			<optgroup label="Score">
 				<option value="ascending-score">Ascending</option>
