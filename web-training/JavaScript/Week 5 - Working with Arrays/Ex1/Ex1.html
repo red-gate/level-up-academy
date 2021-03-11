@@ -34,7 +34,15 @@
 		
 		window.onload = () => {
 			const tbody = document.getElementById("student-table").getElementsByTagName("tbody")[0];
-			const tableRows = x.map(x => {
+			const tableRows = x.sort(function(a,b) { 
+				if (a.Name < b.Name) {
+					return 1;
+				}
+				if (a.Name > b.Name) {
+					return -1;
+				}
+				return 0;
+			}).map(x => {
 				const nameElement = document.createElement("td");
 				nameElement.innerHTML = x.Name;
 
@@ -48,7 +56,7 @@
 				return tableRow;
 			})
 
-			tableRows.forEach(x => tbody.appendChild(tableRow));
+			tableRows.forEach(x => tbody.appendChild(x));
 		}
 
 		</script>
