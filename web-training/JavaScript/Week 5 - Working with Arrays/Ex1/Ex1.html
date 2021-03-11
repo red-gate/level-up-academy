@@ -37,12 +37,18 @@
 
 			tbody.innerHTML = "";
 
-			const tableRows = x.sort(function(a,b) { 
+			const tableRows = x.filter(x => {
+				return x.Score > classValues[filter];
+			}).sort(function(a,b) { 
 				switch (sortMethod) {
 					case 'ascending-name': 
 						return a.Name.localeCompare(b.Name);
 					case 'descending-name':
 						return - a.Name.localeCompare(b.Name);
+					case 'ascending-score':
+						return a.Score - b.Score;
+					case 'descending-score':
+						return b.Score - a.Score;
 				}
 			}).map(x => {
 				const nameElement = document.createElement("td");
