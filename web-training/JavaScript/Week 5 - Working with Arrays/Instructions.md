@@ -8,19 +8,26 @@ Reproduce this behaviour in [Ex1/](https://github.com/red-gate/level-up-academy/
 
 The data values are already available for you.
 
+* Keep the implementaiton for the next excercise
 
 # Exercise 2
-'Alex'
-* splice
-* slice
+* Read about [splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) and [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 
+* Add radio buttons or other UI elements to allow selecting a single record
+* Add a button and inputs to replace the selected record with a new one instead
+* Add a filtering option to display only top 3 or only bottom 3 records
+* Keep the implementaiton for the next excercise
 
 # Exercise 3
-'Alex'
-* from
-* reduce/reduceRight
-* join - a refresher (you might've encountered this while finding palindromes in week 1!)
+* Read about [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) and [join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) 
+* Make a report button that displays a report in a text field that includes:
+  * Average score
+  * A line containing names and scores for all records in CSV format
 
-# Exercise 4 - `find` and friends!
+# Exercise 4 - The Return of the Palindrome
+* Read about [from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) and [reverse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) 
+* Reiplement a function checking whether a string is a [palindrome](https://en.wikipedia.org/wiki/Palindrome) using only array functions and string comparison. (No loops allowed!)
+
+# Exercise 5 - `find` and friends!
 We've already worked with `filter` which returns the matching elements in an array. Find works similarly, but returns the first match or `undefined`.
 ## Part 1
 * Pop over to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
@@ -35,7 +42,7 @@ We've already worked with `filter` which returns the matching elements in an arr
 * Add a favourite food field to one of the object literals in the array.
 * Update the lambda to find that one entry.
 
-# Exercise 5 - `includes` `indexOf`
+# Exercise 6 - `includes` `indexOf`
 * Pop over to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
 * For each `console.log`, add a copy where you replace `includes` with `indexOf` and add a descriptive text, e.g.
 ```js
@@ -49,4 +56,10 @@ console.log("indexOf 2 is", array1.indexOf(2));
 	* [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 	* [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 	* [forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+	* [splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 
+	* [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+	* [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+	* [join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+	* [from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+	* [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 
 [localeCompare](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)
