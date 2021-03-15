@@ -1,14 +1,4 @@
-# brainstorm
-
-pre-reading
-**Sami**
-- [HTTP Request Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
-- [Idempotency](https://www.restapitutorial.com/lessons/idempotency.html) -- find better
-- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-- [CORS Primer](https://dev.to/pblatteier/a-quick-cors-primer-for-frontend-folks-2lgd)
-- [Or](https://dev.to/pblatteier/a-quick-cors-primer-for-frontend-folks-2lgd)
-- What does a request look like? metadata, like headers, cookies ...
-
+Pre-reading (sent out ahead of time): https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%206%20-%20Fetching%20data/Pre-reading%2C%20Week%206.pdf
 
 
 **Alex**
