@@ -7,13 +7,6 @@
     <title>Document</title>
   </head>
   <body>
-    <fieldset>
-      <legend>Please note</legend>
-      <p>
-        If you see a <code>ERR_BLOCKED_BY_CLIENT</code> in your console log,
-        temporarilly disable your adblock.
-      </p>
-    </fieldset>
     <label for="progress">Progress:</label>
     <meter id="progress" min="0" max="3" low="1" optimum="2" value="0"></meter>
     <div id="status"></div>
@@ -27,6 +20,8 @@
 
       const headers = new Headers();
       headers.append("Accept", "application/json");
+
+      console.info('ℹ If you see an error ERR_BLOCKED_BY_CLIENT below, temporarilly disable your adblock.');
 
       (async () => {
         inc("Fetching IP");
