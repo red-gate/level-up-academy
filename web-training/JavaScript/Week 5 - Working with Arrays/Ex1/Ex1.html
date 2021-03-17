@@ -39,7 +39,10 @@
 
 			tbody.innerHTML = "";
 
-			const tableRows = x.filter(x => {
+			const tableRows = x.map((x, index) => {
+                x.index = index
+                return x
+            }).filter(x => {
 				return x.Score > classValues[$class];
 			}).sort(function(a,b) { 
 				switch (sort) {
@@ -54,7 +57,7 @@
 				}
 			}).map(x => {
                 const selectorElement = document.createElement("td");
-                selectorElement.innerHTML = "<input type='radio' name='X'/>"
+                selectorElement.innerHTML = x.index + "<input type='radio' name='X'/>"
             
 				const nameElement = document.createElement("td");
 				nameElement.innerHTML = x.Name;
@@ -110,6 +113,9 @@
 			<option value="2:1">2:1 or above</option>
 			<option value="1">1st</option>
 		</select>
+        <br>
+        <input id="name" />
+        <input id="score"/>
         <button type="button" name="replace" id="replace">Replace</button>
 		<table id="student-table">
 			<thead><tr><th>Select</th><th>Name</th><th>Score</th></tr></thead>
