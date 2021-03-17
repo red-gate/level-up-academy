@@ -2,7 +2,7 @@
 	<head>
 	<title>Ex1 Yours</title>
 		<script>
-		const x = [
+		const students = [
 			{
 				Name: "Alice",
 				Score: 100
@@ -44,7 +44,7 @@
 			const selectValue = document.getElementById("sort").value;
 			const classValue = document.getElementById("class").value;
 			
-			const elements = x
+			const elements = students
 			.map((x, index) => {return {...x, index: index};})
 			elements.forEach(x => tbody.appendChild(x));		
 		}

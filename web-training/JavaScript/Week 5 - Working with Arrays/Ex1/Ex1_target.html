@@ -2,7 +2,7 @@
 	<head>
 	<title>Ex1 Target</title>
 		<script>
-		const x = [
+		const students = [
 			{
 				Name: "Alice",
 				Score: 100
@@ -44,7 +44,7 @@
 			const selectValue = document.getElementById("sort").value;
 			const classValue = document.getElementById("class").value;
 			
-			const elements = x
+			const elements = students
 			.map((x, index) => {return {...x, index: index};})
 			.filter(x => x.Score >= classValues[classValue])
 			.sort((a, b) => sortFunction(a, b, selectValue))
@@ -70,17 +70,17 @@
 		
 		function replacePerson(){
 			const selected = document.querySelector('input[name="selection"]:checked').value;
-			x.splice(selected, 1, {Name: document.getElementById("new-name").value, Score: document.getElementById("new-score").value});
+			students.splice(selected, 1, {Name: document.getElementById("new-name").value, Score: document.getElementById("new-score").value});
 			loadTable();			
 		}
 		
 		function report(){
 			const reportDiv = document.getElementById("report-location");
 			var average = document.createElement("p");
-			const averageScore = x.map(a => a.Score).reduce((a, c) => a + c) / x.length;
+			const averageScore = students.map(a => a.Score).reduce((a, c) => a + c) / students.length;
 			average.textContent = `Average score: ${averageScore}`;
 			var csv = document.createElement("pre");
-			csv.textContent = "Name, Score\n" + x.map(person => `${person.Name}, ${person.Score}`).join('\n');
+			csv.textContent = "Name, Score\n" + students.map(person => `${person.Name}, ${person.Score}`).join('\n');
 			reportDiv.appendChild(average);		
 			reportDiv.appendChild(csv);			
 		}
