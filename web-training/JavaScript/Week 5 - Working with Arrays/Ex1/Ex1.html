@@ -57,7 +57,7 @@
 				}
 			}).map(x => {
                 const selectorElement = document.createElement("td");
-                selectorElement.innerHTML = x.index + "<input type='radio' name='X'/>"
+                selectorElement.innerHTML = `<input type='radio' name='X' value='${x.index}'/>`;
             
 				const nameElement = document.createElement("td");
 				nameElement.innerHTML = x.Name;
@@ -78,7 +78,10 @@
 		
         const replaceClicked = () =>
         {
-            alert("Replace!")
+			const radioButtons = document.getElementsByName("X");
+			const selectedRow = Array.from(radioButtons).filter(x=> x.checked)[0].value;
+
+            alert(`Replace!${selectedRow}`)
         }
         
 		window.onload = () => {
