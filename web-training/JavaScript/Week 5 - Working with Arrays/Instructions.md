@@ -6,7 +6,7 @@ Reproduce this behaviour in [Ex1/](https://github.com/red-gate/level-up-academy/
 	* Sorted based on the sort select option
 	* filtered based on the class select option
 
-The table generation and click handlers are already available for you.
+The row generation and click handlers are already available for you to use
 
 * Keep the implementation for the next excercise
 
