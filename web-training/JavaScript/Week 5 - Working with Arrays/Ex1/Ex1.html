@@ -87,6 +87,18 @@
 			}
 		}
 
+		function createReport() {
+			const reportText = document.getElementById("report");
+			
+			const sum = x.map(x => x.Score).reduce((s, score) => s + score, 0);
+			const average = sum / x.length;
+			reportText.value = `Average: ${average}\n`;
+			reportText.value += "\n";
+			reportText.value += "Student, Score\n";
+			reportText.value += x.map(x => `${x.Name},${x.Score}`).join('\n');
+
+		}
+
 		</script>
 	</head>
 	<body onload="displayList()">
@@ -111,5 +123,9 @@
 			<tbody></tbody>
 		</table>
 		<input type="text" id="edit-student">
+		<br/>
+		<button onclick="createReport()">Create Report</button>
+		<br/>
+		<textarea id="report" rows="10" cols="100"> </textarea>
 	</body>
 </html>
