@@ -53,6 +53,9 @@
 						return b.Score - a.Score;
 				}
 			}).map(x => {
+                const selectorElement = document.createElement("td");
+                selectorElement.innerHTML = "<input type='radio' name='X'/>"
+            
 				const nameElement = document.createElement("td");
 				nameElement.innerHTML = x.Name;
 
@@ -60,6 +63,7 @@
 				scoreElement.innerHTML = x.Score;
 				
 				const tableRow = document.createElement("tr");
+                tableRow.appendChild(selectorElement);
 				tableRow.appendChild(nameElement);
 				tableRow.appendChild(scoreElement);
 
@@ -99,7 +103,7 @@
 			<option value="1">1st</option>
 		</select>
 		<table id="student-table">
-			<thead><tr><th>Name</th><th>Score</th></tr></thead>
+			<thead><tr><th>Select</th><th>Name</th><th>Score</th></tr></thead>
 			<tbody></tbody>
 		</table>
 	</body>
