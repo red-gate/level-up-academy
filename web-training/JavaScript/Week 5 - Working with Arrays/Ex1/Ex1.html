@@ -61,7 +61,16 @@
 		}
 
 		function recordSelected(index) {
-			console.log(index);
+			var studentInput = document.getElementById("edit-student");
+			
+			const student = x.slice(index, index + 1)[0];
+			studentInput.value = student.Name;
+
+			studentInput.oninput = ()=>{
+				student.Name = studentInput.value;
+				x.splice(index, 1, student);
+				displayList();
+			}
 		}
 
 		function getSortfunction(key){
@@ -101,5 +110,6 @@
 			<thead><tr><th></th></tb><th>Name</th><th>Score</th></tr></thead>
 			<tbody></tbody>
 		</table>
+		<input type="text" id="edit-student">
 	</body>
 </html>
