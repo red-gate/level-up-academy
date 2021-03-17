@@ -42,17 +42,26 @@
 			let sortFunction = getSortfunction(sortValue);
 			tableBody.innerHTML = '';
 
-			x.filter(student => student.Score >= filterScore).sort(sortFunction).forEach(student => {
+			x.filter(student => student.Score >= filterScore).sort(sortFunction).forEach((student, index) => {
 				let newRow = document.createElement("tr")
 				let name = document.createElement("td")
 				name.textContent = student.Name
+				let buttonCell = document.createElement("td")
+				let button = document.createElement("button")
+				button.onclick = () => recordSelected(index)
+				buttonCell.appendChild(button)
 				let score = document.createElement("td")
 				score.textContent = student.Score
+				newRow.appendChild(buttonCell)
 				newRow.appendChild(name)
 				newRow.appendChild(score)
 				tableBody.appendChild(newRow)
 				
 			});
+		}
+
+		function recordSelected(index) {
+			console.log(index);
 		}
 
 		function getSortfunction(key){
@@ -89,7 +98,7 @@
 			<option value="1">1st</option>
 		</select>
 		<table id="student-table">
-			<thead><tr><th>Name</th><th>Score</th></tr></thead>
+			<thead><tr><th></th></tb><th>Name</th><th>Score</th></tr></thead>
 			<tbody></tbody>
 		</table>
 	</body>
