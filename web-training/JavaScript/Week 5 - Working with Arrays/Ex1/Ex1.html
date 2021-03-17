@@ -32,15 +32,17 @@
 			"1": 70
 		};
 
-		const renderTable = (sortMethod, filter) => {
+		const renderTable = () => {
 			const tbody = document.getElementById("student-table").getElementsByTagName("tbody")[0];
+			const sort = document.getElementById("sort").value;
+			const $class = document.getElementById("class").value;
 
 			tbody.innerHTML = "";
 
 			const tableRows = x.filter(x => {
-				return x.Score > classValues[filter];
+				return x.Score > classValues[$class];
 			}).sort(function(a,b) { 
-				switch (sortMethod) {
+				switch (sort) {
 					case 'ascending-name': 
 						return a.Name.localeCompare(b.Name);
 					case 'descending-name':
@@ -71,7 +73,10 @@
 			renderTable("ascending-name", "all");
 
 			const sort = document.getElementById("sort")
-			sort.addEventListener('change', (e) => renderTable(e.target.value, "all"))
+			sort.addEventListener('change', (e) => renderTable())
+
+			const $class = document.getElementById("class")
+			$class.addEventListener('change', (e) => renderTable())
 		}
 
 		</script>
