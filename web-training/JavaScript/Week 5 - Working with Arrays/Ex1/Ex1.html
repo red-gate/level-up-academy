@@ -81,7 +81,12 @@
 			const radioButtons = document.getElementsByName("X");
 			const selectedRow = Array.from(radioButtons).filter(x=> x.checked)[0].value;
 
-            alert(`Replace!${selectedRow}`)
+			const newElement = {
+				Name: "NewAlice",
+				Score: 101
+			};
+			x.splice(selectedRow, 1, newElement);
+			renderTable();
         }
         
 		window.onload = () => {
