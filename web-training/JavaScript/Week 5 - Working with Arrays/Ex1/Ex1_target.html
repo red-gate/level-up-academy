@@ -58,9 +58,9 @@
 			select.innerHTML = `<input type="radio" name="selection" value="${person.index}" />`;
 			
 			const name = document.createElement("td");
-			name.innerHTML = person.Name;
+			name.textContent = person.Name;
 			const score = document.createElement("td");
-			score.innerHTML = person.Score;
+			score.textContent= person.Score;
 			
 			tr.appendChild(select);
 			tr.appendChild(name);
@@ -78,9 +78,9 @@
 			const reportDiv = document.getElementById("report-location");
 			var average = document.createElement("p");
 			const averageScore = x.map(a => a.Score).reduce((a, c) => a + c) / x.length;
-			average.innerHTML = `Average score: ${averageScore}`;
+			average.textContent = `Average score: ${averageScore}`;
 			var csv = document.createElement("pre");
-			csv.innerHTML = "Name, Score\n" + x.map(person => `${person.Name}, ${person.Score}`).join('\n');
+			csv.textContent = "Name, Score\n" + x.map(person => `${person.Name}, ${person.Score}`).join('\n');
 			reportDiv.appendChild(average);		
 			reportDiv.appendChild(csv);			
 		}
