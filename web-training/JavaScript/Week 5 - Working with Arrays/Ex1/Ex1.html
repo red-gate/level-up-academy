@@ -89,6 +89,11 @@
 			renderTable();
         }
         
+		const isPalindrome = (word) => {
+			const reversedWord = Array.from(word).reverse();
+			return reversedWord.join('') === word;
+		}
+
 		window.onload = () => {
 			renderTable("ascending-name", "all");
 
