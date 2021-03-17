@@ -73,6 +73,11 @@
 			tableRows.forEach(x => tbody.appendChild(x));
 		}
 		
+        const replaceClicked = () =>
+        {
+            alert("Replace!")
+        }
+        
 		window.onload = () => {
 			renderTable("ascending-name", "all");
 
@@ -81,6 +86,9 @@
 
 			const $class = document.getElementById("class")
 			$class.addEventListener('change', (e) => renderTable())
+            
+            const replace = document.getElementById("replace")
+            replace.addEventListener('click', (e) => replaceClicked())
 		}
 
 		</script>
@@ -102,6 +110,7 @@
 			<option value="2:1">2:1 or above</option>
 			<option value="1">1st</option>
 		</select>
+        <button type="button" name="replace" id="replace">Replace</button>
 		<table id="student-table">
 			<thead><tr><th>Select</th><th>Name</th><th>Score</th></tr></thead>
 			<tbody></tbody>
