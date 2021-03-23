@@ -1,4 +1,6 @@
-Pre-reading (sent out ahead of time): https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%206%20-%20Fetching%20data/Pre-reading%2C%20Week%206.pdf
+# Fetching Data
+
+[Pre-reading](https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%206%20-%20Fetching%20data/Pre-reading%2C%20Week%206.pdf) (sent out ahead of time).
 
 
 **Alex**
@@ -34,6 +36,7 @@ Make sure you use `JSON.stringify` to turn your JSON object into a string repres
 - Ensure that your Pipedream endpoint returns 200 OK with the following JSON `{"success":true}`.
 
 For a complete example (if you're curious, or if you get stuck), see [fetch-and-post.html](https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%206%20-%20Fetching%20data/fetch-and-post.html).
+
 
 
 **Alex**
