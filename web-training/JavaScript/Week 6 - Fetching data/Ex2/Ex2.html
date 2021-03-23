@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Week 6 - Excercise 2</title>
+</head>
+
+<body>
+    <script src="Ex2.js"></script>
+    <script>        
+        function log(message) { 
+            const consoleArea = document.getElementById("console");
+            consoleArea.value += message + "\n";
+            consoleArea.scrollTop = consoleArea.scrollHeight;
+        }
+
+        function runExcercise() {
+            document.getElementById("console").value = "";
+            excercise(log)
+        }
+    </script>
+
+    <button onclick="runExcercise()">▶</button>
+    <textarea id="console" style="width: 100%; height: 800px"> </textarea>  
+</body>
+</html>
