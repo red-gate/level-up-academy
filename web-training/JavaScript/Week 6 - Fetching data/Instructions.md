@@ -4,12 +4,32 @@
 
 
 **Alex**
-1. Promises, promises
-- Handling success and errors
-- Passing promises around
-- await/async
+# Excercise 1 - Going asynchronous
 
-https://www.learnwithjason.dev/blog/keep-async-await-from-blocking-execution
+- Open Ex1.html and press the button
+- Look into the `excercise()` function in Ex1.js to explain what happened
+- What does the `runAsync()` helper function do?
+- Change `excercise()` to use `runAsync()` for `slowOperation()` using async/await
+- What does it all tell us about threading and asynchronous execution in JS?
+Resources:
+- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+
+# Excercise 2 - Promises, Prmoises
+- Open Ex2.html and press the button. Check Ex2.js for the implementation of `excercise()`
+- Write "First task succeeded {taskName}" after the fastest task aucceed
+- Write "All tasks succeeded" after when all tasks succeeded
+- Update runAsync() to fail after the timeout when a delay is longer than the timeout
+- Write "Some tasks failed: {error}" after all tasks are completed, but at least one of them failed
+- Write the total number of succeded tasks
+- Run all tasks in order one after another (you can use await and/or array.reduce())
+
+Resources:
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
 
 2. One coherent example 
 
@@ -20,7 +40,7 @@ fetch ISS
 response.json
 stringify
 
-# Exercise 3 - POST to an external endpoint
+# Exercise 4 - POST to an external endpoint
 - Make a decision about where to POST the exercise data
   - I want to have my own request bucket to look into: Sign into [Pipedream (formerly requestbin)](https://pipedream.com/) to register an endpoint
   - I want to use whatever is provided for me in the exercise: Use the following address to post to "https://eno8r4ahvr1xg.x.pipedream.net/"  
@@ -39,9 +59,12 @@ For a complete example (if you're curious, or if you get stuck), see [fetch-and-
 
 
 
-**Alex**
-General JS Security awareness
-For fun: Have an example for the atteendees to break!
+# Try it out at home - Web and JavaScript security
+- Posting data from a browser with cookies can be exploited if the web service isn't secured properly:    
+- Read about [cross-site request forgery](https://portswigger.net/web-security/csrf) and try out some examples
+- Browser-side JavaScript can be exploited as well:
+- Try [cross-site scripting](https://xss-game.appspot.com/) out yourself
+
 
 options 
 
