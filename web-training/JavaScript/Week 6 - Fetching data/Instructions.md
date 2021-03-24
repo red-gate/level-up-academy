@@ -16,7 +16,7 @@ Resources:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 
-# Excercise 2 - Promises, Prmoises
+# Excercise 2 - Promises, Promises
 - Open Ex2.html and press the button. Check Ex2.js for the implementation of `excercise()`
 - Write "First task succeeded {taskName}" after the fastest task aucceed
 - Write "All tasks succeeded" after when all tasks succeeded
