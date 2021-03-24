@@ -2,8 +2,6 @@
 
 [Pre-reading](https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%206%20-%20Fetching%20data/Pre-reading%2C%20Week%206.pdf) (sent out ahead of time).
 
-
-**Alex**
 # Excercise 1 - Going asynchronous
 
 - Open Ex1.html and press the button
