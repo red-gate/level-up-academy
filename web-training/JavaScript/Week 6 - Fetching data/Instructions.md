@@ -8,7 +8,7 @@
 - Look into the `excercise()` function in Ex1.js and Ex1.html to explain what happened
 - What does the `runAsync()` helper function do?
 - Change `excercise()` to use `runAsync()` for `slowOperation()` using async/await
-- What does this tell us about threading and asynchronous execution in JS?
+- What does this tell us about [threading and asynchronous execution in JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)?
 
 Resources:
 - [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
