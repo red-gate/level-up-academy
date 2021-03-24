@@ -11,6 +11,7 @@
 - What does the `runAsync()` helper function do?
 - Change `excercise()` to use `runAsync()` for `slowOperation()` using async/await
 - What does it all tell us about threading and asynchronous execution in JS?
+
 Resources:
 - https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
