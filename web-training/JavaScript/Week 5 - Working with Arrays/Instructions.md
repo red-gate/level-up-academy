@@ -6,26 +6,24 @@ Reproduce this behaviour in [Ex1/](https://github.com/red-gate/level-up-academy/
 	* Sorted based on the sort select option
 	* filtered based on the class select option
 
-The data values are already available for you.
+The row generation and click handlers are already available for you to use
 
-* Keep the implementaiton for the next excercise
+* Keep the implementation for the next excercise
 
 # Exercise 2
 * Read about [splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) and [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 
-* Add radio buttons or other UI elements to allow selecting a single record
-* Add a button and inputs to replace the selected record with a new one instead
-* Add a filtering option to display only top 3 or only bottom 3 records
-* Keep the implementaiton for the next excercise
+* Add functionality that when the `Replace` button is clicked, will replace the selected person with a new one from the two text inputs
+* Keep the implementation for the next excercise
 
 # Exercise 3
 * Read about [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) and [join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) 
-* Make a report button that displays a report in a text field that includes:
+* Make the report button correctly display a report in a text field that includes:
   * Average score
   * A line containing names and scores for all records in CSV format
 
 # Exercise 4 - The Return of the Palindrome
 * Read about [from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) and [reverse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) 
-* Reiplement a function checking whether a string is a [palindrome](https://en.wikipedia.org/wiki/Palindrome) using only array functions and string comparison. (No loops allowed!)
+* Reimplement a function checking whether a string is a [palindrome](https://en.wikipedia.org/wiki/Palindrome) using only array functions and string comparison. (No loops allowed!)
 
 # Exercise 5 - `find` and friends!
 We've already worked with `filter` which returns the matching elements in an array. Find works similarly, but returns the first match or `undefined`.
