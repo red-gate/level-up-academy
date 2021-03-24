@@ -1,5 +1,7 @@
 Bringing in libraries
 
+export/import vs require ?
+
 Client focus
 
 Ecosystem
