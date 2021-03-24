@@ -5,15 +5,15 @@
 # Excercise 1 - Going asynchronous
 
 - Open Ex1.html and press the button
-- Look into the `excercise()` function in Ex1.js to explain what happened
+- Look into the `excercise()` function in Ex1.js and Ex1.html to explain what happened
 - What does the `runAsync()` helper function do?
 - Change `excercise()` to use `runAsync()` for `slowOperation()` using async/await
-- What does it all tell us about threading and asynchronous execution in JS?
+- What does this tell us about threading and asynchronous execution in JS?
 
 Resources:
-- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+- [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
+- [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
 # Excercise 2 - Promises, Promises
 - Open Ex2.html and press the button. Check Ex2.js for the implementation of `excercise()`
