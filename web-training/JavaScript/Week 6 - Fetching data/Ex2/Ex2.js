@@ -1,4 +1,4 @@
-async function excercise(log) {
+function excercise(log) {
 
     const timeout = 1000;
 
@@ -31,5 +31,4 @@ async function excercise(log) {
     // * Write the total number of succeded tasks
     //   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
     // * Run all tasks in order one after another (you can use await and/or array.reduce())
-    }
 }
