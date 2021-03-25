@@ -24,7 +24,7 @@ Parcel is a web application bundler among many. There's also Webpack, Gulp and m
 
 - Add the Parcel bundler to your application through `npm install --save-dev parcel-bundler`
 - Copy the provided `index.html` file into your application
-- Add an entry to `package.json` called `start` that runs `parcel index.html`
+- Add a new script to `package.json` called `start` that runs `parcel index.html`
 - Run `npm start`
 - Navigate to `http://localhost:1234` and verify that your web page produces console output
 
