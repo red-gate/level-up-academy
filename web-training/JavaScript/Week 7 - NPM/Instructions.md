@@ -78,6 +78,9 @@ For Parcel, the command looks like this: `parcel build index.html`
 - Observe the generated files. They are a minified and bundled version of your application, ready to be distributed!
 
 ## NPX
+
+npx is a npm package runner (x probably stands for eXecute). The typical use is to download and run a package temporarily or for trials. create-react-app is an npm package that is expected to be run only once in a project's lifecycle. Hence, it is preferred to use npx to install and run it in a single step.
+
 - Cross-link to Jest for further indulgence
 
 
