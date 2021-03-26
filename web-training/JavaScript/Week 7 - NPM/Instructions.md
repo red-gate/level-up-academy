@@ -1,5 +1,8 @@
 Stuff left to do:
 - Debugging; source maps
+- Other potential ("fun") libraries:
+  - https://sweetalert.js.org/
+  - https://www.npmjs.com/package/highlight.js
 
 # Bringing in libraries
 
