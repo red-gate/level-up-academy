@@ -5,34 +5,36 @@
 # Excercise 1 - Going asynchronous
 
 - Open Ex1.html and press the button
-- Look into the `excercise()` function in Ex1.js to explain what happened
+- Look into the `excercise()` function in Ex1.js and Ex1.html to explain what happened
 - What does the `runAsync()` helper function do?
 - Change `excercise()` to use `runAsync()` for `slowOperation()` using async/await
-- What does it all tell us about threading and asynchronous execution in JS?
+- What does this tell us about [threading and asynchronous execution in JS](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)?
 
 Resources:
-- https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+- [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
+- [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
 # Excercise 2 - Promises, Promises
 - Open Ex2.html and press the button. Check Ex2.js for the implementation of `excercise()`
 - Write "First task succeeded {taskName}" after the fastest task aucceed
 - Write "All tasks succeeded" after when all tasks succeeded
-- Update runAsync() to fail after the timeout when a delay is longer than the timeout
+- Update runAsync() to fail after the timeout when a delay is longer than the timeout.
+  - The method should work as before if the `delay` value is less than the `timeout` constant, but if the delay is longer than the timeout the promise should be rejected after `timeout` ms.  
 - Write "Some tasks failed: {error}" after all tasks are completed, but at least one of them failed
 - Write the total number of succeded tasks
 - Run all tasks in order one after another (you can use await and/or array.reduce())
 
 Resources:
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
+- [Promise all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+- [Promise any](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
+- [Promise then](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+- [Promise allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)
 
 # Exercise 3 - FETCH and POST
 - Pop over to https://ipinfo.io/developers to figure out how to call the ipinfo API from JavaScript
 - Make a `fetch` request to ipinfo and ensure you get a response.
+  - You need to register to get an authentication token. (It takes 10 seconds to do it using GitHub auhentication). 
 - Make a decision about where to POST the exercise data
   - I want to have my own request bucket to look into: Sign into [Pipedream (formerly requestbin)](https://pipedream.com/) to register an endpoint
   - I want to use whatever is provided for me in the exercise: Use the following address to post to "https://eno8r4ahvr1xg.x.pipedream.net/"  
@@ -46,7 +48,6 @@ Resources:
 - If you opted to creating your own request bucket, ensure that the bucket received what you sent.
 
 For a complete example (if you're curious, or if you get stuck), see [fetch-and-post.html](https://github.com/red-gate/level-up-academy/blob/master/web-training/JavaScript/Week%206%20-%20Fetching%20data/fetch-and-post.html).
-
 
 
 # Try it out at home - Web and JavaScript security

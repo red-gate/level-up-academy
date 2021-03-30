@@ -1,8 +1,8 @@
 <html>
 	<head>
-		<title>Ex1 Yours</title>
+	<title>Ex1 Yours</title>
 		<script>
-		const x = [
+		const students = [
 			{
 				Name: "Alice",
 				Score: 100
@@ -32,10 +32,62 @@
 			"1": 70
 		};
 		
+		window.onload = () => {
+			loadTable();
+		};
+		
+		function loadTable() {
+			const table = document.getElementById("student-table");
+			const tbody = table.getElementsByTagName("tbody")[0];
+			tbody.innerHTML = "";
+			
+			const selectValue = document.getElementById("sort").value;
+			const classValue = document.getElementById("class").value;
+			
+			const elements = students
+			.map((x, index) => {return {...x, index: index};})
+			elements.forEach(x => tbody.appendChild(x));		
+		}
+		
+		function createPerson(person){
+			const tr = document.createElement("tr");
+			const select = document.createElement("td");
+			select.innerHTML = `<input type="radio" name="selection" value="${person.index}" />`;
+			
+			const name = document.createElement("td");
+			name.innerHTML = person.Name;
+			const score = document.createElement("td");
+			score.innerHTML = person.Score;
+			
+			tr.appendChild(select);
+			tr.appendChild(name);
+			tr.appendChild(score);
+			return tr;
+		}
+		
+		function replacePerson(){
+			const selected = document.querySelector('input[name="selection"]:checked').value;
+			loadTable();			
+		}
+		
+		function report(){
+			const reportDiv = document.getElementById("report-location");
+			var average = document.createElement("p");
+			const averageScore = 1;
+			average.innerHTML = `Average score: ${averageScore}`;
+			var csv = document.createElement("pre");
+			csv.innerHTML = "Name, Score\n";
+			reportDiv.appendChild(average);		
+			reportDiv.appendChild(csv);			
+		}
+		
+		function sortFunction(a, b, selectValue){
+			return true;
+		}
 		</script>
 	</head>
 	<body>
-		<select name="sort" id="sort">
+		<select name="sort" id="sort" onchange="loadTable()">
 			<optgroup label="Score">
 				<option value="ascending-score">Ascending</option>
 				<option value="descending-score">Descending</option>
@@ -45,15 +97,27 @@
 				<option value="descending-name">Descending</option>
 			</optgroup>
 		</select>
-		<select name="class" id="class">
+		<select name="class" id="class" onchange="loadTable()">
 			<option value="all">All</option>
 			<option value="2:2">2:2 or above</option>
 			<option value="2:1">2:1 or above</option>
 			<option value="1">1st</option>
 		</select>
+		<br />
+		<br />
+		<input type="text" id="new-name" />
+		<input type="number" id="new-score" />
+		<button onclick="replacePerson()">Replace</button>
+		<br />
+		<br />
 		<table id="student-table">
-			<thead><tr><th>Name</th><th>Score</th></tr></thead>
+			<thead><tr><th></th><th>Name</th><th>Score</th></tr></thead>
 			<tbody></tbody>
 		</table>
+		<br />
+		<br />
+		<button type="button" onclick="report()">Report</button>
+		<div id="report-location">
+		</div>
 	</body>
 </html>
