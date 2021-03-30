@@ -15,7 +15,7 @@ We'll use NPM to add libraries to our JavaScript application.
 - Install Node.js (my `node --version` reveals that I have `v12.18.2` installed)
 - Create a git branch for your breakout room.
 - Create a project directory
-- Use `npm init` to create a `package.json` document, which describes the application or library that you're building and is responsible for declaring its dependencies. Accept all default parameters.
+- Use `npm init` inside your project directory to create a `package.json` document, which describes the application or library that you're building and is responsible for declaring its dependencies. Accept all default parameters.
 - Create an `index.js` file wherein you `console.log('hello world')` or something like that
 - Run your JavaScript application through `node index.js`
 - Verify that you see your console message
