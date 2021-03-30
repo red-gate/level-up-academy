@@ -51,7 +51,7 @@ Let's add lit-html from the Polymer project!
 - Run `npm install` to install the depencies declared in the application.
 - Add `lit-html` as a part of your application through `npm install --save lit-html`.
 - Copy the code example from [npmjs.com](https://www.npmjs.com/package/lit-html) into your `index.js` file
-- Run `npm start` and refresh your application
+- Run `npm run start` and refresh your application
 - Navigate to the `Network` tab of your browser's developer tools to see that only one JavaScript file was downloaded, containing both your application code and all of its dependencies.
 - Commit; switch drivers
 
