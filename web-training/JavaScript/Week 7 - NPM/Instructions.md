@@ -58,7 +58,7 @@ Let's add lit-html from the Polymer project!
 ## More, more!
 
 - Run `npm install` to install the depencies declared in the application.
-- Add a material design button with `npm install @material/mwc-button @webcomponents/webcomponentsjs`
+- Add a material design button with `npm install --save @material/mwc-button @webcomponents/webcomponentsjs`
 - Add `<mwc-button id="myButton" label="Click Me!" raised></mwc-button>` before the `script` tag in your HTML document.
 - Replace the contents of your JavaScript file with the following:
 ```js
