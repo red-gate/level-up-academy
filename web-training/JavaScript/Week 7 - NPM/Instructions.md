@@ -16,7 +16,7 @@ We'll use NPM to add libraries to our JavaScript application.
 - Add an entry to the `"scripts":` section in `package.json` called `"hello"`.
   - Have `hello` call `node index.js`
   - Verify that everything is kosher by running `npm run hello` from the command line, seeing your console message.
-- Commit; switch drivers
+- Commit; push; switch drivers
 
 We have successfully run some server-side JavaScript! But that's not the goal of this exercise ;) 
 
@@ -33,7 +33,7 @@ Parcel is a web application bundler among many. There's also Webpack, Gulp and m
 - Run `npm start`
 - Navigate to `http://localhost:1234` and verify that your web page produces console output
 - Add the `.cache` and `dist` directories from parcel to your gitignore
-- Commit; switch drivers
+- Commit; push; switch drivers
 
 Your JavaScript now runs in the client!
 
@@ -47,7 +47,7 @@ Let's add lit-html from the Polymer project!
 - Copy the code example from [npmjs.com](https://www.npmjs.com/package/lit-html) into your `index.js` file
 - Run `npm run start` and refresh your application
 - Navigate to the `Network` tab of your browser's developer tools to see that only one JavaScript file was downloaded, containing both your application code and all of its dependencies.
-- Commit; switch drivers
+- Commit; push; switch drivers
 
 ## More, more!
 
@@ -63,7 +63,7 @@ button.addEventListener('click', () => {
 });
 ```
 - Run your application again and bask in its glory! Ignore any warning about missing `.ts` files as they are irrellevant for our example.
-- Commit; switch drivers
+- Commit; push; switch drivers
 
 ## Package things up
 
