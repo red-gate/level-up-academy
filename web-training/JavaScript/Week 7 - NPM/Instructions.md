@@ -1,9 +1,3 @@
-Stuff left to do:
-- Debugging; source maps
-- Other potential ("fun") libraries:
-  - https://sweetalert.js.org/
-  - https://www.npmjs.com/package/highlight.js
-
 # Bringing in libraries
 
 **N**ode **P**ackage **M**anager is the default package manager for Node.js. It consists of a command line client, also called npm, and an online database of public and paid-for private packages, called the npm registry. The registry is accessed via the client, and the available packages can be browsed and searched via the npm website. [- Wikipedia](https://en.wikipedia.org/wiki/Npm_(software)#:~:text=npm%20(originally%20short%20for%20Node,for%20the%20JavaScript%20programming%20language.&text=It%20consists%20of%20a%20command,packages%2C%20called%20the%20npm%20registry.)
@@ -22,7 +16,6 @@ We'll use NPM to add libraries to our JavaScript application.
 - Add an entry to the `"scripts":` section in `package.json` called `"hello"`.
   - Have `hello` call `node index.js`
   - Verify that everything is kosher by running `npm run hello` from the command line, seeing your console message.
-- ** Expand: Add a new js file, export something, import it in index.js **
 - Commit; switch drivers
 
 We have successfully run some server-side JavaScript! But that's not the goal of this exercise ;) 
@@ -84,7 +77,5 @@ For Parcel, the command looks like this: `parcel build index.html`
 ## NPX
 
 npx is a npm package runner (x probably stands for eXecute). The typical use is to download and run a package temporarily or for trials. create-react-app is an npm package that is expected to be run only once in a project's lifecycle. Hence, it is preferred to use npx to install and run it in a single step.
-
-- Cross-link to Jest for further indulgence
 
 
