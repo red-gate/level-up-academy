@@ -1,6 +1,6 @@
 # Bringing in libraries
 
-**N**ode **P**ackage **M**anager is the default package manager for Node.js. It consists of a command line client, also called npm, and an online database of public and paid-for private packages, called the npm registry. The registry is accessed via the client, and the available packages can be browsed and searched via the npm website. [- Wikipedia](https://en.wikipedia.org/wiki/Npm_(software)#:~:text=npm%20(originally%20short%20for%20Node,for%20the%20JavaScript%20programming%20language.&text=It%20consists%20of%20a%20command,packages%2C%20called%20the%20npm%20registry.)
+**N**ode **P**ackage **M**anager is the default package manager for Node.js. It consists of a command line client, also called npm, and an online database of public and paid-for private packages, called the npm registry. The registry is accessed via the client, and the available packages can be browsed and searched via the npm website. [- Wikipedia](https://en.wikipedia.org/wiki/Npm_(software))
 
 We'll use NPM to add libraries to our JavaScript application.
 
