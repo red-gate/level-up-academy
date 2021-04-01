@@ -1,4 +1,4 @@
-const fraction = require ('./ex1.js');
+const fraction = require ('./ex2.js');
 
 describe('Fraction', function () {
   test.each([[1, 2, 0.5]])('Fraction(%i, %i).toNumber()', 
