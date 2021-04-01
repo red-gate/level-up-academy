@@ -32,12 +32,20 @@ Useful docs:
 
 ## Exercise 3 - Fetch
 
-Mock and check function calls
-Async
+- Open a terminal in the Ex3 folder
+- Run `npm install` and `npm run test` to see the tests run
+- Read through `ex3.js` and `ex3.test.js` to see how they work
+  - Note how the test callback is now `async`, which means we can use `await` inside the test
+  - Jest will wait for the returned promise to complete before ending the test
+- Refer to the docs for mocking modules: https://jestjs.io/docs/mock-functions#mocking-modules
+- Try altering the test so that the call to `fetch` is mocked out
+- Add an assertion to make sure that the mock was called as expected
+  - Refer to https://jestjs.io/docs/expect#tohavebeencalledtimesnumber
+  - Is this assertion useful?
 
 ## Exercise 4 - API layer
 
-Module mocking (?)
+Non-module mocking (passing in jest.fn())
 Setup and teardown (?)
 
 jest configuration ?
