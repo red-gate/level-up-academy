@@ -1,9 +1,9 @@
-## Excercise 1 - Simple test
+## Exercise 1 - Simple test
 
-- open a terminal in the Ex1 folder
-- run `npm run` to see the list of available package scripts
-- run `npm install` to get the package dependencies
-- run `npm run test` to run the tests
+- Open a terminal in the Ex1 folder
+- Run `npm run` to see the list of available package scripts
+- Run `npm install` to get the package dependencies
+- Run `npm run test` to run the tests
 
 The tests are written using Jest (https://jestjs.io/) - a common test framework and runner which runs the tests inside Node.
 
@@ -21,14 +21,21 @@ Useful docs:
 - https://jestjs.io/docs/api#testname-fn-timeout - The test() function
 - https://jestjs.io/docs/api#testtodoname - If you want to make a list of required tests
 
-## Excercise 2 - Set of test cases
+## Exercise 2 - Sets of test cases
 
-## Example 2 - Fetch
+- Open a terminal in the Ex2 folder
+- Run `npm install` and `npm run test` to see the tests run
+- Read through `ex2.test.js` and see how it works
+  - Refer to the docs for `test.each()`: https://jestjs.io/docs/api#testeachtablename-fn-timeout
+- Try adding more test cases to the first test
+- Add a second test with multiple cases
+
+## Exercise 3 - Fetch
 
 Mock and check function calls
 Async
 
-## Example 3 - API layer
+## Exercise 4 - API layer
 
 Module mocking (?)
 Setup and teardown (?)
