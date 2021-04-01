@@ -12,6 +12,14 @@ The tests are written using Jest (https://jestjs.io/) - a common test framework 
 - Try writing the other tests suggested by the comments
   - Write a new `test` block for each, and see how the test results are displayed in the console.
   - Make sure you can see a test fail
+  - Try using `expect(...).toMatchObject()` and `expect(...).toThrow()`
+
+Useful docs:
+
+- https://jestjs.io/docs/expect - A list of all the default available assertions
+- https://jestjs.io/docs/api#describename-fn - The top-level describe() function
+- https://jestjs.io/docs/api#testname-fn-timeout - The test() function
+- https://jestjs.io/docs/api#testtodoname - If you want to make a list of required tests
 
 ## Excercise 2 - Set of test cases
 
