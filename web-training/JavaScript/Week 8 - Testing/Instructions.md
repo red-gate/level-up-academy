@@ -30,22 +30,41 @@ Useful docs:
 - Try adding more test cases to the first test
 - Add a second test with multiple cases
 
-## Exercise 3 - Fetch
+## Exercise 3 - API layer
 
 - Open a terminal in the Ex3 folder
 - Run `npm install` and `npm run test` to see the tests run
 - Read through `ex3.js` and `ex3.test.js` to see how they work
   - Note how the test callback is now `async`, which means we can use `await` inside the test
   - Jest will wait for the returned promise to complete before ending the test
+- Refer to the docs for mocking functions: https://jestjs.io/docs/mock-functions
+- Try altering the test so that the call to `mathApi.divide` is mocked out
+- Add an assertion to make sure that the mock was called as expected
+  - Refer to https://jestjs.io/docs/expect#tohavebeencalledtimesnumber
+- Add a follow up assertion to check that the method was called with expected parameters
+- Add another assertion to verify that onError hasn't been called
+- Add a separate test to check the error handling
+
+## Exercise 4 - Module mocking
+
+- Open a terminal in the Ex4 folder
+- Run `npm install` and `npm run test` to see the tests run
+- Read through `ex4.js` and `ex4.test.js` to see how they work
 - Refer to the docs for mocking modules: https://jestjs.io/docs/mock-functions#mocking-modules
 - Try altering the test so that the call to `fetch` is mocked out
 - Add an assertion to make sure that the mock was called as expected
   - Refer to https://jestjs.io/docs/expect#tohavebeencalledtimesnumber
   - Is this assertion useful?
 
-## Exercise 4 - API layer
+## Exercise 5 - Jest configuration
+- Start with a previous excercise
+- Run jest in the watch mode using `npx jest --watchAll`
+  - Try out different options provided by the watch mode.
+- Try out the changed files only mode using `npx jest -o`
+  - This mode tests only uncommited files
+- Use `--testMatch` parameter to run only `ex4.test.target.js`
+- Add jest configuration in package.json to run all tests from files that include `.test.` in their names.
+- Try out `--collect-coverage` parameter
+ - How this report can be used?
+- Add a `test-coverage` script to package.json to run a coverage report
 
-Non-module mocking (passing in jest.fn())
-Setup and teardown (?)
-
-jest configuration ?

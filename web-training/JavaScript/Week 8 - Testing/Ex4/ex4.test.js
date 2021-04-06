@@ -1,11 +1,10 @@
-const ex3 = require ('./ex3.js');
+const fraction = require ('./ex4.js');
 
 describe('Fraction', function () {
 
   test('toNumber() works for 1/2', async () => {
-    const onError = (error) => console.log(error);    
-    const a = new ex3.Fraction(1, 2, new ex3.MathApi());
-    expect(await a.toNumber(onError)).toBe(0.5); 
+    const a = new fraction.Fraction(1, 2);
+    expect(await a.toNumber()).toBe(0.5);  
   });
 
   // Try changing this test so that it mocks out the fetch call
