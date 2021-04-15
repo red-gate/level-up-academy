@@ -18,3 +18,15 @@ Start with (JSFiddle?) and possibly show locally with ts file and use compiler o
 - Alex: Come up with example of errors that can be detected via static analysis
 - Mark: missspelled DOM event handler example
 - Sami: Installing, running and getting feedback from typescript when developing locally
+
+# Task
+
+## Exercise 1
+
+### Part a
+- Create a function that takes a string name, a number n, and returns the string "Hello {*name*}!" *n* times.
+- Call that function and output the result to the console log
+- How well does your IDE handle swapping the arguments to Greet around `Greet(5, "piers")`
+
+### Part b
+- Create a function that calculates the fibonnaci sequence recursively
