@@ -24,7 +24,7 @@ Start with (JSFiddle?) and possibly show locally with ts file and use compiler o
 ## Exercise 1
 
 ### Part a
-- Create a function that takes a string name, a number n, and returns the string "Hello {*name*}!" *n* times.
+- Create a function that takes a string name, a number n, and returns the string `"Hello {*name*}!"` *n* times.
 - Call that function and output the result to the console log
 - How well does your IDE handle swapping the arguments to Greet around `Greet(5, "piers")`
 
