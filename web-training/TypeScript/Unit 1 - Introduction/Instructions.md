@@ -1,8 +1,8 @@
 ## Exercise 1
+
+- Use `npm install` to install TypeScript as a development dependency (see `package.json` for details)
+- Ensure that things are set up correctly by running `npm tsc`. You should see a `"Hello World"` message being printed to the console.
 - Use the fraction.ts
-- Sami: Installing, running and getting feedback from typescript when developing locally
--  Point out enabling strict by default
-> The --strict flag in the CLI, or "strict": true in a tsconfig.json toggles them all on simultaneously
 
 ## Exercise 2
 
