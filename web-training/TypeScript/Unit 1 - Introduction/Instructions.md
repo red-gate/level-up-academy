@@ -21,6 +21,9 @@ Start with (JSFiddle?) and possibly show locally with ts file and use compiler o
 
 # Task
 
+- Have a look at `index.js` in the `Examples` folder, and read through the code. What do you think the code does? Can you spot any issues?
+- Try renaming `index.js` to `index.ts`. What issues does typescript find? What doesn't it find?
+
 ## Exercise 1
 
 ### Part a
