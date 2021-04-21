@@ -30,3 +30,7 @@ Start with (JSFiddle?) and possibly show locally with ts file and use compiler o
 
 ### Part b
 - Create a function that calculates the fibonnaci sequence recursively
+
+### Part c
+- Memoize the fibonnaci program you wrote in Part b by using an array to store previously calculated values. This function syntax should help:
+`function Fibonnaci(index: number, previousValues?: number[]): number {}`
