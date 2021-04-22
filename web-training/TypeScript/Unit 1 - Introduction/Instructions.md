@@ -10,7 +10,25 @@ We're basing this Unit on [The Basics](https://www.typescriptlang.org/docs/handb
   - TypeScript generates JavaScript ES3 (from 1999) for backwards compatibility by default. For our examples, we've chosen to to [rely on ES2016](https://www.w3schools.com/js/js_versions.asp). As described in [this StackOverflow post](https://stackoverflow.com/questions/61835971/es7-es8-es9-es10-browser-support), "Browser vendors don't implement specific versions, but specific features. Almost every modern browser is still missing features from ES2017-ES2020."
 - Ensure that things are set up correctly by running `npm run ex1`. You should see a `"Hello World"` message being printed to the console.
 
-- Use the fraction.ts
+### Do you remember those fractions?
+
+- Import the fraction example module into `index.ts`: `import {IMathApi, Fraction} from "./Examples/fraction"`
+- Create a class that implements `IMathApi`: `class MathApi implements IMathApi`
+- Use your dev tooling (VSCode/WebStorm) to create an implementation. *Finish it!*
+- Create an instance of `Fraction` wherein you use your Math API implementation: `let f = new Fraction(3, 4, new MathApi());`
+- Write the result of the calculation to the console
+- Run your code
+- Create another instance of `Fraction` where you use a short/inline API implementation:
+
+```ts
+let inline = new Fraction(1, 2, { divide: (num, den) => {
+    return num/den;
+}})
+```
+
+- Write the result of the calculation to the console
+- Run your code
+- Did you spot that the `Fraction` type isn't very good at math? Figure out why
 
 ## Exercise 2
 
