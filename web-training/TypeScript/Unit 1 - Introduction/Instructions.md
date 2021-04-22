@@ -1,7 +1,14 @@
+# Relevant pre-reading
+We're basing this Unit on [The Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html) section of [The TypeSCript Handbook](https://www.typescriptlang.org/docs/handbook).
+
 ## Exercise 1
 
 - Use `npm install` to install TypeScript as a development dependency (see `package.json` for details)
-- Ensure that things are set up correctly by running `npm tsc`. You should see a `"Hello World"` message being printed to the console.
+- TypeScript reads configuration options from a `tsconfig.json` file in the current directory, if such a file is present. Take a look at the `compilerOptions` to see some recommended configuration:
+  - We have enabled `strict` to ensure that TypeScript will issue an error on any variables whose type is implicitly inferred as `any` (that is, untyped) and making `null` and `undefined` more explicit, sparing us from worrying about whether we forgot to handle them.
+  - By setting `noEmitOnError` we ensure that our TypeSCript compiler does not generate invalid JavaScript files when it identifies that something is wrong.
+- Ensure that things are set up correctly by running `npm run ex1`. You should see a `"Hello World"` message being printed to the console.
+
 - Use the fraction.ts
 
 ## Exercise 2
