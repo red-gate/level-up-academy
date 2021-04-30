@@ -10,9 +10,10 @@ export class Fraction {
     public constructor(num: number, den: number, mathApi: IMathApi) {
         this.numerator = num;
         this.denominator = den;
+        this.mathApi = mathApi;
     }
 
-    public toNumber(onError: (string) => void): number {
+    public toNumber(onError: (_: string) => void): number {
         try
         {
             return this.mathApi.divide(this.numerator, this.denominator);
