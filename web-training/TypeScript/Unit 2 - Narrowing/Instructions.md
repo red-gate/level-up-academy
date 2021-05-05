@@ -77,6 +77,28 @@ const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
 
 Like a type annotation, type assertions are removed by the compiler and won’t affect the runtime behavior of your code.
 
+Be careful with type assertions! In some cases, Typescript will produce type errors for incorrect assertions:
+
+```ts
+const foo = null as string;
+//          ^^ Conversion of type 'null' to type 'string' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+```
+
+but in other cases, Typescript will happily believe you:
+
+```ts
+interface Api {
+    function1: () => void;
+    function2: () => void;
+}
+
+const mockApi = { function1: () => {} } as Api;
+// Compiles, but fails at runtime:
+mockApi.function2();
+```
+
+In general, avoid using type assertions unless strictly necessary.
+
 # Feed the pets - instanceof and type predicate functions
 
 - Check index.ts.
