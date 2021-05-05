@@ -2,13 +2,12 @@
 
 Functions
 - Function types
--- Passing functions as variables
+- - Passing functions as variables
 - Generic functions
--- constraints
+- - constraints
 - Return types 
---inferrence
--- void vs. never
+- - inferrence
+- - void vs. never
 - Optional parameters 
 - Overloads
 - Destructuring
-- 
