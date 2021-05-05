@@ -1,14 +1,15 @@
 # Brainstorming
+
 - Enums, union types and discriminated unions
 - Null/undefined-value narrowing - Array.find()
 - Union type narrowing
 - instanceof and Type predicate functions (Alex)
 
-
-
-
 # Union Types
+
 TypeScript’s type system allows you to build new types out of existing ones using a large variety of operators. The first way to combine types you might see is a _union type_. A union type is type formed from two or more other types, representing values that may be _any one_ of those types. We refer to each of these types as the union’s _members_.
+
+## Exercise 1 - making implicit conversions explicit
 
 Let’s write a function that can operate on strings or numbers:
 
@@ -19,24 +20,46 @@ function printId(id: number | string) {
 ```
 
 - Write three function invocations, passing a number, a string and an object
-- Change the function to instead `console.log(id.toUpperCase())`
+- Try changing the function to print `id.toUpperCase()` instead of just `id`. What error do you get?
+- You'll need to narrow the type of id to either `number` or `string` using the `typeof` operator, the same as you would in Javascript.
 
-_Narrow_ the union with code, the same as you would in JavaScript without type annotations:
-
-```ts
-function printId(id: number | string) {
-  if (typeof id === "string") {
-    // In this branch, id is of type 'string'
-    console.log(id.toUpperCase());
-  } else {
-    // Here, id is of type 'number'
-    console.log(id);
-  }
-}
-```
+## Exercise 2 - array or not
 
 - Write a function that welcomes people. The function accepts `string[] | string` and outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ... and _Name N_!**. Hint: There's an `Array.isArray` method.
 
+## Exercise 3 - instanceof and type predicate functions
+
+- Check index.ts.
+- Change the Feed function to output the pet's name. Why the name field is accesible in this context?
+- Use instanceof to feed the dogs.
+- Are both dogs being fed? If not, then why?
+- Use a type predicate functions to feed Fluffy.
+
+# Discriminated unions
+
+So far, we've distinguished between different members of a union by inspecting certain specific properties that we know exist in each case. This works well enough, but it can get a little awkward.
+
+Discriminated unions are a pattern in typescript (and other languages) where each member of the union shares a common property that can be used to distinguish members from each other. For example, we can write a type like this:
+
+```ts
+type Pet =
+  | {
+      type: "cat"; // Note how we're using a literal string as a type here
+      name: string;
+      numberOfLives: number;
+    }
+  | {
+      type: "dog";
+      name: string;
+      isAGoodBoy: boolean;
+    };
+```
+
+Since the 'type' property is common to all members of the Pet union, we can check it for arbitrary `Pet`s. And once we check the value of the type property, typescript can narrow down which kind of Pet it is.
+
+## Exercise 4 - pets, again
+
+- Adapt exercise 3 to use discriminated unions. Try using a common property ('type', 'kind' or similar) to distinguish the union members instead of custom type guards.
 
 # Type Aliases and Interfaces
 
@@ -88,8 +111,8 @@ but in other cases, Typescript will happily believe you:
 
 ```ts
 interface Api {
-    function1: () => void;
-    function2: () => void;
+  function1: () => void;
+  function2: () => void;
 }
 
 const mockApi = { function1: () => {} } as Api;
@@ -98,15 +121,3 @@ mockApi.function2();
 ```
 
 In general, avoid using type assertions unless strictly necessary.
-
-# Feed the pets - instanceof and type predicate functions
-
-- Check index.ts.
-- Change the Feed function to output the pet's name. Why the name field is accesible in this context?
-- Use instanceof to feed the dogs.
-- Are both dogs being fed? If not, then why?
-- Use a type predicate functions to feed Fluffy.
-
-
-
-

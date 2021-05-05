@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "tsc index.answer.ts && node index.answer.js"
+    "ex1": "tsc ex1.ts && node ex1.js",
+    "ex2": "tsc ex2.ts && node ex2.js",
+    "ex3": "tsc ex3.ts && node ex3.js"
   },
   "devDependencies": {
     "typescript": "^4.2.4"
