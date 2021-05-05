@@ -1,8 +1,3 @@
-# Brainstorming
-
-- Enums, union types and discriminated unions
-- Null/undefined-value narrowing - Array.find()
-
 # Union Types
 
 TypeScript’s type system allows you to build new types out of existing ones using a large variety of operators. The first way to combine types you might see is a _union type_. A union type is type formed from two or more other types, representing values that may be _any one_ of those types. We refer to each of these types as the union’s _members_.
@@ -25,13 +20,19 @@ function printId(id: number | string) {
 
 - Write a function that welcomes people. The function accepts `string[] | string` and outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ... and _Name N_!**. Hint: There's an `Array.isArray` method.
 
+## Excercise ... - Array.find()
+
+- (An example with strict turned off using Array.find() or other method returning an undefined/null value).
+- Switch strict on
+- Fix the example using narrowing check
+
 ## Exercise 3 - instanceof and type predicate functions
 
-- Check ex3.ts.
+- Check ex3.ts
 - Change the Feed function to output the pet's name. Why the name field is accesible in this context?
-- Use instanceof to feed the dogs.
+- Use instanceof to feed the dogs
 - Are both dogs being fed? If not, then why?
-- Use a type predicate functions to feed Fluffy.
+- Use a type predicate functions to feed Fluffy
 
 # Discriminated unions
 
