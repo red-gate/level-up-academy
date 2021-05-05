@@ -77,6 +77,14 @@ const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
 
 Like a type annotation, type assertions are removed by the compiler and won’t affect the runtime behavior of your code.
 
+# Feed the pets - instanceof and type predicate functions
+
+- Check index.ts.
+- Change the Feed function to output the pet's name. Why the name field is accesible in this context?
+- Use instanceof to feed the dogs.
+- Are both dogs being fed? If not, then why?
+- Use a type predicate functions to feed Fluffy.
+
 
 
 
