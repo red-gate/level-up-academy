@@ -29,7 +29,7 @@ function printId(id: number | string) {
 
 ## Exercise 3 - instanceof and type predicate functions
 
-- Check index.ts.
+- Check ex3.ts.
 - Change the Feed function to output the pet's name. Why the name field is accesible in this context?
 - Use instanceof to feed the dogs.
 - Are both dogs being fed? If not, then why?
