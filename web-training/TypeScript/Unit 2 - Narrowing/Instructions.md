@@ -88,7 +88,7 @@ Note that aliases are _only_ aliases - you cannot use type aliases to create dif
 
 Sometimes you will have information about the type of a value that TypeScript can’t know about.
 
-For example, if you’re using document.getElementById, TypeScript only knows that this will return some kind of HTMLElement, but you might know that your page will always have an HTMLCanvasElement with a given ID.
+For example, if you’re using `document.getElementById`, TypeScript only knows that this will return some kind of HTMLElement, but you might know that your page will always have an `HTMLCanvasElement` with a given ID.
 
 In this situation, you can use a type assertion to specify a more specific type:
 
@@ -98,14 +98,14 @@ const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
 
 Like a type annotation, type assertions are removed by the compiler and won’t affect the runtime behavior of your code.
 
-Be careful with type assertions! In some cases, Typescript will produce type errors for incorrect assertions:
+Be careful with type assertions! In some cases, TypeScript will produce type errors for incorrect assertions:
 
 ```ts
 const foo = null as string;
 //          ^^ Conversion of type 'null' to type 'string' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
 ```
 
-but in other cases, Typescript will happily believe you:
+but in other cases, TypeScript will happily believe you:
 
 ```ts
 interface Api {
