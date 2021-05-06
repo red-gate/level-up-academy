@@ -2,11 +2,9 @@
   "name": "unit-1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "ex3.ts",
   "scripts": {
-    "ex1": "tsc ex1.ts && node ex1.js",
-    "ex2": "tsc ex2.ts && node ex2.js",
-    "ex3": "tsc ex4.ts && node ex4.js"
+    "ex3": "tsc && node ex3.js"
   },
   "devDependencies": {
     "typescript": "^4.2.4"

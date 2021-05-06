@@ -1,0 +1,8 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "strict": false,
+        "noEmitOnError": true,
+        "target": "es2016"
+    }
+}
