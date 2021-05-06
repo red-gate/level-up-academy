@@ -2,3 +2,6 @@
 function welcomePeople(people: any) {
   // TODO: write the implementation
 }
+
+welcomePeople("Gandalf");
+welcomePeople(["Chip", "Dale", "the Smurfs"]);

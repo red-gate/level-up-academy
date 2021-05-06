@@ -12,7 +12,9 @@ In [Exersises/ex1.ts](https://github.com/red-gate/level-up-academy/blob/main/web
 
 ## Exercise 2 - array or not
 
-- Write a function that welcomes people. The function accepts `string[] | string` and outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ... and _Name N_!**. Hint: There's an `Array.isArray` method.
+In [Exersises/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex2.ts), you'll find a `welcomePeople` function and a couple of invocations.
+
+- Change the function so that it outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ... and _Name N_!**. Hint: There's an `Array.isArray` method.
 
 ## Excercise 3 - Array.find()
 

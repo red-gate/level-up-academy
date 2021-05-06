@@ -6,7 +6,8 @@
   "scripts": {
     "ex1": "tsc ex1.ts --noEmitOnError --strict --target ES2016 --listEmittedFiles && node ex1.js",
     "ex1-answer": "tsc ex1.answer.ts --noEmitOnError --strict --target ES2016 --listEmittedFiles && node ex1.js",
-    "ex2": "tsc ex2.ts && node ex2.js",
+    
+    "ex2": "tsc ex2.ts --noEmitOnError --strict --target ES2016 --listEmittedFiles && node ex2.js",
     "ex3": "tsc ex4.ts && node ex4.js"
   },
   "devDependencies": {
