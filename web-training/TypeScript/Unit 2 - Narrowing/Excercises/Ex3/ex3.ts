@@ -1,4 +1,4 @@
-const list = ["Pierce", "Sami", "Mark", "Alex"];
+const list = ["Piers", "Sami", "Mark", "Alex"];
 
 function FindByFirstLetter(letter: string) {
     return list.find(name => name[0] == letter);
