@@ -57,7 +57,7 @@ Since the 'type' property is common to all members of the Pet union, we can chec
 
 ### Exercise 5 - pets, again
 
-- Adapt exercise 3 to use discriminated unions. Try using a common property ('type', 'kind' or similar) to distinguish the union members instead of custom type guards.
+- Adapt exercise 4 to use discriminated unions. Try using a common property ('type', 'kind' or similar) to distinguish the union members instead of custom type guards.
 
 ## Type Aliases and Interfaces
 
