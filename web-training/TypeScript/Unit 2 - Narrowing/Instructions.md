@@ -18,8 +18,8 @@ In [Exersises/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main/web
 
 ## Excercise 3 - Array.find()
 
-- Open, read and run Ex3
-- Set TypeScript `strict` option to `true` for this excercise
+- Open, read and run [Exersises/Ex3](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/Ex3)
+- Set TypeScript `strict` option to `true` for this excercise. Hint: It's in `tsconfig.json`.
 - Why are we getting a compilation error now?
 - Fix the error
 
