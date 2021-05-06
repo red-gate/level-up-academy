@@ -4,17 +4,11 @@ TypeScript’s type system allows you to build new types out of existing ones us
 
 ## Exercise 1 - making implicit conversions explicit
 
-Let’s write a function that can operate on strings or numbers:
+In [Exersises/ex1.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex1.ts), you'll find a `printId` function and a couple of invocations.
 
-```ts
-function printId(id: number | string) {
-  console.log("Your ID is: " + id);
-}
-```
-
-- Write three function invocations, passing a number, a string and an object
-- Try changing the function to print `id.toUpperCase()` instead of just `id`. What error do you get?
-- You'll need to narrow the type of id to either `number` or `string` using the `typeof` operator, the same as you would in Javascript.
+- Verify that `npm run ex1` results in an error.
+- Narrow the type of `id` to either `number` or `string` using the `typeof` operator, the same as you would in Javascript.
+- Double-check your answer against [Exercises/ex1.answer.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex1.answer.ts)
 
 ## Exercise 2 - array or not
 

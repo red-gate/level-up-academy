@@ -7,3 +7,6 @@ function printId(id: number | string) {
     console.log(id);
   }
 }
+
+printId(123);
+printId("456");
