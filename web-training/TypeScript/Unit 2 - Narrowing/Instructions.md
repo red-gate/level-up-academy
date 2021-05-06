@@ -20,15 +20,16 @@ function printId(id: number | string) {
 
 - Write a function that welcomes people. The function accepts `string[] | string` and outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ... and _Name N_!**. Hint: There's an `Array.isArray` method.
 
-## Excercise ... - Array.find()
+## Excercise 3 - Array.find()
 
-- (An example with strict turned off using Array.find() or other method returning an undefined/null value).
-- Switch strict on
-- Fix the example using narrowing check
+- Open, read and run Ex3
+- Set TypeScript `strict` option to `true` for this excercise
+- Why are we getting a compilation error now?
+- Fix the error
 
-## Exercise 3 - instanceof and type predicate functions
+## Exercise 4 - instanceof and type predicate functions
 
-- Check ex3.ts
+- Open and read ex3.ts
 - Change the Feed function to output the pet's name. Why the name field is accesible in this context?
 - Use instanceof to feed the dogs
 - Are both dogs being fed? If not, then why?
@@ -56,7 +57,7 @@ type Pet =
 
 Since the 'type' property is common to all members of the Pet union, we can check it for arbitrary `Pet`s. And once we check the value of the type property, typescript can narrow down which kind of Pet it is.
 
-## Exercise 4 - pets, again
+## Exercise 5 - pets, again
 
 - Adapt exercise 3 to use discriminated unions. Try using a common property ('type', 'kind' or similar) to distinguish the union members instead of custom type guards.
 
