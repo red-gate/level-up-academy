@@ -33,6 +33,7 @@
 // }
 
 // function Feed(pet: Pet) {
+//     console.log(pet.name);
 //     if (pet instanceof Dog) {
 //         FeedDog(pet);
 //     }

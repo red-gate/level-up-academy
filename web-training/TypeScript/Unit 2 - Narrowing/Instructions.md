@@ -31,9 +31,9 @@ function printId(id: number | string) {
 
 - Open and read ex3.ts
 - Change the Feed function to output the pet's name. Why the name field is accesible in this context?
-- Use instanceof to feed the dogs
+- Use [instanceof](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#instanceof-narrowing) to feed the dogs
 - Are both dogs being fed? If not, then why?
-- Use a type predicate functions to feed Fluffy
+- Use a [type predicate function](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#instanceof-narrowing) to feed Fluffy
 
 # Discriminated unions
 
