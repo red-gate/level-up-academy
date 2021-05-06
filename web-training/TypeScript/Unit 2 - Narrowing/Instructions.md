@@ -1,8 +1,10 @@
-# Union Types
+# Unit 2 - Narrowing
+
+## Union Types
 
 TypeScript’s type system allows you to build new types out of existing ones using a large variety of operators. The first way to combine types you might see is a _union type_. A union type is type formed from two or more other types, representing values that may be _any one_ of those types. We refer to each of these types as the union’s _members_.
 
-## Exercise 1 - making implicit conversions explicit
+### Exercise 1 - making implicit conversions explicit
 
 In [Exersises/ex1.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex1.ts), you'll find a `printId` function and a couple of invocations.
 
@@ -10,20 +12,20 @@ In [Exersises/ex1.ts](https://github.com/red-gate/level-up-academy/blob/main/web
 - Narrow the type of `id` to either `number` or `string` using the `typeof` operator, the same as you would in Javascript.
 - Double-check your answer against [Exercises/ex1.answer.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex1.answer.ts)
 
-## Exercise 2 - array or not
+### Exercise 2 - array or not
 
 In [Exersises/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex2.ts), you'll find a `welcomePeople` function and a couple of invocations.
 
 - Change the function so that it outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ... and _Name N_!**. Hint: There's an `Array.isArray` method.
 
-## Excercise 3 - Array.find()
+### Excercise 3 - Array.find()
 
 - Open, read and run [Exersises/Ex3](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/Ex3)
 - Set TypeScript `strict` option to `true` for this excercise. Hint: It's in `tsconfig.json`.
 - Why are we getting a compilation error now?
 - Fix the error
 
-## Exercise 4 - instanceof and type predicate functions
+### Exercise 4 - instanceof and type predicate functions
 
 - Open and read [Exercises/ex4.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex4.ts)
 - Change the Feed function to output the pet's name. Why the name field is accesible in this context?
@@ -31,7 +33,7 @@ In [Exersises/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main/web
 - Are both dogs being fed? If not, then why?
 - Use a type predicate functions to feed Fluffy
 
-# Discriminated unions
+## Discriminated unions
 
 So far, we've distinguished between different members of a union by inspecting certain specific properties that we know exist in each case. This works well enough, but it can get a little awkward.
 
@@ -53,11 +55,11 @@ type Pet =
 
 Since the 'type' property is common to all members of the Pet union, we can check it for arbitrary `Pet`s. And once we check the value of the type property, typescript can narrow down which kind of Pet it is.
 
-## Exercise 5 - pets, again
+### Exercise 5 - pets, again
 
 - Adapt exercise 3 to use discriminated unions. Try using a common property ('type', 'kind' or similar) to distinguish the union members instead of custom type guards.
 
-# Type Aliases and Interfaces
+## Type Aliases and Interfaces
 
 We’ve been using object types and union types by writing them directly in type annotations. This is convenient, but it’s common to want to use the same type more than once and refer to it by a single name.
 
@@ -82,7 +84,7 @@ Note that aliases are _only_ aliases - you cannot use type aliases to create dif
 
 - Review the [differences between Type Aliases and Interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
 
-# Type Assertions
+## Type Assertions
 
 Sometimes you will have information about the type of a value that TypeScript can’t know about.
 
