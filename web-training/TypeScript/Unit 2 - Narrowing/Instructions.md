@@ -25,7 +25,7 @@ In [Exersises/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main/web
 
 ## Exercise 4 - instanceof and type predicate functions
 
-- Open and read ex3.ts
+- Open and read [Exercises/ex4.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex4.ts)
 - Change the Feed function to output the pet's name. Why the name field is accesible in this context?
 - Use instanceof to feed the dogs
 - Are both dogs being fed? If not, then why?
