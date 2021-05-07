@@ -10,7 +10,7 @@ In [Exercises/ex1.ts](https://github.com/red-gate/level-up-academy/blob/main/web
 
 - Verify that `npm run ex1` results in an error.
 - Narrow the type of `id` to either `number` or `string` using the `typeof` operator, the same as you would in Javascript.
-- Double-check your answer against [Exercises/ex1.answer.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex1.answer.ts)
+- Double-check your answer against [Exercises/ex1.answer.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/ex1.answer.ts)
 
 ### Exercise 2 - array or not
 
