@@ -6,28 +6,28 @@ TypeScript’s type system allows you to build new types out of existing ones us
 
 ### Exercise 1 - making implicit conversions explicit
 
-In [Exersises/ex1.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex1.ts), you'll find a `printId` function and a couple of invocations.
+In [Exercises/Ex1/ex1.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex1/ex1.ts), you'll find a `printId` function and a couple of invocations.
 
 - Verify that `npm run ex1` results in an error.
 - Narrow the type of `id` to either `number` or `string` using the `typeof` operator, the same as you would in Javascript.
-- Double-check your answer against [Exercises/ex1.answer.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex1.answer.ts)
+- Double-check your answer against [Exercises/Ex1/ex1.answer.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex1/ex1.answer.ts)
 
 ### Exercise 2 - array or not
 
-In [Exersises/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex2.ts), you'll find a `welcomePeople` function and a couple of invocations.
+In [Exercises/Ex2/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex2/ex2.ts), you'll find a `welcomePeople` function and a couple of invocations.
 
 - Change the function so that it outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ... and _Name N_!**. Hint: There's an `Array.isArray` method.
 
-### Excercise 3 - Array.find()
+### Exercise 3 - Array.find()
 
-- Open, read and run [Exersises/Ex3](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/Ex3)
+- Open, read and run [Exercises/Ex3](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex3)
 - Set TypeScript `strict` option to `true` for this excercise. Hint: It's in `tsconfig.json`.
 - Why are we getting a compilation error now?
 - Fix the error
 
 ### Exercise 4 - instanceof and type predicate functions
 
-- Open and read [Exercises/ex4.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Excercises/ex4.ts)
+- Open and read [Exercises/Ex4/ex4.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex4/ex4.ts)
 - Change the Feed function to output the pet's name. Why the name field is accesible in this context?
 - Use [instanceof](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#instanceof-narrowing) to feed the dogs
 - Are both dogs being fed? If not, then why?
