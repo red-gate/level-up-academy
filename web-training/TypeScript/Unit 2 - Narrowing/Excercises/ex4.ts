@@ -38,6 +38,8 @@ Feed({
     numberOfLives: 7
 });
 
+Feed(new Dog("Rex", true));
+
 Feed({
     name: "Buddy",
     isAGoodBoy: true
