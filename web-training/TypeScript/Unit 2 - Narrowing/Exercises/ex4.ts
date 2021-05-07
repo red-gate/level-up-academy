@@ -30,7 +30,7 @@ function FeedDog(dog: Dog) {
 
 function Feed(pet: Pet) {
     FeedCat(pet);
-    FeedDog(dog);
+    FeedDog(pet);
 }
 
 Feed({
