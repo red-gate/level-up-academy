@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "ex1": "tsc ex1.ts --noEmitOnError --strict --target ES2016 --listEmittedFiles && node ex1.js",
-    "ex1-answer": "tsc ex1.answer.ts --noEmitOnError --strict --target ES2016 --listEmittedFiles && node ex1.js",
-    
-    "ex2": "tsc ex2.ts --noEmitOnError --strict --target ES2016 --listEmittedFiles && node ex2.js",
-    "ex3": "tsc ex4.ts && node ex4.js"
+    "ex1": "tsc --project Ex1/tsconfig.json && node Ex1/ex1.js",
+    "ex2": "tsc --project Ex2/tsconfig.json && node Ex2/ex2.js",
+    "ex3": "tsc --project Ex3/tsconfig.json && node Ex3/ex3.js",
+    "ex4": "tsc --project Ex4/tsconfig.json && node Ex4/ex4.js"
   },
   "devDependencies": {
     "typescript": "^4.2.4"
