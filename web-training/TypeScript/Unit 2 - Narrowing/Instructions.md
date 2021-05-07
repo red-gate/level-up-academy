@@ -23,7 +23,7 @@ In [Exercises/Ex2/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main
 - Open, read and run [Exercises/Ex3](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex3)
 - Set TypeScript `strict` option to `true` for this excercise. Hint: It's in `tsconfig.json`.
 - Why are we getting a compilation error now?
-- Fix the error
+- Decide how you want to handle the error - there's at least two alternatives - and fix the error.
 
 ### Exercise 4 - instanceof and type predicate functions
 
