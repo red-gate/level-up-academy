@@ -1,4 +1,4 @@
-function printId(id: number | string) {
+function printId_answer(id: number | string) {
   if (typeof id === "string") {
     // In this branch, id is of type 'string'
     console.log("Your ID is: " + id.toUpperCase());
