@@ -1,10 +1,10 @@
 function printId(id: number | string) {
   if (typeof id === "string") {
     // In this branch, id is of type 'string'
-    console.log(id.toUpperCase());
+    console.log("Your ID is: " + id.toUpperCase());
   } else {
     // Here, id is of type 'number'
-    console.log(id);
+    console.log("Your ID is: " + id);
   }
 }
 
