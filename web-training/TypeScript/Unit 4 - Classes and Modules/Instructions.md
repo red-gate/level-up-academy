@@ -1,3 +1,10 @@
-Classes and modules (type modules)
-Object types
-Interfaces
+- Modules
+- - import, export, default
+- - require
+- - TypeScript Module Output Options
+- Classes and modules (type modules)
+- - readonly
+- Object types
+- Interfaces
+- - extending
+- Assigning to interface/class/type
