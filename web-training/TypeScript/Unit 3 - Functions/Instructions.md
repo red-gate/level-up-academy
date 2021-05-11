@@ -1,3 +1,8 @@
+# Unit 3 - Functions
+
+## The Handbook
+https://www.typescriptlang.org/docs/handbook/2/functions.html
+
 - Enums vs. string value union types
 
 Functions
