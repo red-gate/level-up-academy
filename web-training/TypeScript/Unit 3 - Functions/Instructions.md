@@ -3,13 +3,11 @@
 ## The Handbook
 https://www.typescriptlang.org/docs/handbook/2/functions.html
 
-- Enums vs. string value union types
-
 Functions
 
-- Function types
+- Excercise 1: Function types (Alex)
 - - Passing functions as variables
-- Return types
+- Excercise 2: Return types (Mark)
 - - inferrence, void vs. never and exhaustive switch checking:
 - - With return types (simple case):
 
@@ -66,7 +64,7 @@ function assertUnreachable(x: never): never {
 }
 ```
 
-- -
-- Optional parameters
-- Overloads
-- Destructuring
+- Excercise 3 (Piers):
+- - Optional parameters
+- - Overloads
+- Excercise 4: Destructuring (Sami)
