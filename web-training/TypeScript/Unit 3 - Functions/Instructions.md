@@ -3,8 +3,6 @@
 Functions
 - Function types
 - - Passing functions as variables
-- Generic functions
-- - constraints
 - Return types 
 - - inferrence
 - - void vs. never
