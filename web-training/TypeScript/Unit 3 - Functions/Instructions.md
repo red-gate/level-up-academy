@@ -94,4 +94,21 @@ Can you force feed kitty with dogfood now?
 ### Part 5
 What if we want a single implementation that causes only cats to be fed catfood and dogs to be fed dogfood? Write this function called `Feed` and feed both `kitty` and `fiddo`
 
-## Excercise 4: Destructuring (Sami)
+## Excercise 4: Spread operator, object destructuring and rest parameters
+
+This is a reasoning exercise. Open up the code in Ex4 and look at it together:
+
+### The Spread Operator
+
+- Observe the differences in output from line 5 and 8. This is the *spread operator* in action.
+- On line 18, note how we can use the spread operator to spread an object and replace one of its members.
+
+### Object destructuring and rest parameters
+
+The function declaration on line 20 features object destructuring and rest parameters.
+
+- Try to reason about what's going on, given the output generated from line 24.
+
+### Super advanced technology
+
+- Given what you've leared above and your experiences with other programming languages, explain the `apply` function on line 26.

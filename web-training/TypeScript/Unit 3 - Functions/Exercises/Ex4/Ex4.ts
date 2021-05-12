@@ -1,9 +1,3 @@
-function apply<T>(fn: (value: T) => void, ...values: T[]) {
-    values.forEach(v => fn(v));
-}
-
-apply(console.log, "I", "like", "candies");
-
 // Given an array
 const question = ["To", "be", "or", "not", "to", "be"]
 
@@ -28,3 +22,9 @@ function onlyInterestedInFruits({ lemons, melons } : { lemons: string, melons: s
 }
 
 console.log(onlyInterestedInFruits(snackOptions, "can be yellow", "are oval"));
+
+function apply<T>(fn: (value: T) => void, ...values: T[]) {
+    values.forEach(v => fn(v));
+}
+
+apply(console.log, "I", "like", "candies");
