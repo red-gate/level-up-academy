@@ -5,11 +5,14 @@ https://www.typescriptlang.org/docs/handbook/2/functions.html
 
 Functions
 
-- Excercise 1: Function types (Alex)
-- - Passing functions as variables
-- Excercise 2: Return types (Mark)
-- - inferrence, void vs. never and exhaustive switch checking:
-- - With return types (simple case):
+## Excercise 1: Function types (Alex)
+
+- Passing functions as variables
+
+## Excercise 2: Return types (Mark)
+
+- inferrence, void vs. never and exhaustive switch checking:
+- With return types (simple case):
 
 ```ts
 type Product = {};
@@ -91,4 +94,4 @@ Can you force feed kitty with dogfood now?
 ### Part 5
 What if we want a single implementation that causes only cats to be fed catfood and dogs to be fed dogfood? Write this function called `Feed` and feed both `kitty` and `fiddo`
 
-- Excercise 4: Destructuring (Sami)
+## Excercise 4: Destructuring (Sami)
