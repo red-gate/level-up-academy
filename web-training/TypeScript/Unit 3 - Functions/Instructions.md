@@ -74,7 +74,7 @@ Read Ex3.ts and explain what is contained within
 
 ### Part 2
 
-Write a function called `FeedCat` that takes as argument a single `Cat` and optionally a single `CatFood`.
+Write a function called `FeedCat` that takes as argument a single `Cat` and [optionally](https://www.typescriptlang.org/docs/handbook/2/functions.html#optional-parameters) a single `CatFood`.
 
 - This should output some text that differs if catfood is provided
 - Feed kitty with and without catfood
@@ -94,13 +94,15 @@ Can you feed kitty with dogfood?
 Write a function called `ForceFeed` that takes two parameters:
 
 - A single `Pet`
-- food that is either `CatFood` or `DogFood`
+- [food that is either](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) `CatFood` or `DogFood`
 
 Can you force feed kitty with dogfood now?
 
 ### Part 5
 
 What if we want a single implementation that causes only cats to be fed catfood and dogs to be fed dogfood? Write this function called `Feed` and feed both `kitty` and `fiddo`
+
+[Function overloads](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads)
 
 ## Excercise 4: Spread operator, object destructuring and rest parameters
 
