@@ -4,69 +4,55 @@
 
 https://www.typescriptlang.org/docs/handbook/2/functions.html
 
-## Excercise 1: Function types (Alex)
+## Exercise 1: Function types (Alex)
 
 - Passing functions as variables
 
-## Excercise 2: Return types (Mark)
+## Exercise 2: Making sure we return from functions
 
-- inferrence, void vs. never and exhaustive switch checking:
-- With return types (simple case):
-
-```ts
-type Product = {};
-type FarmAnimal =
-  | {
-      type: "cow";
-      milk: () => Product;
-    }
-  | {
-      type: "chicken";
-      collectEggs: () => Product;
-    };
-
-function sixAmRoutine(animal: FarmAnimal): Product {
-  switch (animal.type) {
-    case "chicken":
-      return animal.collectEggs();
-    case "cow":
-      return animal.milk();
-  }
-}
-```
-
-- Without return types, using the `never` type:
+Most of the time, we can just let typescript infer the return values of our functions:
 
 ```ts
-type FarmAnimal =
-  | {
-      type: "cow";
-      milk: () => void;
-    }
-  | {
-      type: "chicken";
-      collectEggs: () => void;
-    };
-
-function sixAmRoutine(animal: FarmAnimal) {
-  switch (animal.type) {
-    case "chicken":
-      animal.collectEggs();
-      break;
-    case "cow":
-      animal.milk();
-      break;
-    default:
-      assertUnreachable(animal);
-  }
-}
-
-function assertUnreachable(x: never): never {
-  throw "this line shouldn't ever be reached!";
-}
+const hello = () => "hello, world!";
+//    ^ inferred type: () => string
 ```
 
-## Excercise 3: Optional and Overloads
+However, there are a few situations where specifying an explicit return type is useful: to enforce that the function always returns something.
+
+This most commonly becomes an issue with switch statements. In other languages, switch statements are often seen as an antipattern. Switch statements can be a common source of bugs when some cases are not implemented.
+
+However, in typescript we can use type checking features to make sure that switch statements are exhaustive.
+
+### Part 1
+
+Take a look at `Ex2/WithReturnValue.ts`, and the `getProductFromAnimal` function in particular. This function isn't currently handling all types of `FarmAnimal`.
+
+- What error is typescript reporting at the moment? What is the function's inferred return type?
+- Try changing the function to have an explicit return type. What error does typescript produce now?  
+  This error message is a little confusing - can you explain it?
+- Try changing the function to handle the missing case.
+
+### Part 2
+
+What happens if the function doesn't return a value? How can we make sure that switch statements are exhaustive in that case?
+
+For this task we'll need to learn about [a special type called `never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never). One way to think about types is in terms of the number of possible values they have:
+
+- types like `string` and `boolean` have many values
+- types like `"hello, world"`, `true`, `null` and `undefined` have a single value
+- `never` is a type with `zero` values!
+
+`never` is useful in a couple of situations here:
+
+- We can use `never` as a function return type to indicate that the function always throws rather than returning a value.
+- We can assert that a variable's type should be `never` if we've already narrowed down all other possibilities.
+
+Have a look at `Ex2/WithoutReturnValue.ts`. Note we have a similar `FarmAnimal` type now, but the per-animal functions no longer return values.
+
+- Are any errors being produced with the current code? Would you expect some?
+- How can we use `assertUnreachable` to ensure an error happens here? Make sure the error goes away once the `processAnimal` function is complete.
+
+## Exercise 3: Optional and Overloads
 
 ### Part 1
 
@@ -104,13 +90,13 @@ What if we want a single implementation that causes only cats to be fed catfood 
 
 [Function overloads](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads)
 
-## Excercise 4: Spread operator, object destructuring and rest parameters
+## Exercise 4: Spread operator, object destructuring and rest parameters
 
 This is a reasoning exercise. Open up the code in Ex4 and look at it together:
 
 ### The Spread Operator
 
-- Observe the differences in output from line 5 and 8. This is the *spread operator* in action.
+- Observe the differences in output from line 5 and 8. This is the _spread operator_ in action.
 - On line 18, note how we can use the spread operator to spread an object and replace one of its members.
 
 ### Object destructuring and rest parameters
