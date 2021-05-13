@@ -19,9 +19,9 @@ const hello = () => "hello, world!";
 
 However, there are a few situations where specifying an explicit return type is useful: to enforce that the function always returns something.
 
-This most commonly becomes an issue with switch statements. In other languages, switch statements are often seen as an antipattern. Switch statements can be a common source of bugs when some cases are not implemented.
+This most commonly becomes an issue with switch statements. In other languages, switch statements are often seen as an antipattern, and a common source of bugs when some cases are not implemented.
 
-However, in typescript we can use type checking features to make sure that switch statements are exhaustive.
+However, in typescript we can fix one of the biggest issues with switch statements: by use type checking features to make sure that they cover all cases.
 
 ### Part 1
 
@@ -38,8 +38,8 @@ What happens if the function doesn't return a value? How can we make sure that s
 
 For this task we'll need to learn about [a special type called `never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never). One way to think about types is in terms of the number of possible values they have:
 
-- types like `string` and `boolean` have many values
-- types like `"hello, world"`, `true`, `null` and `undefined` have a single value
+- types like `string` and `object` have many values, while `boolean` has two values
+- types like `"hello, world"`, `true`, `null` and `undefined` each have a single value
 - `never` is a type with `zero` values!
 
 `never` is useful in a couple of situations here:
@@ -51,6 +51,13 @@ Have a look at `Ex2/WithoutReturnValue.ts`. Note we have a similar `FarmAnimal` 
 
 - Are any errors being produced with the current code? Would you expect some?
 - How can we use `assertUnreachable` to ensure an error happens here? Make sure the error goes away once the `processAnimal` function is complete.
+
+### Bonus discussion:
+
+Thinking about types in terms of the number of possible values again (their 'cardinality'):
+
+- Unions are sometimes called 'sum' types, and structs/interfaces/records called 'product' types. Why is this?
+- Given that `never` has a cardinality of zero, what's the implication for a type like `string | never`?
 
 ## Exercise 3: Optional and Overloads
 
