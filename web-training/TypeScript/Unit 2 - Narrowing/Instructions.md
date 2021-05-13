@@ -9,14 +9,14 @@ TypeScript’s type system allows you to build new types out of existing ones us
 In [Exercises/Ex1/ex1.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex1/ex1.ts), you'll find a `printId` function and a couple of invocations.
 
 - Verify that `npm run ex1` results in an error.
-- Narrow the type of `id` to either `number` or `string` using the `typeof` operator, the same as you would in Javascript.
+- Narrow the type of `id` to either `number` or `string` using the `typeof` [operator](https://www.typescriptlang.org/docs/handbook/2/typeof-types.html), the same as you would in Javascript.
 - Double-check your answer against [Exercises/Ex1/ex1.answer.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex1/ex1.answer.ts)
 
 ### Exercise 2 - array or not
 
 In [Exercises/Ex2/ex2.ts](https://github.com/red-gate/level-up-academy/blob/main/web-training/TypeScript/Unit%202%20-%20Narrowing/Exercises/Ex2/ex2.ts), you'll find a `welcomePeople` function and a couple of invocations.
 
-- Change the function so that it outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ... and _Name N_!**. Hint: There's an `Array.isArray` method.
+- Change the function so that it outputs either a single greeting **Welcome lone traveller _name_** or a combined greeting **Hello _Name 1_, _Name 2_ ..., _Name N_!**. Hint: There's an `Array.isArray` method.
 
 ### Exercise 3 - Array.find()
 
