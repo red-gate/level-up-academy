@@ -4,9 +4,11 @@
 
 https://www.typescriptlang.org/docs/handbook/2/functions.html
 
-## Exercise 1: Function types (Alex)
+## Exercise 1: Function types
 
-- Passing functions as variables
+- Open Ex1 and run it
+- Currently the getSum function both traverses a tree and calcluates the sum of its nodes. Let's extract the sum calculation logic into a function parameter, so we can apply different operations to a tree like this `reduce(tree, (result, tree) => result += tree.value, 0));`
+- Using the new generalized function output the max value in the tree 
 
 ## Exercise 2: Making sure we return from functions
 
