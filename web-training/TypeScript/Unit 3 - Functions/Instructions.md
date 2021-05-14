@@ -8,7 +8,7 @@ https://www.typescriptlang.org/docs/handbook/2/functions.html
 
 - Open Ex1 and run it
 - Currently the getSum function both traverses a tree and calcluates the sum of its nodes. Let's extract the sum calculation logic into a function parameter, so we can apply different operations to a tree like this `reduce(tree, (result, tree) => result += tree.value, 0));`
-- Using the new generalized function output the max value in the tree 
+- Using the new generalized function output the max value in the tree
 
 ## Exercise 2: Making sure we return from functions
 
@@ -59,7 +59,7 @@ Have a look at `Ex2/WithoutReturnValue.ts`. Note we have a similar `FarmAnimal` 
 Thinking about types in terms of the number of possible values again (their 'cardinality'):
 
 - Unions are sometimes called 'sum' types, and structs/interfaces/records called 'product' types. Why is this?
-- Given that `never` has a cardinality of zero, what's the implication for a type like `string | never`?
+- Given that `never` has a cardinality of zero, what's the implication for a type like `string | never`? What implications does this have for exceptions in a type system?
 
 ## Exercise 3: Optional and Overloads
 
