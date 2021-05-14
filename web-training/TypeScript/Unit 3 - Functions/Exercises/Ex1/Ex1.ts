@@ -8,11 +8,15 @@ class TreeNode {
     }
 }
 
-function getSum(tree: TreeNode): number {
-    let result = tree.value;
+function sum(a: number, b: number) : number {
+    return a + b;
+}
+
+function getSum(tree: TreeNode, aggregate: number): number {
+    let result = sum(aggregate, tree.value);
 
     tree.children.forEach(child => {
-        result += getSum(child);
+        result = getSum(child, result);
     });
 
     return result;
@@ -26,5 +30,5 @@ const tree = new TreeNode(1, [
     ])
 ])
 
-console.log(getSum(tree));
+console.log(getSum(tree, 0));
 

@@ -8,8 +8,12 @@ class TreeNode {
     }
 }
 
-function reduce(tree: TreeNode, reducer: (aggregate: number, tree: TreeNode) => number, initialValue: number): number {    
-    let result = reducer(initialValue, tree);
+function sum(a: number, b: number) : number {
+    return a + b;
+}
+
+function reduce(tree: TreeNode, reducer: (aggregate: number, value: number) => number, initialValue: number): number {    
+    let result = reducer(initialValue, tree.value);
 
     tree.children.forEach(child => {
         result = reduce(child, reducer, result);
@@ -26,5 +30,5 @@ const tree = new TreeNode(1, [
     ])
 ])
 
-console.log(reduce(tree, (result, tree) => result += tree.value, 0));
+console.log(reduce(tree, sum, 0));
 console.log(reduce(tree, (result, tree) => result = Math.max(result, tree.value), 0));
