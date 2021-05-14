@@ -42,7 +42,7 @@ For this task we'll need to learn about [a special type called `never`](https://
 
 - types like `string` and `object` have many values, while `boolean` has two values
 - types like `"hello, world"`, `true`, `null` and `undefined` each have a single value
-- `never` is a type with `zero` values!
+- `never` is a type with **zero** values!
 
 `never` is useful in a couple of situations here:
 
