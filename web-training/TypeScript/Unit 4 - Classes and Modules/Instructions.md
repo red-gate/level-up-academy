@@ -20,6 +20,8 @@
     - Typescript also supports the commonjs / node syntax for modules, using `module.exports = { ... }` and `const foo = require(...)`
   - TypeScript Module Output Options
     - https://www.typescriptlang.org/docs/handbook/2/modules.html#typescripts-module-output-options
+    - Why is a bundler necessary?
+    - https://mattallan.me/posts/modern-javascript-without-a-bundler/
 
 - Classes and modules (type modules)
   - readonly
