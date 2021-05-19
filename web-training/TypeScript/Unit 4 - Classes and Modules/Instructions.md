@@ -1,7 +1,7 @@
 - Modules  
   https://www.typescriptlang.org/docs/handbook/2/modules.html
 
-  - Excercise 1: import, export, default
+  - Excercise 1: import, export, default (Mark)
     - Export/import functions from one file to another
     - Use default
     - Resolve a naming conflict  
@@ -18,7 +18,7 @@
     - Typescript can also import and export types. This has no impact on the compiled result, but provides namespacing for types.
       - Note: typescript can sometimes be confusing - the same name might refer to both a value and a type. This happens most often with class declarations, but can happen with other types too. Types and values have separate namespaces (TODO: check details here)
 
-- Excercise 2: require
+- Excercise 2: require (Mark)
   - Export/import functions from one file to another
   - Explore Module Output Options
   - Discuss bundling (we already did it in JS script a bit)
@@ -30,13 +30,13 @@
   - Why is a bundler necessary?
   - https://mattallan.me/posts/modern-javascript-without-a-bundler/
 
- - Excercise 3: interfaces
+ - Excercise 3: interfaces (Alex)
    - Declare, extend and use
    - What can we delcare in an interface
    - Duck typing
- - Excercise 4: Classes 
+ - Excercise 4: Classes (Piers)
    - Very basic, since interfaces are usually used instead
    - constructor, instanceof
- - Excercise 5: Type defintions for js
+ - Excercise 5: Type defintions for js (Sami?)
    - Create d.ts for a sample js file
    - installing and importing @types
