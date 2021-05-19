@@ -1,7 +1,10 @@
 - Modules  
   https://www.typescriptlang.org/docs/handbook/2/modules.html
 
-  - import, export, default
+  - Excercise 1: import, export, default
+    - Export/import functions from one file to another
+    - Use default
+    - Resolve a naming conflict  
 
     - https://www.typescriptlang.org/docs/handbook/2/modules.html#modules-in-typescript
     - Adding `import` or `export` to a typescript file makes it a module
@@ -15,7 +18,11 @@
     - Typescript can also import and export types. This has no impact on the compiled result, but provides namespacing for types.
       - Note: typescript can sometimes be confusing - the same name might refer to both a value and a type. This happens most often with class declarations, but can happen with other types too. Types and values have separate namespaces (TODO: check details here)
 
-  - require
+  - Excercise 2: require
+    - Export/import functions from one file to another
+    - Explore Module Output Options
+    - Discuss bundling (we already did it in JS script a bit)
+    
     - https://www.typescriptlang.org/docs/handbook/2/modules.html#es-module-syntax-with-commonjs-behavior
     - Typescript also supports the commonjs / node syntax for modules, using `module.exports = { ... }` and `const foo = require(...)`
   - TypeScript Module Output Options
