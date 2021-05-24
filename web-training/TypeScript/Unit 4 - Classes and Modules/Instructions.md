@@ -75,8 +75,19 @@ Does this change the previous two answers?
 
 If you had used two separate interfaces for with the same definition would you be able to distinguish them?
 
-   
-## Exercise 5: Type defintions for js (Sami?)
+## Exercise 5: Type defintions for JavaScript
 
-- Create d.ts for a sample js file
-- installing and importing @types
+In the real world, where we write production code, we might want to include a library from NPM to allow ourselves to write and maintain less code ourselves. If this library is written in JavaScript, you can still get all the TypeScript goodies by installing a type definition alongside it.
+
+- Open Ex5/Ex5.ts
+- Note the `console.log` statement
+- Run Ex5 and confirm that TypeScript is unhappy with us: `Cannot find module 'os' or its corresponding type declarations.`
+- Also note that (at least Visual Studio Code) doesn't give any intellisenese if you try to browse `os`' members with `CTRL`+`Space`. Horrible dev experience!
+
+This can all be solved by installing the appropritate typings: `npm install --save-dev @types/node`
+
+- Run the above statement, then re-run the example.
+- Note that you get output.
+- Pick something else from `os` and output that!
+
+A lot of packages nowadays come with TypeScript bindings (see ex. [boxen](https://www.npmjs.com/package/boxen) and [chalk](https://www.npmjs.com/package/chalk), but for those who don't, there's likely a binding available via [Definitely Typed](https://github.com/DefinitelyTyped/DefinitelyTyped).
