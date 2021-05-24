@@ -37,8 +37,44 @@
    
 ## Exercise 4: Classes (Piers)
 
-- Very basic, since interfaces are usually used instead
-- constructor, instanceof
+### Part A - Classes or Interfaces?
+
+"The decision to use a class or an interface truly depends on our use case: type-checking only, implementation details (typically via creating a new instance), or even both! We can use classes for type-checking and the underlying implementation - whereas we cannot with an interface. "
+[From ultimatecourses.com](https://ultimatecourses.com/blog/classes-vs-interfaces-in-typescript#:~:text=A%20class%20is%20a%20blueprint,implementation%20nor%20initialisation%20for%20them.)
+
+### Part B - Class construction
+
+- Ex4.js contains a basic class definition for `Dog`.
+- Create an interface called `IDog` that represents the same thing as `Dog`.
+- Create an instance of `IDog` and also print it's name.
+- In the generated JavaScript what is the difference between `IDog` and `Dog`?
+
+Extend `Dog` to include a private variable for owner name.
+Can you access the owner name in TypeScript?
+Are there any differences between ownerName and name in the generated JavaScript?
+
+### Part C - Using classes
+
+Define a type called `AllDogs` that is either `Dog` or `IDog`.
+Create a function called `printDogName` that takes a single `AllDogs` input and prints to the console the dog name
+
+Add a function called `wag` to the `Dog` class that outputs the text:
+```js
+`${this.name} wags its tail for ${this.ownerName}`
+```
+Call `wag` on `fiddo`
+
+### Part D - Type checking
+
+Create a new class `PizzaDog` that extends `Dog` and instantiate a new instance of `PizzaDog` called `pizza`
+Is `pizza` an `instanceof` `PizzaDog`?
+Is `pizza` and `instanceof` `Dog`?
+
+Remove the extends and copy `Dog`'s constructor to `PizzaDog`.
+Does this change the previous two answers?
+
+If you had used two separate interfaces for with the same definition would you be able to distinguish them?
+
    
 ## Exercise 5: Type defintions for js (Sami?)
 
