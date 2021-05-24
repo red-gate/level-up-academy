@@ -91,3 +91,7 @@ This can all be solved by installing the appropritate typings: `npm install --sa
 - Pick something else from `os` and output that!
 
 A lot of packages nowadays come with TypeScript bindings (see ex. [boxen](https://www.npmjs.com/package/boxen) and [chalk](https://www.npmjs.com/package/chalk), but for those who don't, there's likely a binding available via [Definitely Typed](https://github.com/DefinitelyTyped/DefinitelyTyped).
+
+The naming standard is `@types/`_original package name_
+
+Since we're using these types during development (not runtime), we always install them with `-D | --save-dev`
