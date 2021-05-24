@@ -1,9 +1,5 @@
 class Dog {
-    constructor(public name: string, public goodBoy: boolean, private ownerName: string){}
-
-    wag(){
-        console.log(`${this.name} wags its tail for ${this.ownerName}`);
-    }
+    constructor(public name: string, public goodBoy: boolean){}
 }
 
 
