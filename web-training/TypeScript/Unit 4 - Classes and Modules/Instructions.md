@@ -31,10 +31,13 @@
 
 ## Exercise 3: interfaces (Alex)
 
-- Declare, extend and use
-- What can we delcare in an interface
-- Duck typing
-   
+- Analyze Ex3.ts
+- Can we try to take a slice of a beer?
+- Let's make the code more type safe by describing functions expectations from their parameters using [interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#interfaces).
+- Declare `IFood`, `IBeverage` and `IPizza` interfaces. Change the three functions to take corresponding types and make sure that the existing calls for `beer` and `margheritta` are still working.
+- Can `IPizza` be a `salad`? If so, then improve the interface definition to restrict its `type`? 
+- What's your opinion on making `takeSlice` a part of the `IPizza` interface?
+
 ## Exercise 4: Classes (Piers)
 
 ### Part A - Classes or Interfaces?
@@ -44,7 +47,7 @@
 
 ### Part B - Class construction
 
-- Ex4.js contains a basic class definition for `Dog`.
+- Ex4.ts contains a basic class definition for `Dog`.
 - Create an interface called `IDog` that represents the same thing as `Dog`.
 - Create an instance of `IDog` and also print it's name.
 - In the generated JavaScript what is the difference between `IDog` and `Dog`?
