@@ -1,27 +1,48 @@
-## Exercise 1: import, export, default (Mark)
+## Exercise 1: Modules with `import` and `export`
 
-- Export/import functions from one file to another
-- Use default
-- Resolve a naming conflict  
+There are two main syntaxes available for defining javascript modules, usually called ES6 and commonjs. The (oversimplified, not-quite-accurate) difference is that you'll use ES6 modules when writing for the browser, and commonjs modules when writing nodejs scripts.
 
-- https://www.typescriptlang.org/docs/handbook/2/modules.html#modules-in-typescript
-- Adding `import` or `export` to a typescript file makes it a module
-- Modules are namespaced
-  - Typescript will complain about duplicate definitions between files that are not modules
-  - You can add `export {}` if you just want the namespace without exporting something
-- Export styles:  
-  `export default function hello[...]` is used like `import hello from './hello'`  
-  `export function hello[...] ` or `function hello[...]; export { hello }` is used like `import { hello } from './hello'`  
-  Style choice: export each item individually, or put one big `export { ... }` statement at the bottom of the file.
-- Typescript can also import and export types. This has no impact on the compiled result, but provides namespacing for types.
-  - Note: typescript can sometimes be confusing - the same name might refer to both a value and a type. This happens most often with class declarations, but can happen with other types too. Types and values have separate namespaces (TODO: check details here)
+First, we'll look at ES6 modules.
 
-## Exercise 2: require (Mark)
+### Part 1: Namespacing
+
+Take a look at the files in `Exercises/Ex1`. We have an entrypoint called `index.ts`, and two files `game1.ts` and `game2.ts` that are acting as libraries. Typescript is currently giving us an error because `game1.ts` and `game2.ts` have functions with overlapping names. By default, typescript files are not modules, and they all exist in the global namespace.
+
+- Run `npm install` and `npm run ex1` in the `Exercises` folder, and take a look at the emitted javascript files. (In this exercise we've disabled the `--noEmitOnError` option, so we can still look at the js output even though there are compile errors)  
+  Apart from adding `"use strict"` to the files, typescript hasn't really done anything to them yet.
+
+In order to turn our script files into modules, they must have at least one `import` or `export` statement. For this first part we're only interested in the namespacing, though, so we don't have anything we want to export yet.
+
+- We can work around this for now, though. Try adding `export {}` to the bottom of `game1.ts` and `game2.ts`.
+- Run `npm run ex1` again, and examine the newly generated js.
+
+Our generated code has now been compiled to [AMD ("Asynchronous module definition")](https://requirejs.org/docs/whyamd.html) modules. We can see how namespacing has been implemented using a function - within the function body, we know that any parameter names refer to exact objects we control. And names inside the function stay scoped to that function - no names will accidentally escape unless we explicitly return them.
+
+- In `tsconfig.json`, try changing the `"module": "amd"` option to some other values (like `"umd"` or `"System"`) and compare the results.  
+  Note how the generated code relies on some external function (like `define` or `System.register`) to actually define the modules. This function acts like a DI container in C# code: we'll need something external to register all our modules and join them together.
+
+### Part 2: Importing from other modules
+
+Take a look at `index.ts`. It's now erroring because there isn't a `playGame` function in scope any more - making `game1.ts` and `game2.ts` modules took `playGame` out of the global scope.
+
+- Change `game1.ts` and `game2.ts` so they export their `playGame` functions. ( Take a look at https://www.typescriptlang.org/docs/handbook/modules.html#export for syntax help )
+- Change `index.ts` so that it imports a `playGame` function from each file.  
+  We still can't have two different functions called `playGame` in scope - we'll either need to rename the imports, or scope the functions somehow. Take a look at https://www.typescriptlang.org/docs/handbook/modules.html#import-a-single-export-from-a-module for options, and pick the one you like best.
+- Take a look at the newly-generated javascript for these files. Note how the dependencies get exported from `game1.js` and `game2.js`, and how the generated function in `index.js` injects those dependencies.
+
+### Part 3: Default exports
+
+Since we're only exporting a single function for each game file, it also makes sense to try using a default export ( https://www.typescriptlang.org/docs/handbook/modules.html#default-exports ). This doesn't change much, except we now use a different syntax for importing: `import playGame1 from './game1'` instead of `import { playGame } from './game1'`. Default imports don't have a pre-defined name, which makes them easier to rename if necessary (as in this execise) but can lead to more inconsistent code.
+
+- Try quickly changing the `Ex1` folder over to using default imports. Which style do you prefer?
+
+## Exercise 2: Modules with `require`
+
+Second, we'll look at commonjs modules.
 
 - Export/import functions from one file to another
 - Explore Module Output Options
 - Discuss bundling (we already did it in JS script a bit)
-    
 - https://www.typescriptlang.org/docs/handbook/2/modules.html#es-module-syntax-with-commonjs-behavior
 - Typescript also supports the commonjs / node syntax for modules, using `module.exports = { ... }` and `const foo = require(...)`
 - TypeScript Module Output Options
@@ -35,7 +56,7 @@
 - Can we try to take a slice of a beer?
 - Let's make the code more type safe by describing functions expectations from their parameters using [interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#interfaces).
 - Declare `IFood`, `IBeverage` and `IPizza` interfaces. Change the three functions to take corresponding types and make sure that the existing calls for `beer` and `margheritta` are still working.
-- Can `IPizza` be a `salad`? If so, then improve the interface definition to restrict its `type`? 
+- Can `IPizza` be a `salad`? If so, then improve the interface definition to restrict its `type`?
 - What's your opinion on making `takeSlice` a part of the `IPizza` interface?
 
 ## Exercise 4: Classes (Piers)
@@ -62,9 +83,11 @@ Define a type called `AllDogs` that is either `Dog` or `IDog`.
 Create a function called `printDogName` that takes a single `AllDogs` input and prints to the console the dog name
 
 Add a function called `wag` to the `Dog` class that outputs the text:
+
 ```js
-`${this.name} wags its tail for ${this.ownerName}`
+`${this.name} wags its tail for ${this.ownerName}`;
 ```
+
 Call `wag` on `fiddo`
 
 ### Part D - Type checking

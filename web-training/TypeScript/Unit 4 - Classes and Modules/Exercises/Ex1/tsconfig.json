@@ -1,0 +1,9 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2016",
+    "moduleResolution": "node",
+    "module": "amd"
+  }
+}

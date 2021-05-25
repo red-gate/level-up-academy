@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "ex1": "tsc --project Ex1/tsconfig.json && node Ex1/ex1.js",
+    "ex1": "tsc --project Ex1/tsconfig.json && node Ex1/index.js",
     "ex2": "tsc --project Ex2/tsconfig.json",
     "ex3": "tsc --project Ex3/tsconfig.json && node Ex3/ex3.js",
     "ex4": "tsc --project Ex4/tsconfig.json && node Ex4/ex4.js",
