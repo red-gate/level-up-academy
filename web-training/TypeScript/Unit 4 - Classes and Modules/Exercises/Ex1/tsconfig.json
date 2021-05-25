@@ -1,0 +1,10 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "strict": true,
+        "noEmitOnError": true,
+        "target": "ES2016",
+        "moduleResolution": "Node",
+        "module": "CommonJS"
+    }
+}
