@@ -56,19 +56,21 @@ Parcel and webpack provide many additional features on top of simple bundling, s
 - Take a look at the generated `bundle.js` contents.  
   Note how the three files have been merged into one, and the namespace issues have been resolved by renaming some of the functions.
 
-## Exercise 2: Modules with Node.js and `require`
+## Exercise 2: Modules with Node.js and `require` (Optional)
 
-Second, we'll look at commonjs modules.
+If you're only writing code for node scripts rather than the browser, then the situation is a bit different and a bit simpler:
 
-- Export/import functions from one file to another
-- Explore Module Output Options
-- Discuss bundling (we already did it in JS script a bit)
-- https://www.typescriptlang.org/docs/handbook/2/modules.html#es-module-syntax-with-commonjs-behavior
-- Typescript also supports the commonjs / node syntax for modules, using `module.exports = { ... }` and `const foo = require(...)`
-- TypeScript Module Output Options
-  - https://www.typescriptlang.org/docs/handbook/2/modules.html#typescripts-module-output-options
-  - Why is a bundler necessary?
-  - https://mattallan.me/posts/modern-javascript-without-a-bundler/
+- The syntax is different - you'll generally use `require()` and `module.exports` instead of `import` and `export` (although newer versions of node [do support the ES6 syntax](https://stackoverflow.com/a/45854500))
+- You don't need a separate bundling step, since node has module resolution built in.
+
+For building a node app, there are a few steps. **It's fine if you want to skip these, since there aren't many interesting differences.**
+
+- Run `npm install @types/node --save-dev`. This will provide types for the `require` function and `module` object, along with all the other APIs that node provides. You'll learn more about `@types` packages later in this unit.
+- In `tsconfig.json`, set the `"module"` option to `"commonjs"`.
+- We still need to use the `import` and `export` keywords to let typescript know that individual files are modules, so we end up using a strange hybrid of ES6 and node module syntax:
+  - Instead of `const foo = require("./library");`, write `import foo = require("./library")`
+  - Instead of `module.exports = { exportedFunc }`, write `export = { exported Func }`
+- The `import`/`export` syntax will be transformed back into the standard node syntax in the generated javascript.
 
 ## Exercise 3: interfaces (Alex)
 
