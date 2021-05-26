@@ -32,11 +32,31 @@ Take a look at `index.ts`. It's now erroring because there isn't a `playGame` fu
 
 ### Part 3: Default exports
 
-Since we're only exporting a single function for each game file, it also makes sense to try using a default export ( https://www.typescriptlang.org/docs/handbook/modules.html#default-exports ). This doesn't change much, except we now use a different syntax for importing: `import playGame1 from './game1'` instead of `import { playGame } from './game1'`. Default imports don't have a pre-defined name, which makes them easier to rename if necessary (as in this execise) but can lead to more inconsistent code.
+Since we're only exporting a single function for each game file, it also makes sense to try using a default export ( https://www.typescriptlang.org/docs/handbook/modules.html#default-exports ). This doesn't change much, except we now use a different syntax for importing: `import playGame1 from './game1'` instead of `import { playGame } from './game1'`. Default imports don't have a pre-defined name, which makes them easier to rename if necessary (as in this exercise) but can lead to more inconsistent code.
 
 - Try quickly changing the `Ex1` folder over to using default imports. Which style do you prefer?
 
-## Exercise 2: Modules with `require`
+### Part 4: Making it work in a browser
+
+Even though typescript has compiled our code, it requires additional compilation steps before it can be easily used in a browser. This is for a couple of reasons:
+
+- While [most browsers](https://caniuse.com/es6-module) now support loading ES6 modules directly, support is not universal, and [comes with a bunch of caveats](https://david-gilbertson.medium.com/es6-modules-in-the-browser-are-they-ready-yet-715ca2c94d09).
+- Even where modules are supported, they tend to be the wrong size - we want to avoid the browser making hundreds of network requests for each of the files in our codebase.
+
+We need to use a "bundler" tool to compile our individual `.js` files into one big output bundle. If you're familiar with classic C build pipelines, it might help to think of modules as object files and bundling as the linker step.
+
+There are many javascript bundlers available, on a rotating lifecyle: [grunt](https://gruntjs.com/), [gulp](https://gulpjs.com/) and [browserify](https://browserify.org/) are on the way out, [webpack](https://webpack.js.org/) is the current standard choice and [parcel](https://parceljs.org/) is the up-and-coming contender. Expect this to all change again in a few years.
+
+Parcel and webpack provide many additional features on top of simple bundling, such as integrating the typescript compiler into the build process or running an in-memory development server with hot reloading. We don't have enough time to dive into all these features, though (they could fill up an entire course just by themselves!) so for this exercise we'll use a simpler alternative called [rollup.js](https://rollupjs.org/guide/en/):
+
+- In `tsconfig.json`, change the generated module format to `"ES6"`.  
+  This means typescript will keep the files as ES6 modules, rather than transforming them into AMD or UMD module functions. This is necessary since Rollup takes the ES6 module format as input.
+- In the `Ex1` folder, run `npx rollup --file bundle.js index.js`.  
+  This tells Rollup to read `index.js`, process its dependencies, and then bundle them into an output file called `bundle.js`.
+- Take a look at the generated `bundle.js` contents.  
+  Note how the three files have been merged into one, and the namespace issues have been resolved by renaming some of the functions.
+
+## Exercise 2: Modules with Node.js and `require`
 
 Second, we'll look at commonjs modules.
 
