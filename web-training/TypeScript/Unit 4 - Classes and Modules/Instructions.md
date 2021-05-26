@@ -49,7 +49,7 @@ There are many javascript bundlers available, on a rotating lifecyle: [grunt](ht
 
 Parcel and webpack provide many additional features on top of simple bundling, such as integrating the typescript compiler into the build process or running an in-memory development server with hot reloading. We don't have enough time to dive into all these features, though (they could fill up an entire course just by themselves!) so for this exercise we'll use a simpler alternative called [rollup.js](https://rollupjs.org/guide/en/):
 
-- In `tsconfig.json`, change the generated module format to `"ES6"`.  
+- In `tsconfig.json`, change the generated module format to `"ES6"` and run the typescript build again.  
   This means typescript will keep the files as ES6 modules, rather than transforming them into AMD or UMD module functions. This is necessary since Rollup takes the ES6 module format as input.
 - In the `Ex1` folder, run `npx rollup --file bundle.js index.js`.  
   This tells Rollup to read `index.js`, process its dependencies, and then bundle them into an output file called `bundle.js`.
