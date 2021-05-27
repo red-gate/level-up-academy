@@ -69,7 +69,7 @@ For building a node app, there are a few steps. **It's fine if you want to skip 
 - In `tsconfig.json`, set the `"module"` option to `"commonjs"`.
 - We still need to use the `import` and `export` keywords to let typescript know that individual files are modules, so we end up using a strange hybrid of ES6 and node module syntax:
   - Instead of `const foo = require("./library");`, write `import foo = require("./library")`
-  - Instead of `module.exports = { exportedFunc }`, write `export = { exported Func }`
+  - Instead of `module.exports = { exportedFunc }`, write `export = { exportedFunc }`
 - The `import`/`export` syntax will be transformed back into the standard node syntax in the generated javascript.
 
 ## Exercise 3: interfaces (Alex)
