@@ -4,6 +4,8 @@ const gameChoice = (document.getElementById("input") as HTMLInputElement)
 switch (gameChoice) {
   case "farming_sim":
     playGame();
+    break;
   case "scifi_rpg":
     playGame();
+    break;
 }
