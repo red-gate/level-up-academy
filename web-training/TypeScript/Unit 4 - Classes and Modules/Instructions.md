@@ -65,7 +65,7 @@ If you're only writing code for node scripts rather than the browser, then the s
 
 For building a node app, there are a few steps. **It's fine if you want to skip these, since there aren't many interesting differences.**
 
-- Run `npm install @types/node --save-dev`. This will provide types for the `require` function and `module` object, along with all the other APIs that node provides. You'll learn more about `@types` packages later in this unit.
+- In the Ex1 folder, run `npm install @types/node --save-dev`. This will provide types for the `require` function and `module` object, along with all the other APIs that node provides. You'll learn more about `@types` packages later in this unit.
 - In `tsconfig.json`, set the `"module"` option to `"commonjs"`.
 - We still need to use the `import` and `export` keywords to let typescript know that individual files are modules, so we end up using a strange hybrid of ES6 and node module syntax:
   - Instead of `const foo = require("./library");`, write `import foo = require("./library")`
