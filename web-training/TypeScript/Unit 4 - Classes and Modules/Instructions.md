@@ -121,7 +121,7 @@ Is `pizza` and `instanceof` `Dog`?
 Remove the extends and copy `Dog`'s constructor to `PizzaDog`.
 Does this change the previous two answers?
 
-If you had used two separate interfaces for with the same definition would you be able to distinguish them?
+If you had used two separate interfaces for `IDog` with the same definition would you be able to distinguish them?
 
 ## Exercise 5: Type defintions for JavaScript
 
