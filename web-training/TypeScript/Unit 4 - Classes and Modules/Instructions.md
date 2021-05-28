@@ -72,7 +72,7 @@ For building a node app, there are a few steps. **It's fine if you want to skip 
   - Instead of `module.exports = { exportedFunc }`, write `export = { exportedFunc }`
 - The `import`/`export` syntax will be transformed back into the standard node syntax in the generated javascript.
 
-## Exercise 3: interfaces (Alex)
+## Exercise 3: Interfaces
 
 - Analyze Ex3.ts
 - Can we try to take a slice of a beer?
@@ -81,7 +81,7 @@ For building a node app, there are a few steps. **It's fine if you want to skip 
 - Can `IPizza` be a `salad`? If so, then improve the interface definition to restrict its `type`?
 - What's your opinion on making `takeSlice` a part of the `IPizza` interface?
 
-## Exercise 4: Classes (Piers)
+## Exercise 4: Classes
 
 ### Part A - Classes or Interfaces?
 
@@ -102,7 +102,7 @@ Are there any differences between ownerName and name in the generated JavaScript
 ### Part C - Using classes
 
 Define a type called `AllDogs` that is either `Dog` or `IDog`.
-Create a function called `printDogName` that takes a single `AllDogs` input and prints to the console the dog name
+Create a function called `printDogName` that takes a single `AllDogs` input and prints to the console the dog name.
 
 Add a function called `wag` to the `Dog` class that outputs the text:
 
@@ -114,8 +114,8 @@ Call `wag` on `fiddo`
 
 ### Part D - Type checking
 
-Create a new class `PizzaDog` that extends `Dog` and instantiate a new instance of `PizzaDog` called `pizza`
-Is `pizza` an `instanceof` `PizzaDog`?
+Create a new class `PizzaDog` that extends `Dog` and instantiate a new instance of `PizzaDog` called `pizza`.  
+Is `pizza` an `instanceof` `PizzaDog`?  
 Is `pizza` and `instanceof` `Dog`?
 
 Remove the extends and copy `Dog`'s constructor to `PizzaDog`.
