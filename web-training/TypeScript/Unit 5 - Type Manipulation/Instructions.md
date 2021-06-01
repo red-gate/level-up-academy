@@ -8,6 +8,7 @@
 ## Exercise 2: Keyof, Typeof, Indexed Access Types (Sami)
 
 The `keyof` operator takes an object type and produces a string or numeric literal union of its keys:
+
 - `keyof { x: number; y: number }` is `'x' | 'y'` because the object's keys/properties/fields can either be **x** or **y** (e.g. `myObject[x] = myObject.y + 1`)
 - `keyof { [n: number]: unknown }` is `number` because that's the restriction we set (e.g. `const someValue = myArray[1]`)
 - `keyof { [key: string]: boolean}` is `number | string`. Numeric indexes will be coerced into strings (e.g. `myMap['magic-feature-enabled'] = true`)
@@ -22,7 +23,7 @@ And `type FeatureFlags = { darkMode: () => void; newUserProfile: () => void; }`
 
 Then `type FeatureOptions = OptionsFlags<FeatureFlags>` is `type FeatureOptions { darkMode: boolean; newUserProfile: boolean }`
 
-
+- Run through the code examples in Ex2 and make sure you understand the concepts.
 
 ## Exercise 3: Conditional types (Mark)
 
