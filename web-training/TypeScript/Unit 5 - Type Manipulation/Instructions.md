@@ -1,9 +1,9 @@
 # Type manipulation
 
 ## Exercise 1: Generics (Alex)
+
 - Generic functions
 - - constraints
-
 
 ## Exercise 2: Keyof, Typeof, Indexed Access Types (Sami)
 
@@ -27,16 +27,25 @@ Then `type FeatureOptions = OptionsFlags<FeatureFlags>` is `type FeatureOptions 
 
 ## Exercise 3: Conditional types (Mark)
 
+### Part A: Conditional types
+
+By themselves, conditional types
+
+### Part B: Pattern matching on types
+
+Funky javascript APIs aside, conditional types become much more practical when combined with the `infer` keyword.
 
 ## Exercise 4: Intersection types
 
 ### Part A
+
 - Create an interface to represent `ICat` with two variables:
   - `name` of type `string`
   - `numberOfLives` of type `number`
 - Create a variable `kitty` that is an `ICat`
 
 ### Part B
+
 - Tame animals are animals that have an owner.
 - Create an interface called `ITame` to represent this
 - Create a type called `TameCat` that is both `ICat` and `ITame`
