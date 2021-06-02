@@ -1,25 +1,27 @@
 
-interface IDog {
-    name: string;
-    goodBoy: boolean;
-}
+type Animal = {
+    type: "Dog",
+    name: string,
+    goodBoy: boolean
+  } | {
+    type: "Cat",
+    name: string,
+    numberOfLives: number
+  }
 
-function PrintDog(dog: IDog){
+type Dog = Animal & {type: "Dog"}
+function PrintDog(dog: Dog){
     console.log(`${dog.name} ${dog.goodBoy ? "is" : "is not"} a good boy`);
 }
 
 const fiddo = {
     name: "Fiddo",
     goodBoy: true 
-}
+} as Dog
 
 PrintDog(fiddo);
 
-interface ICat {
-    name: string;
-    numberOfLives: number;
-}
-
+/*
 interface ITame {
     ownerName: string;
 }
@@ -35,7 +37,9 @@ function PrintTameAnimal(tameAnimal: TameAnimal){
     console.log(`${tameAnimal.name} is an animal owned by ${tameAnimal.ownerName}`);
 }
 
-function PrintTameAnimal(tameAnimal: {name: string, ownerName: string}){
+// Doesn't rely on an external types or interfaces so wouldn't be affected by changing
+// requirements to these (For example, adding registered address to ITame)
+function PrintTameAnimal1(tameAnimal: {name: string, ownerName: string}){
     console.log(`${tameAnimal.name} is an animal owned by ${tameAnimal.ownerName}`);
 }
 
@@ -45,7 +49,7 @@ var kitty = {
     ownerName: 'Piers'
 };
 
-PrintTameCat(kitty);
+// PrintTameCat(kitty);
 
 var puppy = {
     name: "Lexi",
@@ -53,6 +57,7 @@ var puppy = {
     ownerName: 'Piers'
 };
 
-PrintTameCat(puppy);
+// PrintTameCat(puppy);
 PrintTameAnimal(puppy);
 PrintTameAnimal(kitty);
+*/

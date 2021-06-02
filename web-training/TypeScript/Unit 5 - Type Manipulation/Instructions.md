@@ -58,3 +58,21 @@ function PrintTameAnimal(tameAnimal: {name: string, ownerName: string}){
     console.log(`${tameAnimal.name} is an animal owned by ${tameAnimal.ownerName}`);
 }
 ```
+
+### Part E
+- Convert `IDog` and `ICat` to a discriminated union `Animal`:
+```ts
+type Animal = {
+  type: "Dog",
+  name: string,
+  goodBoy: boolean
+} | {
+  type: "Cat",
+  name: string,
+  numberOfLives: number
+}
+```
+- Create a type definition for `Dog` that is an `Animal` with value `"Dog"` for the `type` property. This is using an intersection type to select from a union
+- Fix the definition of `PrintDog` to take a `Dog`
+- Use a Type Assertion to convert fiddo to a `Dog`
+- Remove or comment out everything not needed for `PrintDog` to run and run the program
