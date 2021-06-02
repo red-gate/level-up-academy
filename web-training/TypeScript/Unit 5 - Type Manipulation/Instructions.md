@@ -29,11 +29,22 @@ Then `type FeatureOptions = OptionsFlags<FeatureFlags>` is `type FeatureOptions 
 
 ### Part A: Conditional types
 
-By themselves, conditional types
+Conditional types are cool because they let us implement basic logic at the type level. You'll likely not use them much in your own code, but they show up a lot when typing various library functions.
+
+One common pattern for a function is to operate on defined values, but pass through `null` values unchanged. Take a look at `returnsNullIfNull.ts`, where we implement this pattern with two different function overloads. We can implement the same idea in a more generic way by using conditional types. Take a look at `oneOrMany.ts` to see the idea.
+
+- TODO: more detail
 
 ### Part B: Pattern matching on types
 
-Funky javascript APIs aside, conditional types become much more practical when combined with the `infer` keyword.
+For our own code, conditional types become much more practical when combined with the `infer` keyword. We can match against different types and extract part of the result.
+
+In `api.ts` we have some duplication between the contents of a `createApi` method and an `Api` type. We use the `Api` type to make sure that a mock Api implementation contains all the correct methods. However, this is redundant: instead of defining the `Api` type explicitly, we can define it as "whatever the `createApi` method returns". This means we can remove the amount of boilerplate when adding a new method to the api.
+
+- Create a `MyReturnType<T>` conditional type which, if `T` is a function, produces the return type of `T`
+- Compare it to the actual `ReturnType<T>` type in typescript's standard libary
+- Use `MyReturnType<T>` to define the `Api` type as whatever `createApi` returns.
+- TODO: more detail
 
 ## Exercise 4: Intersection types
 
@@ -53,34 +64,44 @@ Funky javascript APIs aside, conditional types become much more practical when c
 - Do something similar for `fiddo`
 
 ### Part C
+
 - Create a function `PrintTameCat` that outputs:
-``` console.log(`${cat.name} is a cat owned by ${cat.ownerName}`);```
+  `` console.log(`${cat.name} is a cat owned by ${cat.ownerName}`);``
 - `fiddo` has all the properties used in `PrintTameCat` - Can you pass `fiddo` to this function?
 
 ### Part D
+
 - Create a type `TameAnimal` that is anything tame with a name
 - Create a function `PrintTameAnimal` that takes in a `TameAnimal`
 - Can you use this function on both `kitty` and `fiddo`?
 - Is there a difference between your definition of `PrintTameAnimal` and this one:
+
 ```ts
-function PrintTameAnimal(tameAnimal: {name: string, ownerName: string}){
-    console.log(`${tameAnimal.name} is an animal owned by ${tameAnimal.ownerName}`);
+function PrintTameAnimal(tameAnimal: { name: string; ownerName: string }) {
+  console.log(
+    `${tameAnimal.name} is an animal owned by ${tameAnimal.ownerName}`
+  );
 }
 ```
 
 ### Part E
+
 - Convert `IDog` and `ICat` to a discriminated union `Animal`:
+
 ```ts
-type Animal = {
-  type: "Dog",
-  name: string,
-  goodBoy: boolean
-} | {
-  type: "Cat",
-  name: string,
-  numberOfLives: number
-}
+type Animal =
+  | {
+      type: "Dog";
+      name: string;
+      goodBoy: boolean;
+    }
+  | {
+      type: "Cat";
+      name: string;
+      numberOfLives: number;
+    };
 ```
+
 - Create a type definition for `Dog` that is an `Animal` with value `"Dog"` for the `type` property. This is using an intersection type to select from a union
 - Fix the definition of `PrintDog` to take a `Dog`
 - Use a Type Assertion to convert fiddo to a `Dog`
