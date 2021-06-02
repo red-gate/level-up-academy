@@ -28,7 +28,33 @@ Then `type FeatureOptions = OptionsFlags<FeatureFlags>` is `type FeatureOptions 
 ## Exercise 3: Conditional types (Mark)
 
 
-## Exercise 4: Intersection types (Piers)
+## Exercise 4: Intersection types
 
-- combining types `type X = Person & Serializable & Loggable`
-- picking members from a union `type X = FarmAnimal & { type: 'cow' }`
+### Part A
+- Create an interface to represent `ICat` with two variables:
+  - `name` of type `string`
+  - `numberOfLives` of type `number`
+- Create a variable `kitty` that is an `ICat`
+
+### Part B
+- Tame animals are animals that have an owner.
+- Create an interface called `ITame` to represent this
+- Create a type called `TameCat` that is both `ICat` and `ITame`
+- Adjust `kitty` to be a `TameCat`
+- Do something similar for `fiddo`
+
+### Part C
+- Create a function `PrintTameCat` that outputs:
+``` console.log(`${cat.name} is a cat owned by ${cat.ownerName}`);```
+- `fiddo` has all the properties used in `PrintTameCat` - Can you pass `fiddo` to this function?
+
+### Part D
+- Create a type `TameAnimal` that is anything tame with a name
+- Create a function `PrintTameAnimal` a `TameAnimal`
+- Can you use this function on both `kitty` and `fiddo`?
+- Is there a difference between your definition of `PrintTameAnimal` and this one:
+```ts
+function PrintTameAnimal1(tameAnimal: {name: string, ownerName: string}){
+    console.log(`${tameAnimal.name} is an animal owned by ${tameAnimal.ownerName}`);
+}
+```
