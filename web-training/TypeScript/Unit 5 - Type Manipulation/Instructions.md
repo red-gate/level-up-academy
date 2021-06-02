@@ -50,7 +50,7 @@ Then `type FeatureOptions = OptionsFlags<FeatureFlags>` is `type FeatureOptions 
 
 ### Part D
 - Create a type `TameAnimal` that is anything tame with a name
-- Create a function `PrintTameAnimal` a `TameAnimal`
+- Create a function `PrintTameAnimal` that takes in a `TameAnimal`
 - Can you use this function on both `kitty` and `fiddo`?
 - Is there a difference between your definition of `PrintTameAnimal` and this one:
 ```ts
