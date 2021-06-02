@@ -54,7 +54,7 @@ Then `type FeatureOptions = OptionsFlags<FeatureFlags>` is `type FeatureOptions 
 - Can you use this function on both `kitty` and `fiddo`?
 - Is there a difference between your definition of `PrintTameAnimal` and this one:
 ```ts
-function PrintTameAnimal1(tameAnimal: {name: string, ownerName: string}){
+function PrintTameAnimal(tameAnimal: {name: string, ownerName: string}){
     console.log(`${tameAnimal.name} is an animal owned by ${tameAnimal.ownerName}`);
 }
 ```
