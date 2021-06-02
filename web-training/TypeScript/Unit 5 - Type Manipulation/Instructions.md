@@ -5,7 +5,7 @@
 - Generic functions
 - - constraints
 
-## Exercise 2: Keyof, Typeof, Indexed Access Types (Sami)
+## Exercise 2: `keyof`, `typeof` and Indexed Access Types
 
 The `keyof` operator takes an object type and produces a string or numeric literal union of its keys:
 
@@ -24,6 +24,12 @@ And `type FeatureFlags = { darkMode: () => void; newUserProfile: () => void; }`
 Then `type FeatureOptions = OptionsFlags<FeatureFlags>` is `type FeatureOptions { darkMode: boolean; newUserProfile: boolean }`
 
 - Run through the code examples in Ex2 and make sure you understand the concepts.
+
+To look up the type of a specific property of a containing type, we use an *indexed access type*:
+
+`type PlaceName = MyGeoPosition['name']`
+
+- What union would the following produce and why? `type RiddleMeThis = MyGeoPosition['name' | 'longitude']`
 
 ## Exercise 3: Conditional types (Mark)
 
