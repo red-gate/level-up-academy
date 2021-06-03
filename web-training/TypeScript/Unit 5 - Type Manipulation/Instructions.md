@@ -25,7 +25,7 @@ Then `type FeatureOptions = OptionsFlags<FeatureFlags>` is `type FeatureOptions 
 
 - Run through the code examples in Ex2 and make sure you understand the concepts.
 
-To look up the type of a specific property of a containing type, we use an *indexed access type*:
+To look up the type of a specific property of a containing type, we use an _indexed access type_:
 
 `type PlaceName = MyGeoPosition['name']`
 
@@ -37,20 +37,20 @@ To look up the type of a specific property of a containing type, we use an *inde
 
 Conditional types are cool because they let us implement basic logic at the type level. You'll likely not use them much in your own code, but they show up a lot when typing various library functions.
 
-One common pattern for a function is to operate on defined values, but pass through `null` values unchanged. Take a look at `returnsNullIfNull.ts`, where we implement this pattern with two different function overloads. We can implement the same idea in a more generic way by using conditional types. Take a look at `oneOrMany.ts` to see the idea.
+One common pattern for a function is to operate on defined values, but pass through `null` values unchanged.
 
-- TODO: more detail
+- Take a look at `returnsNullIfNull.ts`, where we implement this pattern with two different function overloads.
+- Have a go at implementing the same idea in a more generic way by using conditional types. Take a look at `oneOrMany.ts` to see the idea.
 
 ### Part B: Pattern matching on types
 
 For our own code, conditional types become much more practical when combined with the `infer` keyword. We can match against different types and extract part of the result.
 
-In `api.ts` we have some duplication between the contents of a `createApi` method and an `Api` type. We use the `Api` type to make sure that a mock Api implementation contains all the correct methods. However, this is redundant: instead of defining the `Api` type explicitly, we can define it as "whatever the `createApi` method returns". This means we can remove the amount of boilerplate when adding a new method to the api.
+In `api.ts` we have some duplication between the contents of a `createApi` method and an `Api` type. We use the `Api` type to make sure that a mock Api implementation contains all the correct methods. However, this turns out to be redundant: instead of defining the `Api` type explicitly, we can define it as "whatever the `createApi` method returns". This means we can remove the amount of boilerplate when adding a new method to the api.
 
 - Create a `MyReturnType<T>` conditional type which, if `T` is a function, produces the return type of `T`
 - Compare it to the actual `ReturnType<T>` type in typescript's standard libary
 - Use `MyReturnType<T>` to define the `Api` type as whatever `createApi` returns.
-- TODO: more detail
 
 ## Exercise 4: Intersection types
 

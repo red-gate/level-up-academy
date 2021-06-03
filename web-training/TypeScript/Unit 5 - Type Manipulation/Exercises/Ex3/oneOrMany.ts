@@ -22,8 +22,11 @@ function isEven2<T extends number | number[]>(n: T): ArrayOrSingle<T> {
 // check the inferred types of `isEven` below - they should be `boolean` or `boolean[]`
 // as appropriate, but not both at the same time
 
-console.log(isEven(3));
-console.log(isEven([1, 2, 3]));
+function assertIsBoolean(value: boolean) {}
+function assertIsBoolArray(value: boolean[]) {}
 
-console.log(isEven2(3));
-console.log(isEven2([1, 2, 3]));
+assertIsBoolean(isEven(3));
+assertIsBoolArray(isEven([1, 2, 3]));
+
+assertIsBoolean(isEven2(3));
+assertIsBoolArray(isEven2([1, 2, 3]));
