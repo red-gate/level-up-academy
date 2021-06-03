@@ -65,7 +65,7 @@ To look up the type of a specific property of a containing type, we use an _inde
 
 - What union would the following produce and why? `type RiddleMeThis = MyGeoPosition['name' | 'longitude']`
 
-## Exercise 3: Conditional types (Mark)
+## Exercise 3: Conditional types
 
 ### Part A: Conditional types
 
