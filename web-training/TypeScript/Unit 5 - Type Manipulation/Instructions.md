@@ -15,9 +15,9 @@ The `keyof` operator takes an object type and produces a string or numeric liter
 
 These will come in handy in the next Unit, when we discuss _Mapped Types_. Here's a quick preview:
 
-A mapped type is a generic type which uses a unicon created via a keyof to iterate through the keys/fields/properties of one type to create another:
+A mapped type is a generic type which uses a union created via a keyof to iterate through the keys/fields/properties of one type to create another:
 
-Given `type OptionsFlags<Type> = { [Property in keyof Type]: boolean; }`
+Given `type OptionsFlags<Type> = { [Key in keyof Type]: boolean; }`
 
 And `type FeatureFlags = { darkMode: () => void; newUserProfile: () => void; }`
 
