@@ -1,9 +1,43 @@
 # Type manipulation
 
-## Exercise 1: Generics (Alex)
+## Exercise 1: Generics
 
-- Generic functions
-- - constraints
+[Generic](https://www.typescriptlang.org/docs/handbook/2/generics.html) types and functions allows you to write logic that can work over a variety of types rather than a single one.
+
+```ts
+interface NamedValue<TValue> {
+  name: string;
+  value: TValue;
+}
+
+function PrintName<TValue>(namedValue: NamedValue<TValue>) {
+  console.log(namedValue.name);
+}
+```
+
+### Part A: Generic tree
+
+- Look through the code in ex1.ts and run it. (It has bits of unused code that we are going to use later.)
+
+Currently tree nodes can have only string values. Let's extend it, so we can use for other types as well.
+
+- Make the `TreeNode` type into generic `TreeNode<TValue>`, so it can be used for `arrayTree` and `petOrgChart` as well.
+
+- Make the `reduce` function generic as well, and use it to run `getLongest` on `arrayTree` and `getLongestName` on `petOrgChart`.
+
+### Part B: Generic constraints
+
+We can use `extends` keyword to specify that a generic parameter has to assignable to a specific interface or class.
+
+What type does `reduce` return when it is called with the `getLongest` function?
+
+- Make the `getLongest` function generic, so it returns the actual parameter type instead of an interface.
+
+### Part C: (optional) Key generic constraints
+
+We can use `TKey extends keyof TValue` keywords to specify that a parameter of the `TKey` type is a name of a key faor the `TValue` type. E.g. `length` is a key name for the `string` type.
+
+- Make the `getLongestFunction` generic, so it can be used to get either the pet with a longest name or a longest owner name. (Hint: You'll have to use a function returning a function in order to make resulting function fit the signature expected by `reduce`). 
 
 ## Exercise 2: `keyof`, `typeof` and Indexed Access Types
 
