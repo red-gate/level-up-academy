@@ -37,7 +37,7 @@ What type does `reduce` return when it is called with the `getLongest` function?
 
 We can use `TKey extends keyof TValue` keywords to specify that a parameter of the `TKey` type is a name of a key faor the `TValue` type. E.g. `length` is a key name for the `string` type.
 
-- Make the `getLongestFunction` generic, so it can be used to get either the pet with a longest name or a longest owner name. (Hint: You'll have to use a function returning a function in order to make resulting function fit the signature expected by `reduce`). 
+- Make the `getLongestFunction` generic, so it can be used to get either the pet with a longest name or a longest owner name. (Hint: You'll have to use a function returning a function in order to make resulting function fit the signature expected by `reduce`).
 
 ## Exercise 2: `keyof`, `typeof` and Indexed Access Types
 
@@ -83,7 +83,7 @@ For our own code, conditional types become much more practical when combined wit
 In `api.ts` we have some duplication between the contents of a `createApi` method and an `Api` type. We use the `Api` type to make sure that a mock Api implementation contains all the correct methods. However, this turns out to be redundant: instead of defining the `Api` type explicitly, we can define it as "whatever the `createApi` method returns". This means we can remove the amount of boilerplate when adding a new method to the api.
 
 - Create a `MyReturnType<T>` conditional type which, if `T` is a function, produces the return type of `T`
-- Compare it to the actual `ReturnType<T>` type in typescript's standard libary
+- Compare it to [the actual `ReturnType<T>` type in typescript's standard library](https://github.com/microsoft/TypeScript/blob/a7fb678c03d8f579da512e165696659230c28edf/lib/lib.es5.d.ts#L1533-L1536)
 - Use `MyReturnType<T>` to define the `Api` type as whatever `createApi` returns.
 
 ## Exercise 4: Intersection types
