@@ -26,7 +26,7 @@ function getLongest(a: HasLength, b: HasLength) : HasLength {
     return a.length > b.length ? a : b;
 }
 
-function reduce(tree: TreeNode, reducer: (aggregate: string, value: string) => string, initialValue: string): strings {    
+function reduce(tree: TreeNode, reducer: (aggregate: string, value: string) => string, initialValue: string): string {    
     let result = reducer(initialValue, tree.value);
 
     tree.children.forEach(child => {
