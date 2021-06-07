@@ -43,6 +43,6 @@ type ExcludeId<T> = {
 
 // TODO: Create a new type where the id property is excluded, by applying ExcludeId<T> to Account.
 
-// TODO: Create a new type where you apply, Lazy, Concrete and ExcludeId to UserAccount
+// TODO: Create a new type where you apply Lazy, Concrete and ExcludeId to UserAccount
 
 

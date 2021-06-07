@@ -59,7 +59,7 @@ type ExcludeId<T> = {
 
 type UserAccountWithoutId = ExcludeId<UserAccount>;
 
-// Create a new type where you apply, Lazy, Concrete and ExcludeId to UserAccount
+// Create a new type where you apply Lazy, Concrete and ExcludeId to UserAccount
 
 type AllTheThings = Lazy<Concrete<ExcludeId<UserAccount>>>;
 
