@@ -18,4 +18,57 @@ In the last unit, we introduced ourselves to the `keyof` operator. Now, we will 
   - Event name example?
    
 ## Exercise 4: Mixins (Piers)
-  - Simple example
+
+### Part A.
+
+Look at ex4.ts and ensure you understand the types presented within.
+
+### Part B - Constructor definitions
+
+- Mixins are like partial class definitions that can be merged onto other classes
+- To do this, we first need to declare a type to represent a constructor like this:
+```ts
+type AnimalConstructor = new (...args: any[]) => {};
+```
+- Does this make sense? 
+- Why can't this be:
+```ts
+type AnimalConstructor = new (name: string) => {};
+```
+
+### Part C - Your first mixin
+
+- Add the follow code to `ex4.ts`:
+
+```ts
+function Own<TBase extends AnimalConstructor>(Base: TBase) {
+    return class Owned extends Base {
+        _ownerName = "";
+
+        setOwner(owner: string){
+            this._ownerName = owner;
+        }
+
+        get owner(): string {
+            return this._ownerName;
+        }
+    }
+}
+const OwnedCat = Own(Cat);
+```
+
+- Can you make a new OwnedCat and set its owner?
+- Can you own a Platypus?
+- Alter `AnimalConstructor` to have a generic constraing:
+```ts
+type AnimalConstructor<T = Animal> = new (...args: any[]) => T;
+```
+
+### Part D - Exercise time
+
+- Can you create a new mixin called `Trainable` that adds a boolean property `trained` to Animals?
+- Can you create a cat called `oscar` that is owned by `Sami` and is trained?
+
+### Part E - Why?
+
+- Discuss why you might want to use mixins
