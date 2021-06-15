@@ -20,6 +20,14 @@ class Platypus {
 
 const beast = new Cat("Meow", 9); // Must be its name, what it said when I asked it nicely
 
+/*
+If you define a constructor function in a mixin class, it must have a single rest parameter of type any[].
+The reason for this is that the mixin should not be tied to a specific class with known constructor parameters;
+therefore the mixin should accept an arbitrary number of arbitrary values as constructor parameters.
+All of the parameters are passed to the constructor of Base, and then the mixin does its thing.
+In our case, it initializes the tag property.
+*/
+// [From](https://mariusschulz.com/blog/mixin-classes-in-typescript)
 type AnimalConstructor<T = Animal> = new (...args: any[]) => T;
 
 function Own<TBase extends AnimalConstructor>(Base: TBase) {
