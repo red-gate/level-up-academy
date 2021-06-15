@@ -32,6 +32,8 @@ type AnimalConstructor<T = Animal> = new (...args: any[]) => T;
 
 function Own<TBase extends AnimalConstructor>(Base: TBase) {
     return class Owned extends Base {
+        // Mixins may not declare private/protected properties
+		//	so ES2020 private fields are the best we have
         _ownerName = "";
 
         setOwner(owner: string){
