@@ -14,7 +14,9 @@ type EventDefinitions = {
   splinesReticulated: { splineCount: number };
   aiCreated: { areWeAllDoomed: boolean };
 };
-type EventHandlers<T> = unknown;
+type EventHandlers<T> = {
+  [Key in keyof T]: (event: T[Key]) => void;
+};
 type LevelLoadedEvents = EventHandlers<EventDefinitions>;
 
 //
