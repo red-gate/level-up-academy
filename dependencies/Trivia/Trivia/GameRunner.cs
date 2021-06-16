@@ -1,4 +1,5 @@
 ﻿using System;
+using Ninject;
 
 namespace LevelUp.Dependencies.Trivia
 {
@@ -8,18 +9,20 @@ namespace LevelUp.Dependencies.Trivia
 
         public static void Main()
         {
-            var output = new ConsoleWriter();
+            var kernel = new StandardKernel();
 
-            var board = new Board(output, "Pop", "Science", "Sports", "Rock");
+            kernel.Bind<IOutput>().To<ConsoleWriter>();
+            kernel.Bind<Board>().ToSelf().WithConstructorArgument("categoryNames", new[] { "Pop", "Science", "Sports", "Rock" });
+            kernel.Bind<Players>().ToMethod(ctx =>
+            {
+                var players = new Players(ctx.Kernel.Get<IOutput>());
+                players.Add("Chet");
+                players.Add("Pat");
+                players.Add("Sue");
+                return players;
+            });
 
-            var players = new Players(output);
-            players.Add("Chet");
-            players.Add("Pat");
-            players.Add("Sue");
-
-            var penaltyBox = new PenaltyBox(output);
-
-            var aGame = new Game(output, board, players, penaltyBox);
+            var aGame = kernel.Get<Game>();
 
             var rand = new Random(1337);
 
