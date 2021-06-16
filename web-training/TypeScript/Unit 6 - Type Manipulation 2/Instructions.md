@@ -40,6 +40,8 @@ type Greetings = `Hello, ${"world" | "friends"}!`;
 - Take a look at `Ex2/ex2.ts`
 - Try filling in the type definitions for `CssBorderString` and `EventHandlers<T>` types.
 
+Bonus: you can do some crazy type-level programming with template literal types, including [a fully-functional SQL database and query language](https://github.com/codemix/ts-sql)! Check out [Typescript Awesome Template Literal Types](https://github.com/ghoullier/awesome-template-literal-types) for more examples.
+
 ## Exercise 3: Mixins
 
 ### Part A.
@@ -104,7 +106,15 @@ type AnimalConstructor<T = Animal> = new (...args: any[]) => T;
 
 ## Exercise 4: Putting it all together
 
-The complete example
+A general issue with Typescript is that it does not add any runtime type information. We get a ton of static typing power at compile time, but very little ability to reflect on types when the code is actually running.
+
+This is particularly an issue when typescript code has to deal with with foreign input that might not be typed correctly - for example, a JSON response from a web API.
+
+Fortunately, there's a workaround for these kinds of issues, using the advanced types we've learned in the past two units. The trick is to define runtime validation code using some carefully-crafted functions, and then our advanced types to extract the static types from the validator definitions. This way we ensure that the runtime and static type definitions always stay in sync.
+
+- Take a look through `Ex4/runtimeValidation.ts` to see how union types, generics, conditional types, mapped types and template literal types are all used together.
+
+Note: If you want to do this in real code, you should probably use `io-ts` - a proper library with much more features than we've shown off here.
 
 ## See also
 
