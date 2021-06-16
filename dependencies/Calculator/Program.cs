@@ -4,7 +4,7 @@ namespace LevelUp.Dependencies.Calculator
     {
         internal static void Main()
         {
-            var calculator = new Calculator();
+            var calculator = new Calculator(new ConsolePrinter());
             calculator.Add(1, 2);
         }
     }
