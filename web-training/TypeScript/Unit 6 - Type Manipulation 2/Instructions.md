@@ -13,6 +13,33 @@ In the last unit, we introduced ourselves to the `keyof` operator. Now, we will 
 
 ## Exercise 2: Template literal types
 
+Template literal types are a new Typescript feature which adds a lot more typing power around stringly-typed code. They are primarily useful for typing existing Javascript APIs, but can be useful in new code as well.
+
+Previously we've seen how string literal types let us specify specific string values as part of a type. Template literal types go further by letting us poke around the contents of the string itself!
+
+The syntax for template literal types is based on template strings in Javascript:
+
+```ts
+// template string:
+console.log(`One plus one is: ${1 + 1}`);
+
+// template literal type:
+type Two = "2";
+type Maths = `One plus one is: ${Two}`;
+```
+
+(Doing maths in the type system is actually possible, but that's a topic for another time ;)
+
+Union types get expanded when they're interpolated:
+
+```ts
+type Greetings = `Hello, ${"world" | "friends"}!`;
+// ^ Equivalent to "Hello, world!" | "Hello, friends!"
+```
+
+- Take a look at `Ex2/ex2.ts`
+- Try filling in the type definitions for `CssBorderString` and `EventHandlers<T>` types.
+
 ## Exercise 3: Mixins
 
 ### Part A.
