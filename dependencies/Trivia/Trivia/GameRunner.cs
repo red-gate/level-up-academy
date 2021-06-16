@@ -12,15 +12,8 @@ namespace LevelUp.Dependencies.Trivia
             var kernel = new StandardKernel();
 
             kernel.Bind<IOutput>().To<ConsoleWriter>();
-            kernel.Bind<Board>().ToSelf().WithConstructorArgument("categoryNames", new[] { "Pop", "Science", "Sports", "Rock" });
-            kernel.Bind<Players>().ToMethod(ctx =>
-            {
-                var players = new Players(ctx.Kernel.Get<IOutput>());
-                players.Add("Chet");
-                players.Add("Pat");
-                players.Add("Sue");
-                return players;
-            });
+            kernel.Bind<CategoriesSource>().ToSelf().WithConstructorArgument("categoryNames", new[] { "Pop", "Science", "Sports", "Rock" });
+            kernel.Bind<PlayersSource>().ToSelf().WithConstructorArgument("playerNames", new[] { "Chet", "Pat", "Sue" });
 
             var aGame = kernel.Get<Game>();
 

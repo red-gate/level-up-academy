@@ -12,12 +12,9 @@ namespace LevelUp.Dependencies.Trivia.Tests
         {
             var output = new TestOutputWriter();
 
-            var board = new Board(output, "Pop", "Science", "Sports", "Rock");
+            var board = new Board(output, new CategoriesSource("Pop", "Science", "Sports", "Rock"));
 
-            var players = new Players(output);
-            players.Add("Chet");
-            players.Add("Pat");
-            players.Add("Sue");
+            var players = new Players(output, new PlayersSource(output, "Chet", "Pat", "Sue"));
 
             var penaltyBox = new PenaltyBox(output);
 

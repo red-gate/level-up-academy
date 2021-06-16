@@ -8,10 +8,10 @@ namespace LevelUp.Dependencies.Trivia
         private readonly IOutput output;
         private readonly List<Category> categories;
 
-        public Board(IOutput output, params string[] categoryNames)
+        public Board(IOutput output, CategoriesSource categoriesSource)
         {
             this.output = output;
-            categories = categoryNames.Select(category => new Category(category)).ToList();
+            categories = categoriesSource.GetCategories().ToList();
         }
 
         public void AskNextQuestion(int currentPosition)
