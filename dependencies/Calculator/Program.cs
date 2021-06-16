@@ -7,8 +7,7 @@ namespace LevelUp.Dependencies.Calculator
         internal static void Main()
         {
             var kernel = new StandardKernel();
-            kernel.Bind<IOutputPrinter>().To<ConsolePrinter>().WhenInjectedInto<ErrorHandlingPrinter>();
-            kernel.Bind<IOutputPrinter>().To<ErrorHandlingPrinter>();
+            kernel.Load<PrinterModule>();
 
             var calculator = kernel.Get<Calculator>();
             calculator.Add(1, 2);
