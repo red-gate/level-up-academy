@@ -5,29 +5,23 @@ type BorderStyle = "dotted" | "dashed" | "solid";
 type BorderColor = "blue" | "red" | "coral" | "brown";
 type CssBorderString = `border: ${BorderWidth}px ${BorderStyle} ${BorderColor}`;
 
-//
-// Exercise: Change CssBorderString so that it can represent strings like "border: 3px solid red;"
-//
-
 type EventDefinitions = {
   geometryLoaded: { polygonsProcessed: number };
   splinesReticulated: { splineCount: number };
   aiCreated: { areWeAllDoomed: boolean };
 };
 type EventHandlers<T> = {
-  [Key in keyof T as `on${Capitalize<Key extends string ? Key : never>}`]: (
-    event: T[Key]
-  ) => void;
+  [Key in keyof T as `on${Capitalize<string & Key>}`]: (event: T[Key]) => void;
 };
-type LevelLoadedEvents = EventHandlers<EventDefinitions>;
 
+// `keyof T` has type `string|number|symbol`, but `Capitalize<T>` only accepts `string`.
 //
-// Template literals can be particularly useful when combined with mapped types.
-// Exercise: change EventHandlers<T> so that it creates an object like this:
+// This means we need to do a bit of filtering. In the above answer, `string & Key` expands to three possibilities:
+//   `string & string | string & symbol | string & number`
+// `string & string` is just `string`, while the other two options resolve to `never`.
+// That leaves us with `string | never | never`, which is equivalent to `string`, the type we want:
+// non-string keys will be skipped over in the resulting type.
 //
-// { onGeometryLoaded: (event: { polygonsProcessed }) => void, ... }
-//
-// Use template literal types to prepend the 'on' string and uppercase the initial letter.
-// Hint: you can use the Capitalize<T> type for the uppercasing.
-// Check that LevelLoadedEvents looks correct once you're done
-//
+// `Capitalize<Key extends string ? Key : never>` also works, and is a bit more explicit.
+
+type LevelLoadedEvents = EventHandlers<EventDefinitions>;
