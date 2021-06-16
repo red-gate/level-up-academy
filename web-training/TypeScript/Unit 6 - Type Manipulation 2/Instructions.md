@@ -11,9 +11,9 @@ In the last unit, we introduced ourselves to the `keyof` operator. Now, we will 
 - Create a new type where the `id` property is excluded, by applying `ExcludeId<T>` to `UserAccount`.
 - Create a new type where you apply `Lazy<T>`, `Concrete<T>` and `ExcludeId<T>` to `UserAccount`
 
-## Exercise: Introduction to Template literal types
-   
-## Exercise 4: Mixins
+## Exercise 2: Template literal types
+
+## Exercise 3: Mixins
 
 ### Part A.
 
@@ -23,11 +23,14 @@ Look at ex4.ts and ensure you understand the types presented within.
 
 - Mixins are like partial class definitions that can be merged onto other classes
 - To do this, we first need to declare a type to represent a constructor like this:
+
 ```ts
 type AnimalConstructor = new (...args: any[]) => {};
 ```
-- Does this make sense? 
+
+- Does this make sense?
 - Why can't this be:
+
 ```ts
 type AnimalConstructor = new (name: string) => {};
 ```
@@ -38,19 +41,19 @@ type AnimalConstructor = new (name: string) => {};
 
 ```ts
 function Own<TBase extends AnimalConstructor>(Base: TBase) {
-    return class Owned extends Base {
-		// Mixins may not declare private/protected properties
-		//	so ES2020 private fields are the best we have
-        _ownerName = "";
+  return class Owned extends Base {
+    // Mixins may not declare private/protected properties
+    //	so ES2020 private fields are the best we have
+    _ownerName = "";
 
-        setOwner(owner: string){
-            this._ownerName = owner;
-        }
-
-        get owner(): string {
-            return this._ownerName;
-        }
+    setOwner(owner: string) {
+      this._ownerName = owner;
     }
+
+    get owner(): string {
+      return this._ownerName;
+    }
+  };
 }
 const OwnedCat = Own(Cat);
 ```
@@ -58,6 +61,7 @@ const OwnedCat = Own(Cat);
 - Can you make a new OwnedCat and set its owner?
 - Can you own a Platypus?
 - Alter `AnimalConstructor` to have a generic constraing:
+
 ```ts
 type AnimalConstructor<T = Animal> = new (...args: any[]) => T;
 ```
@@ -71,9 +75,10 @@ type AnimalConstructor<T = Animal> = new (...args: any[]) => T;
 
 - Discuss why you might want to use mixins
 
+## Exercise 4: Putting it all together
 
-## Putting it all together (Mark et. al)
 The complete example
 
 ## See also
+
 - [Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html) contains a lot of commonly used goodies. Check 'em out!
