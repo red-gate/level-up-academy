@@ -21,6 +21,13 @@ function validateBool(): Validator<boolean> {
       : { type: "fail", error: `${input} is not a valid boolean` };
 }
 
+let exampleBooleanValidator = validateBool();
+let stringValue = exampleBooleanValidator("false");
+console.log(stringValue);
+
+let booleanValue = exampleBooleanValidator(false);
+console.log(booleanValue);
+
 type LiteralValue = string | number | boolean | undefined | null;
 function validateOneOf<TS extends LiteralValue[]>(
   ...args: TS
@@ -30,6 +37,13 @@ function validateOneOf<TS extends LiteralValue[]>(
       ? { type: "success", value: input as TS[number] }
       : { type: "fail", error: `${input} is not one of ${args.join(" ")}` };
 }
+
+let exampleOneOfValidator = validateOneOf();
+let eovStringValue = exampleOneOfValidator({ favouriteCandy: "salt licorice" });
+console.log(eovStringValue);
+
+let eovNumberValue = exampleOneOfValidator(42);
+console.log(eovNumberValue);
 
 function validateObject<T extends object>(
   validators: { [Key in keyof T]: Validator<T[Key]> }
@@ -58,3 +72,21 @@ function validateObject<T extends object>(
     return { type: "success", value: input as T };
   };
 }
+
+let exampleStringValidator: Validator<string> = (input: unknown): ValidationResult<string> => {
+ return ((input as string).toLocaleLowerCase !== undefined
+    ? { type: "success", value: input as string }
+    : { type: "fail", error: `${input} is not a valid string` }) as ValidationResult<string>;  
+}
+
+let exampleObjectValidation = validateObject(
+  { 
+    favouriteCandy: exampleStringValidator,
+    candiesAreGoodForYou: validateBool()
+  }
+);
+let eovStringValue2 = exampleObjectValidation({ favouriteCandy: "salt licorice" });
+console.log(eovStringValue2);
+
+let exampleBooleanKeyValue = exampleObjectValidation({ candiesAreGoodForYou: false });
+console.log(exampleBooleanKeyValue);
