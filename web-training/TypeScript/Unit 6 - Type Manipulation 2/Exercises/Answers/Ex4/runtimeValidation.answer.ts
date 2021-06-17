@@ -14,19 +14,14 @@ type ValidatorResult<T extends Validator<any>> = T extends Validator<infer U>
 // totally untested though.
 //
 
+const repr = (x: unknown) => JSON.stringify(x);
+
 function validateBool(): Validator<boolean> {
   return (input) =>
     input === true || input === false
       ? { type: "success", value: input }
-      : { type: "fail", error: `${input} is not a valid boolean` };
+      : { type: "fail", error: `${repr(input)} is not a valid boolean` };
 }
-
-let exampleBooleanValidator = validateBool();
-let stringValue = exampleBooleanValidator("false");
-console.log(stringValue);
-
-let booleanValue = exampleBooleanValidator(false);
-console.log(booleanValue);
 
 type LiteralValue = string | number | boolean | undefined | null;
 function validateOneOf<TS extends LiteralValue[]>(
@@ -35,29 +30,24 @@ function validateOneOf<TS extends LiteralValue[]>(
   return (input) =>
     args.some((candidate) => candidate === input)
       ? { type: "success", value: input as TS[number] }
-      : { type: "fail", error: `${input} is not one of ${args.join(" ")}` };
+      : {
+          type: "fail",
+          error: `${repr(input)} is not one of ${args.map(repr).join(" ")}`,
+        };
 }
-
-let exampleOneOfValidator = validateOneOf();
-let eovStringValue = exampleOneOfValidator({ favouriteCandy: "salt licorice" });
-console.log(eovStringValue);
-
-let eovNumberValue = exampleOneOfValidator(42);
-console.log(eovNumberValue);
-
 function validateObject<T extends object>(
   validators: { [Key in keyof T]: Validator<T[Key]> }
 ): Validator<T> {
   return (input) => {
     if (typeof input !== "object" || input === null) {
-      return { type: "fail", error: `${input} is not an object` };
+      return { type: "fail", error: `${repr(input)} is not an object` };
     }
 
     for (let key in validators) {
       if (!(key in input)) {
         return {
           type: "fail",
-          error: `Expected ${input} to have key ${key}, but didn't`,
+          error: `Expected ${repr(input)} to have key ${key}, but didn't`,
         };
       }
       // TODO: not sure why this cast is required given we're already checking for `key in input` above
@@ -65,7 +55,7 @@ function validateObject<T extends object>(
       if (innerResult.type === "fail") {
         return {
           type: "fail",
-          error: `Error in ${input} key ${key}: ${innerResult.error}`,
+          error: `Error in ${repr(input)} key ${key}: ${innerResult.error}`,
         };
       }
     }
@@ -73,20 +63,49 @@ function validateObject<T extends object>(
   };
 }
 
-let exampleStringValidator: Validator<string> = (input: unknown): ValidationResult<string> => {
- return ((input as string).toLocaleLowerCase !== undefined
-    ? { type: "success", value: input as string }
-    : { type: "fail", error: `${input} is not a valid string` }) as ValidationResult<string>;  
-}
-
-let exampleObjectValidation = validateObject(
-  { 
-    favouriteCandy: exampleStringValidator,
-    candiesAreGoodForYou: validateBool()
-  }
+let exampleBooleanValidator = validateBool();
+console.log(
+  "bool validator fails on strings: ",
+  exampleBooleanValidator("false")
 );
-let eovStringValue2 = exampleObjectValidation({ favouriteCandy: "salt licorice" });
-console.log(eovStringValue2);
+console.log(
+  "bool validator passes on bool values: ",
+  exampleBooleanValidator(false)
+);
 
-let exampleBooleanKeyValue = exampleObjectValidation({ candiesAreGoodForYou: false });
-console.log(exampleBooleanKeyValue);
+let exampleOneOfValidator = validateOneOf("red", "green");
+console.log(
+  "oneOf validator passes on included values: ",
+  exampleOneOfValidator("green")
+);
+console.log(
+  "oneOf validator fails on other values: ",
+  exampleOneOfValidator("blue")
+);
+
+let exampleObjectValidation = validateObject({
+  veggiesAreGoodForYou: validateBool(),
+  candiesAreGoodForYou: validateBool(),
+});
+console.log(
+  "object validator fails if not an object",
+  exampleObjectValidation("Hello!")
+);
+console.log(
+  "object validator fails if key is missing",
+  exampleObjectValidation({ candiesAreGoodForYou: false })
+);
+console.log(
+  "object validator fails if key is wrong type",
+  exampleObjectValidation({
+    candiesAreGoodForYou: false,
+    veggiesAreGoodForYou: "yes",
+  })
+);
+console.log(
+  "object validator succeeds when everything is correct",
+  exampleObjectValidation({
+    candiesAreGoodForYou: false,
+    veggiesAreGoodForYou: true,
+  })
+);
