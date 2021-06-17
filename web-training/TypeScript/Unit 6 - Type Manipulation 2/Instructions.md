@@ -46,7 +46,7 @@ Bonus: you can do some crazy type-level programming with template literal types,
 
 ### Part A.
 
-Look at ex4.ts and ensure you understand the types presented within.
+Look at `ex3.ts` and ensure you understand the types presented within.
 
 ### Part B - Constructor definitions
 
@@ -66,7 +66,7 @@ type AnimalConstructor = new (name: string) => {};
 
 ### Part C - Your first mixin
 
-- Add the follow code to `ex4.ts`:
+- Add the follow code to `ex3.ts`:
 
 ```ts
 function Own<TBase extends AnimalConstructor>(Base: TBase) {
