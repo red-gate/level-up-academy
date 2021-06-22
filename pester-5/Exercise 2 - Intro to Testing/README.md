@@ -20,3 +20,5 @@
 - Run the test using Visual Studio Code's *Code Lens*.
 - Place a breakpoint (`F9`) on the line that contains your `| Should` and then using Visual Studio Code's Code Lens to debug your test.
 - Ensure that you can see the contents of `$allPlanets` by hovering over the variable.
+
+If you're running into issues with Pester at this point, make sure you upgrade it to the latest version: `Install-Module -Name Pester -Force -SkipPublisherCheck`
