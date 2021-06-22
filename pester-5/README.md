@@ -4,6 +4,8 @@ This course will give you a crash course into Pester 5, introducing PowerShell c
 
 We'll be working with Visual Studio Code unless otherwise specified.
 
+Clone this repo to continue.
+
 ## What is Pester?
 
 > Pester is a testing and mocking framework for PowerShell.
