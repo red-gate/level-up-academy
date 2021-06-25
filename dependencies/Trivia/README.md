@@ -12,6 +12,6 @@ Hint: [`ToMethod()`](https://github.com/ninject/Ninject/wiki/Providers,-Factory-
 
 ## Task 2 - Making configuration easier
 
-The `Players` and `Board` classes are awkward to construct using Ninject. Change both types to take a new dependency in their constuctors that will provide the relevant information that they need. Bonus points if you can avoid hard-coding the player and category names into any places other than the `Main` method.
+The `Players` and `Board` classes are awkward to construct using Ninject. Change both types to take a new dependency in their constructors that will provide the relevant information that they need. Bonus points if you can avoid hard-coding the player and category names into any places other than the `Main` method.
 
 How has this changed the Ninject configuration? What are the benefits of doing this?
