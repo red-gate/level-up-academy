@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -37,13 +38,9 @@ namespace AccountCalculator
             Action<string> writeOutput,
             Action<string> writeInfo)
         {
-            // Initialise the currency converter.
-            var exchangeRatesProvider = new ExchangeRatesProvider(DownloadRawExchangeRateData);
-            var converter = new CurrencyConverter(exchangeRatesProvider);
+            var converter = GetCurrencyConverter();
 
-            // Load the purchases from the purchase file.
-            var purchasesReader = new FilePurchasesReader(purchasesFile);
-            var purchases = await purchasesReader.ReadPurchases();
+            var purchases = await GetPurchases(purchasesFile);
 
             // Convert all the purchases to the same common currency.
             var purchasesInGbp = purchases
@@ -61,6 +58,22 @@ namespace AccountCalculator
 
             var totalCost = purchasesInGbp.Sum(purchase => purchase.Cost);
             writeInfo($"Total cost is {totalCost:F2} {commonCurrency}");
+        }
+
+        private static async Task<IEnumerable<Purchase>> GetPurchases(FileInfo purchasesFile)
+        {
+            // Load the purchases from the purchase file.
+            var purchasesReader = new FilePurchasesReader(purchasesFile);
+            var purchases = await purchasesReader.ReadPurchases();
+            return purchases;
+        }
+
+        private static CurrencyConverter GetCurrencyConverter()
+        {
+            // Initialise the currency converter.
+            var exchangeRatesProvider = new ExchangeRatesProvider(DownloadRawExchangeRateData);
+            var converter = new CurrencyConverter(exchangeRatesProvider);
+            return converter;
         }
 
         private static Task<string> DownloadRawExchangeRateData()
