@@ -5,6 +5,7 @@
         USD,
         GBP,
         CNY,
-        EUR
+        EUR,
+        JPY
     }
 }
