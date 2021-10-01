@@ -29,7 +29,7 @@ namespace AccountCalculator
             .Where(match => decimal.TryParse(match.Groups["AMOUNT"].Value, out _))
             .Select(match =>
             {
-                var timestamp = match.Groups["TIMESTAMP"].Value;
+                var timestamp = DateTimeOffset.Parse(match.Groups["TIMESTAMP"].Value);
                 decimal.TryParse(match.Groups["AMOUNT"].Value, out var amount);
                 var description = match.Groups["DESCRIPTION"].Value;
                 var currency =  Enum.Parse<CurrencyCode>(match.Groups["CURRENCY"].Value);
