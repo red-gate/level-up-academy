@@ -45,7 +45,7 @@ namespace AccountCalculator
                     var conversionRate = decimal.Parse(match.Groups["RATE"].Value);
                     TryParseDate(match.Groups["START"].Value, out var start);
                     TryParseDate(match.Groups["END"].Value, out var end);
-                    return new ExchangeRateRecord(currency, conversionRate, start, end);
+                    return new ExchangeRateRecord(currency, conversionRate, DateTimeOffset.Parse(start), DateTimeOffset.Parse(end));
                 })
                 .ToList();
         }
