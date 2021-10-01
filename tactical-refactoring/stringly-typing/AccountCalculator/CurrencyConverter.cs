@@ -45,17 +45,17 @@ namespace AccountCalculator
                 return 1;
             }
 
-            var conversionDate = timeOfConversion.Date;
+            var conversionDate = timeOfConversion.UtcDateTime.Date;
 
             var conversionRates = _conversionRates.Result;
             
             var conversionRate = conversionRates[currency]
-                .Where(x => x.Start < conversionDate)
-                .FirstOrDefault(x => conversionDate > x.End);
+                .Where(x => x.Start <= conversionDate)
+                .FirstOrDefault(x => conversionDate <= x.End);
             if (conversionRate == null)
             {
                 throw new ArgumentException(
-                    $"No conversion available for currency {currency} at {timeOfConversion}");
+                    $"No conversion available for currency {currency} at {conversionDate}");
             }
 
             return conversionRate.Rate;
