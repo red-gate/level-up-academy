@@ -24,7 +24,7 @@ namespace AccountCalculator
             decimal originalValue,
             string originalCurrency,
             string targetCurrency,
-            DateTimeOffset timeOfConversion)
+            UtcDateTime timeOfConversion)
         {
             if (originalCurrency == targetCurrency)
             {
@@ -38,14 +38,14 @@ namespace AccountCalculator
             return newValue;
         }
 
-        private decimal GetConversionRate(string currency, DateTimeOffset timeOfConversion)
+        private decimal GetConversionRate(string currency, UtcDateTime timeOfConversion)
         {
             if (currency == "GBP")
             {
                 return 1;
             }
 
-            var conversionDate = timeOfConversion.UtcDateTime.ToString("yyyy/MM/dd");
+            var conversionDate = timeOfConversion.Get().ToString("yyyy/MM/dd");
 
             var conversionRates = _conversionRates.Result;
             var conversionRate = conversionRates[currency]

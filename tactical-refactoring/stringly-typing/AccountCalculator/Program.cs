@@ -50,7 +50,7 @@ namespace AccountCalculator
                 .Select(x => new Purchase(
                     x.Timestamp,
                     x.Description,
-                    converter.ConvertCurrency(x.Cost, x.Currency, commonCurrency, x.Timestamp),
+                    converter.ConvertCurrency(x.Cost, x.Currency, commonCurrency, new UtcDateTime(x.Timestamp)),
                     commonCurrency))
                 .ToList();
 

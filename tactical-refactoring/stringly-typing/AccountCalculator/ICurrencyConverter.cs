@@ -9,6 +9,6 @@ namespace AccountCalculator
             decimal originalValue,
             string originalCurrency,
             string targetCurrency,
-            DateTimeOffset timeOfConversion);
+            UtcDateTime timeOfConversion);
     }
 }
