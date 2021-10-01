@@ -1,3 +1,5 @@
+using System;
+
 namespace AccountCalculator
 {
 
@@ -7,6 +9,6 @@ namespace AccountCalculator
             decimal originalValue,
             string originalCurrency,
             string targetCurrency,
-            string timeOfConversion);
+            DateTimeOffset timeOfConversion);
     }
 }
