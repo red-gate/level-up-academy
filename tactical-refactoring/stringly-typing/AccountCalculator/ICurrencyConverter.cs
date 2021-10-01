@@ -5,8 +5,8 @@ namespace AccountCalculator
     {
         decimal ConvertCurrency(
             decimal originalValue,
-            string originalCurrency,
-            string targetCurrency,
+            CurrencyCode originalCurrency,
+            CurrencyCode targetCurrency,
             string timeOfConversion);
     }
 }

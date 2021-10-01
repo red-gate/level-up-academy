@@ -41,7 +41,7 @@ namespace AccountCalculator
                 .Where(match => TryParseDate(match.Groups["END"].Value, out _))
                 .Select(match =>
                 {
-                    var currency = match.Groups["CODE"].Value;
+                    var currency = Enum.Parse<CurrencyCode>(match.Groups["CODE"].Value);
                     var conversionRate = decimal.Parse(match.Groups["RATE"].Value);
                     TryParseDate(match.Groups["START"].Value, out var start);
                     TryParseDate(match.Groups["END"].Value, out var end);

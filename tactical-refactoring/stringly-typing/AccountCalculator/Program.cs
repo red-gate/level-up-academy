@@ -21,7 +21,7 @@ namespace AccountCalculator
                 }
 
                 var purchasesFile = new FileInfo(args[0]);
-                var commonCurrency = args[1];
+                var commonCurrency =  Enum.Parse<CurrencyCode>(args[1]);
 
                 CalculatePurchases(purchasesFile, commonCurrency, Console.WriteLine, Console.Error.WriteLine).Wait();
             }
@@ -34,7 +34,7 @@ namespace AccountCalculator
 
         private static async Task CalculatePurchases(
             FileInfo purchasesFile,
-            string commonCurrency,
+            CurrencyCode commonCurrency,
             Action<string> writeOutput,
             Action<string> writeInfo)
         {
