@@ -1,3 +1,7 @@
-.cache
-node_modules
-dist
+.cache/
+node_modules/
+dist/
+.idea/
+bin/
+obj/
+.vs/
