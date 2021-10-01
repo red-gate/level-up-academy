@@ -48,6 +48,8 @@ namespace AccountCalculator
             var conversionDate = timeOfConversion.UtcDateTime.ToString("yyyy/MM/dd");
 
             var conversionRates = _conversionRates.Result;
+            
+            // TODO we shouldn't be using string manipulation to compare dates
             var conversionRate = conversionRates[currency]
                 .Where(x => string.CompareOrdinal(x.Start, conversionDate) <= 0)
                 .FirstOrDefault(x => string.CompareOrdinal(conversionDate, x.End) <= 0);
