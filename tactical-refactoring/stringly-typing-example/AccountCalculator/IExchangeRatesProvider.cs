@@ -4,8 +4,8 @@ using AccountCalculator.Domain;
 
 namespace AccountCalculator
 {
-    public interface IPurchasesReader
+    public interface IExchangeRatesProvider
     {
-        Task<IEnumerable<Purchase>> ReadPurchases();
+        Task<IEnumerable<ExchangeRateRecord>> GetExchangeRates();
     }
 }

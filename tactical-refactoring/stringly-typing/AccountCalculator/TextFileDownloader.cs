@@ -1,16 +1,10 @@
-using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace AccountCalculator
 {
-    public interface IJsonDownloader
-    {
-        public Task<string> Download(string uri, CancellationToken cancellationToken);
-    }
-
-    public class JsonDownloader : IJsonDownloader
+    public class TextFileDownloader : ITextFileDownloader
     {
         private static readonly HttpClient HttpClient = new ();
 
