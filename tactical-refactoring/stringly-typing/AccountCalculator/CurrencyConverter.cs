@@ -48,7 +48,7 @@ namespace AccountCalculator
             var conversionRates = _conversionRates.Result;
             var conversionRate = conversionRates[currency]
                 .Where(x => x.Start <= timeOfConversion)
-                .FirstOrDefault(x => timeOfConversion <= x.End);
+                .FirstOrDefault(x => timeOfConversion < x.End);
             if (conversionRate == null)
             {
                 throw new ArgumentException(
