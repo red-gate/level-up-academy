@@ -50,16 +50,15 @@ namespace AccountCalculator
                 .Select(x => new Purchase(
                     x.Timestamp,
                     x.Description,
-                    converter.ConvertCurrency(x.Cost, x.Currency, commonCurrency, x.Timestamp),
-                    commonCurrency))
+                    converter.ConvertCurrency(x.Cost, commonCurrency, x.Timestamp)))
                 .ToList();
 
             foreach (var purchase in purchasesInGbp)
             {
-                writeOutput($"{purchase.Timestamp},{purchase.Description},{purchase.Cost:F2},{commonCurrency}");
+                writeOutput($"{purchase.Timestamp},{purchase.Description},{purchase.Cost.Amount:F2},{purchase.Cost.Currency}");
             }
 
-            var totalCost = purchasesInGbp.Sum(purchase => purchase.Cost);
+            var totalCost = purchasesInGbp.Sum(purchase => purchase.Cost.Amount);
             writeInfo($"Total cost is {totalCost:F2} {commonCurrency}");
         }
 

@@ -28,7 +28,8 @@ namespace AccountCalculator
                 decimal.TryParse(match.Groups["AMOUNT"].Value, out var amount);
                 var description = match.Groups["DESCRIPTION"].Value;
                 var currency = new Currency(match.Groups["CURRENCY"].Value);
-                return new Purchase(timestamp, description, amount, currency);
+                var price = new Money(currency, amount);
+                return new Purchase(timestamp, description, price);
             })
             .OrderBy(purchase => purchase.Timestamp)
             .ThenBy(purchase => purchase.Description)
