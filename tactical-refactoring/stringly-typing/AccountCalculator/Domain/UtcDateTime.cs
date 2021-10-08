@@ -11,7 +11,7 @@ namespace AccountCalculator.Domain
 
         public UtcDateTime(DateTimeOffset timeOfConversion) : this(timeOfConversion.UtcTicks) { }
 
-        public UtcDateTime AddDays(int i) => new (_ticks + TimeSpan.FromDays(1).Ticks);
+        public UtcDateTime AddDays(int i) => new (_ticks + TimeSpan.FromDays(i).Ticks);
 
         private UtcDateTime(long ticks) => _ticks = ticks;
 
