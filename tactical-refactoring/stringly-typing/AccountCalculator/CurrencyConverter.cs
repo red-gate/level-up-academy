@@ -44,7 +44,7 @@ namespace AccountCalculator
                 return 1;
             }
 
-            var conversionDate = timeOfConversion.UtcDateTime.ToString("yyyy/MM/dd");
+            var conversionDate = timeOfConversion.ToString("yyyy/MM/dd");
 
             var conversionRates = _conversionRates.Result;
             var conversionRate = conversionRates[currency]
