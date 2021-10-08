@@ -5,9 +5,8 @@ namespace AccountCalculator
 
     public interface ICurrencyConverter
     {
-        decimal ConvertCurrency(
-            decimal originalValue,
-            Currency originalCurrency,
+        Money ConvertCurrency(
+            Money original,
             Currency targetCurrency,
             string timeOfConversion);
     }
