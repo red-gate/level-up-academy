@@ -12,9 +12,9 @@ namespace AccountCalculator
 {
     public class FilePurchasesReader : IPurchasesReader
     {
-        private readonly FileInfo _file;
+        private readonly string _file;
 
-        public FilePurchasesReader(FileInfo file) => _file = file;
+        public FilePurchasesReader(string file) => _file = file;
 
         public async Task<IEnumerable<Purchase>> ReadPurchases() =>
             (await ReadRawLines())
@@ -45,7 +45,7 @@ namespace AccountCalculator
 
         private async Task<IEnumerable<string>> ReadRawLines()
         {
-            using var fileStream = _file.Open(FileMode.Open, FileAccess.Read, FileShare.Read);
+            using var fileStream = File.Open(_file, FileMode.Open, FileAccess.Read, FileShare.Read);
             using var reader = new StreamReader(fileStream, Encoding.UTF8);
             var content = await reader.ReadToEndAsync();
             return content.Split(

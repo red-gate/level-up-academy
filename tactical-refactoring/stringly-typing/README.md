@@ -11,7 +11,7 @@ In less extreme cases, it's still common to use built-in types to represent conc
 
 The `StringlyTyping.sln` solution contains a console application that takes an input file containing a series of purchases that have been made in 2021. See this [example input](PurchasedItems.csv). Each purchase was made at a specific point in time and in a specific currency. The point of the program is to convert all of the purchases to the same currency, and then add up the cost of each purchase to determine the total cost.
 
-The program taskes two command-line arguments, the path to the input purchases file and the common currency to convert each purchase to. We recommend setting the following string as the program arguments when running the application via your IDE, otherwise you'll get a usage error message.
+The program takes two command-line arguments, the path to the input purchases file and the common currency to convert each purchase to. We recommend setting the following as the program arguments when running the application via your IDE, otherwise you'll get a usage error message.
 
 ```
 ..\..\..\..\PurchasedItems.csv USD

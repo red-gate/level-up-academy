@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountCalculator", "AccountCalculator\AccountCalculator.csproj", "{28188A54-3662-4B55-91AC-52C96316750F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountCalculatorTests", "AccountCalculatorTests\AccountCalculatorTests.csproj", "{A762E491-37B7-4897-9C14-EA1DB4D4A7C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{28188A54-3662-4B55-91AC-52C96316750F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28188A54-3662-4B55-91AC-52C96316750F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28188A54-3662-4B55-91AC-52C96316750F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A762E491-37B7-4897-9C14-EA1DB4D4A7C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A762E491-37B7-4897-9C14-EA1DB4D4A7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A762E491-37B7-4897-9C14-EA1DB4D4A7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A762E491-37B7-4897-9C14-EA1DB4D4A7C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

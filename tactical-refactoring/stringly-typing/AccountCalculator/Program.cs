@@ -7,7 +7,7 @@ using AccountCalculator.Domain;
 
 namespace AccountCalculator
 {
-    static class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
@@ -19,7 +19,7 @@ namespace AccountCalculator
                     Environment.Exit(1);
                 }
 
-                var purchasesFile = new FileInfo(args[0]);
+                var purchasesFile = args[0];
                 var commonCurrency = args[1];
 
                 CalculatePurchases(purchasesFile, commonCurrency, Console.WriteLine, Console.Error.WriteLine).Wait();
@@ -31,8 +31,8 @@ namespace AccountCalculator
             }
         }
 
-        private static async Task CalculatePurchases(
-            FileInfo purchasesFile,
+        public static async Task CalculatePurchases(
+            string purchasesFile,
             string commonCurrency,
             Action<string> writeOutput,
             Action<string> writeInfo)
