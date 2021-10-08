@@ -50,7 +50,7 @@ namespace AccountCalculator
                 .ToList();
         }
 
-        private static bool TryParseDate(string s, out DateTimeOffset result)
+        private static bool TryParseDate(string s, out UtcDateTime result)
         {
             var match = DateRegex.Match(s);
             if (match.Success)
@@ -58,7 +58,7 @@ namespace AccountCalculator
                 var day = int.Parse(match.Groups["DAY"].Value);
                 var month = int.Parse(match.Groups["MONTH"].Value);
                 var year = int.Parse(match.Groups["YEAR"].Value);
-                result = new DateTimeOffset(year, month, day, 0, 0, 0, TimeSpan.Zero);
+                result = new UtcDateTime(year, month, day);
                 return true;
             }
 
