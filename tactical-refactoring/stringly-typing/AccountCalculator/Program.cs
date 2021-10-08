@@ -20,7 +20,7 @@ namespace AccountCalculator
                 }
 
                 var purchasesFile = args[0];
-                var commonCurrency = args[1];
+                var commonCurrency = new Currency(args[1]);
 
                 CalculatePurchases(purchasesFile, commonCurrency, Console.WriteLine, Console.Error.WriteLine).Wait();
             }
@@ -33,7 +33,7 @@ namespace AccountCalculator
 
         public static async Task CalculatePurchases(
             string purchasesFile,
-            string commonCurrency,
+            Currency commonCurrency,
             Action<string> writeOutput,
             Action<string> writeInfo)
         {

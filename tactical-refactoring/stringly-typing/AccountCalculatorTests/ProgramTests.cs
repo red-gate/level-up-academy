@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using AccountCalculator.Domain;
 using NUnit.Framework;
 
 namespace AccountCalculatorTests
@@ -19,7 +20,7 @@ namespace AccountCalculatorTests
                     "..",
                     "..",
                     "PurchasedItems.csv");
-            var commonCurrency = "EUR";
+            var commonCurrency = new Currency("EUR");
             var output = new List<string>();
             var info = new List<string>();
             await AccountCalculator.Program.CalculatePurchases(
