@@ -19,19 +19,16 @@ The program takes two command-line arguments, the path to the input purchases fi
 
 You can vary the currency code to calculate the result in different currencies. The supported currencies are USD, GBP, EUR, JPY and CNY.
 
-The point of this exercise is to try to eliminate the use of stringly typing. You might want to consider the following:
+The point of this exercise is to try to eliminate the use of stringly typing. It's recommended that you take the following approach:
 
-- Replace the use of strings to represent dates with `DateTimeOffset` *(this will be simpler that using `DateTime`!)*.
-- Introduce a `UtcDateTime` to represent actual UTC date-times. The timestamps of the purchases are genuinely in local times, where `DateTimeOffset` is appropriate. But the timestamps used `ExchangeRateRecord` and `CurrencyConverter` should always be in UTC.
-- Replace the use of strings to represent currencies with an actual Currency type. What type is appropriate? An enum? A simple wrapper around the three digit currency codes? Maybe another `record` type? You decide.
-- Try to combine the decimal value of an amount of money with a type that combines both the numeric value and the associated currency. e.g. introduce a type that combines two properties, the decimal value and the Currency. By combining these two properties, you can simplify the API of `ICurrencyConverter.ConvertCurrency`. By reducing the number of parameters, and giving them distinct types, you can eliminate a class of bugs where the method is called with the arguments being in the wrong order. i.e. you could change from this:
-  ```c#
-  decimal ConvertCurrency(decimal originalValue, string originalCurrency, string targetCurrency, string timeOfConversion)
-  ```
-  to something like this:
-  ```c#
-  Money ConvertCurrency(Money originalValue, Currency targetCurrency, UtcDateTime timeOfConversion)
-  ```
-- Find somewhere in the code where the use of a `Uri` could be more appropriate than just a `string`.
+1. Explore the existing code and try to get a feel of how it all works. Consider some simple mechanical refactoring to help manage the readability. As you progress further down this list, consider adding more automated tests.
+2. Replace the use of strings to represent currencies with an actual `Currency` type. What type is appropriate? An enum? A simple wrapper around the three digit currency codes? Maybe another `record` type? You decide.
+3. An amount of money is currently represented by two separate values, a `decimal` for the numeric value, and a `Currency` for the associated currency. Try introducing a new `Money` type that combines these two concepts, so that you can pass around a `Money` object that represents an amount of money in a specific currency. You can hopefully use this to simplify the `ICurrencyConverter.ConvertCurrency` API.
+4. Replace the use of strings to represent dates with `DateTimeOffset` *(this will be simpler that using `DateTime`!)*. Make sure you fully understand how dates are currently being used in the software before you make this change.
+5. Introduce a `UtcDateTime` to represent actual UTC date-times. The timestamps of the purchases are genuinely in local times, where `DateTimeOffset` is appropriate. But the timestamps used by `ExchangeRateRecord` and `CurrencyConverter` should always be in UTC.
+
+_**NOTE:** `DateTimeOffset` is a useful built-in type that we frequently avoid in favour of `DateTime`. When converting a `DateTimeOffset` to UTC, please note that you cannot simply take it's `Ticks` value. Two instances that represent the same instant in time but with different offsets don't actually have the same `Ticks` value, which can seem counterintuitive. Consider using the `DateTimeOffset.UtcTicks` property, which would be the same for those two instances._
 
 When you complete the exercise, try to find examples in your own product's code where introducing stronger types could help improve the clarity of the code and reduce the risk of bugs.
+
+Finally, there is an [example solution](../stringly-typing-example/README.md) for this exercise that you can consider if you get stuck.
