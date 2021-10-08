@@ -45,12 +45,12 @@ namespace AccountCalculator
                     var conversionRate = decimal.Parse(match.Groups["RATE"].Value);
                     TryParseDate(match.Groups["START"].Value, out var start);
                     TryParseDate(match.Groups["END"].Value, out var end);
-                    return new ExchangeRateRecord(currency, conversionRate, start, end);
+                    return new ExchangeRateRecord(currency, conversionRate, start, end.AddDays(1));
                 })
                 .ToList();
         }
 
-        private static bool TryParseDate(string s, out string result)
+        private static bool TryParseDate(string s, out DateTimeOffset result)
         {
             var match = DateRegex.Match(s);
             if (match.Success)
@@ -58,11 +58,11 @@ namespace AccountCalculator
                 var day = int.Parse(match.Groups["DAY"].Value);
                 var month = int.Parse(match.Groups["MONTH"].Value);
                 var year = int.Parse(match.Groups["YEAR"].Value);
-                result = $"{year}/{month:D2}/{day:D2}";
+                result = new DateTimeOffset(year, month, day, 0, 0, 0, TimeSpan.Zero);
                 return true;
             }
 
-            result = "";
+            result = default;
             return false;
         }
     }

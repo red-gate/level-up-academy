@@ -13,7 +13,7 @@ namespace AccountCalculator.Domain
     public record ExchangeRateRecord(
         Currency Currency,
         decimal ConversionRate,
-        string Start,
-        string End);
+        DateTimeOffset Start,
+        DateTimeOffset End);
 }
 

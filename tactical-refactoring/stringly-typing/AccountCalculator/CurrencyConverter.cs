@@ -7,7 +7,7 @@ namespace AccountCalculator
 {
     public sealed class CurrencyConverter : ICurrencyConverter
     {
-        private record ConversionRate(string Start, string End, decimal Rate);
+        private record ConversionRate(DateTimeOffset Start, DateTimeOffset End, decimal Rate);
 
         private readonly Task<ILookup<Currency, ConversionRate>> _conversionRates;
 
@@ -24,7 +24,7 @@ namespace AccountCalculator
         public Money ConvertCurrency(
             Money originalAmount,
             Currency targetCurrency,
-            string timeOfConversion)
+            DateTimeOffset timeOfConversion)
         {
             if (originalAmount.Currency == targetCurrency)
             {
@@ -38,19 +38,17 @@ namespace AccountCalculator
             return new Money(targetCurrency, newAmount);
         }
 
-        private decimal GetConversionRate(Currency currency, string timeOfConversion)
+        private decimal GetConversionRate(Currency currency, DateTimeOffset timeOfConversion)
         {
             if (currency == new Currency("GBP"))
             {
                 return 1;
             }
 
-            var conversionDate = DateTimeOffset.Parse(timeOfConversion).UtcDateTime.ToString("yyyy/MM/dd");
-
             var conversionRates = _conversionRates.Result;
             var conversionRate = conversionRates[currency]
-                .Where(x => string.CompareOrdinal(x.Start, conversionDate) <= 0)
-                .FirstOrDefault(x => string.CompareOrdinal(conversionDate, x.End) <= 0);
+                .Where(x => x.Start <= timeOfConversion)
+                .FirstOrDefault(x => timeOfConversion <= x.End);
             if (conversionRate == null)
             {
                 throw new ArgumentException(
