@@ -37,6 +37,7 @@ namespace AccountCalculatorTests
                 "2021-07-22T18:16:22+01:00,Defenders Cat and Dog Scatter Granules 750g,12.85,EUR",
                 "2021-08-04T11:28:19+01:00,iDventure - Davy Jones Locker - Escape Room game,35.16,EUR",
                 "2021-08-09T09:45:49+01:00,Coffee Direct Kenya Blue Mountain Coffee Beans 908g,23.74,EUR",
+                "2021-08-23T01:36:08+01:00,EDZ Merino Wool T-Shirt 200g Mens (XXXL Blue),39.99,EUR",
                 "2021-09-04T19:26:55-07:00,Huzzle CAST Cyclone/Difficulty Level 5,15.22,EUR",
                 "2021-09-04T20:02:03+01:00,ABBA Voyage (Transparent Orange Vinyl),63.41,EUR",
                 "2021-09-08T14:22:45+01:00,Nestle Nido Instant Full Cream Milk Powder 900g,8.81,EUR",
@@ -49,7 +50,7 @@ namespace AccountCalculatorTests
                 "2021-09-29T20:34:11+01:00,FLEXTAILGEAR Portable Air Pump,30.53,EUR"
             }));
             
-            Assert.That(info, Is.EqualTo(new [] {"Total cost is 4215.74 EUR"}));
+            Assert.That(info, Is.EqualTo(new [] {"Total cost is 4255.73 EUR"}));
         }
     }
 }
