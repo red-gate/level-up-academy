@@ -20,25 +20,25 @@ namespace AccountCalculator
             (await ReadRawLines())
             .Select(line => _purchasePattern.Match(line))
             .Where(match => match.Success)
-            .Where(match => IsValidDateTime(match.Groups["TIMESTAMP"].Value))
-            .Where(match => decimal.TryParse(match.Groups["AMOUNT"].Value, out _))
             .Select(match =>
             {
-                var timestamp = match.Groups["TIMESTAMP"].Value;
-                decimal.TryParse(match.Groups["AMOUNT"].Value, out var amount);
-                var description = match.Groups["DESCRIPTION"].Value;
-                var currency = Enum.Parse<Currency>(match.Groups["CURRENCY"].Value);
-                return new Purchase(timestamp, description, new Money(amount, currency));
+                try
+                {
+                    var timestamp = DateTimeOffset.Parse(match.Groups["TIMESTAMP"].Value, null,
+                        DateTimeStyles.RoundtripKind);
+                    var amount = decimal.Parse(match.Groups["AMOUNT"].Value);
+                    var description = match.Groups["DESCRIPTION"].Value;
+                    var currency = Enum.Parse<Currency>(match.Groups["CURRENCY"].Value);
+                    return new Purchase(timestamp, description, new Money(amount, currency));
+                }
+                catch (Exception ex)
+                {
+                    throw new ParsePurchaseFailedException($"Failed to parse line {match.Value}", ex);
+                }
             })
             .OrderBy(purchase => purchase.Timestamp)
             .ThenBy(purchase => purchase.Description)
             .ToList();
-
-        private static bool IsValidDateTime(string s)
-        {
-            var success = DateTimeOffset.TryParse(s, null, DateTimeStyles.RoundtripKind, out _);
-            return success;
-        }
 
         private static readonly Regex _purchasePattern =
             new ("^(?<TIMESTAMP>.*?),(?<DESCRIPTION>.*?),(?<AMOUNT>.*?),(?<CURRENCY>[A-Z]{3})");

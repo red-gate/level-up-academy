@@ -1,3 +1,4 @@
+using System;
 using AccountCalculator.Domain;
 
 namespace AccountCalculator
@@ -8,6 +9,6 @@ namespace AccountCalculator
         Money ConvertCurrency(
             Money original,
             Currency targetCurrency,
-            string timeOfConversion);
+            DateTimeOffset timeOfConversion);
     }
 }
