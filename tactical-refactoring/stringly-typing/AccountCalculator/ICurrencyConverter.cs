@@ -1,3 +1,5 @@
+using AccountCalculator.Domain;
+
 namespace AccountCalculator
 {
 
@@ -5,8 +7,8 @@ namespace AccountCalculator
     {
         decimal ConvertCurrency(
             decimal originalValue,
-            string originalCurrency,
-            string targetCurrency,
+            Currency originalCurrency,
+            Currency targetCurrency,
             string timeOfConversion);
     }
 }

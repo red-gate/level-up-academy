@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using AccountCalculator.Domain;
 
 namespace AccountCalculator
 {
@@ -8,12 +9,12 @@ namespace AccountCalculator
     {
         private record ConversionRate(string Start, string End, decimal Rate);
 
-        private readonly Task<ILookup<string, ConversionRate>> _conversionRates;
+        private readonly Task<ILookup<Currency, ConversionRate>> _conversionRates;
 
         public CurrencyConverter(IExchangeRatesProvider exchangeRatesProvider) =>
             _conversionRates = InitializeConversionRates(exchangeRatesProvider);
 
-        private static async Task<ILookup<string, ConversionRate>> InitializeConversionRates(
+        private static async Task<ILookup<Currency, ConversionRate>> InitializeConversionRates(
             IExchangeRatesProvider exchangeRatesProvider) =>
             (await exchangeRatesProvider.GetExchangeRates())
             .OrderBy(x => x.Start)
@@ -22,8 +23,8 @@ namespace AccountCalculator
 
         public decimal ConvertCurrency(
             decimal originalValue,
-            string originalCurrency,
-            string targetCurrency,
+            Currency originalCurrency,
+            Currency targetCurrency,
             string timeOfConversion)
         {
             if (originalCurrency == targetCurrency)
@@ -38,9 +39,9 @@ namespace AccountCalculator
             return newValue;
         }
 
-        private decimal GetConversionRate(string currency, string timeOfConversion)
+        private decimal GetConversionRate(Currency currency, string timeOfConversion)
         {
-            if (currency == "GBP")
+            if (currency == Currency.GBP)
             {
                 return 1;
             }
