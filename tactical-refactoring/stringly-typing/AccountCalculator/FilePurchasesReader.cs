@@ -24,13 +24,14 @@ namespace AccountCalculator
             .Where(match => decimal.TryParse(match.Groups["AMOUNT"].Value, out _))
             .Select(match =>
             {
-                var timestamp = match.Groups["TIMESTAMP"].Value;
+                var timestamp = DateTimeOffset.Parse(match.Groups["TIMESTAMP"].Value);
                 decimal.TryParse(match.Groups["AMOUNT"].Value, out var amount);
                 var description = match.Groups["DESCRIPTION"].Value;
                 var currency = match.Groups["CURRENCY"].Value;
+
                 return new Purchase(timestamp, description, amount, currency);
             })
-            .OrderBy(purchase => purchase.Timestamp)
+            .OrderBy(purchase => purchase.Timestamp.ToString("yyyy-MM-ddTHH:mm:ssK"))
             .ThenBy(purchase => purchase.Description)
             .ToList();
 
