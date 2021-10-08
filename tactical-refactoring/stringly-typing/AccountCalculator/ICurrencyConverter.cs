@@ -1,12 +1,13 @@
+using System;
+
 namespace AccountCalculator
 {
 
     public interface ICurrencyConverter
     {
-        decimal ConvertCurrency(
-            decimal originalValue,
+        decimal ConvertCurrency(decimal originalValue,
             string originalCurrency,
             string targetCurrency,
-            string timeOfConversion);
+            DateTimeOffset timeOfConversion);
     }
 }

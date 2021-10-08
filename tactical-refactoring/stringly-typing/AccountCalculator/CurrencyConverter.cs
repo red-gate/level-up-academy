@@ -20,11 +20,10 @@ namespace AccountCalculator
             .ThenBy(x => x.Currency)
             .ToLookup(x => x.Currency, x => new ConversionRate(x.Start, x.End, x.ConversionRate));
 
-        public decimal ConvertCurrency(
-            decimal originalValue,
+        public decimal ConvertCurrency(decimal originalValue,
             string originalCurrency,
             string targetCurrency,
-            string timeOfConversion)
+            DateTimeOffset timeOfConversion)
         {
             if (originalCurrency == targetCurrency)
             {
@@ -38,14 +37,14 @@ namespace AccountCalculator
             return newValue;
         }
 
-        private decimal GetConversionRate(string currency, string timeOfConversion)
+        private decimal GetConversionRate(string currency, DateTimeOffset timeOfConversion)
         {
             if (currency == "GBP")
             {
                 return 1;
             }
 
-            var conversionDate = DateTimeOffset.Parse(timeOfConversion).UtcDateTime.ToString("yyyy/MM/dd");
+            var conversionDate = timeOfConversion.UtcDateTime.ToString("yyyy/MM/dd");
 
             var conversionRates = _conversionRates.Result;
             var conversionRate = conversionRates[currency]
