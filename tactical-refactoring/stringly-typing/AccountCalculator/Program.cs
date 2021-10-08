@@ -55,7 +55,7 @@ namespace AccountCalculator
 
             foreach (var purchase in purchasesInGbp)
             {
-                writeOutput($"{purchase.Timestamp:yyyy-MM-dd},{purchase.Description},{purchase.Cost.Amount:F2},{purchase.Cost.Currency}");
+                writeOutput($"{purchase.Timestamp:yyyy-MM-ddTHH:mm:sszzz},{purchase.Description},{purchase.Cost.Amount:F2},{purchase.Cost.Currency}");
             }
 
             var totalCost = purchasesInGbp.Sum(purchase => purchase.Cost.Amount);

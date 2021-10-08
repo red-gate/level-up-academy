@@ -36,7 +36,7 @@ namespace AccountCalculator
                     throw new ParsePurchaseFailedException($"Failed to parse line {match.Value}", ex);
                 }
             })
-            .OrderBy(purchase => purchase.Timestamp)
+            .OrderBy(purchase => $"{purchase.Timestamp:yyyy-MM-ddTHH:mm:sszzz}")
             .ThenBy(purchase => purchase.Description)
             .ToList();
 
