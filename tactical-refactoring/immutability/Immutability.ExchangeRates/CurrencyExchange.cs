@@ -12,7 +12,7 @@ namespace Immutability.ExchangeRates
         {
             if (_exchangeRates.TryGetValue((from, to), out var exchangeRate))
             {
-                exchangeRate.Rate = rate;
+                exchangeRate.UpdateRate(rate);
             }
             else
             {
