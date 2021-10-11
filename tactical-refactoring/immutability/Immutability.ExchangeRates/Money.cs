@@ -4,8 +4,8 @@ namespace Immutability.ExchangeRates
 {
     public sealed class Money
     {
-        public Currency Currency { get; }
-        public decimal Amount { get; }
+        public Currency Currency { get; set; }
+        public decimal Amount { get; set; }
 
         public Money(Currency currency, decimal amount)
         {
@@ -36,6 +36,11 @@ namespace Immutability.ExchangeRates
         public static bool operator !=(Money left, Money right)
         {
             return !Equals(left, right);
+        }
+
+        public override string ToString()
+        {
+            return Currency.Code + '\u00A0' + Amount;
         }
     }
 }

@@ -30,5 +30,10 @@ namespace Immutability.ExchangeRates
 
             return Cache.GetOrAdd(code, c => new Currency(c));
         }
+
+        public override string ToString()
+        {
+            return Code;
+        }
     }
 }
