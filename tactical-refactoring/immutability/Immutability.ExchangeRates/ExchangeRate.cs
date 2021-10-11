@@ -42,5 +42,14 @@ namespace Immutability.ExchangeRates
             money.Currency = _to;
             money.Amount *= _rate;
         }
+
+        public void Swap()
+        {
+            var newFrom = _to;
+            var newTo = _from;
+            _from = newFrom;
+            _to = newTo;
+            _rate = 1m / _rate;
+        }
     }
 }
