@@ -25,14 +25,5 @@ namespace Immutability.ExchangeRates
             
             return new Money(To, money.Amount * Rate);
         }
-
-        public void Swap()
-        {
-            var newFrom = To;
-            var newTo = From;
-            From = newFrom;
-            To = newTo;
-            Rate = 1m / Rate;
-        }
     }
 }
