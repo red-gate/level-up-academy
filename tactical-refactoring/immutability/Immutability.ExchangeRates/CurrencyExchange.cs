@@ -32,8 +32,7 @@ namespace Immutability.ExchangeRates
                 throw new InvalidOperationException($"No exchange rate found for {from.Currency} to {to}");
             }
 
-            exchangeRate.Convert(from);
-            return from;
+            return exchangeRate.Convert(from);
         }
 
         public IEnumerable<ExchangeRate> GetCurrentRates()
