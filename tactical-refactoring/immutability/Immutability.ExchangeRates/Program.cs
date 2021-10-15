@@ -34,13 +34,12 @@ namespace Immutability.ExchangeRates
                 output.WriteLine($"{exchangeRate.From} => {exchangeRate.To} = {exchangeRate.Rate}");
             }
             output.WriteLine();
-
-            var money1 = new Money(gbp, 50.00m);
-            money1 = currencyExchange.Exchange(money1, usd);
+            
+            var money1 = currencyExchange.Exchange(new Money(gbp, 50.00m), usd);
             output.WriteLine($"£50.00 is worth {money1}");
             output.WriteLine();
 
-            currencyExchange = new CurrencyExchange(new List<ExchangeRate>
+            var currencyExchange2 = new CurrencyExchange(new List<ExchangeRate>
             {
                 new (gbp, usd, 1.38m),
                 new (gbp, eur, 1.19m),
@@ -51,14 +50,13 @@ namespace Immutability.ExchangeRates
             });
 
             output.WriteLine("New exchange rates:");
-            foreach (var exchangeRate in currencyExchange.ExchangeRates.OrderBy(er => er.From.Code).ThenBy(er => er.To.Code))
+            foreach (var exchangeRate in currencyExchange2.ExchangeRates.OrderBy(er => er.From.Code).ThenBy(er => er.To.Code))
             {
                 output.WriteLine($"{exchangeRate.From} => {exchangeRate.To} = {exchangeRate.Rate}");
             }
             output.WriteLine();
 
-            var money2 = new Money(gbp, 50.00m);
-            money2 = currencyExchange.Exchange(money2, usd);
+            var money2 = currencyExchange2.Exchange(new Money(gbp, 50.00m), usd);
             output.WriteLine($"£50.00 is now worth {money2}");
         }
     }
