@@ -1,23 +1,17 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Immutability.ExchangeRates
 {
-    public sealed class CurrencyExchange
+    public sealed class CurrencyExchange : IEnumerable<ExchangeRate>
     {
         private readonly Dictionary<(Currency from, Currency to), ExchangeRate> _exchangeRates =
             new();
 
-        public void UpdateExchangeRate(Currency from, Currency to, decimal rate)
+        public void Add(Currency from, Currency to, decimal rate)
         {
-            if (_exchangeRates.TryGetValue((from, to), out var exchangeRate))
-            {
-                _exchangeRates[(from, to)] = exchangeRate with {Rate = rate};
-            }
-            else
-            {
-                _exchangeRates.Add((from, to), new ExchangeRate(from, to, rate));
-            }
+            _exchangeRates.Add((from, to), new ExchangeRate(from, to, rate));
         }
 
         public Money Exchange(Money from, Currency to)
@@ -30,9 +24,14 @@ namespace Immutability.ExchangeRates
             return exchangeRate.Convert(from);
         }
 
-        public IEnumerable<ExchangeRate> GetCurrentRates()
+        public IEnumerator<ExchangeRate> GetEnumerator()
         {
-            return _exchangeRates.Values;
+            return _exchangeRates.Values.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _exchangeRates.Values.GetEnumerator();
         }
     }
 }

@@ -17,16 +17,18 @@ namespace Immutability.ExchangeRates
             var usd = Currency.FromCode("USD");
             var eur = Currency.FromCode("EUR");
 
-            var currencyExchange = new CurrencyExchange();
-            currencyExchange.UpdateExchangeRate(gbp, usd, 1.36m);
-            currencyExchange.UpdateExchangeRate(gbp, eur, 1.18m);
-            currencyExchange.UpdateExchangeRate(usd, gbp, 0.73m);
-            currencyExchange.UpdateExchangeRate(usd, eur, 0.86m);
-            currencyExchange.UpdateExchangeRate(eur, gbp, 0.85m);
-            currencyExchange.UpdateExchangeRate(eur, usd, 1.16m);
+            var currencyExchange = new CurrencyExchange
+            {
+                {gbp, usd, 1.36m},
+                {gbp, eur, 1.18m},
+                {usd, gbp, 0.73m},
+                {usd, eur, 0.86m},
+                {eur, gbp, 0.85m},
+                {eur, usd, 1.16m},
+            };
 
             output.WriteLine("Current exchange rates:");
-            foreach (var exchangeRate in currencyExchange.GetCurrentRates().OrderBy(er => er.From.Code).ThenBy(er => er.To.Code))
+            foreach (var exchangeRate in currencyExchange.OrderBy(er => er.From.Code).ThenBy(er => er.To.Code))
             {
                 output.WriteLine($"{exchangeRate.From} => {exchangeRate.To} = {exchangeRate.Rate}");
             }
@@ -37,15 +39,18 @@ namespace Immutability.ExchangeRates
             output.WriteLine($"£50.00 is worth {money1}");
             output.WriteLine();
 
-            currencyExchange.UpdateExchangeRate(gbp, usd, 1.38m);
-            currencyExchange.UpdateExchangeRate(gbp, eur, 1.19m);
-            currencyExchange.UpdateExchangeRate(usd, gbp, 0.71m);
-            currencyExchange.UpdateExchangeRate(usd, eur, 0.86m);
-            currencyExchange.UpdateExchangeRate(eur, gbp, 0.84m);
-            currencyExchange.UpdateExchangeRate(eur, usd, 1.17m);
+            currencyExchange = new CurrencyExchange
+            {
+                {gbp, usd, 1.38m},
+                {gbp, eur, 1.19m},
+                {usd, gbp, 0.71m},
+                {usd, eur, 0.86m},
+                {eur, gbp, 0.84m},
+                {eur, usd, 1.17m},
+            };
 
             output.WriteLine("New exchange rates:");
-            foreach (var exchangeRate in currencyExchange.GetCurrentRates().OrderBy(er => er.From.Code).ThenBy(er => er.To.Code))
+            foreach (var exchangeRate in currencyExchange.OrderBy(er => er.From.Code).ThenBy(er => er.To.Code))
             {
                 output.WriteLine($"{exchangeRate.From} => {exchangeRate.To} = {exchangeRate.Rate}");
             }
