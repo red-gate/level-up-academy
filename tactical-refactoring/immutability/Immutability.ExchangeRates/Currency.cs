@@ -3,8 +3,10 @@ using System.Linq;
 
 namespace Immutability.ExchangeRates
 {
-    public sealed record Currency(string Code)
+    public sealed record Currency
     {
+        public string Code { get; private init; }
+        
         public static Currency FromCode(string code)
         {
             if (code == null)
@@ -17,7 +19,7 @@ namespace Immutability.ExchangeRates
                 throw new ArgumentException($"'{code}' is not a valid currency code; currency codes must be 3 capital letters", nameof(code));
             }
 
-            return new Currency(code);
+            return new Currency{Code = code};
         }
 
         public override string ToString()
