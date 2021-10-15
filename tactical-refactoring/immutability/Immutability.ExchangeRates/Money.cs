@@ -4,8 +4,8 @@ namespace Immutability.ExchangeRates
 {
     public sealed class Money
     {
-        public Currency Currency { get; set; }
-        public decimal Amount { get; set; }
+        public Currency Currency { get; }
+        public decimal Amount { get; }
 
         public Money(Currency currency, decimal amount)
         {
