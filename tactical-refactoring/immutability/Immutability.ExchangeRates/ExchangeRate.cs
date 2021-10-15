@@ -11,19 +11,19 @@ namespace Immutability.ExchangeRates
         public Currency From
         {
             get => _from;
-            set => _from = value;
+            init => _from = value;
         }
 
         public Currency To
         {
             get => _to;
-            set => _to = value;
+            init => _to = value;
         }
 
         public decimal Rate
         {
             get => _rate;
-            set => _rate = value;
+            init => _rate = value;
         }
 
         public void UpdateRate(decimal newRate)
