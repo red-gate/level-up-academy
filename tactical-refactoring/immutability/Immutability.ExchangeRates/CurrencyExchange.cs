@@ -16,12 +16,7 @@ namespace Immutability.ExchangeRates
             }
             else
             {
-                _exchangeRates.Add((from, to), new ExchangeRate
-                {
-                    From = from,
-                    To = to,
-                    Rate = rate
-                });
+                _exchangeRates.Add((from, to), new ExchangeRate(from, to, rate));
             }
         }
 
