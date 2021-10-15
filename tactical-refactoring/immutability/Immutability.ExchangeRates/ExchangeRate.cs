@@ -8,12 +8,7 @@ namespace Immutability.ExchangeRates
 
         public Currency To { get; init; }
 
-        public decimal Rate { get; set; }
-
-        public void UpdateRate(decimal newRate)
-        {
-            Rate = newRate;
-        }
+        public decimal Rate { get; init; }
 
         public Money Convert(Money money)
         {
