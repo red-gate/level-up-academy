@@ -25,7 +25,7 @@ namespace Immutability.ExchangeRates
             }
         }
 
-        public void Exchange(Money from, Currency to)
+        public Money Exchange(Money from, Currency to)
         {
             if (!_exchangeRates.TryGetValue((from.Currency, to), out var exchangeRate))
             {
@@ -33,6 +33,7 @@ namespace Immutability.ExchangeRates
             }
 
             exchangeRate.Convert(from);
+            return from;
         }
 
         public IEnumerable<ExchangeRate> GetCurrentRates()

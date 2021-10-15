@@ -33,7 +33,7 @@ namespace Immutability.ExchangeRates
             output.WriteLine();
 
             var money1 = new Money(gbp, 50.00m);
-            currencyExchange.Exchange(money1, usd);
+            money1 = currencyExchange.Exchange(money1, usd);
             output.WriteLine($"£50.00 is worth {money1}");
             output.WriteLine();
 
@@ -52,7 +52,7 @@ namespace Immutability.ExchangeRates
             output.WriteLine();
 
             var money2 = new Money(gbp, 50.00m);
-            currencyExchange.Exchange(money2, usd);
+            money2 = currencyExchange.Exchange(money2, usd);
             output.WriteLine($"£50.00 is now worth {money2}");
         }
     }
