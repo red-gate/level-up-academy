@@ -5,19 +5,25 @@ namespace Immutability.ExchangeRates
 {
     public sealed class CurrencyExchange
     {
-        private readonly Dictionary<(Currency from, Currency to), ExchangeRate> _exchangeRates =
-            new Dictionary<(Currency from, Currency to), ExchangeRate>();
-
-        public void UpdateExchangeRate(Currency from, Currency to, decimal rate)
+        private readonly Dictionary<(Currency from, Currency to), ExchangeRate> _exchangeRates;
+        public CurrencyExchange WithExchangeRate(Currency from, Currency to, decimal rate)
         {
-            var newExchangeRate = new ExchangeRate
+            var newExchangeRate = new Dictionary<(Currency from, Currency to), ExchangeRate>(_exchangeRates)
             {
-                From = from,
-                To = to,
-                Rate = rate
+                [(from, to)] = new ExchangeRate {From = from, To = to, Rate = rate}
             };
 
-            _exchangeRates[(from, to)] = newExchangeRate;
+            return new CurrencyExchange(newExchangeRate);
+        }
+
+        private CurrencyExchange(Dictionary<(Currency from, Currency to), ExchangeRate> exchangeRate)
+        {
+            _exchangeRates = exchangeRate;
+        }
+
+        public CurrencyExchange()
+        {
+            _exchangeRates = new Dictionary<(Currency from, Currency to), ExchangeRate>();
         }
 
         public Money Exchange(Money from, Currency to)

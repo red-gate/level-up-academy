@@ -17,40 +17,44 @@ namespace Immutability.ExchangeRates
             var usd = Currency.FromCode("USD");
             var eur = Currency.FromCode("EUR");
 
-            var currencyExchange = new CurrencyExchange();
-            currencyExchange.UpdateExchangeRate(gbp, usd, 1.36m);
-            currencyExchange.UpdateExchangeRate(gbp, eur, 1.18m);
-            currencyExchange.UpdateExchangeRate(usd, gbp, 0.73m);
-            currencyExchange.UpdateExchangeRate(usd, eur, 0.86m);
-            currencyExchange.UpdateExchangeRate(eur, gbp, 0.85m);
-            currencyExchange.UpdateExchangeRate(eur, usd, 1.16m);
+            var currencyExchange = new CurrencyExchange()
+                .WithExchangeRate(gbp, usd, 1.36m)
+                .WithExchangeRate(gbp, eur, 1.18m)
+                .WithExchangeRate(usd, gbp, 0.73m)
+                .WithExchangeRate(usd, eur, 0.86m)
+                .WithExchangeRate(eur, gbp, 0.85m)
+                .WithExchangeRate(eur, usd, 1.16m);
 
             output.WriteLine("Current exchange rates:");
-            foreach (var exchangeRate in currencyExchange.GetCurrentRates().OrderBy(er => er.From.Code).ThenBy(er => er.To.Code))
+            foreach (var exchangeRate in currencyExchange.GetCurrentRates().OrderBy(er => er.From.Code)
+                .ThenBy(er => er.To.Code))
             {
                 output.WriteLine($"{exchangeRate.From} => {exchangeRate.To} = {exchangeRate.Rate}");
             }
+
             output.WriteLine();
 
             var money1InUsd = currencyExchange.Exchange(new Money(gbp, 50.00m), usd);
             output.WriteLine($"£50.00 is worth {money1InUsd}");
             output.WriteLine();
 
-            currencyExchange.UpdateExchangeRate(gbp, usd, 1.38m);
-            currencyExchange.UpdateExchangeRate(gbp, eur, 1.19m);
-            currencyExchange.UpdateExchangeRate(usd, gbp, 0.71m);
-            currencyExchange.UpdateExchangeRate(usd, eur, 0.86m);
-            currencyExchange.UpdateExchangeRate(eur, gbp, 0.84m);
-            currencyExchange.UpdateExchangeRate(eur, usd, 1.17m);
+            var currencyExchange2 = currencyExchange.WithExchangeRate(gbp, usd, 1.38m)
+                .WithExchangeRate(gbp, eur, 1.19m)
+                .WithExchangeRate(usd, gbp, 0.71m)
+                .WithExchangeRate(usd, eur, 0.86m)
+                .WithExchangeRate(eur, gbp, 0.84m)
+                .WithExchangeRate(eur, usd, 1.17m);
 
             output.WriteLine("New exchange rates:");
-            foreach (var exchangeRate in currencyExchange.GetCurrentRates().OrderBy(er => er.From.Code).ThenBy(er => er.To.Code))
+            foreach (var exchangeRate in currencyExchange2.GetCurrentRates().OrderBy(er => er.From.Code)
+                .ThenBy(er => er.To.Code))
             {
                 output.WriteLine($"{exchangeRate.From} => {exchangeRate.To} = {exchangeRate.Rate}");
             }
+
             output.WriteLine();
 
-            var money2InUsd = currencyExchange.Exchange(new Money(gbp, 50.00m), usd);
+            var money2InUsd = currencyExchange2.Exchange(new Money(gbp, 50.00m), usd);
             output.WriteLine($"£50.00 is now worth {money2InUsd}");
         }
     }
