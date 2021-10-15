@@ -4,52 +4,36 @@ namespace Immutability.ExchangeRates
 {
     public sealed class ExchangeRate
     {
-        private Currency _from;
-        private Currency _to;
-        private decimal _rate;
+        public Currency From { get; set; }
 
-        public Currency From
-        {
-            get => _from;
-            set => _from = value;
-        }
+        public Currency To { get; set; }
 
-        public Currency To
-        {
-            get => _to;
-            set => _to = value;
-        }
-
-        public decimal Rate
-        {
-            get => _rate;
-            set => _rate = value;
-        }
+        public decimal Rate { get; set; }
 
         public void UpdateRate(decimal newRate)
         {
-            _rate = newRate;
+            Rate = newRate;
         }
 
         public void Convert(Money money)
         {
-            if (money.Currency != _from)
+            if (money.Currency != From)
             {
                 throw new ArgumentException(
-                    $"Exchange rate from {_from} to {_to} was asked to convert from {money.Currency}", nameof(money));
+                    $"Exchange rate from {From} to {To} was asked to convert from {money.Currency}", nameof(money));
             }
 
-            money.Currency = _to;
-            money.Amount *= _rate;
+            money.Currency = To;
+            money.Amount *= Rate;
         }
 
         public void Swap()
         {
-            var newFrom = _to;
-            var newTo = _from;
-            _from = newFrom;
-            _to = newTo;
-            _rate = 1m / _rate;
+            var newFrom = To;
+            var newTo = From;
+            From = newFrom;
+            To = newTo;
+            Rate = 1m / Rate;
         }
     }
 }
