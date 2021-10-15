@@ -1,21 +1,10 @@
 using System;
-using System.Collections.Concurrent;
 using System.Linq;
 
 namespace Immutability.ExchangeRates
 {
-    public sealed class Currency
+    public sealed record Currency(string Code)
     {
-        private static readonly ConcurrentDictionary<string, Currency> Cache =
-            new ConcurrentDictionary<string, Currency>();
-
-        public string Code { get; }
-
-        private Currency(string code)
-        {
-            Code = code;
-        }
-
         public static Currency FromCode(string code)
         {
             if (code == null)
@@ -28,7 +17,7 @@ namespace Immutability.ExchangeRates
                 throw new ArgumentException($"'{code}' is not a valid currency code; currency codes must be 3 capital letters", nameof(code));
             }
 
-            return Cache.GetOrAdd(code, c => new Currency(c));
+            return new Currency(code);
         }
 
         public override string ToString()
