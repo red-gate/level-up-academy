@@ -25,14 +25,14 @@ namespace Immutability.ExchangeRates
             }
         }
 
-        public void Exchange(Money from, Currency to)
+        public Money Exchange(Money from, Currency to)
         {
             if (!_exchangeRates.TryGetValue((from.Currency, to), out var exchangeRate))
             {
                 throw new InvalidOperationException($"No exchange rate found for {from.Currency} to {to}");
             }
 
-            exchangeRate.Convert(from);
+            return exchangeRate.Convert(from);
         }
 
         public IEnumerable<ExchangeRate> GetCurrentRates()

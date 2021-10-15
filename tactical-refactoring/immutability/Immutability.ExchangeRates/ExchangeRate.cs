@@ -31,7 +31,7 @@ namespace Immutability.ExchangeRates
             _rate = newRate;
         }
 
-        public void Convert(Money money)
+        public Money Convert(Money money)
         {
             if (money.Currency != _from)
             {
@@ -39,8 +39,7 @@ namespace Immutability.ExchangeRates
                     $"Exchange rate from {_from} to {_to} was asked to convert from {money.Currency}", nameof(money));
             }
 
-            money.Currency = _to;
-            money.Amount *= _rate;
+            return new Money(_to, money.Amount * _rate);
         }
 
         public void Swap()

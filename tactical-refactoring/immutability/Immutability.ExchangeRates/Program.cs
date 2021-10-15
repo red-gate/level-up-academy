@@ -33,8 +33,9 @@ namespace Immutability.ExchangeRates
             output.WriteLine();
 
             var money1 = new Money(gbp, 50.00m);
-            currencyExchange.Exchange(money1, usd);
-            output.WriteLine($"£50.00 is worth {money1}");
+            var exhangedMoney1 = currencyExchange.Exchange(money1, usd);
+            
+            output.WriteLine($"£50.00 is worth {exhangedMoney1}");
             output.WriteLine();
 
             currencyExchange.UpdateExchangeRate(gbp, usd, 1.38m);
@@ -52,8 +53,8 @@ namespace Immutability.ExchangeRates
             output.WriteLine();
 
             var money2 = new Money(gbp, 50.00m);
-            currencyExchange.Exchange(money2, usd);
-            output.WriteLine($"£50.00 is now worth {money2}");
+            var exchangedMoney2 = currencyExchange.Exchange(money2, usd);
+            output.WriteLine($"£50.00 is now worth {exchangedMoney2}");
         }
     }
 }
