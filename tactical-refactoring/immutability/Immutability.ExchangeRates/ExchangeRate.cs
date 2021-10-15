@@ -15,16 +15,15 @@ namespace Immutability.ExchangeRates
             Rate = newRate;
         }
 
-        public void Convert(Money money)
+        public Money Convert(Money money)
         {
             if (money.Currency != From)
             {
                 throw new ArgumentException(
                     $"Exchange rate from {From} to {To} was asked to convert from {money.Currency}", nameof(money));
             }
-
-            money.Currency = To;
-            money.Amount *= Rate;
+            
+            return new Money(To, money.Amount * Rate);
         }
 
         public void Swap()
