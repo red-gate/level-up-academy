@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Immutability.ExchangeRates
 {
-    public sealed class Currency
+    public sealed record Currency
     {
         private static readonly ConcurrentDictionary<string, Currency> Cache =
             new ConcurrentDictionary<string, Currency>();
