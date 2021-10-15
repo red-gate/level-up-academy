@@ -26,9 +26,9 @@ namespace Immutability.ExchangeRates
             init => _rate = value;
         }
 
-        public void UpdateRate(decimal newRate)
+        public ExchangeRate WithRate(decimal newRate)
         {
-            _rate = newRate;
+            return new() {From = From, To = To, Rate = newRate};
         }
 
         public Money Convert(Money money)
