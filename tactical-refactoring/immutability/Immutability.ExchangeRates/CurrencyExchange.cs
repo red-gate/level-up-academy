@@ -10,19 +10,14 @@ namespace Immutability.ExchangeRates
 
         public void UpdateExchangeRate(Currency from, Currency to, decimal rate)
         {
-            if (_exchangeRates.TryGetValue((from, to), out var exchangeRate))
+            var newExchangeRate = new ExchangeRate
             {
-                exchangeRate.UpdateRate(rate);
-            }
-            else
-            {
-                _exchangeRates.Add((from, to), new ExchangeRate
-                {
-                    From = from,
-                    To = to,
-                    Rate = rate
-                });
-            }
+                From = from,
+                To = to,
+                Rate = rate
+            };
+
+            _exchangeRates[(from, to)] = newExchangeRate;
         }
 
         public Money Exchange(Money from, Currency to)
