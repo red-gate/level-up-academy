@@ -5,7 +5,8 @@ namespace Immutability.ExchangeRates
 {
     public sealed class CurrencyExchange
     {
-        private readonly Dictionary<(Currency from, Currency to), ExchangeRate> _exchangeRates = new();
+        private readonly Dictionary<(Currency from, Currency to), ExchangeRate> _exchangeRates =
+            new();
 
         public void UpdateExchangeRate(Currency from, Currency to, decimal rate)
         {
