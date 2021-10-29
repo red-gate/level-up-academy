@@ -4,4 +4,8 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TestApp.Engine\TestApp.Engine.csproj" />
+  </ItemGroup>
+
 </Project>
