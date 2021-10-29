@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BlueBridge.SeaQuollMonitor.Management\BlueBridge.SeaQuollMonitor.Management.csproj" />
+      <ProjectReference Include="..\BlueBridge.SeaQuollMonitor.Monitoring\BlueBridge.SeaQuollMonitor.Monitoring.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+        <Company>Blue Bridge Software Ltd</Company>
+        <Product>Sea Quoll Monitor</Product>
+
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+</Project>
