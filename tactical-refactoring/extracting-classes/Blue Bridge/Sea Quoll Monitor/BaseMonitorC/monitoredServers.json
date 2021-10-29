@@ -1,0 +1,14 @@
+﻿[
+  {
+    "name": "analytics.internal.megacorp.com",
+    "added": "2021-10-29T07:44:07.9296227Z",
+    "isSuspended": true,
+    "isLicensed": false
+  },
+  {
+    "name": "research.internal.megacorp.com",
+    "added": "2021-10-27T07:44:07Z",
+    "isSuspended": false,
+    "isLicensed": true
+  }
+]

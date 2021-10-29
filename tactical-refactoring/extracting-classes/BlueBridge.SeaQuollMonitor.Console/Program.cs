@@ -10,7 +10,7 @@ namespace BlueBridge.SeaQuollMonitor.Console
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             // Dependency declarations.
             var builder = new ContainerBuilder();
@@ -56,10 +56,10 @@ namespace BlueBridge.SeaQuollMonitor.Console
             var info = await registry.ExecuteOnAllBaseMonitorsAsync(async baseMonitor =>
             {
                 var builder = new StringBuilder();
-                builder.AppendLine($"Name: {baseMonitor.Name}");
+                builder.AppendLine($"Base Monitor: {baseMonitor.Name}");
                 foreach (var server in await baseMonitor.MonitoredServersRepository.GetAllServers())
                 {
-                    builder.AppendLine($"    Server: {server.Name}\tAdded: {server.Added:u}\tLicensed: {server.IsLicensed}\tSuspended: {server.IsSuspended}");
+                    builder.AppendLine($"    {server.Name}\tAdded {server.Added:u}, {(server.IsLicensed ? "Licensed" : "Unlicensed")}, {(server.IsSuspended ? "Suspended" : "Active")}");
                 }
 
                 return builder.ToString();
