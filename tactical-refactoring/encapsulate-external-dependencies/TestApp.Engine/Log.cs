@@ -1,9 +1,18 @@
+using System;
+using System.IO;
 using Serilog;
 
 namespace TestApp.Engine
 {
-    internal static class Log
+    public static class Log
     {
-        public static ILogger Logger { get; } = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+        private static ILogger? _logger;
+
+        public static ILogger Logger => _logger ?? throw new Exception("Logger has not been initialized yet");
+
+        public static void Initialize(TextWriter stdout)
+        {
+            _logger = new LoggerConfiguration().WriteTo.TextWriter(stdout).CreateLogger();
+        }
     }
 }

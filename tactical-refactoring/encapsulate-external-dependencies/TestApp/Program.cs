@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using TestApp.Engine;
 
 namespace TestApp
 {
@@ -12,6 +13,7 @@ namespace TestApp
 
         public static void Run(string[] args, TextWriter stdout, TextWriter stderr)
         {
+            Log.Initialize(stdout);
             stdout.WriteLine("Hello, world!");
         }
     }
