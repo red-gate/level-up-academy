@@ -73,8 +73,8 @@ namespace BlueBridge.SeaQuollMonitor.Management
         }
 
         private static (
-            List<(string BaseMonitorName, Server Server)> licensedServers, 
-            List<(string BaseMonitorName, Server Server)> unlicensedServers) 
+            IReadOnlyCollection<(string BaseMonitorName, Server Server)> licensedServers, 
+            IReadOnlyCollection<(string BaseMonitorName, Server Server)> unlicensedServers) 
             AllocateLicenses(
                 IEnumerable<(string BaseMonitorName, Server Server)> rankedServers,
                 int availableLicenseCount)
