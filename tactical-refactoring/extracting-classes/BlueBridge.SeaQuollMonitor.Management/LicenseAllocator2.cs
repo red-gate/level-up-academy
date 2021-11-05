@@ -4,9 +4,9 @@ using BlueBridge.SeaQuollMonitor.Domain;
 
 namespace BlueBridge.SeaQuollMonitor.Management
 {
-    internal static class LicenseAllocator2
+    public class LicenseAllocator2
     {
-        public static ILookup<string, Server> ServersWithChangedLicenseState(ServerLicenseAllocations allocations)
+        public ILookup<string, Server> ServersWithChangedLicenseState(ServerLicenseAllocations allocations)
         {
             // Mutate the server license state where necessary.
             var newlyLicensedServers = allocations.Licensed
@@ -21,7 +21,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             return modifiedServers;
         }
 
-        public static ServerLicenseAllocations AllocateLicenses(
+        public ServerLicenseAllocations AllocateLicenses(
             IEnumerable<ServerWithBaseMonitorName> rankedServers,
             int availableLicenseCount)
         {

@@ -11,11 +11,13 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
         private readonly ILicenseService _licenseService;
         private readonly TaskDebouncer _refreshTaskDebouncer;
+        private readonly LicenseAllocator2 _licenseAllocator2;
 
-        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService)
+        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService, LicenseAllocator2 licenseAllocator2)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
+            _licenseAllocator2 = licenseAllocator2;
             _refreshTaskDebouncer = new TaskDebouncer(DoRefresh);
 
             _baseMonitorRegistry.OnLicensingRequirementsChanged += HandleLicensingRequirementsChanged;
@@ -34,9 +36,9 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             var availableLicenseCount = await availableLicenseCountTask;
             System.Console.WriteLine($"Available license count: {availableLicenseCount}");
-            var serverLicenseAllocations = LicenseAllocator2.AllocateLicenses(rankedServers, availableLicenseCount);
+            var serverLicenseAllocations = _licenseAllocator2.AllocateLicenses(rankedServers, availableLicenseCount);
 
-            var serversWithChangedLicenseState = LicenseAllocator2.ServersWithChangedLicenseState(serverLicenseAllocations);
+            var serversWithChangedLicenseState = _licenseAllocator2.ServersWithChangedLicenseState(serverLicenseAllocations);
             await UpdateLicenseStateForServers(serversWithChangedLicenseState);
 
             System.Console.WriteLine($"Used license count: {serverLicenseAllocations.Licensed.Count}");
@@ -76,9 +78,9 @@ namespace BlueBridge.SeaQuollMonitor.Management
         }
     }
     
-    internal record ServerWithBaseMonitorName (Server Server, string BaseMonitorName);
+    public record ServerWithBaseMonitorName (Server Server, string BaseMonitorName);
 
-    internal record ServerLicenseAllocations (
+    public record ServerLicenseAllocations (
         IReadOnlyCollection<ServerWithBaseMonitorName> Licensed,
         IReadOnlyCollection<ServerWithBaseMonitorName> Unlicensed);
 }
