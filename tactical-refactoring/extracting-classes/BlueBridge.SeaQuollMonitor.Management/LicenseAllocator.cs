@@ -49,7 +49,9 @@ namespace BlueBridge.SeaQuollMonitor.Management
             await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
         }
 
-        private async Task<IEnumerable<(string BaseMonitorName, Server Server)>> RankServers()
+        private record ServerWithBaseMonitorName (Server Server, string BaseMonitorName);
+
+        private async Task<IEnumerable<ServerWithBaseMonitorName>> RankServers()
         {
             // Fetch all the servers from all of the base monitors.
             var allServers = await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(baseMonitor =>
@@ -58,7 +60,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
             // registered servers.
             var rankedServers = allServers
-                .SelectMany(pair => pair.Value.Select(server => (BaseMonitorName: pair.Key, Server: server)))
+                .SelectMany(pair => pair.Value.Select(server => new ServerWithBaseMonitorName(server, pair.Key)))
                 .OrderBy(x => x.Server.Added);
             return rankedServers;
         }
@@ -75,8 +77,8 @@ namespace BlueBridge.SeaQuollMonitor.Management
         }
 
         private static ILookup<string, Server> ServersWithChangedLicenseState(
-            IEnumerable<(string BaseMonitorName, Server Server)> licensedServers,
-            IEnumerable<(string BaseMonitorName, Server Server)> unlicensedServers)
+            IEnumerable<ServerWithBaseMonitorName> licensedServers,
+            IEnumerable<ServerWithBaseMonitorName> unlicensedServers)
         {
             // Mutate the server license state where necessary.
             var newlyLicensedServers = licensedServers
@@ -92,14 +94,14 @@ namespace BlueBridge.SeaQuollMonitor.Management
         }
 
         private static (
-            IReadOnlyCollection<(string BaseMonitorName, Server Server)> licensedServers, 
-            IReadOnlyCollection<(string BaseMonitorName, Server Server)> unlicensedServers) 
+            IReadOnlyCollection<ServerWithBaseMonitorName> licensedServers, 
+            IReadOnlyCollection<ServerWithBaseMonitorName> unlicensedServers) 
             AllocateLicenses(
-                IEnumerable<(string BaseMonitorName, Server Server)> rankedServers,
+                IEnumerable<ServerWithBaseMonitorName> rankedServers,
                 int availableLicenseCount)
         {
-            var licensedServers = new List<(string BaseMonitorName, Server Server)>();
-            var unlicensedServers = new List<(string BaseMonitorName, Server Server)>();
+            var licensedServers = new List<ServerWithBaseMonitorName>();
+            var unlicensedServers = new List<ServerWithBaseMonitorName>();
             foreach (var item in rankedServers)
             {
                 // If the server is suspended, or we've run out of licences, then the server won't be licensed.
