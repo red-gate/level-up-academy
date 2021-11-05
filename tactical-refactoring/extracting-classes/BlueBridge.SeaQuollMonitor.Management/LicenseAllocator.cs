@@ -37,7 +37,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             var serverLicenseAllocations = AllocateLicenses(rankedServers, availableLicenseCount);
 
             var serversWithChangedLicenseState = ServersWithChangedLicenseState(serverLicenseAllocations);
-            await UpdateServers(serversWithChangedLicenseState);
+            await UpdateLicenseStateForServers(serversWithChangedLicenseState);
 
             System.Console.WriteLine($"Used license count: {serverLicenseAllocations.Licensed.Count}");
             await _licenseService.ReportUsedLicenseCount(serverLicenseAllocations.Licensed.Count);
@@ -63,7 +63,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             return rankedServers;
         }
 
-        private async Task UpdateServers(ILookup<string, Server> modifiedServers)
+        private async Task UpdateLicenseStateForServers(ILookup<string, Server> modifiedServers)
         {
             await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(async baseMonitor =>
             {
