@@ -47,16 +47,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             var (licensedServers, unlicensedServers) = AllocateLicenses(rankedServers, availableLicenseCount);
 
-            // Mutate the server license state where necessary.
-            var newlyLicensedServers = licensedServers
-                .Where(x => !x.Server.IsLicensed)
-                .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with {IsLicensed = true}));
-            var newlyUnlicensedServers = unlicensedServers
-                .Where(x => x.Server.IsLicensed)
-                .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with {IsLicensed = false}));
-            var modifiedServers = newlyLicensedServers
-                .Concat(newlyUnlicensedServers)
-                .ToLookup(x => x.BaseMonitorName, x => x.Server);
+            var modifiedServers = ServersWithChangedLicenseState(licensedServers, unlicensedServers);
 
             // Now update the modified servers.
             await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(async baseMonitor =>
@@ -70,6 +61,23 @@ namespace BlueBridge.SeaQuollMonitor.Management
             // And finally report the number of licenses consumed.
             System.Console.WriteLine($"Used license count: {licensedServers.Count}");
             await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
+        }
+
+        private static ILookup<string, Server> ServersWithChangedLicenseState(
+            IEnumerable<(string BaseMonitorName, Server Server)> licensedServers,
+            IEnumerable<(string BaseMonitorName, Server Server)> unlicensedServers)
+        {
+            // Mutate the server license state where necessary.
+            var newlyLicensedServers = licensedServers
+                .Where(x => !x.Server.IsLicensed)
+                .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with {IsLicensed = true}));
+            var newlyUnlicensedServers = unlicensedServers
+                .Where(x => x.Server.IsLicensed)
+                .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with {IsLicensed = false}));
+            var modifiedServers = newlyLicensedServers
+                .Concat(newlyUnlicensedServers)
+                .ToLookup(x => x.BaseMonitorName, x => x.Server);
+            return modifiedServers;
         }
 
         private static (
