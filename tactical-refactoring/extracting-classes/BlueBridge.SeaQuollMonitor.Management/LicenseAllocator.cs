@@ -45,22 +45,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             var availableLicenseCount = await availableLicenseCountTask;
             System.Console.WriteLine($"Available license count: {availableLicenseCount}");
 
-            var licensedServers = new List<(string BaseMonitorName, Server Server)>();
-            var unlicensedServers = new List<(string BaseMonitorName, Server Server)>();
-            foreach (var item in rankedServers)
-            {
-                // If the server is suspended, or we've run out of licences, then the server won't be licensed.
-                if (item.Server.IsSuspended || availableLicenseCount == 0)
-                {
-                    unlicensedServers.Add(item);
-                }
-                // Otherwise it will. Woot!
-                else
-                {
-                    licensedServers.Add(item);
-                    availableLicenseCount--;
-                }
-            }
+            var (licensedServers, unlicensedServers) = AllocateLicenses(rankedServers, availableLicenseCount);
 
             // Mutate the server license state where necessary.
             var newlyLicensedServers = licensedServers
@@ -85,6 +70,33 @@ namespace BlueBridge.SeaQuollMonitor.Management
             // And finally report the number of licenses consumed.
             System.Console.WriteLine($"Used license count: {licensedServers.Count}");
             await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
+        }
+
+        private static (
+            List<(string BaseMonitorName, Server Server)> licensedServers, 
+            List<(string BaseMonitorName, Server Server)> unlicensedServers) 
+            AllocateLicenses(
+                IEnumerable<(string BaseMonitorName, Server Server)> rankedServers,
+                int availableLicenseCount)
+        {
+            var licensedServers = new List<(string BaseMonitorName, Server Server)>();
+            var unlicensedServers = new List<(string BaseMonitorName, Server Server)>();
+            foreach (var item in rankedServers)
+            {
+                // If the server is suspended, or we've run out of licences, then the server won't be licensed.
+                if (item.Server.IsSuspended || availableLicenseCount == 0)
+                {
+                    unlicensedServers.Add(item);
+                }
+                // Otherwise it will. Woot!
+                else
+                {
+                    licensedServers.Add(item);
+                    availableLicenseCount--;
+                }
+            }
+
+            return (licensedServers, unlicensedServers);
         }
 
         protected override void OnDispose()
