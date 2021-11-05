@@ -34,15 +34,13 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             var availableLicenseCount = await availableLicenseCountTask;
             System.Console.WriteLine($"Available license count: {availableLicenseCount}");
+            var serverLicenseAllocations = AllocateLicenses(rankedServers, availableLicenseCount);
 
-            var allocatedServers = AllocateLicenses(rankedServers, availableLicenseCount);
+            var serversWithChangedLicenseState = ServersWithChangedLicenseState(serverLicenseAllocations);
+            await UpdateServers(serversWithChangedLicenseState);
 
-            var modifiedServers = ServersWithChangedLicenseState(allocatedServers);
-
-            await UpdateServers(modifiedServers);
-
-            System.Console.WriteLine($"Used license count: {allocatedServers.Licensed.Count}");
-            await _licenseService.ReportUsedLicenseCount(allocatedServers.Licensed.Count);
+            System.Console.WriteLine($"Used license count: {serverLicenseAllocations.Licensed.Count}");
+            await _licenseService.ReportUsedLicenseCount(serverLicenseAllocations.Licensed.Count);
         }
 
         private record ServerWithBaseMonitorName (Server Server, string BaseMonitorName);
