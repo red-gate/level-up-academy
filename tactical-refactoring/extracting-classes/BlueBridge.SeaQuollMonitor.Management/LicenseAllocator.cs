@@ -37,19 +37,23 @@ namespace BlueBridge.SeaQuollMonitor.Management
             var availableLicenseCount = await availableLicenseCountTask;
             System.Console.WriteLine($"Available license count: {availableLicenseCount}");
 
-            var (licensedServers, unlicensedServers) = AllocateLicenses(rankedServers, availableLicenseCount);
+            var allocatedServers = AllocateLicenses(rankedServers, availableLicenseCount);
 
-            var modifiedServers = ServersWithChangedLicenseState(licensedServers, unlicensedServers);
+            var modifiedServers = ServersWithChangedLicenseState(allocatedServers);
 
             // Now update the modified servers.
             await UpdateServers(modifiedServers);
 
             // And finally report the number of licenses consumed.
-            System.Console.WriteLine($"Used license count: {licensedServers.Count}");
-            await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
+            System.Console.WriteLine($"Used license count: {allocatedServers.Licensed.Count}");
+            await _licenseService.ReportUsedLicenseCount(allocatedServers.Licensed.Count);
         }
 
         private record ServerWithBaseMonitorName (Server Server, string BaseMonitorName);
+
+        private record ServerLicenseAllocations (
+            IReadOnlyCollection<ServerWithBaseMonitorName> Licensed,
+            IReadOnlyCollection<ServerWithBaseMonitorName> Unlicensed);
 
         private async Task<IEnumerable<ServerWithBaseMonitorName>> RankServers()
         {
@@ -76,15 +80,13 @@ namespace BlueBridge.SeaQuollMonitor.Management
             });
         }
 
-        private static ILookup<string, Server> ServersWithChangedLicenseState(
-            IEnumerable<ServerWithBaseMonitorName> licensedServers,
-            IEnumerable<ServerWithBaseMonitorName> unlicensedServers)
+        private static ILookup<string, Server> ServersWithChangedLicenseState(ServerLicenseAllocations allocations)
         {
             // Mutate the server license state where necessary.
-            var newlyLicensedServers = licensedServers
+            var newlyLicensedServers = allocations.Licensed
                 .Where(x => !x.Server.IsLicensed)
                 .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with {IsLicensed = true}));
-            var newlyUnlicensedServers = unlicensedServers
+            var newlyUnlicensedServers = allocations.Unlicensed
                 .Where(x => x.Server.IsLicensed)
                 .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with {IsLicensed = false}));
             var modifiedServers = newlyLicensedServers
@@ -93,10 +95,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             return modifiedServers;
         }
 
-        private static (
-            IReadOnlyCollection<ServerWithBaseMonitorName> licensedServers, 
-            IReadOnlyCollection<ServerWithBaseMonitorName> unlicensedServers) 
-            AllocateLicenses(
+        private static ServerLicenseAllocations AllocateLicenses(
                 IEnumerable<ServerWithBaseMonitorName> rankedServers,
                 int availableLicenseCount)
         {
@@ -117,7 +116,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
                 }
             }
 
-            return (licensedServers, unlicensedServers);
+            return new ServerLicenseAllocations(licensedServers, unlicensedServers);
         }
 
         protected override void OnDispose()
