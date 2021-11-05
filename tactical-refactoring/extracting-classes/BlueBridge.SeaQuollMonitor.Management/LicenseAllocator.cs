@@ -28,12 +28,10 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
         private async Task DoRefresh()
         {
-            // Fetch the number of available licenses from the licensing service.
             var availableLicenseCountTask = _licenseService.GetAvailableLicenseCount();
 
             var rankedServers = await RankServers();
 
-            // Decide which servers will and won't be licenced.
             var availableLicenseCount = await availableLicenseCountTask;
             System.Console.WriteLine($"Available license count: {availableLicenseCount}");
 
@@ -41,10 +39,8 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             var modifiedServers = ServersWithChangedLicenseState(allocatedServers);
 
-            // Now update the modified servers.
             await UpdateServers(modifiedServers);
 
-            // And finally report the number of licenses consumed.
             System.Console.WriteLine($"Used license count: {allocatedServers.Licensed.Count}");
             await _licenseService.ReportUsedLicenseCount(allocatedServers.Licensed.Count);
         }
