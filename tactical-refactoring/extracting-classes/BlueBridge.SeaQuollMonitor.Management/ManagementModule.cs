@@ -10,6 +10,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             builder.RegisterType<FeaturesClientFactory>().As<IFeaturesClientFactory>().SingleInstance();
             builder.RegisterType<BaseMonitorRegistry>().As<IBaseMonitorRegistry>().SingleInstance();
             builder.RegisterType<LicenseAllocator>().As<ILicenseAllocator>().SingleInstance();
+            builder.RegisterType<ServersFetcher>().As<IServersFetcher>().SingleInstance();
         }
     }
 }

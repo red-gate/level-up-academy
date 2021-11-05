@@ -10,12 +10,14 @@ namespace BlueBridge.SeaQuollMonitor.Management
     {
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
         private readonly ILicenseService _licenseService;
+        private readonly IServersFetcher _serversFetcher;
         private readonly TaskDebouncer _refreshTaskDebouncer;
 
-        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService)
+        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService, IServersFetcher serversFetcher)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
+            _serversFetcher = serversFetcher;
             _refreshTaskDebouncer = new TaskDebouncer(DoRefresh);
 
             _baseMonitorRegistry.OnLicensingRequirementsChanged += HandleLicensingRequirementsChanged;
@@ -32,8 +34,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             var availableLicenseCountTask = _licenseService.GetAvailableLicenseCount();
 
             // Fetch all the servers from all of the base monitors.
-            var allServers = await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(baseMonitor =>
-                baseMonitor.MonitoredServersRepository.GetAllServers());
+            var allServers = await _serversFetcher.FetchAllServers();
 
             // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
             // registered servers.
@@ -86,7 +87,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             System.Console.WriteLine($"Used license count: {licensedServers.Count}");
             await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
         }
-
+        
         protected override void OnDispose()
         {
             _baseMonitorRegistry.OnLicensingRequirementsChanged -= HandleLicensingRequirementsChanged;
