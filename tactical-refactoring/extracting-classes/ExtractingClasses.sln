@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBridge.SeaQuollMonitor.Domain", "BlueBridge.SeaQuollMonitor.Domain\BlueBridge.SeaQuollMonitor.Domain.csproj", "{97DD8EF0-FB15-4921-9643-94A7A5FFF001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBridge.SeaQuollMonitor.Management", "BlueBridge.SeaQuollMonitor.Management\BlueBridge.SeaQuollMonitor.Management.csproj", "{B699CFBF-D010-4009-A315-1D3C6796EAE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBridge.SeaQuollMonitor.Monitoring", "BlueBridge.SeaQuollMonitor.Monitoring\BlueBridge.SeaQuollMonitor.Monitoring.csproj", "{8061E029-C17D-4BE6-9391-5A9175CCADAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBridge.SeaQuollMonitor.Testing", "BlueBridge.SeaQuollMonitor.Testing\BlueBridge.SeaQuollMonitor.Testing.csproj", "{EC474005-0EC3-48EE-B0C0-DA61EC359DB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBridge.SeaQuollMonitor.Utilities", "BlueBridge.SeaQuollMonitor.Utilities\BlueBridge.SeaQuollMonitor.Utilities.csproj", "{6A41744C-40EC-4FEB-A233-7E50BB0D4F45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBridge.SeaQuollMonitor.Console", "BlueBridge.SeaQuollMonitor.Console\BlueBridge.SeaQuollMonitor.Console.csproj", "{0845ECF2-6A78-4D7F-A7F5-6CDB9B9066CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97DD8EF0-FB15-4921-9643-94A7A5FFF001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97DD8EF0-FB15-4921-9643-94A7A5FFF001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97DD8EF0-FB15-4921-9643-94A7A5FFF001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97DD8EF0-FB15-4921-9643-94A7A5FFF001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B699CFBF-D010-4009-A315-1D3C6796EAE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B699CFBF-D010-4009-A315-1D3C6796EAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B699CFBF-D010-4009-A315-1D3C6796EAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B699CFBF-D010-4009-A315-1D3C6796EAE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8061E029-C17D-4BE6-9391-5A9175CCADAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8061E029-C17D-4BE6-9391-5A9175CCADAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8061E029-C17D-4BE6-9391-5A9175CCADAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8061E029-C17D-4BE6-9391-5A9175CCADAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC474005-0EC3-48EE-B0C0-DA61EC359DB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC474005-0EC3-48EE-B0C0-DA61EC359DB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC474005-0EC3-48EE-B0C0-DA61EC359DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC474005-0EC3-48EE-B0C0-DA61EC359DB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A41744C-40EC-4FEB-A233-7E50BB0D4F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A41744C-40EC-4FEB-A233-7E50BB0D4F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A41744C-40EC-4FEB-A233-7E50BB0D4F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A41744C-40EC-4FEB-A233-7E50BB0D4F45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0845ECF2-6A78-4D7F-A7F5-6CDB9B9066CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0845ECF2-6A78-4D7F-A7F5-6CDB9B9066CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0845ECF2-6A78-4D7F-A7F5-6CDB9B9066CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0845ECF2-6A78-4D7F-A7F5-6CDB9B9066CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

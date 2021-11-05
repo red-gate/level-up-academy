@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>BlueBridge.SeaQuollMonitor.Management</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BlueBridge.SeaQuollMonitor.Domain\BlueBridge.SeaQuollMonitor.Domain.csproj" />
+      <ProjectReference Include="..\BlueBridge.SeaQuollMonitor.Utilities\BlueBridge.SeaQuollMonitor.Utilities.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="6.3.0" />
+      <PackageReference Include="RedGate.Licensing.Permits.Core" Version="2.3.0" />
+      <PackageReference Include="RedGate.Licensing.Permits.Windows" Version="2.3.0" />
+    </ItemGroup>
+
+</Project>

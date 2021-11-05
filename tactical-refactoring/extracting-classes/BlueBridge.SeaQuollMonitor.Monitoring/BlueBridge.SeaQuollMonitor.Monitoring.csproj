@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BlueBridge.SeaQuollMonitor.Domain\BlueBridge.SeaQuollMonitor.Domain.csproj" />
+      <ProjectReference Include="..\BlueBridge.SeaQuollMonitor.Utilities\BlueBridge.SeaQuollMonitor.Utilities.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="6.3.0" />
+      <PackageReference Include="System.Text.Json" Version="5.0.2" />
+    </ItemGroup>
+
+</Project>

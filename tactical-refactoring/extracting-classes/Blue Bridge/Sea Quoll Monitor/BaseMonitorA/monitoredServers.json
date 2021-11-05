@@ -1,0 +1,20 @@
+﻿[
+  {
+    "name": "development.internal.megacorp.com",
+    "added": "2021-10-29T07:44:07Z",
+    "isSuspended": true,
+    "isLicensed": false
+  },
+  {
+    "name": "staging.internal.megacorp.com",
+    "added": "2021-10-29T07:44:09Z",
+    "isSuspended": false,
+    "isLicensed": true
+  },
+  {
+    "name": "testing.internal.megacorp.com",
+    "added": "2021-10-29T05:44:07Z",
+    "isSuspended": false,
+    "isLicensed": true
+  }
+]
