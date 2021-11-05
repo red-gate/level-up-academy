@@ -50,6 +50,15 @@ namespace BlueBridge.SeaQuollMonitor.Management
             var modifiedServers = ServersWithChangedLicenseState(licensedServers, unlicensedServers);
 
             // Now update the modified servers.
+            await UpdateServers(modifiedServers);
+
+            // And finally report the number of licenses consumed.
+            System.Console.WriteLine($"Used license count: {licensedServers.Count}");
+            await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
+        }
+
+        private async Task UpdateServers(ILookup<string, Server> modifiedServers)
+        {
             await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(async baseMonitor =>
             {
                 foreach (var server in modifiedServers[baseMonitor.Name])
@@ -57,10 +66,6 @@ namespace BlueBridge.SeaQuollMonitor.Management
                     await baseMonitor.MonitoredServersRepository.UpdateServer(server);
                 }
             });
-
-            // And finally report the number of licenses consumed.
-            System.Console.WriteLine($"Used license count: {licensedServers.Count}");
-            await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
         }
 
         private static ILookup<string, Server> ServersWithChangedLicenseState(
