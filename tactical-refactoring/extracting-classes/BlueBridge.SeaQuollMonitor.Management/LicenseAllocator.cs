@@ -31,15 +31,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             // Fetch the number of available licenses from the licensing service.
             var availableLicenseCountTask = _licenseService.GetAvailableLicenseCount();
 
-            // Fetch all the servers from all of the base monitors.
-            var allServers = await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(baseMonitor =>
-                baseMonitor.MonitoredServersRepository.GetAllServers());
-
-            // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
-            // registered servers.
-            var rankedServers = allServers
-                .SelectMany(pair => pair.Value.Select(server => (BaseMonitorName: pair.Key, Server: server)))
-                .OrderBy(x => x.Server.Added);
+            var rankedServers = await RankServers();
 
             // Decide which servers will and won't be licenced.
             var availableLicenseCount = await availableLicenseCountTask;
@@ -55,6 +47,20 @@ namespace BlueBridge.SeaQuollMonitor.Management
             // And finally report the number of licenses consumed.
             System.Console.WriteLine($"Used license count: {licensedServers.Count}");
             await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
+        }
+
+        private async Task<IEnumerable<(string BaseMonitorName, Server Server)>> RankServers()
+        {
+            // Fetch all the servers from all of the base monitors.
+            var allServers = await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(baseMonitor =>
+                baseMonitor.MonitoredServersRepository.GetAllServers());
+
+            // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
+            // registered servers.
+            var rankedServers = allServers
+                .SelectMany(pair => pair.Value.Select(server => (BaseMonitorName: pair.Key, Server: server)))
+                .OrderBy(x => x.Server.Added);
+            return rankedServers;
         }
 
         private async Task UpdateServers(ILookup<string, Server> modifiedServers)
