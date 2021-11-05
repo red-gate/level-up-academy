@@ -12,12 +12,14 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly ILicenseService _licenseService;
         private readonly TaskDebouncer _refreshTaskDebouncer;
         private readonly ILicenseAllocator2 _licenseAllocator2;
+        private readonly IServerRepository _serverRepository;
 
-        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService, ILicenseAllocator2 licenseAllocator2)
+        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService, ILicenseAllocator2 licenseAllocator2, IServerRepository serverRepository)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
             _licenseAllocator2 = licenseAllocator2;
+            _serverRepository = serverRepository;
             _refreshTaskDebouncer = new TaskDebouncer(DoRefresh);
 
             _baseMonitorRegistry.OnLicensingRequirementsChanged += HandleLicensingRequirementsChanged;
@@ -39,7 +41,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             var serverLicenseAllocations = _licenseAllocator2.AllocateLicenses(rankedServers, availableLicenseCount);
 
             var serversWithChangedLicenseState = _licenseAllocator2.ServersWithChangedLicenseState(serverLicenseAllocations);
-            await UpdateLicenseStateForServers(serversWithChangedLicenseState);
+            await _serverRepository.UpdateLicenseStateForServers(serversWithChangedLicenseState);
 
             System.Console.WriteLine($"Used license count: {serverLicenseAllocations.Licensed.Count}");
             await _licenseService.ReportUsedLicenseCount(serverLicenseAllocations.Licensed.Count);
@@ -48,8 +50,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private async Task<IEnumerable<ServerWithBaseMonitorName>> RankServers()
         {
             // Fetch all the servers from all of the base monitors.
-            var allServers = await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(baseMonitor =>
-                baseMonitor.MonitoredServersRepository.GetAllServers());
+            var allServers = await _serverRepository.GetServers();
 
             // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
             // registered servers.
@@ -57,17 +58,6 @@ namespace BlueBridge.SeaQuollMonitor.Management
                 .SelectMany(pair => pair.Value.Select(server => new ServerWithBaseMonitorName(server, pair.Key)))
                 .OrderBy(x => x.Server.Added);
             return rankedServers;
-        }
-
-        private async Task UpdateLicenseStateForServers(ILookup<string, Server> modifiedServers)
-        {
-            await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(async baseMonitor =>
-            {
-                foreach (var server in modifiedServers[baseMonitor.Name])
-                {
-                    await baseMonitor.MonitoredServersRepository.UpdateServer(server);
-                }
-            });
         }
 
         protected override void OnDispose()
