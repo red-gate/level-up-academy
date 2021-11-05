@@ -56,6 +56,21 @@ namespace TestApp.Tests
             Assert.That(result.StdErr, Is.Empty);
         }
 
+        [Test]
+        public async Task AddItem()
+        {
+            await _store.UpdateToDoItemsAsync(new[]
+            {
+                new ToDoItem(false, "Still to do"),
+                new ToDoItem(true, "Already done")
+            });
+            const string newItem = "New item";
+            var result = Run("add", newItem, "--store", _storePath);
+            Assert.That(result.ExitCode, Is.Zero, $"Exit code should be zero.\nStdout:\n{result.StdOut}\nStderr:\n{result.StdErr}");
+            Assert.That(result.StdOut, Is.Empty);
+            Assert.That(result.StdErr, Contains.Substring("Added item at end: " + newItem));
+        }
+
         private static Result Run(params string[] args)
         {
             var stdout = new StringWriter();

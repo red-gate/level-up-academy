@@ -10,9 +10,9 @@ namespace TestApp.Engine
 
         public static ILogger Logger => _logger ?? throw new Exception("Logger has not been initialized yet");
 
-        public static void Initialize(TextWriter stdout)
+        public static void Initialize(TextWriter textWriter)
         {
-            _logger = new LoggerConfiguration().WriteTo.TextWriter(stdout).CreateLogger();
+            _logger = new LoggerConfiguration().WriteTo.TextWriter(textWriter).CreateLogger();
         }
     }
 }
