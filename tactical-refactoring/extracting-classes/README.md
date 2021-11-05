@@ -75,7 +75,7 @@ The responsibility of items 1 and 5 above are already reasonably well isolated. 
 - The algorithm to work out which servers have actually changed.
 - Update the servers whose licensed state has been modified.
 
-FWIW, the related code from SQL Monitor can be found in [EntitlementsCoordinator.RefreshAsync](https://github.com/red-gate/sqlmonitor/blob/main/Source/UI/Website/Infrastructure/Entitlements/EntitlementsCoordinator.cs#L62-L94). We extracted into separate services the act of retrieving licensing requirements from all of the base monitorsd, and then the act pushing the licensing changes back to each base monitor.
+FWIW, the related code from SQL Monitor can be found in [EntitlementsCoordinator.RefreshAsync](https://github.com/red-gate/sqlmonitor/blob/main/Source/UI/Website/Infrastructure/Entitlements/EntitlementsCoordinator.cs#L62-L94). We extracted into separate services the act of retrieving licensing requirements from all of the base monitors, and then the act of pushing the licensing changes back to each base monitor.
 
 ## Bonus challenge
 
