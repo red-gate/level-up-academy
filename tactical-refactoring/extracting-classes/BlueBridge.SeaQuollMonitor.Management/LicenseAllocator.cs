@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using BlueBridge.SeaQuollMonitor.Domain;
 using BlueBridge.SeaQuollMonitor.Utilities;
@@ -13,13 +12,15 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly TaskDebouncer _refreshTaskDebouncer;
         private readonly ILicenseAllocator2 _licenseAllocator2;
         private readonly IServerRepository _serverRepository;
+        private readonly IServerRankCalculator _serverRankCalculator;
 
-        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService, ILicenseAllocator2 licenseAllocator2, IServerRepository serverRepository)
+        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService, ILicenseAllocator2 licenseAllocator2, IServerRepository serverRepository, IServerRankCalculator serverRankCalculator)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
             _licenseAllocator2 = licenseAllocator2;
             _serverRepository = serverRepository;
+            _serverRankCalculator = serverRankCalculator;
             _refreshTaskDebouncer = new TaskDebouncer(DoRefresh);
 
             _baseMonitorRegistry.OnLicensingRequirementsChanged += HandleLicensingRequirementsChanged;
@@ -34,7 +35,9 @@ namespace BlueBridge.SeaQuollMonitor.Management
         {
             var availableLicenseCountTask = _licenseService.GetAvailableLicenseCount();
 
-            var rankedServers = await RankServers();
+            var allServers = await _serverRepository.GetServers();
+
+            var rankedServers = _serverRankCalculator.Rank(allServers);
 
             var availableLicenseCount = await availableLicenseCountTask;
             System.Console.WriteLine($"Available license count: {availableLicenseCount}");
@@ -45,19 +48,6 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             System.Console.WriteLine($"Used license count: {serverLicenseAllocations.Licensed.Count}");
             await _licenseService.ReportUsedLicenseCount(serverLicenseAllocations.Licensed.Count);
-        }
-
-        private async Task<IEnumerable<ServerWithBaseMonitorName>> RankServers()
-        {
-            // Fetch all the servers from all of the base monitors.
-            var allServers = await _serverRepository.GetServers();
-
-            // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
-            // registered servers.
-            var rankedServers = allServers
-                .SelectMany(pair => pair.Value.Select(server => new ServerWithBaseMonitorName(server, pair.Key)))
-                .OrderBy(x => x.Server.Added);
-            return rankedServers;
         }
 
         protected override void OnDispose()
