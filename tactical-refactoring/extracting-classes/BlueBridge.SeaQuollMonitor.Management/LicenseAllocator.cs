@@ -11,14 +11,16 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
         private readonly ILicenseService _licenseService;
         private readonly IServersFetcher _serversFetcher;
+        private readonly LicenseAllocationAlgorithm _licenseAllocationAlgorithm;
         private readonly TaskDebouncer _refreshTaskDebouncer;
 
         public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService,
-            IServersFetcher serversFetcher)
+            IServersFetcher serversFetcher, LicenseAllocationAlgorithm licenseAllocationAlgorithm)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
             _serversFetcher = serversFetcher;
+            _licenseAllocationAlgorithm = licenseAllocationAlgorithm;
             _refreshTaskDebouncer = new TaskDebouncer(DoRefresh);
 
             _baseMonitorRegistry.OnLicensingRequirementsChanged += HandleLicensingRequirementsChanged;
@@ -37,10 +39,18 @@ namespace BlueBridge.SeaQuollMonitor.Management
             // Fetch all the servers from all of the base monitors.
             var allServers = await _serversFetcher.FetchAllServers();
 
-            var (licensedServers, unlicensedServers) =
-                CalculateLicensedServers(allServers, await availableLicenseCountTask);
+            var (licensedServers, unlicensedServers) = _licenseAllocationAlgorithm(allServers, await availableLicenseCountTask);
 
             // Mutate the server license state where necessary.
+            await ApplyLicenseChanges(licensedServers, unlicensedServers);
+
+            // And finally report the number of licenses consumed.
+            System.Console.WriteLine($"Used license count: {licensedServers.Count}");
+            await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
+        }
+
+        private async Task ApplyLicenseChanges(IEnumerable<(string BaseMonitorName, Server Server)> licensedServers, IEnumerable<(string BaseMonitorName, Server Server)> unlicensedServers)
+        {
             var newlyLicensedServers = licensedServers
                 .Where(x => !x.Server.IsLicensed)
                 .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with { IsLicensed = true }));
@@ -59,43 +69,6 @@ namespace BlueBridge.SeaQuollMonitor.Management
                     await baseMonitor.MonitoredServersRepository.UpdateServer(server);
                 }
             });
-
-            // And finally report the number of licenses consumed.
-            System.Console.WriteLine($"Used license count: {licensedServers.Count}");
-            await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
-        }
-
-        private static
-            (List<(string BaseMonitorName, Server Server)> licensedServers,
-            List<(string BaseMonitorName, Server Server)> unlicensedServers) CalculateLicensedServers(
-                IDictionary<string, IEnumerable<Server>> allServers, int availableLicenseCount)
-        {
-            // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
-            // registered servers.
-            var rankedServers = allServers
-                .SelectMany(pair => pair.Value.Select(server => (BaseMonitorName: pair.Key, Server: server)))
-                .OrderBy(x => x.Server.Added);
-
-            System.Console.WriteLine($"Available license count: {availableLicenseCount}");
-
-            var licensedServers = new List<(string BaseMonitorName, Server Server)>();
-            var unlicensedServers = new List<(string BaseMonitorName, Server Server)>();
-            foreach (var item in rankedServers)
-            {
-                // If the server is suspended, or we've run out of licences, then the server won't be licensed.
-                if (item.Server.IsSuspended || availableLicenseCount == 0)
-                {
-                    unlicensedServers.Add(item);
-                }
-                // Otherwise it will. Woot!
-                else
-                {
-                    licensedServers.Add(item);
-                    availableLicenseCount--;
-                }
-            }
-
-            return (licensedServers, unlicensedServers);
         }
 
         protected override void OnDispose()
