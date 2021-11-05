@@ -11,9 +11,9 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
         private readonly ILicenseService _licenseService;
         private readonly TaskDebouncer _refreshTaskDebouncer;
-        private readonly LicenseAllocator2 _licenseAllocator2;
+        private readonly ILicenseAllocator2 _licenseAllocator2;
 
-        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService, LicenseAllocator2 licenseAllocator2)
+        public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService, ILicenseAllocator2 licenseAllocator2)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
