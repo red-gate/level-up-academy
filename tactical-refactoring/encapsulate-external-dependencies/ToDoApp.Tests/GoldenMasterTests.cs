@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using TestApp.Engine;
+using ToDoApp.Engine;
 
-namespace TestApp.Tests
+namespace ToDoApp.Tests
 {
     [TestFixture]
     public sealed class GoldenMasterTests

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestApp.Engine\TestApp.Engine.csproj" />
+    <ProjectReference Include="..\ToDoApp.Engine\ToDoApp.Engine.csproj" />
   </ItemGroup>
 
   <ItemGroup>

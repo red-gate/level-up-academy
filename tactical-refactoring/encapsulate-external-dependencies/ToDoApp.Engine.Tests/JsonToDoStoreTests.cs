@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace TestApp.Engine.Tests
+namespace ToDoApp.Engine.Tests
 {
     [TestFixture]
     internal sealed class JsonToDoStoreTests

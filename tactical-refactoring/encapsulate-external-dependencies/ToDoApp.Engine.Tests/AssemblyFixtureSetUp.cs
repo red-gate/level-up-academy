@@ -1,7 +1,7 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace TestApp.Engine.Tests
+namespace ToDoApp.Engine.Tests
 {
     [SetUpFixture]
     public sealed class AssemblyFixtureSetUp

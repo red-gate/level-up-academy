@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\TestApp\TestApp.csproj" />
+    <ProjectReference Include="..\ToDoApp\ToDoApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>

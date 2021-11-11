@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{B2BC3E45-BEFA-415C-B6FB-9749824D1816}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp", "ToDoApp\ToDoApp.csproj", "{B2BC3E45-BEFA-415C-B6FB-9749824D1816}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Engine", "TestApp.Engine\TestApp.Engine.csproj", "{7CA26C87-3E5E-4F7D-BD96-D9A6212D18B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Engine", "ToDoApp.Engine\ToDoApp.Engine.csproj", "{7CA26C87-3E5E-4F7D-BD96-D9A6212D18B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Tests", "TestApp.Tests\TestApp.Tests.csproj", "{7C970B97-150D-4FC9-BB47-F3E1084846F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Tests", "ToDoApp.Tests\ToDoApp.Tests.csproj", "{7C970B97-150D-4FC9-BB47-F3E1084846F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Engine.Tests", "TestApp.Engine.Tests\TestApp.Engine.Tests.csproj", "{D65B3359-F265-4B06-849C-1D301D8B0735}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Engine.Tests", "ToDoApp.Engine.Tests\ToDoApp.Engine.Tests.csproj", "{D65B3359-F265-4B06-849C-1D301D8B0735}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

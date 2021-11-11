@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace TestApp.Engine.Tests
+namespace ToDoApp.Engine.Tests
 {
     [TestFixture]
     public sealed class ToDoListTests

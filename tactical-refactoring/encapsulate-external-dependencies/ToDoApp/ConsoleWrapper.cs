@@ -3,7 +3,7 @@ using System.CommandLine;
 using System.CommandLine.IO;
 using System.IO;
 
-namespace TestApp
+namespace ToDoApp
 {
     public sealed class ConsoleWrapper : IConsole
     {

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static TestApp.Engine.Log;
+using static ToDoApp.Engine.Log;
 
-namespace TestApp.Engine
+namespace ToDoApp.Engine
 {
     public sealed class ToDoList
     {
