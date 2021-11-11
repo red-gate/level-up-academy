@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using TestApp.Engine;
@@ -69,6 +70,40 @@ namespace TestApp.Tests
             Assert.That(result.ExitCode, Is.Zero, $"Exit code should be zero.\nStdout:\n{result.StdOut}\nStderr:\n{result.StdErr}");
             Assert.That(result.StdOut, Is.Empty);
             Assert.That(result.StdErr, Contains.Substring("Added item at end: " + newItem));
+            var newList = await _store.GetToDoItemsAsync();
+            Assert.That(newList.Select(x => x.Item), Contains.Item(newItem));
+        }
+
+        [Test]
+        public async Task CompleteItem()
+        {
+            const string item = "Still to do";
+            await _store.UpdateToDoItemsAsync(new[]
+            {
+                new ToDoItem(false, item)
+            });
+            var result = Run("complete", item, "--store", _storePath);
+            Assert.That(result.ExitCode, Is.Zero, $"Exit code should be zero.\nStdout:\n{result.StdOut}\nStderr:\n{result.StdErr}");
+            Assert.That(result.StdOut, Is.Empty);
+            Assert.That(result.StdErr, Contains.Substring("Completed item: " + item));
+            var newList = await _store.GetToDoItemsAsync();
+            Assert.That(newList.Single().Complete, Is.True);
+        }
+
+        [Test]
+        public async Task UncompleteItem()
+        {
+            const string item = "Already done";
+            await _store.UpdateToDoItemsAsync(new[]
+            {
+                new ToDoItem(true, item)
+            });
+            var result = Run("uncomplete", item, "--store", _storePath);
+            Assert.That(result.ExitCode, Is.Zero, $"Exit code should be zero.\nStdout:\n{result.StdOut}\nStderr:\n{result.StdErr}");
+            Assert.That(result.StdOut, Is.Empty);
+            Assert.That(result.StdErr, Contains.Substring("Uncompleted item: " + item));
+            var newList = await _store.GetToDoItemsAsync();
+            Assert.That(newList.Single().Complete, Is.False);
         }
 
         private static Result Run(params string[] args)

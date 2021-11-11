@@ -19,5 +19,10 @@ namespace TestApp
         public string? After { get; set; }
         public string? Before { get; set; }
     }
+
+    internal sealed class ItemArgs : CommonArgs
+    {
+        public string Item { get; set; }
+    }
 #pragma warning restore 8618
 }

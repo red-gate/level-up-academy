@@ -3,6 +3,7 @@ using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.CommandLine.IO;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using TestApp.Engine;
 
@@ -26,14 +27,28 @@ namespace TestApp
             {
                 new Argument<string>("item"),
                 new Option<string?>("--after", () => null),
-                new Option<string?>("--before", () => null),
+                new Option<string?>("--before", () => null)
             };
             addCommand.Handler = CommandHandler.Create<AddArgs>(Add);
+
+            var completeCommand = new Command("complete")
+            {
+                new Argument<string>("item")
+            };
+            completeCommand.Handler = CommandHandler.Create<ItemArgs>(Complete);
+
+            var uncompleteCommand = new Command("uncomplete")
+            {
+                new Argument<string>("item")
+            };
+            uncompleteCommand.Handler = CommandHandler.Create<ItemArgs>(Uncomplete);
 
             var rootCommand = new RootCommand
             {
                 listCommand,
-                addCommand
+                addCommand,
+                completeCommand,
+                uncompleteCommand
             };
             rootCommand.AddGlobalOption(new Option<string>("--store"));
             return rootCommand.Invoke(args, new ConsoleWrapper(stdout, stderr));
@@ -48,13 +63,14 @@ namespace TestApp
             }
         }
 
-        private static async Task Add(AddArgs args)
+        private static async Task<int> Add(AddArgs args)
         {
             var list = new ToDoList(new JsonToDoStore(args.Store));
 
             if (args.After == null && args.Before == null)
             {
                 await list.AddItemAsync(new ToDoItem(false, args.Item));
+                return 0;
             }
 
             var position = 0;
@@ -63,19 +79,52 @@ namespace TestApp
                 if (existingItem.Item == args.After)
                 {
                     await list.AddItemAsync(new ToDoItem(false, args.Item), position + 1);
-                    return;
+                    return 0;
                 }
 
                 if (existingItem.Item == args.Before)
                 {
                     await list.AddItemAsync(new ToDoItem(false, args.Item), position);
-                    return;
+                    return 0;
                 }
 
                 position++;
             }
 
             args.Console.Error.WriteLine($"No item '{args.After ?? args.Before}' found");
+            return 1;
+        }
+
+        private static async Task<int> Complete(ItemArgs args)
+        {
+            var list = new ToDoList(new JsonToDoStore(args.Store));
+            var item = (await list.GetItemsAsync()).FirstOrDefault(x => x.Item == args.Item);
+            if (item == null)
+            {
+                args.Console.Error.WriteLine($"No item '{args.Item}' found");
+                return 1;
+            }
+            else
+            {
+                await list.CompleteItemAsync(item);
+                return 0;
+            }
+        }
+
+        private static async Task<int> Uncomplete(ItemArgs args)
+        {
+            var list = new ToDoList(new JsonToDoStore(args.Store));
+            var item = (await list.GetItemsAsync()).FirstOrDefault(x => x.Item == args.Item);
+            if (item == null)
+            {
+                args.Console.Error.WriteLine($"No item '{args.Item}' found");
+                return 1;
+            }
+            else
+            {
+                await list.UncompleteItemAsync(item);
+                return 0;
+            }
         }
     }
 }
