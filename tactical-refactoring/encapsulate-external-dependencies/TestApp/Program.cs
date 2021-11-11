@@ -43,12 +43,19 @@ namespace TestApp
             };
             uncompleteCommand.Handler = CommandHandler.Create<ItemArgs>(Uncomplete);
 
+            var removeCommand = new Command("remove")
+            {
+                new Argument<string>("item")
+            };
+            removeCommand.Handler = CommandHandler.Create<ItemArgs>(Remove);
+
             var rootCommand = new RootCommand
             {
                 listCommand,
                 addCommand,
                 completeCommand,
-                uncompleteCommand
+                uncompleteCommand,
+                removeCommand
             };
             rootCommand.AddGlobalOption(new Option<string>("--store"));
             return rootCommand.Invoke(args, new ConsoleWrapper(stdout, stderr));
@@ -123,6 +130,22 @@ namespace TestApp
             else
             {
                 await list.UncompleteItemAsync(item);
+                return 0;
+            }
+        }
+
+        private static async Task<int> Remove(ItemArgs args)
+        {
+            var list = new ToDoList(new JsonToDoStore(args.Store));
+            var item = (await list.GetItemsAsync()).FirstOrDefault(x => x.Item == args.Item);
+            if (item == null)
+            {
+                args.Console.Error.WriteLine($"No item '{args.Item}' found");
+                return 1;
+            }
+            else
+            {
+                await list.RemoveItemAsync(item);
                 return 0;
             }
         }

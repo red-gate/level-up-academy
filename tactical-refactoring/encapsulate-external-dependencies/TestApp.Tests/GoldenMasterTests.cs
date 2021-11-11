@@ -140,9 +140,27 @@ namespace TestApp.Tests
             Assert.That(newList.Single().Complete, Is.False);
         }
 
+        [Test]
+        public async Task RemoveItem()
+        {
+            const string itemToRemove = "Already done";
+            await _store.UpdateToDoItemsAsync(new[]
+            {
+                new ToDoItem(false, "Still to do"),
+                new ToDoItem(true, itemToRemove)
+            });
+            var result = Run("remove", itemToRemove, "--store", _storePath);
+            Assert.That(result.ExitCode, Is.Zero, $"Exit code should be zero.\nStdout:\n{result.StdOut}\nStderr:\n{result.StdErr}");
+            Assert.That(result.StdOut, Is.Empty);
+            Assert.That(result.StdErr, Contains.Substring("Removed item: " + itemToRemove));
+            var newList = await _store.GetToDoItemsAsync();
+            Assert.That(newList.Select(x => x.Item), Does.Not.Contain(itemToRemove));
+        }
+
         [TestCase("complete")]
         [TestCase("uncomplete")]
         [TestCase("add")]
+        [TestCase("remove")]
         public async Task MissingItem_Uncomplete(string command)
         {
             await _store.UpdateToDoItemsAsync(new[]
