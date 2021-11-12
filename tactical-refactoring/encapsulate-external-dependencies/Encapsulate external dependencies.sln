@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Tests", "ToDoApp.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Engine.Tests", "ToDoApp.Engine.Tests\ToDoApp.Engine.Tests.csproj", "{D65B3359-F265-4B06-849C-1D301D8B0735}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Logging", "ToDoApp.Logging\ToDoApp.Logging.csproj", "{0C027316-1372-4364-971C-F682337A7243}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{D65B3359-F265-4B06-849C-1D301D8B0735}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D65B3359-F265-4B06-849C-1D301D8B0735}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D65B3359-F265-4B06-849C-1D301D8B0735}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C027316-1372-4364-971C-F682337A7243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C027316-1372-4364-971C-F682337A7243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C027316-1372-4364-971C-F682337A7243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C027316-1372-4364-971C-F682337A7243}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
