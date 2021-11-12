@@ -3,6 +3,6 @@ namespace ToDoApp.Engine
 {
     public interface ILogger
     {
-        void Information(string s);
+        void Information(string message);
     }
 }

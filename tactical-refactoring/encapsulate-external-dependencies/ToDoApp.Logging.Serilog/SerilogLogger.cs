@@ -7,8 +7,11 @@ namespace ToDoApp.Logging.Serilog
 {
     public class SerilogLogger : ToDoApp.Engine.ILogger
     {
-        private readonly ILogger _logger;
+        private readonly global::Serilog.ILogger _logger;
         public SerilogLogger(TextWriter textWriter) => _logger = new LoggerConfiguration().WriteTo.TextWriter(textWriter).CreateLogger();
-        public void Information(string s) => _logger.Information(s);
+        public void Information(string message)
+        {
+            _logger.Information(message);
+        }
     }
 }
