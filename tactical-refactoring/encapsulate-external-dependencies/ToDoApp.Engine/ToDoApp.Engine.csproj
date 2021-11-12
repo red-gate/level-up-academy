@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   
   <ItemGroup>
-    <ProjectReference Include="..\ToDoApp.Logging.Serilog\ToDoApp.Logging.Serilog.csproj" />
     <ProjectReference Include="..\ToDoApp.Logging\ToDoApp.Logging.csproj" />
   </ItemGroup>
 

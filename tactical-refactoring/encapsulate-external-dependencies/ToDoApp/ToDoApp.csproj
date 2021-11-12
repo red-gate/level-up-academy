@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ToDoApp.Engine\ToDoApp.Engine.csproj" />
+    <ProjectReference Include="..\ToDoApp.Logging.Serilog\ToDoApp.Logging.Serilog.csproj" />
   </ItemGroup>
 
   <ItemGroup>
