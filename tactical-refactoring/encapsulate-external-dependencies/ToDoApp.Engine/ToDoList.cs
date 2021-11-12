@@ -7,9 +7,9 @@ namespace ToDoApp.Engine
     public sealed class ToDoList
     {
         private readonly IToDoStore _store;
-        private readonly IToDoLogger _logger;
+        private readonly ILogger _logger;
 
-        public ToDoList(IToDoStore store, IToDoLogger logger)
+        public ToDoList(IToDoStore store, ILogger logger)
         {
             _store = store;
             _logger = logger;

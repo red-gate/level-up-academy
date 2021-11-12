@@ -10,7 +10,7 @@ namespace ToDoApp.Engine.Tests
     [TestFixture]
     public sealed class ToDoListTests
     {
-        private IToDoLogger _logger = Substitute.For<IToDoLogger>();
+        private ILogger _logger = Substitute.For<ILogger>();
         
         [Test]
         public async Task GetEmptyList()

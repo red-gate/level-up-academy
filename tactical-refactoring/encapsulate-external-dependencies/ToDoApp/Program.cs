@@ -12,9 +12,9 @@ namespace ToDoApp
 {
     public class Program
     {
-        private readonly IToDoLogger _logger;
+        private readonly ILogger _logger;
 
-        private Program(IToDoLogger logger)
+        private Program(ILogger logger)
         {
             _logger = logger;
         }

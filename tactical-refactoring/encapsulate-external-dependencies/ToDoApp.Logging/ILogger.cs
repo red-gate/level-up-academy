@@ -1,7 +1,7 @@
 ﻿
 namespace ToDoApp.Engine
 {
-    public interface IToDoLogger
+    public interface ILogger
     {
         void Information(string s);
     }
