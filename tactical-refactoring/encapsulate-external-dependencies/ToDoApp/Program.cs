@@ -26,10 +26,10 @@ namespace ToDoApp
 
         public static int Run(string[] args, TextWriter stdout, TextWriter stderr)
         {
-            return new Program(SerilogLogger.Initialize(stderr)).Run(args, stdout, stderr, 4);
+            return new Program(SerilogLogger.Initialize(stderr)).RunInner(args, stdout, stderr);
         }
 
-        private int Run(string[] args, TextWriter stdout, TextWriter stderr, int unused)
+        private int RunInner(string[] args, TextWriter stdout, TextWriter stderr)
         {
             var listCommand = new Command("list");
             listCommand.Handler = CommandHandler.Create<ListArgs>(List);
