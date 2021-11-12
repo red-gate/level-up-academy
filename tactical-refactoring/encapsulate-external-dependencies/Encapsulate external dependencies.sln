@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Tests", "ToDoApp.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Engine.Tests", "ToDoApp.Engine.Tests\ToDoApp.Engine.Tests.csproj", "{D65B3359-F265-4B06-849C-1D301D8B0735}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Logging", "ToDoApp.Logging\ToDoApp.Logging.csproj", "{E5F7AA85-DC5F-4D23-AD8A-D0BE25FCD13E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.Logging.Serilog", "ToDoApp.Logging.Serilog\ToDoApp.Logging.Serilog.csproj", "{C8F1EB26-9840-4F63-8277-10EB6D619BB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{D65B3359-F265-4B06-849C-1D301D8B0735}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D65B3359-F265-4B06-849C-1D301D8B0735}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D65B3359-F265-4B06-849C-1D301D8B0735}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5F7AA85-DC5F-4D23-AD8A-D0BE25FCD13E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F7AA85-DC5F-4D23-AD8A-D0BE25FCD13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F7AA85-DC5F-4D23-AD8A-D0BE25FCD13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F7AA85-DC5F-4D23-AD8A-D0BE25FCD13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8F1EB26-9840-4F63-8277-10EB6D619BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F1EB26-9840-4F63-8277-10EB6D619BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F1EB26-9840-4F63-8277-10EB6D619BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F1EB26-9840-4F63-8277-10EB6D619BB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
