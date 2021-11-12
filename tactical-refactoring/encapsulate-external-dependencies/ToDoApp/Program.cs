@@ -26,7 +26,7 @@ namespace ToDoApp
 
         public static int Run(string[] args, TextWriter stdout, TextWriter stderr)
         {
-            return new Program(SerilogLogger.Initialize(stderr)).RunInner(args, stdout, stderr);
+            return new Program(new SerilogLogger(stderr)).RunInner(args, stdout, stderr);
         }
 
         private int RunInner(string[] args, TextWriter stdout, TextWriter stderr)
