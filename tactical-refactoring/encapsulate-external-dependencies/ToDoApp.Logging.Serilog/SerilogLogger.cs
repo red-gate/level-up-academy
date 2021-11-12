@@ -1,13 +1,13 @@
 ﻿using System.IO;
 using Serilog;
-using Serilog.Core;
-using ILogger = ToDoApp.Engine.ILogger;
+//using Serilog.Core;
+//using ILogger = ToDoApp.Engine.ILogger;
 
 namespace ToDoApp.Logging.Serilog
 {
-    public class SerilogLogger : ILogger
+    public class SerilogLogger : ToDoApp.Engine.ILogger
     {
-        private readonly Logger _logger;
+        private readonly ILogger _logger;
         public SerilogLogger(TextWriter textWriter) => _logger = new LoggerConfiguration().WriteTo.TextWriter(textWriter).CreateLogger();
         public void Information(string s) => _logger.Information(s);
     }
