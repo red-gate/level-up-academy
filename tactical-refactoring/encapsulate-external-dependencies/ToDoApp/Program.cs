@@ -6,11 +6,19 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ToDoApp.Engine;
+using ToDoApp.Logging.Serilog;
 
 namespace ToDoApp
 {
-    public static class Program
+    public class Program
     {
+        private readonly IToDoLogger _logger;
+
+        private Program(IToDoLogger logger)
+        {
+            _logger = logger;
+        }
+
         private static int Main(string[] args)
         {
             return Run(args, Console.Out, Console.Error);
@@ -18,8 +26,11 @@ namespace ToDoApp
 
         public static int Run(string[] args, TextWriter stdout, TextWriter stderr)
         {
-            Log.Initialize(stderr);
+            return new Program(SerilogLogger.Initialize(stderr)).Run(args, stdout, stderr, 4);
+        }
 
+        private int Run(string[] args, TextWriter stdout, TextWriter stderr, int unused)
+        {
             var listCommand = new Command("list");
             listCommand.Handler = CommandHandler.Create<ListArgs>(List);
 
@@ -61,18 +72,18 @@ namespace ToDoApp
             return rootCommand.Invoke(args, new ConsoleWrapper(stdout, stderr));
         }
 
-        private static async Task List(ListArgs args)
+        private async Task List(ListArgs args)
         {
-            var list = new ToDoList(new JsonToDoStore(args.Store));
+            var list = new ToDoList(new JsonToDoStore(args.Store), _logger);
             foreach (var item in await list.GetItemsAsync())
             {
                 args.Console.Out.WriteLine($"{(item.Complete ? '☑' : '☐')} {item.Item}");
             }
         }
 
-        private static async Task<int> Add(AddArgs args)
+        private async Task<int> Add(AddArgs args)
         {
-            var list = new ToDoList(new JsonToDoStore(args.Store));
+            var list = new ToDoList(new JsonToDoStore(args.Store), _logger);
 
             if (args.After == null && args.Before == null)
             {
@@ -102,9 +113,9 @@ namespace ToDoApp
             return 1;
         }
 
-        private static async Task<int> Complete(ItemArgs args)
+        private async Task<int> Complete(ItemArgs args)
         {
-            var list = new ToDoList(new JsonToDoStore(args.Store));
+            var list = new ToDoList(new JsonToDoStore(args.Store), _logger);
             var item = (await list.GetItemsAsync()).FirstOrDefault(x => x.Item == args.Item);
             if (item == null)
             {
@@ -118,9 +129,9 @@ namespace ToDoApp
             }
         }
 
-        private static async Task<int> Uncomplete(ItemArgs args)
+        private async Task<int> Uncomplete(ItemArgs args)
         {
-            var list = new ToDoList(new JsonToDoStore(args.Store));
+            var list = new ToDoList(new JsonToDoStore(args.Store), _logger);
             var item = (await list.GetItemsAsync()).FirstOrDefault(x => x.Item == args.Item);
             if (item == null)
             {
@@ -134,9 +145,9 @@ namespace ToDoApp
             }
         }
 
-        private static async Task<int> Remove(ItemArgs args)
+        private async Task<int> Remove(ItemArgs args)
         {
-            var list = new ToDoList(new JsonToDoStore(args.Store));
+            var list = new ToDoList(new JsonToDoStore(args.Store), _logger);
             var item = (await list.GetItemsAsync()).FirstOrDefault(x => x.Item == args.Item);
             if (item == null)
             {

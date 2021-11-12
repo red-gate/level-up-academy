@@ -1,17 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static ToDoApp.Engine.Log;
 
 namespace ToDoApp.Engine
 {
     public sealed class ToDoList
     {
         private readonly IToDoStore _store;
+        private readonly IToDoLogger _logger;
 
-        public ToDoList(IToDoStore store)
+        public ToDoList(IToDoStore store, IToDoLogger logger)
         {
             _store = store;
+            _logger = logger;
         }
 
         public Task<IReadOnlyCollection<ToDoItem>> GetItemsAsync()
@@ -24,7 +25,7 @@ namespace ToDoApp.Engine
             var items = (await _store.GetToDoItemsAsync()).ToList();
             items.Add(item);
             await _store.UpdateToDoItemsAsync(items);
-            Logger.Information($"Added item at end: {item.Item}");
+            _logger.Information($"Added item at end: {item.Item}");
         }
 
         public async Task AddItemAsync(ToDoItem item, int position)
@@ -32,7 +33,7 @@ namespace ToDoApp.Engine
             var items = (await _store.GetToDoItemsAsync()).ToList();
             items.Insert(position, item);
             await _store.UpdateToDoItemsAsync(items);
-            Logger.Information($"Added item at position {position}: {item.Item}");
+            _logger.Information($"Added item at position {position}: {item.Item}");
         }
 
         public async Task RemoveItemAsync(ToDoItem item)
@@ -40,7 +41,7 @@ namespace ToDoApp.Engine
             var items = (await _store.GetToDoItemsAsync()).ToList();
             items.Remove(item);
             await _store.UpdateToDoItemsAsync(items);
-            Logger.Information($"Removed item: {item.Item}");
+            _logger.Information($"Removed item: {item.Item}");
         }
 
         public async Task CompleteItemAsync(ToDoItem item)
@@ -48,7 +49,7 @@ namespace ToDoApp.Engine
             var items = (await _store.GetToDoItemsAsync()).ToList();
             items[items.IndexOf(item)] = new ToDoItem(true, item.Item);
             await _store.UpdateToDoItemsAsync(items);
-            Logger.Information($"Completed item: {item.Item}");
+            _logger.Information($"Completed item: {item.Item}");
         }
 
         public async Task UncompleteItemAsync(ToDoItem item)
@@ -56,7 +57,7 @@ namespace ToDoApp.Engine
             var items = (await _store.GetToDoItemsAsync()).ToList();
             items[items.IndexOf(item)] = new ToDoItem(false, item.Item);
             await _store.UpdateToDoItemsAsync(items);
-            Logger.Information($"Uncompleted item: {item.Item}");
+            _logger.Information($"Uncompleted item: {item.Item}");
         }
     }
 }

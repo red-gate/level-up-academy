@@ -1,10 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.10.0" />
-    <PackageReference Include="Serilog.Sinks.TextWriter" Version="2.1.0" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\ToDoApp.Logging.Serilog\ToDoApp.Logging.Serilog.csproj" />
     <ProjectReference Include="..\ToDoApp.Logging\ToDoApp.Logging.csproj" />

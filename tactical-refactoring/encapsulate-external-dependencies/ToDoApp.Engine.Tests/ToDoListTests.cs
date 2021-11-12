@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -9,12 +10,14 @@ namespace ToDoApp.Engine.Tests
     [TestFixture]
     public sealed class ToDoListTests
     {
+        private IToDoLogger _logger = Substitute.For<IToDoLogger>();
+        
         [Test]
         public async Task GetEmptyList()
         {
             var store = Substitute.For<IToDoStore>();
             store.GetToDoItemsAsync().Returns(Array.Empty<ToDoItem>());
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
 
             var actual = await list.GetItemsAsync();
             Assert.That(actual, Is.Empty);
@@ -26,7 +29,7 @@ namespace ToDoApp.Engine.Tests
             var expected = new List<ToDoItem> { new ToDoItem(false, "An item to do") };
             var store = Substitute.For<IToDoStore>();
             store.GetToDoItemsAsync().Returns(expected);
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
 
             var actual = await list.GetItemsAsync();
             Assert.That(actual, Is.EqualTo(expected));
@@ -43,7 +46,7 @@ namespace ToDoApp.Engine.Tests
             };
             var store = Substitute.For<IToDoStore>();
             store.GetToDoItemsAsync().Returns(expected);
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
 
             var actual = await list.GetItemsAsync();
             Assert.That(actual, Is.EqualTo(expected));
@@ -56,7 +59,7 @@ namespace ToDoApp.Engine.Tests
             store.GetToDoItemsAsync().Returns(Array.Empty<ToDoItem>());
             IReadOnlyCollection<ToDoItem>? actual = null;
             await store.UpdateToDoItemsAsync(Arg.Do<IReadOnlyCollection<ToDoItem>>(newList => actual = newList));
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
             var newItem = new ToDoItem(false, "New item");
 
             await list.AddItemAsync(newItem);
@@ -74,7 +77,7 @@ namespace ToDoApp.Engine.Tests
             store.GetToDoItemsAsync().Returns(new[] { item1, item2 });
             IReadOnlyCollection<ToDoItem>? actual = null;
             await store.UpdateToDoItemsAsync(Arg.Do<IReadOnlyCollection<ToDoItem>>(newList => actual = newList));
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
             var newItem = new ToDoItem(false, "New item");
 
             await list.AddItemAsync(newItem);
@@ -92,7 +95,7 @@ namespace ToDoApp.Engine.Tests
             store.GetToDoItemsAsync().Returns(new[] { item1, item2 });
             IReadOnlyCollection<ToDoItem>? actual = null;
             await store.UpdateToDoItemsAsync(Arg.Do<IReadOnlyCollection<ToDoItem>>(newList => actual = newList));
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
             var newItem = new ToDoItem(false, "New item");
 
             await list.AddItemAsync(newItem, 1);
@@ -110,7 +113,7 @@ namespace ToDoApp.Engine.Tests
             store.GetToDoItemsAsync().Returns(new[] { item1, item2 });
             IReadOnlyCollection<ToDoItem>? actual = null;
             await store.UpdateToDoItemsAsync(Arg.Do<IReadOnlyCollection<ToDoItem>>(newList => actual = newList));
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
 
             await list.RemoveItemAsync(item2);
 
@@ -127,7 +130,7 @@ namespace ToDoApp.Engine.Tests
             store.GetToDoItemsAsync().Returns(new[] { item1, item2 });
             IReadOnlyCollection<ToDoItem>? actual = null;
             await store.UpdateToDoItemsAsync(Arg.Do<IReadOnlyCollection<ToDoItem>>(newList => actual = newList));
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
 
             await list.CompleteItemAsync(item1);
 
@@ -144,7 +147,7 @@ namespace ToDoApp.Engine.Tests
             store.GetToDoItemsAsync().Returns(new[] { item1, item2 });
             IReadOnlyCollection<ToDoItem>? actual = null;
             await store.UpdateToDoItemsAsync(Arg.Do<IReadOnlyCollection<ToDoItem>>(newList => actual = newList));
-            var list = new ToDoList(store);
+            var list = new ToDoList(store, _logger);
 
             await list.UncompleteItemAsync(item2);
 

@@ -1,5 +1,6 @@
 using System.IO;
 using NUnit.Framework;
+using ToDoApp.Logging.Serilog;
 
 namespace ToDoApp.Engine.Tests
 {
@@ -9,7 +10,7 @@ namespace ToDoApp.Engine.Tests
         [OneTimeSetUp]
         public void InitializeLogging()
         {
-            Log.Initialize(TextWriter.Null);
+            SerilogLogger.Initialize(TextWriter.Null);
         }
     }
 }
