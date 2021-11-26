@@ -29,6 +29,10 @@ namespace BlueBridge.SeaQuollMonitor.Console
             System.Console.WriteLine("Press R to refresh the licences or any other key to exit");
             var licenseAllocator = container.Resolve<ILicenseAllocator>();
             var baseMonitorRegistry = container.Resolve<IBaseMonitorRegistry>();
+
+            licenseAllocator.OnLicencesAllocated += () =>
+                Task.Run(() => ShowMonitoredEstate(baseMonitorRegistry).ConfigureAwait(false));
+
             var repeat = true;
             do
             {
@@ -36,7 +40,6 @@ namespace BlueBridge.SeaQuollMonitor.Console
                 {
                     case ConsoleKey.R:
                         await licenseAllocator.Refresh();
-                        await ShowMonitoredEstate(baseMonitorRegistry);
                         break;
 
                     default:
