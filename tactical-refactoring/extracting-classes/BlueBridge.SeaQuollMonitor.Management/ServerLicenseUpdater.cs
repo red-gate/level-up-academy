@@ -5,7 +5,7 @@ using BlueBridge.SeaQuollMonitor.Domain;
 
 namespace BlueBridge.SeaQuollMonitor.Management
 {
-    public class ServerLicenseUpdater
+    public class ServerLicenseUpdater : IServerLicenseUpdater
     {
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
 

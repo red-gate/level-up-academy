@@ -8,9 +8,9 @@ namespace BlueBridge.SeaQuollMonitor.Management
         {
             builder.RegisterType<LicenseService>().As<ILicenseService>().SingleInstance();
             builder.RegisterType<BaseMonitorRegistry>().As<IBaseMonitorRegistry>().SingleInstance();
-            builder.RegisterType<ServerRetriever>().SingleInstance();
-            builder.RegisterType<LicenseAlgorithm>().SingleInstance();
-            builder.RegisterType<ServerLicenseUpdater>().SingleInstance();
+            builder.RegisterType<ServerRetriever>().As<IServerRetriever>().SingleInstance();
+            builder.RegisterType<LicenseAlgorithm>().As<ILicenseAlgorithm>().SingleInstance();
+            builder.RegisterType<ServerLicenseUpdater>().As<IServerLicenseUpdater>().SingleInstance();
             builder.RegisterType<LicenseAllocator>().As<ILicenseAllocator>().SingleInstance();
         }
     }

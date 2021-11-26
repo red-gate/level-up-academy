@@ -4,7 +4,7 @@ using BlueBridge.SeaQuollMonitor.Domain;
 
 namespace BlueBridge.SeaQuollMonitor.Management
 {
-    public class ServerRetriever
+    public class ServerRetriever : IServerRetriever
     {
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
 

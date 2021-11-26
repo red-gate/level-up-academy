@@ -12,14 +12,14 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
         private readonly ILicenseService _licenseService;
         private readonly TaskDebouncer _refreshTaskDebouncer;
-        private readonly ServerRetriever _serverRetriever;
-        private readonly LicenseAlgorithm _licenseAlgorithm;
-        private readonly ServerLicenseUpdater _serverLicenseUpdater;
+        private readonly IServerRetriever _serverRetriever;
+        private readonly ILicenseAlgorithm _licenseAlgorithm;
+        private readonly IServerLicenseUpdater _serverLicenseUpdater;
 
         public event Action? OnLicencesAllocated;
 
         public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService,
-            ServerRetriever serverRetriever, LicenseAlgorithm licenseAlgorithm, ServerLicenseUpdater serverLicenseUpdater)
+            IServerRetriever serverRetriever, ILicenseAlgorithm licenseAlgorithm, IServerLicenseUpdater serverLicenseUpdater)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
