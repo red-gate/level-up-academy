@@ -8,6 +8,5 @@ namespace BlueBridge.SeaQuollMonitor.Management
         event Action OnAvailableLicensesChanged;
         Task<int> GetAvailableLicenseCount();
         Task ReportUsedLicenseCount(int count);
-        Task<Uri> GetLicenseManagementUri();
     }
 }

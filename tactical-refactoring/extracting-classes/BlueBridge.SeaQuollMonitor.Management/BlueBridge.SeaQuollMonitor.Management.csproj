@@ -12,8 +12,7 @@
 
     <ItemGroup>
       <PackageReference Include="Autofac" Version="6.3.0" />
-      <PackageReference Include="RedGate.Licensing.Permits.Core" Version="2.3.0" />
-      <PackageReference Include="RedGate.Licensing.Permits.Windows" Version="2.3.0" />
+      <PackageReference Include="System.Text.Json" Version="5.0.2" />
     </ItemGroup>
 
 </Project>
