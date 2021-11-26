@@ -12,6 +12,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBridge.SeaQuollMonitor.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueBridge.SeaQuollMonitor.Console", "BlueBridge.SeaQuollMonitor.Console\BlueBridge.SeaQuollMonitor.Console.csproj", "{0845ECF2-6A78-4D7F-A7F5-6CDB9B9066CC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{A6A09E06-5687-4448-950E-5562356D2AB8}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
