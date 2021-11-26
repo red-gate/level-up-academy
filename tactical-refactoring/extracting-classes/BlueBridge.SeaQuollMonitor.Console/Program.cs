@@ -25,15 +25,14 @@ namespace BlueBridge.SeaQuollMonitor.Console
                     Path.Combine(Constants.ApplicationDataFolder, subPath, "settings.json"));
             }
 
-            // Show the licence allocation URL, so people can change their available licenses.
-            var licenseService = container.Resolve<ILicenseService>();
-            var managementUrl = await licenseService.GetLicenseManagementUri();
-            System.Console.WriteLine($"License management url: {managementUrl}");
-
             // Now run a loop, allowing people to force a licence reallocation.
             System.Console.WriteLine("Press R to refresh the licences or any other key to exit");
             var licenseAllocator = container.Resolve<ILicenseAllocator>();
             var baseMonitorRegistry = container.Resolve<IBaseMonitorRegistry>();
+
+            licenseAllocator.OnLicencesAllocated += () =>
+                Task.Run(() => ShowMonitoredEstate(baseMonitorRegistry).ConfigureAwait(false));
+
             var repeat = true;
             do
             {
@@ -41,7 +40,6 @@ namespace BlueBridge.SeaQuollMonitor.Console
                 {
                     case ConsoleKey.R:
                         await licenseAllocator.Refresh();
-                        await ShowMonitoredEstate(baseMonitorRegistry);
                         break;
 
                     default:

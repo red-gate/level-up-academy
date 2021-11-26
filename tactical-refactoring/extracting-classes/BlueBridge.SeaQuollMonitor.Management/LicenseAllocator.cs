@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
         private readonly ILicenseService _licenseService;
         private readonly TaskDebouncer _refreshTaskDebouncer;
+
+        public event Action? OnLicencesAllocated;
 
         public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService)
         {
@@ -43,7 +46,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             // Decide which servers will and won't be licenced.
             var availableLicenseCount = await availableLicenseCountTask;
-            System.Console.WriteLine($"Available license count: {availableLicenseCount}");
+            Console.WriteLine($"Available license count: {availableLicenseCount}");
 
             var licensedServers = new List<(string BaseMonitorName, Server Server)>();
             var unlicensedServers = new List<(string BaseMonitorName, Server Server)>();
@@ -82,9 +85,12 @@ namespace BlueBridge.SeaQuollMonitor.Management
                 }
             });
 
-            // And finally report the number of licenses consumed.
-            System.Console.WriteLine($"Used license count: {licensedServers.Count}");
+            // Report the number of licenses consumed.
+            Console.WriteLine($"Used license count: {licensedServers.Count}");
             await _licenseService.ReportUsedLicenseCount(licensedServers.Count);
+
+            // And finally fire the licenses allocated event.
+            OnLicencesAllocated?.Invoke();
         }
 
         protected override void OnDispose()

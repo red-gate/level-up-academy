@@ -8,22 +8,9 @@ The `ExtractingClasses.sln` contains a number of simplified projects from a prod
 
 ### Getting the code to run
 
-- The `Blue Bridge` sub-folder contains a bunch of configuration files for a number of base monitors. You should copy this folder as-is to `C:\ProgramData`, resulting in the following folder structure:
-  - C:
-    - ProgramData
-      - Blue Bridge
-        - Sea Quoll Monitor
-          - BaseMonitorA
-          - BaseMonitorB
-          - BaseMonitorC
-- The code hijacks the SQL Monitoring permits-based licensing in our UAT environment. For this to function correctly, you must either run from within the Redgate internal network or be connected to the VPN, as access to `https://permits.coredev-uat-1.testnet.red-gate.com` and `https://portal.coredev-uat-1.testnet.red-gate.com` is required.
-- You should ideally have a Redgate ID account set up in our UAT environment. If you've been involved in licensing testing for a major version release of a product, this may already be in plcae. If not, some usable credentials will be made avaiable during the workshop.
-
-With all of this in place, you should be able to run the `BlueBridge.SeaQuollMonitor.Console` project and see something like the following written to the console:
+You should be able to run the `BlueBridge.SeaQuollMonitor.Console` project and see something like the following written to the console:
 
 ```
-License management url: https://permits.coredev-uat-1.testnet.red-gate.com/activate?machineHash=V59AA9ACD414B81D8EE636CE0C81EE5ABABEC20B28137D510EBD01831AF1B3EB68&machineName=PANTALAIMON&productCode=18&majorVersion=12&returnurl=http
-s%3A%2F%2Flocalhost%2Fseaquollmonitor%2F
 Press R to refresh the licences or any other key to exit
 ```
 
@@ -46,11 +33,12 @@ Base Monitor: Satellite office
     research.internal.megacorp.com      Added 2021-10-27 07:44:07Z, Licensed, Active
 ```
 
-You can poke the system in a couple of ways:
-1. Visit the "license management url" that was written to the console. You'll need to login with a UAT Redgate ID, and then you'll be able to assign licences to your running ~SQL Monitor~ Sea Quoll Monitor software.
-   - If you change the licenses assigned in the UAT portal, it can take a very long time for those changes to be pushed back to Sea Quoll Monitor, so use the `R` key to trigger a manual refresh.
-   - If you don't have any SQL Monitor licenses available, you can create some at https://accountadmin.coredev-uat-1.testnet.red-gate.com/licensing/create. Please note, rather than logging in with a UAT Redgate ID, you must first log in with your Redgate domain credentials (full email address and password), and then change the `anne.employee@red-gate.com` to that of your UAT Redgate ID.
-2. You can edit the `monitoredServers.json` files found in the `BaseMonitorA`, `BaseMonitorB` and `BaseMonitorC` sub-folders within `C:\ProgramData\Blue Bridge\Sea Quoll Monitor`. Try adding more servers or flipping the `IsSuspended` property between `true` and `false`. A file watcher will quickly respond to these changes and reallocate licenses, though you'll still need to press `R` to refresh the full view of the monitored servers.
+You can poke the system in a number of ways, since all the persistence is stored in json files within the `Data` sub-folder.
+
+1. Try changing the number of available licenses in the `licenses.json` file.
+2. Try changing the requirements for any of the three base monitors by editing its corresponding `monitoredServers.json` file. Maybe add or remove some servers, or suspend monitoring of an existing server.
+
+Making changes to these files will trigger a reallocation of licences, which will then update some of the files.
 
 ## The exercise
 
