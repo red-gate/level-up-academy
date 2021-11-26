@@ -12,12 +12,14 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly IBaseMonitorRegistry _baseMonitorRegistry;
         private readonly ILicenseService _licenseService;
         private readonly TaskDebouncer _refreshTaskDebouncer;
+        private readonly ServerRetriever _serverRetriever;
 
         public event Action? OnLicencesAllocated;
 
         public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
+            _serverRetriever = new ServerRetriever(baseMonitorRegistry);
             _licenseService = licenseService;
             _refreshTaskDebouncer = new TaskDebouncer(DoRefresh);
 
@@ -34,9 +36,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
             // Fetch the number of available licenses from the licensing service.
             var availableLicenseCountTask = _licenseService.GetAvailableLicenseCount();
 
-            // Fetch all the servers from all of the base monitors.
-            var allServers = await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(baseMonitor =>
-                baseMonitor.MonitoredServersRepository.GetAllServers());
+            var allServers = await _serverRetriever.GetAllServers();
 
             // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
             // registered servers.
