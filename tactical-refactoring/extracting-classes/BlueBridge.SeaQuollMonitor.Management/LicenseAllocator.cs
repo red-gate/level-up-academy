@@ -14,16 +14,18 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly TaskDebouncer _refreshTaskDebouncer;
         private readonly ServerRetriever _serverRetriever;
         private readonly LicenseAlgorithm _licenseAlgorithm;
+        private readonly ServerLicenseUpdater _serverLicenseUpdater;
 
         public event Action? OnLicencesAllocated;
 
         public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService,
-            ServerRetriever serverRetriever, LicenseAlgorithm licenseAlgorithm)
+            ServerRetriever serverRetriever, LicenseAlgorithm licenseAlgorithm, ServerLicenseUpdater serverLicenseUpdater)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
             _serverRetriever = serverRetriever;
             _licenseAlgorithm = licenseAlgorithm;
+            _serverLicenseUpdater = serverLicenseUpdater;
             _refreshTaskDebouncer = new TaskDebouncer(DoRefresh);
 
             _baseMonitorRegistry.OnLicensingRequirementsChanged += HandleLicensingRequirementsChanged;
@@ -43,25 +45,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             var (licensedServers, unlicensedServers) = _licenseAlgorithm.CalculateLicensedAndUnlicensedServers(allServers, await availableLicenseCountTask);
 
-            // Mutate the server license state where necessary.
-            var newlyLicensedServers = licensedServers
-                .Where(x => !x.Server.IsLicensed)
-                .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with { IsLicensed = true }));
-            var newlyUnlicensedServers = unlicensedServers
-                .Where(x => x.Server.IsLicensed)
-                .Select(x => (BaseMonitorName: x.BaseMonitorName, Server: x.Server with { IsLicensed = false }));
-            var modifiedServers = newlyLicensedServers
-                .Concat(newlyUnlicensedServers)
-                .ToLookup(x => x.BaseMonitorName, x => x.Server);
-
-            // Now update the modified servers.
-            await _baseMonitorRegistry.ExecuteOnAllBaseMonitorsAsync(async baseMonitor =>
-            {
-                foreach (var server in modifiedServers[baseMonitor.Name])
-                {
-                    await baseMonitor.MonitoredServersRepository.UpdateServer(server);
-                }
-            });
+            await _serverLicenseUpdater.UpdateServerLicenses(licensedServers, unlicensedServers);
 
             // Report the number of licenses consumed.
             Console.WriteLine($"Used license count: {licensedServers.Count}");
