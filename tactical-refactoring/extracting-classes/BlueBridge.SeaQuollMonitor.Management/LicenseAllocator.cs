@@ -13,15 +13,17 @@ namespace BlueBridge.SeaQuollMonitor.Management
         private readonly ILicenseService _licenseService;
         private readonly TaskDebouncer _refreshTaskDebouncer;
         private readonly ServerRetriever _serverRetriever;
+        private readonly LicenseAlgorithm _licenseAlgorithm;
 
         public event Action? OnLicencesAllocated;
 
         public LicenseAllocator(IBaseMonitorRegistry baseMonitorRegistry, ILicenseService licenseService,
-            ServerRetriever serverRetriever)
+            ServerRetriever serverRetriever, LicenseAlgorithm licenseAlgorithm)
         {
             _baseMonitorRegistry = baseMonitorRegistry;
             _licenseService = licenseService;
             _serverRetriever = serverRetriever;
+            _licenseAlgorithm = licenseAlgorithm;
             _refreshTaskDebouncer = new TaskDebouncer(DoRefresh);
 
             _baseMonitorRegistry.OnLicensingRequirementsChanged += HandleLicensingRequirementsChanged;
@@ -39,8 +41,7 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             var allServers = await _serverRetriever.GetAllServers();
 
-            var (licensedServers, unlicensedServers) =
-                CalculateLicensedAndUnlicensedServers(allServers, await availableLicenseCountTask);
+            var (licensedServers, unlicensedServers) = _licenseAlgorithm.CalculateLicensedAndUnlicensedServers(allServers, await availableLicenseCountTask);
 
             // Mutate the server license state where necessary.
             var newlyLicensedServers = licensedServers
@@ -68,38 +69,6 @@ namespace BlueBridge.SeaQuollMonitor.Management
 
             // And finally fire the licenses allocated event.
             OnLicencesAllocated?.Invoke();
-        }
-
-        private static (IReadOnlyList<MonitoredServer> licensedServers, IReadOnlyList<MonitoredServer> unlicensedServers) CalculateLicensedAndUnlicensedServers(
-                IDictionary<string, IEnumerable<Server>> allServers, int availableLicenseCount)
-        {
-            // Rank them by the oldest first, as we give licensing preference to longer lived servers over newly
-            // registered servers.
-            var rankedServers = allServers
-                .SelectMany(pair => pair.Value.Select(server => new MonitoredServer(pair.Key, server)))
-                .OrderBy(x => x.Server.Added);
-
-            // Decide which servers will and won't be licenced.
-            Console.WriteLine($"Available license count: {availableLicenseCount}");
-
-            var licensedServers = new List<MonitoredServer>();
-            var unlicensedServers = new List<MonitoredServer>();
-            foreach (var item in rankedServers)
-            {
-                // If the server is suspended, or we've run out of licences, then the server won't be licensed.
-                if (item.Server.IsSuspended || availableLicenseCount == 0)
-                {
-                    unlicensedServers.Add(item);
-                }
-                // Otherwise it will. Woot!
-                else
-                {
-                    licensedServers.Add(item);
-                    availableLicenseCount--;
-                }
-            }
-
-            return (licensedServers, unlicensedServers);
         }
 
         protected override void OnDispose()
