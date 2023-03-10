@@ -1,43 +1,79 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BerlinClock;
 
 public class BerlinClockFormatter
 {
-    public string FormatSingleMinutes(TimeOnly time)
+    private static readonly IReadOnlyList<string> _singleMinutePatterns = new []
     {
-        var lightCount = time.Minute % 5;
+        "OOOO",
+        "YOOO",
+        "YYOO",
+        "YYYO",
+        "YYYY"
+    };
 
-        return new string('Y', lightCount) + new string('O', 4 - lightCount);
-    }
-
-    public string FormatFiveMinutes(TimeOnly time)
+    private static readonly IReadOnlyList<string> _minuteBlockPatterns = new []
     {
-        var lightCount = time.Minute / 5;
-        
-        return new string('Y', lightCount).Replace("YYY", "YYR") + new string('O', 11 - lightCount);
-    }
+        "OOOOOOOOOOO",
+        "YOOOOOOOOOO",
+        "YYOOOOOOOOO",
+        "YYROOOOOOOO",
+        "YYRYOOOOOOO",
+        "YYRYYOOOOOO",
+        "YYRYYROOOOO",
+        "YYRYYRYOOOO",
+        "YYRYYRYYOOO",
+        "YYRYYRYYROO",
+        "YYRYYRYYRYO",
+        "YYRYYRYYRYY",
+    };
 
-    public string FormatSingleHours(TimeOnly time)
+    private static readonly IReadOnlyList<string> _singleHourPatterns = new []
     {
-        var lightCount = time.Hour % 5;
-        
-        return new string('R', lightCount) + new string('O', 4 - lightCount);
-    }
-    
-    public string FormatFiveHours(TimeOnly time)
-    {
-        var lightCount = time.Hour / 5;
-        
-        return new string('R', lightCount) + new string('O', 4 - lightCount);
-    }
+        "OOOO",
+        "ROOO",
+        "RROO",
+        "RRRO",
+        "RRRR"
+    };
 
-    public string FormatSeconds(TimeOnly time) => time.Second % 2 == 0 ? "Y" : "O";
+    private static readonly IReadOnlyList<string> _hourBlockPatterns = new []
+    {
+        "OOOO",
+        "ROOO",
+        "RROO",
+        "RRRO",
+        "RRRR"
+    };
+
+    private static readonly IReadOnlyList<string> _secondPatterns = new []
+    {
+        "Y",
+        "O"
+    };
+
+    public string FormatSingleMinutes(TimeOnly time) =>
+        _singleMinutePatterns[time.Minute % _singleMinutePatterns.Count];
+
+    public string FormatMinutesBlock(TimeOnly time) =>
+        _minuteBlockPatterns[time.Minute / _singleMinutePatterns.Count];
+
+    public string FormatSingleHours(TimeOnly time) =>
+        _singleHourPatterns[time.Hour % _singleHourPatterns.Count];
+
+    public string FormatHoursBlock(TimeOnly time) =>
+        _hourBlockPatterns[time.Hour / _singleHourPatterns.Count];
+
+    public string FormatSeconds(TimeOnly time) =>
+        _secondPatterns[time.Second % 2];
 
     public string FormatTime(TimeOnly time) =>
         FormatSeconds(time) +
-        FormatFiveHours(time) +
+        FormatHoursBlock(time) +
         FormatSingleHours(time) +
-        FormatFiveMinutes(time) +
+        FormatMinutesBlock(time) +
         FormatSingleMinutes(time);
 }
