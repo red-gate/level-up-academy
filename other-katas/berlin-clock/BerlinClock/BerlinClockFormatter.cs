@@ -140,5 +140,13 @@ public class BerlinClockFormatter
     }
 
     private static readonly Regex _timeRegex =
-        new ("^(?<SECONDS>[YO])(?<HOURSBLOCK>[RO]{4})(?<SINGLEHOURS>[RO]{4})(?<MINUTESBLOCK>[YRO]{11})(?<SINGLEMINUTES>[YO]{4})$");
+        new ("^" +
+             $"(?<SECONDS>{RegexJoin(_secondPatterns)})" +
+             $"(?<HOURSBLOCK>{RegexJoin(_hourBlockPatterns)})" +
+             $"(?<SINGLEHOURS>{RegexJoin(_singleHourPatterns)})" +
+             $"(?<MINUTESBLOCK>{RegexJoin(_minuteBlockPatterns)})" +
+             $"(?<SINGLEMINUTES>{RegexJoin(_singleMinutePatterns)})" +
+             "$");
+
+    private static string RegexJoin(IEnumerable<string> values) => string.Join("|", values.Select(Regex.Escape));
 }
