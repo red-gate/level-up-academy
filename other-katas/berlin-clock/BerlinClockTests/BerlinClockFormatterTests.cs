@@ -110,7 +110,6 @@ public class BerlinClockFormatterTests
     [TestCase("ORRRRRRROYYRYYRYYRYYYYYY", "23:59:59")]
     [TestCase("YRRROROOOYYRYYRYYRYOOOOO", "16:50:06")]
     [TestCase("ORROOROOOYYRYYRYOOOOYYOO", "11:37:01")]
-    [TestCase("O", 1)]
     public void CheckTryParseTimeCorrect(string pattern, string expected)
     {
         _berlinClockFormatter.TryParseTime(pattern, out var value).Should().BeTrue();

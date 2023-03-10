@@ -146,7 +146,7 @@ public class BerlinClockFormatter
              $"(?<SINGLEHOURS>{RegexJoin(_singleHourPatterns)})" +
              $"(?<MINUTESBLOCK>{RegexJoin(_minuteBlockPatterns)})" +
              $"(?<SINGLEMINUTES>{RegexJoin(_singleMinutePatterns)})" +
-             "$");
+             "$", RegexOptions.Compiled);
 
     private static string RegexJoin(IEnumerable<string> values) => string.Join("|", values.Select(Regex.Escape));
 }
