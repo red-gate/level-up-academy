@@ -55,6 +55,21 @@ public class BerlinClockFormatter
         "O"
     };
 
+    private static readonly IReadOnlyDictionary<string, int> _singleMinutePatternsReverseLookup =
+        _singleMinutePatterns
+            .Select((pattern, index) => (pattern, index))
+            .ToDictionary(x => x.pattern, x => x.index);
+
+    private static readonly IReadOnlyDictionary<string, int> _minuteBlockPatternsReverseLookup =
+        _minuteBlockPatterns
+            .Select((pattern, index) => (pattern, index))
+            .ToDictionary(x => x.pattern, x => x.index);
+
+    private static readonly IReadOnlyDictionary<string, int> _singleHourPatternsReverseLookup =
+        _singleHourPatterns
+            .Select((pattern, index) => (pattern, index))
+            .ToDictionary(x => x.pattern, x => x.index);
+
     public string FormatSingleMinutes(TimeOnly time) =>
         _singleMinutePatterns[time.Minute % _singleMinutePatterns.Count];
 
@@ -76,4 +91,13 @@ public class BerlinClockFormatter
         FormatSingleHours(time) +
         FormatMinutesBlock(time) +
         FormatSingleMinutes(time);
+
+    public bool TryParseSingleMinute(string input, out int value) =>
+        _singleMinutePatternsReverseLookup.TryGetValue(input, out value);
+
+    public bool TryParseMinutesBlock(string input, out int value) =>
+        _minuteBlockPatternsReverseLookup.TryGetValue(input, out value);
+
+    public bool TryParseSingleHour(string input, out int value) =>
+        _singleHourPatternsReverseLookup.TryGetValue(input, out value);
 }
