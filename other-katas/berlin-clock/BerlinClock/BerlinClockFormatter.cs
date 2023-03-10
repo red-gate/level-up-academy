@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace BerlinClock;
 
@@ -69,12 +70,12 @@ public class BerlinClockFormatter
         _singleHourPatterns
             .Select((pattern, index) => (pattern, index))
             .ToDictionary(x => x.pattern, x => x.index);
-    
+
     private static readonly IReadOnlyDictionary<string, int> _hourBlockPatternsReverseLookup =
         _hourBlockPatterns
             .Select((pattern, index) => (pattern, index))
             .ToDictionary(x => x.pattern, x => x.index);
-    
+
     private static readonly IReadOnlyDictionary<string, int> _secondPatternsReverseLookup =
         _secondPatterns
             .Select((pattern, index) => (pattern, index))
@@ -110,15 +111,34 @@ public class BerlinClockFormatter
 
     public bool TryParseSingleHour(string input, out int value) =>
         _singleHourPatternsReverseLookup.TryGetValue(input, out value);
-    
+
     public bool TryParseHoursBlock(string input, out int value) =>
         _hourBlockPatternsReverseLookup.TryGetValue(input, out value);
-    
+
     public bool TryParseSeconds(string input, out int value) =>
         _secondPatternsReverseLookup.TryGetValue(input, out value);
 
     public bool TryParseTime(string input, out TimeOnly value)
     {
-        
+        var match = _timeRegex.Match(input);
+        if (match.Success &&
+            TryParseSeconds(match.Groups["SECONDS"].Value, out var seconds) &&
+            TryParseHoursBlock(match.Groups["HOURSBLOCK"].Value, out var hoursBlocks) &&
+            TryParseSingleHour(match.Groups["SINGLEHOURS"].Value, out var singleHours) &&
+            TryParseMinutesBlock(match.Groups["MINUTESBLOCK"].Value, out var minutesBlock) &&
+            TryParseSingleMinute(match.Groups["SINGLEMINUTES"].Value, out var singleMinutes))
+        {
+            value = new TimeOnly(
+                hour: hoursBlocks * _singleHourPatterns.Count + singleHours,
+                minute: minutesBlock * _singleMinutePatterns.Count + singleMinutes,
+                second: seconds);
+            return true;
+        }
+
+        value = default;
+        return false;
     }
+
+    private static readonly Regex _timeRegex =
+        new ("^(?<SECONDS>[YO])(?<HOURSBLOCK>[RO]{4})(?<SINGLEHOURS>[RO]{4})(?<MINUTESBLOCK>[YRO]{11})(?<SINGLEMINUTES>[YO]{4})$");
 }

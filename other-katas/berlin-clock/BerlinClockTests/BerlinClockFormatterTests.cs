@@ -86,7 +86,7 @@ public class BerlinClockFormatterTests
         _berlinClockFormatter.TryParseSingleHour(pattern, out var value).Should().BeTrue();
         value.Should().Be(expected);
     }
-    
+
     [TestCase("OOOO", 0)]
     [TestCase("ROOO", 1)]
     [TestCase("RROO", 2)]
@@ -97,12 +97,23 @@ public class BerlinClockFormatterTests
         _berlinClockFormatter.TryParseHoursBlock(pattern, out var value).Should().BeTrue();
         value.Should().Be(expected);
     }
-    
+
     [TestCase("Y", 0)]
     [TestCase("O", 1)]
     public void CheckTryParseSecondsCorrect(string pattern, int expected)
     {
         _berlinClockFormatter.TryParseSeconds(pattern, out var value).Should().BeTrue();
         value.Should().Be(expected);
+    }
+
+    [TestCase("YOOOOOOOOOOOOOOOOOOOOOOO", "00:00:00")]
+    [TestCase("ORRRRRRROYYRYYRYYRYYYYYY", "23:59:59")]
+    [TestCase("YRRROROOOYYRYYRYYRYOOOOO", "16:50:06")]
+    [TestCase("ORROOROOOYYRYYRYOOOOYYOO", "11:37:01")]
+    [TestCase("O", 1)]
+    public void CheckTryParseTimeCorrect(string pattern, string expected)
+    {
+        _berlinClockFormatter.TryParseTime(pattern, out var value).Should().BeTrue();
+        value.Should().Be(TimeOnly.Parse(expected));
     }
 }
