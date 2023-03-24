@@ -4,7 +4,7 @@ This week, we are focusing on **functions**, **objects** and **constructors**.
 
 # Task
 
-For these exercises we are goning to use JS Fiddle (https://jsfiddle.net/). It's a simple web environment for writing JavaScript snippets.
+For these exercises we are going to use JS Fiddle (https://jsfiddle.net/). It's a simple web environment for writing JavaScript snippets.
 For now we are going to utilize only the two bottom panes: **JavaScript** and **Result**.
 
 Mobbing: We will take turns driving (sharing our screen) during approx 5 minutes; work and discuss together.
