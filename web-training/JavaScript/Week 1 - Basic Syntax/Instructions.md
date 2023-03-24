@@ -19,7 +19,7 @@ https://jsfiddle.net/ydm8fh95/3/
 3. Use control flow operators (**if**, **switch** ... ) so that the calculation supports the 4 basic arithmetic operations (passed using the *op* variable) on *a* and *b*.
 
 ## Exercise 3: Open discussion
-- Variables in JavaScript can be defined using **var**, **let** and **const** keywords. What would be a good guideline for chosing which keyword in your opinion?
+- Variables in JavaScript can be defined using **var**, **let** and **const** keywords. What would be a good guideline for choosing which keyword in your opinion?
 - Values in JavaScript can be compared for equlity using **==** and **===** operators. What would be a good guideline for choosing an appropriate operator in your opinion?
 
 # Bonus exercises (if time permits and/or you really get into it)
